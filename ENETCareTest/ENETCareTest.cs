@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ENETCare;
+using System.Collections.Generic;
 
 namespace ENETCareTest
 {
@@ -129,5 +130,36 @@ namespace ENETCareTest
 			Assert.AreEqual(1, dc.packages.Count);
 			Assert.AreEqual(PackageStatus.InStock, package.status);
 		}
+
+        [TestMethod]
+        public void DistributionCentre_name_canBeStored()
+        {
+            string dcName = "UTS";
+            dc.name = dcName;
+            Assert.AreEqual(dc.name, dcName);
+        }
+        public void DistributionCentre_address_canBeStored()
+        {
+            
+            string dcAddress = "15 Broadway, Ultimo NSW 2007";
+            dc.address = dcAddress;
+            Assert.AreEqual(dc.address, dcAddress);
+        }
+
+        public void DistributionCentre_phone_canBeStored()
+        {
+            string dcPhone = "(02) 9514 2000";
+            dc.phone = dcPhone;
+            Assert.AreEqual(dc.phone, dcPhone);
+        }
+
+        public void DistributionCentre_packagelist_canBeStored()
+        {
+            
+            List<MedicationPackage> dcPackages = new List<MedicationPackage>();
+            dc.packages = dcPackages;
+            Assert.AreEqual(dc.packages, dcPackages);
+        }
+
 	}
 }
