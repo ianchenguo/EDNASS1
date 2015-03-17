@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ENETCare;
-using System.Collections.Generic;
 
 namespace ENETCareTest
 {
@@ -10,13 +9,13 @@ namespace ENETCareTest
 	{
 		DistributionCentre dc;
 		Employee employee;
-        MedicationPackage package;
+		MedicationPackage package;
 
 		[TestInitialize]
 		public void Setup()
 		{
 			dc = new DistributionCentre();
-            package = new MedicationPackage();
+			package = new MedicationPackage();
 
 			employee = new Employee();
 			employee.role = Role.Doctor;
@@ -24,60 +23,6 @@ namespace ENETCareTest
 			employee.email = "StarCraft@blizzard.com";
 			employee.distributionCentre = dc;
 		}
-
-        [TestMethod]
-        public void MedicationPackage_barcode_canBeStored()
-        {
-            string barcode = "mock barcode";
-            package.barcode = barcode;
-            Assert.AreEqual(package.barcode,barcode);
-        }
-        [TestMethod]
-        public void MedicationPackage_medicationType_canBeAssociated()
-        {
-            MedicationType medType = new MedicationType();
-            package.type = medType;
-            Assert.AreEqual(package.type, medType);
-        }
-        [TestMethod]
-        public void MedicationPackage_expireDate_canBeStored()
-        {
-            DateTime expireDate = new DateTime();
-            package.expireDate = expireDate;
-            Assert.AreEqual(package.expireDate, expireDate);
-        }
-        [TestMethod]
-        public void MedicationPackage_packageStatus_canBeStored()
-        {
-            PackageStatus packageStatus = PackageStatus.InStock;
-            package.status = packageStatus;
-            Assert.AreEqual(package.status, packageStatus);
-        }
-        [TestMethod]
-        public void MedicationPackage_stockDC_canBeStored()
-        {
-            package.stockDC = dc;
-            Assert.AreEqual(package.stockDC, dc);
-        }
-        [TestMethod]
-        public void MedicationPackage_sourceDC_canBeStored()
-        {
-            package.sourceDC = dc;
-            Assert.AreEqual(package.sourceDC, dc);
-        }
-        [TestMethod]
-        public void MedicationPackage_destinationDC_canBeStored()
-        {
-            package.destinationDC = dc;
-            Assert.AreEqual(package.destinationDC, dc);
-        }
-        [TestMethod]
-        public void MedicationPackage_updateTime_canBeStored()
-        {
-            DateTime updateTime = new DateTime();
-            package.updateTime = updateTime;
-            Assert.AreEqual(package.updateTime, updateTime);
-        }
 
 		[TestMethod]
 		public void Employee_UpdateProfile()
@@ -130,36 +75,5 @@ namespace ENETCareTest
 			Assert.AreEqual(1, dc.packages.Count);
 			Assert.AreEqual(PackageStatus.InStock, package.status);
 		}
-
-        [TestMethod]
-        public void DistributionCentre_name_canBeStored()
-        {
-            string dcName = "UTS";
-            dc.name = dcName;
-            Assert.AreEqual(dc.name, dcName);
-        }
-        public void DistributionCentre_address_canBeStored()
-        {
-            
-            string dcAddress = "15 Broadway, Ultimo NSW 2007";
-            dc.address = dcAddress;
-            Assert.AreEqual(dc.address, dcAddress);
-        }
-
-        public void DistributionCentre_phone_canBeStored()
-        {
-            string dcPhone = "(02) 9514 2000";
-            dc.phone = dcPhone;
-            Assert.AreEqual(dc.phone, dcPhone);
-        }
-
-        public void DistributionCentre_packagelist_canBeStored()
-        {
-            
-            List<MedicationPackage> dcPackages = new List<MedicationPackage>();
-            dc.packages = dcPackages;
-            Assert.AreEqual(dc.packages, dcPackages);
-        }
-
 	}
 }
