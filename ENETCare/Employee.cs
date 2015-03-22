@@ -8,42 +8,37 @@ namespace ENETCare
 {
 	public class Employee
 	{
-		public int id;
-		public Role role;
-		public string username;
-		public string password;
-		public string fullname;
-		public string email;
-		public DistributionCentre distributionCentre;
+		public int ID { get; set; }
+		public Role Role { get; set; }
+		public string Username { get; set; }
+		public string Password { get; set; }
+		public string Fullname { get; set; }
+		public string Email { get; set; }
+		public DistributionCentre DistributionCentre { get; set; }
 
-		public void UpdateProfile(string fullname, string email)
+		public void UpdatePassword(string oldPassword, string newPassword)
 		{
-			this.fullname = fullname;
-			this.email = email;
+			Password = newPassword;
+			SimDB.UpdateEmployee(this);
 		}
 
-		public bool CheckPackage(string barcode)
+		public void UpdateProfile(string fullname, string email, string distributionCentreID)
 		{
-			if (barcode == "000000")
-				return true;
-			else
-				return false;
+			Fullname = fullname;
+			Email = email;
+			DistributionCentre distributionCentre = SimDB.GetDistributionCentreByID(distributionCentreID);
+			DistributionCentre = distributionCentre;
+			SimDB.UpdateEmployee(this);
 		}
 
-		public void RegisterPackage(MedicationPackage package)
+		public static Employee LoginUser()
 		{
-			distributionCentre.packages.Add(package);
-		}
-
-		public void SendPackage(MedicationPackage package, DistributionCentre destination)
-		{
-			package.status = PackageStatus.InTransit;
-		}
-
-		public void ReceivePackage(MedicationPackage package)
-		{
-			distributionCentre.packages.Add(package);
-			package.status = PackageStatus.InStock;
+			Employee employee = new Employee();
+			employee.Role = Role.Doctor;
+			employee.Fullname = "StarCraft";
+			employee.Email = "StarCraft@blizzard.com";
+			employee.DistributionCentre = new DistributionCentre();
+			return employee;
 		}
 	}
 

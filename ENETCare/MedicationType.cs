@@ -8,11 +8,17 @@ namespace ENETCare
 {
 	public class MedicationType
 	{
-		public int id;
-		public string name;
-		public string description;
-		public int shelfLife;
-		public double value;
-		public bool isSensitive;
+		public int ID { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public int ShelfLife { get; set; }
+		public double Value { get; set; }
+		public bool IsSensitive { get; set; }
+
+		public DateTime GetDefaultExpireDate()
+		{
+			DateTime expireDate = DateTime.Today.AddDays(ShelfLife);
+			return expireDate;
+		}
 	}
 }

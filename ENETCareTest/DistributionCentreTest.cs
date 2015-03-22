@@ -20,24 +20,24 @@ namespace ENETCareTest
 		public void DistributionCentre_name_canBeStored()
 		{
 			string dcName = "UTS";
-			dc.name = dcName;
-			Assert.AreEqual(dc.name, dcName);
+			dc.Name = dcName;
+			Assert.AreEqual(dc.Name, dcName);
 		}
 
 		[TestMethod]
 		public void DistributionCentre_address_canBeStored()
 		{
 			string dcAddress = "15 Broadway, Ultimo NSW 2007";
-			dc.address = dcAddress;
-			Assert.AreEqual(dc.address, dcAddress);
+			dc.Address = dcAddress;
+			Assert.AreEqual(dc.Address, dcAddress);
 		}
 
 		[TestMethod]
 		public void DistributionCentre_phone_canBeStored()
 		{
 			string dcPhone = "(02) 9514 2000";
-			dc.phone = dcPhone;
-			Assert.AreEqual(dc.phone, dcPhone);
+			dc.Phone = dcPhone;
+			Assert.AreEqual(dc.Phone, dcPhone);
 		}
 
 		[TestMethod]

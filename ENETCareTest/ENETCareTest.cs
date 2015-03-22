@@ -18,34 +18,35 @@ namespace ENETCareTest
 			package = new MedicationPackage();
 
 			employee = new Employee();
-			employee.role = Role.Doctor;
-			employee.fullname = "StarCraft";
-			employee.email = "StarCraft@blizzard.com";
-			employee.distributionCentre = dc;
+			employee.Role = Role.Doctor;
+			employee.Fullname = "StarCraft";
+			employee.Email = "StarCraft@blizzard.com";
+			employee.DistributionCentre = dc;
 		}
 
 		[TestMethod]
 		public void Employee_UpdateProfile()
 		{
-			Assert.AreEqual("StarCraft", employee.fullname);
-			Assert.AreEqual("StarCraft@blizzard.com", employee.email);
+			Assert.AreEqual("StarCraft", employee.Fullname);
+			Assert.AreEqual("StarCraft@blizzard.com", employee.Email);
 			string newName = "WarCraft";
 			string newEmail = "WarCraft@blizzard.com";
-			employee.UpdateProfile(newName, newEmail);
-			Assert.AreEqual("WarCraft", employee.fullname);
-			Assert.AreEqual("WarCraft@blizzard.com", employee.email);
+			string newDistributionCentre = "1";
+			employee.UpdateProfile(newName, newEmail, newDistributionCentre);
+			Assert.AreEqual("WarCraft", employee.Fullname);
+			Assert.AreEqual("WarCraft@blizzard.com", employee.Email);
 		}
 
 		[TestMethod]
 		public void Employee_CheckPackage()
 		{
-			bool result;
+			MedicationPackage package;
 			string validBarcode = "000000";
-			result = employee.CheckPackage(validBarcode);
-			Assert.AreEqual(true, result);
+			package = SimDB.FindPackageByBarcode(validBarcode);
+			Assert.IsNotNull(package);
 			string invalidBarcode = "111111";
-			result = employee.CheckPackage(invalidBarcode);
-			Assert.AreEqual(false, result);
+			package = SimDB.FindPackageByBarcode(invalidBarcode);
+			Assert.IsNull(package);
 		}
 
 		[TestMethod]
@@ -53,27 +54,27 @@ namespace ENETCareTest
 		{
 			Assert.AreEqual(0, dc.packages.Count);
 			MedicationPackage package = new MedicationPackage();
-			employee.RegisterPackage(package);
+			dc.RegisterPackage("1", DateTime.Today);
 			Assert.AreEqual(1, dc.packages.Count);
 		}
 
 		[TestMethod]
 		public void Employee_SendPackage()
 		{
-			MedicationPackage package = new MedicationPackage();
-			employee.SendPackage(package, new DistributionCentre());
-			Assert.AreEqual(PackageStatus.InTransit, package.status);
+			string barcode = "000000";
+			dc.SendPackage(barcode, new DistributionCentre());
+			Assert.AreEqual(PackageStatus.InTransit, package.Status);
 		}
 
 		[TestMethod]
 		public void Employee_ReceivePackage()
 		{
 			Assert.AreEqual(0, dc.packages.Count);
-			MedicationPackage package = new MedicationPackage();
-			package.status = PackageStatus.InTransit;
-			employee.ReceivePackage(package);
+			string barcode = "000000";
+			package.Status = PackageStatus.InTransit;
+			dc.ReceivePackage(barcode);
 			Assert.AreEqual(1, dc.packages.Count);
-			Assert.AreEqual(PackageStatus.InStock, package.status);
+			Assert.AreEqual(PackageStatus.InStock, package.Status);
 		}
 	}
 }

@@ -21,61 +21,61 @@ namespace ENETCareTest
 		public void MedicationPackage_barcode_canBeStored()
 		{
 			string barcode = "mock barcode";
-			package.barcode = barcode;
-			Assert.AreEqual(package.barcode, barcode);
+			package.Barcode = barcode;
+			Assert.AreEqual(package.Barcode, barcode);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_medicationType_canBeAssociated()
 		{
 			MedicationType medType = new MedicationType();
-			package.type = medType;
-			Assert.AreEqual(package.type, medType);
+			package.Type = medType;
+			Assert.AreEqual(package.Type, medType);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_expireDate_canBeStored()
 		{
 			DateTime expireDate = new DateTime();
-			package.expireDate = expireDate;
-			Assert.AreEqual(package.expireDate, expireDate);
+			package.ExpireDate = expireDate;
+			Assert.AreEqual(package.ExpireDate, expireDate);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_packageStatus_canBeStored()
 		{
 			PackageStatus packageStatus = PackageStatus.InStock;
-			package.status = packageStatus;
-			Assert.AreEqual(package.status, packageStatus);
+			package.Status = packageStatus;
+			Assert.AreEqual(package.Status, packageStatus);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_stockDC_canBeStored()
 		{
-			package.stockDC = dc;
-			Assert.AreEqual(package.stockDC, dc);
+			package.StockDC = dc;
+			Assert.AreEqual(package.StockDC, dc);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_sourceDC_canBeStored()
 		{
-			package.sourceDC = dc;
-			Assert.AreEqual(package.sourceDC, dc);
+			package.SourceDC = dc;
+			Assert.AreEqual(package.SourceDC, dc);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_destinationDC_canBeStored()
 		{
-			package.destinationDC = dc;
-			Assert.AreEqual(package.destinationDC, dc);
+			package.DestinationDC = dc;
+			Assert.AreEqual(package.DestinationDC, dc);
 		}
 
 		[TestMethod]
 		public void MedicationPackage_updateTime_canBeStored()
 		{
 			DateTime updateTime = new DateTime();
-			package.updateTime = updateTime;
-			Assert.AreEqual(package.updateTime, updateTime);
+			package.UpdateTime = updateTime;
+			Assert.AreEqual(package.UpdateTime, updateTime);
 		}
 	}
 }

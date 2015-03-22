@@ -8,15 +8,20 @@ namespace ENETCare
 {
 	public class MedicationPackage
 	{
-		public int id;
-		public string barcode;
-		public MedicationType type;
-		public DateTime expireDate;
-		public PackageStatus status;
-		public DistributionCentre stockDC;
-		public DistributionCentre sourceDC;
-		public DistributionCentre destinationDC;
-		public DateTime updateTime;
+		public int ID { get; set; }
+		public string Barcode { get; set; }
+		public MedicationType Type { get; set; }
+		public DateTime ExpireDate { get; set; }
+		public PackageStatus Status { get; set; }
+		public DistributionCentre StockDC { get; set; }
+		public DistributionCentre SourceDC { get; set; }
+		public DistributionCentre DestinationDC { get; set; }
+		public DateTime UpdateTime { get; set; }
+
+		public static string GenerateBarcode()
+		{
+			return Guid.NewGuid().ToString();
+		}
 	}
 
 	public enum PackageStatus

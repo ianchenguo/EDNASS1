@@ -56,9 +56,9 @@
     <Compile Include="MedicationPackageTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ENETCare\ENETCare.csproj">
+    <ProjectReference Include="..\ENETCare\ENETCare.Business.csproj">
       <Project>{9f876451-a2d2-45b1-a517-6107856497f4}</Project>
-      <Name>ENETCare</Name>
+      <Name>ENETCare.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
