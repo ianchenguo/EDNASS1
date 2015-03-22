@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ENETCare;
+using ENETCare.Business;
 
 namespace ENETCareTest
 {
