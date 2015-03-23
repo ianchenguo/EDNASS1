@@ -57,6 +57,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgentFeatures\AgentHome.aspx" />
+    <Content Include="AgentFeatures\AgentReceivePackage.aspx" />
+    <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
+    <Content Include="AgentFeatures\AgentSendPackage.aspx" />
+    <Content Include="AgentFeatures\AgentViewReport.aspx" />
+    <Content Include="Content\Styles\bootstrap-theme.css" />
+    <Content Include="Content\Styles\bootstrap-theme.min.css" />
+    <Content Include="Content\Styles\bootstrap.css" />
+    <Content Include="Content\Styles\bootstrap.min.css" />
+    <Content Include="Content\Styles\style.css" />
+    <Content Include="Layout\Main.master" />
+    <Content Include="Content\Styles\bootstrap-theme.css.map" />
+    <Content Include="Content\Styles\bootstrap.css.map" />
+    <Content Include="Index.aspx" />
+    <Content Include="Layout\Features.master" />
+    <Content Include="AgentFeatures\AgentFeatures.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,7 +81,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="mockupindex.html" />
+    <Content Include="Mockup\mockupindex.html" />
     <Content Include="Mockup\DiscardMockup.aspx" />
     <Content Include="Mockup\DistributionMockup.aspx" />
     <Content Include="Mockup\ReceivingMockup.aspx" />
@@ -74,6 +90,69 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentFeatures\AgentHome.aspx.cs">
+      <DependentUpon>AgentHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentHome.aspx.designer.cs">
+      <DependentUpon>AgentHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentFeatures.master.cs">
+      <DependentUpon>AgentFeatures.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentFeatures.master.designer.cs">
+      <DependentUpon>AgentFeatures.master</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentReceivePackage.aspx.cs">
+      <DependentUpon>AgentReceivePackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentReceivePackage.aspx.designer.cs">
+      <DependentUpon>AgentReceivePackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentRegisterPackage.aspx.cs">
+      <DependentUpon>AgentRegisterPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentRegisterPackage.aspx.designer.cs">
+      <DependentUpon>AgentRegisterPackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentSendPackage.aspx.cs">
+      <DependentUpon>AgentSendPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentSendPackage.aspx.designer.cs">
+      <DependentUpon>AgentSendPackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentViewReport.aspx.cs">
+      <DependentUpon>AgentViewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentViewReport.aspx.designer.cs">
+      <DependentUpon>AgentViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Main.master.cs">
+      <DependentUpon>Main.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Main.master.designer.cs">
+      <DependentUpon>Main.master</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Features.master.cs">
+      <DependentUpon>Features.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Features.master.designer.cs">
+      <DependentUpon>Features.master</DependentUpon>
+    </Compile>
     <Compile Include="Mockup\DiscardMockup.aspx.cs">
       <DependentUpon>DiscardMockup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
