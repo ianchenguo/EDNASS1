@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountEdit\AccountEdit.aspx" />
     <Content Include="AgentFeatures\AgentHome.aspx" />
     <Content Include="AgentFeatures\AgentReceivePackage.aspx" />
     <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
@@ -90,6 +91,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountEdit\AccountEdit.aspx.cs">
+      <DependentUpon>AccountEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountEdit\AccountEdit.aspx.designer.cs">
+      <DependentUpon>AccountEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentFeatures\AgentHome.aspx.cs">
       <DependentUpon>AgentHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

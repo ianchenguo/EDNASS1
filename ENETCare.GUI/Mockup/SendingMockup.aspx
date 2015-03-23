@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
         Destination Distribution Centre:
-        <asp:DropDownList ID="DistributionCentreDropDownList" runat="server">
+        <asp:DropDownList ID="DistributionCentreDropDownList" runat="server" OnSelectedIndexChanged="DistributionCentreDropDownList_SelectedIndexChanged">
             <asp:ListItem>Please select</asp:ListItem>
         </asp:DropDownList>
         <br />
