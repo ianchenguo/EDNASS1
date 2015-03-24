@@ -1,0 +1,19 @@
+<div class="container" id="dibu-body" ui-view>
+	<div class="well">
+		<form class="navbar-form" role="form">
+			<legend>Distribution</legend>
+			<div class="container distrb">
+				<label for="package-name">package name:</label>
+				<input id="package-name" type="text" class="form-control" placeholder="package name" autofocus>
+				<label for="barcode-number">barcode number:</label>
+				<input id="barcode-number" type="text" class="form-control" placeholder="barcode number">
+				<label for="return-date">Return date:</label>
+				<input id="return-date" type="text" class="form-control" placeholder="return date">
+			</div>
+			<div>
+				<a type="submit" class="nav-pills">Submit</a>
+			</div>		
+		</form>
+	</div>
+	<button type="button" class="btn btn-danger btn-lg" ui-sref ="login">Done</button>
+</div>
