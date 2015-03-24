@@ -58,11 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountEdit\AccountEdit.aspx" />
-    <Content Include="AgentFeatures\AgentHome.aspx" />
     <Content Include="AgentFeatures\AgentReceivePackage.aspx" />
     <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
     <Content Include="AgentFeatures\AgentSendPackage.aspx" />
     <Content Include="AgentFeatures\AgentViewReport.aspx" />
+    <Content Include="AgentFeatures\AgentHome.aspx" />
     <Content Include="Content\Styles\bootstrap-theme.css" />
     <Content Include="Content\Styles\bootstrap-theme.min.css" />
     <Content Include="Content\Styles\bootstrap.css" />
@@ -98,13 +98,6 @@
     <Compile Include="AccountEdit\AccountEdit.aspx.designer.cs">
       <DependentUpon>AccountEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentFeatures\AgentHome.aspx.cs">
-      <DependentUpon>AgentHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgentFeatures\AgentHome.aspx.designer.cs">
-      <DependentUpon>AgentHome.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AgentFeatures\AgentFeatures.master.cs">
       <DependentUpon>AgentFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +132,13 @@
     </Compile>
     <Compile Include="AgentFeatures\AgentViewReport.aspx.designer.cs">
       <DependentUpon>AgentViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentHome.aspx.cs">
+      <DependentUpon>AgentHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentHome.aspx.designer.cs">
+      <DependentUpon>AgentHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\Main.master.cs">
       <DependentUpon>Main.master</DependentUpon>
