@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation
+namespace ENETCare.Presentation.Doctor
 {
 
 
-    public partial class Index
+    public partial class DoctorViewReport
     {
     }
 }

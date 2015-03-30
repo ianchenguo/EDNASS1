@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AccountEdit.aspx.cs" Inherits="ENETCare.GUI.AccountEdit.AccountEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AccountEdit.aspx.cs" Inherits="ENETCare.Presentation.AccountEdit.AccountEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
     <!--panel-start-->
     <div class="panel panel-default">

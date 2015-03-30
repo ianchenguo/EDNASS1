@@ -332,25 +332,46 @@
       <DependentUpon>DoctorFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="DoctorFeatures\DoctorFeatures.master.designer.cs">
+      <DependentUpon>DoctorFeatures.master</DependentUpon>
+    </Compile>
     <Compile Include="DoctorFeatures\DoctorHome.aspx.cs">
       <DependentUpon>DoctorHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorHome.aspx.designer.cs">
+      <DependentUpon>DoctorHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorFeatures\DoctorReceivePackage.aspx.cs">
       <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="DoctorFeatures\DoctorReceivePackage.aspx.designer.cs">
+      <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DoctorFeatures\DoctorRegisterPackage.aspx.cs">
       <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorRegisterPackage.aspx.designer.cs">
+      <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorFeatures\DoctorSendPackage.aspx.cs">
       <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="DoctorFeatures\DoctorSendPackage.aspx.designer.cs">
+      <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DoctorFeatures\DoctorViewReport.aspx.cs">
       <DependentUpon>DoctorViewReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorViewReport.aspx.designer.cs">
+      <DependentUpon>DoctorViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Features.master.designer.cs">
+      <DependentUpon>Features.master</DependentUpon>
     </Compile>
     <Compile Include="ManagerFeatures\MagFeatures.master.cs">
       <DependentUpon>MagFeatures.master</DependentUpon>

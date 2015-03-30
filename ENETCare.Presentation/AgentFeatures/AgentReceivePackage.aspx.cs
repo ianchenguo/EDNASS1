@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.GUI.AgentFeatures
+namespace ENETCare.Presentation.AgentFeatures
 {
     public partial class AgentReceivePackage : System.Web.UI.Page
     {

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="MagHORep.aspx.cs" Inherits="ENETCare.GUI.Manager.MagHORep" %>
+    CodeBehind="MagHORep.aspx.cs" Inherits="ENETCare.Presentation.Manager.MagHORep" %>
 
 <asp:Content ID="MagRepRho" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
     <!--panel-start-->

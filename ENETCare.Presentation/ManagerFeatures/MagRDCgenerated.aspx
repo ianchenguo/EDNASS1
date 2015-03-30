@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="MagRDCgenerated.aspx.cs" Inherits="ENETCare.GUI.Manager.MagRDCgenerated" %>
+    CodeBehind="MagRDCgenerated.aspx.cs" Inherits="ENETCare.Presentation.Manager.MagRDCgenerated" %>
 
 <asp:Content ID="MagRDCgent" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
     <div class="panel panel-default">

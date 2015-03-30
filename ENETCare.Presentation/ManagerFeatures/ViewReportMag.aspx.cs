@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.GUI.Manager
+namespace ENETCare.Presentation.Manager
 {
     public partial class ViewReportMag : System.Web.UI.Page
     {

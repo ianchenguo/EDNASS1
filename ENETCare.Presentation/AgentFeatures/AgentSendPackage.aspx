@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentSendPackage.aspx.cs" Inherits="ENETCare.GUI.AgentFeatures.AgentSendPackage"  EnableEventValidation="false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentSendPackage.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.AgentSendPackage"  EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
     <!--panel-start-->
@@ -11,7 +11,7 @@
 
         <!--panel-body-start-->
         <div class="panel-body">
-            <form class="form-horizontal col-sm-10 col-sm-offset-1" action="">
+            <div class="form-horizontal col-sm-10 col-sm-offset-1">
 
                 <div class="form-group">
                     <label for="ned-package-send-form-dest" class="col-xs-3">Destination</label>
@@ -65,7 +65,7 @@
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <button class="btn btn-success btn-float-right" type="submit">Submit</button>
 
-            </form>
+            </div>
         </div>
         <!--panel-body-end-->
     </div>
