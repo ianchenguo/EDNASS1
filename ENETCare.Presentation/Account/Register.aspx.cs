@@ -39,7 +39,7 @@ namespace ENETCare.Presentation.Account
                 IdentityHelper.SignIn(manager, user, isPersistent: false);
                 //redirect the account to corresponding homepage, if the role is successfully linked
                 //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/AgentFeatures/" + userRole +"Home.aspx"), Response);
+                IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRole + "Features/" + userRole + "Home.aspx"), Response);
             }
             else
             {
