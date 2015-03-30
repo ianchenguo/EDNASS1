@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" 
-    CodeBehind="AgentRegisterPackage.aspx.cs" Inherits="ENETCare.GUI.AgentFeatures.AgentRegisterPackage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Doctor/DoctorFeatures.master" AutoEventWireup="true" 
+    CodeBehind="DoctorRegisterPackage.aspx.cs" Inherits="ENETCare.GUI.Doctor.DoctorRegisterPackage" %>
 
-<asp:Content ID="PackageRegistration" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
+<asp:Content ID="DocRigs" ContentPlaceHolderID="SpecificDoctorFeatureMainContent" runat="server">
     <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <!-- the following link should be optimised -->
-                <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
+                <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="DoctorHome.aspx">Cancel</a>
                 <button class="btn btn-success btn-float-right" type="submit">Submit</button>
 
             </form>

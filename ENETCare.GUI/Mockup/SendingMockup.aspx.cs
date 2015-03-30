@@ -24,6 +24,7 @@ namespace ENETCare.GUI.Mockup
 		{
 			string distributionCentre = DistributionCentreDropDownList.SelectedValue;
 			string barcode = BarcodeTextBox.Text;
+            
 			Employee.LoginUser().DistributionCentre.SendPackage(barcode, distributionCentre);
 		}
 

@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.GUI.AgentFeatures {
+namespace ENETCare.GUI.Manager {
     
     
-    public partial class AgentReceivePackage {
+    public partial class MagFeatures {
         
         /// <summary>
-        /// AgentReceivebarcode control.
+        /// SpecificMagFeatureMainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgentReceivebarcode;
-        
-        /// <summary>
-        /// AgentReceiveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AgentReceiveButton;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder SpecificMagFeatureMainContent;
     }
 }
