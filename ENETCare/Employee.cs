@@ -27,18 +27,16 @@ namespace ENETCare.Business
 			Fullname = fullname;
 			Email = email;
 			DistributionCentre distributionCentre = SimDB.GetDistributionCentreByID(distributionCentreID);
-			DistributionCentre = distributionCentre;
-			SimDB.UpdateEmployee(this);
+			if (distributionCentre != null)
+			{
+				DistributionCentre = distributionCentre;
+				SimDB.UpdateEmployee(this);
+			}
 		}
 
 		public static Employee LoginUser()
 		{
-			Employee employee = new Employee();
-			employee.Role = Role.Doctor;
-			employee.Fullname = "StarCraft";
-			employee.Email = "StarCraft@blizzard.com";
-			employee.DistributionCentre = new DistributionCentre();
-			return employee;
+			return SimDB.employee1;
 		}
 	}
 

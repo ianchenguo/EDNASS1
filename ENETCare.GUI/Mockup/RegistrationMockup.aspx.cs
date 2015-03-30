@@ -10,23 +10,37 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class RegistrationMockup : System.Web.UI.Page
 	{
+		private PackageBUS packageBUS;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (TypeDropDownList.Items.Count <= 1)
+			packageBUS = new PackageBUS();
+			if (!Page.IsPostBack)
 			{
-				TypeDropDownList.Items.Add(new ListItem("100 polio vaccinations", "1"));
-				TypeDropDownList.Items.Add(new ListItem("box of 500 x 28 pack chloroquine pills", "2"));
-				TypeDropDownList.Items.Add(new ListItem("10L Polyheme", "3"));
-				TypeDropDownList.Items.Add(new ListItem("water purification kit", "4"));
+				if (!SimDB.HasInitTestData)
+				{
+					SimDB.PrepareTestData();
+				}
+				TypeDropDownList.DataSource = SimDB.medicationTypeList;
+				TypeDropDownList.DataTextField = "Name";
+				TypeDropDownList.DataValueField = "ID";
+				TypeDropDownList.DataBind();
 			}
 		}
 
 		protected void RegisterButton_Click(object sender, EventArgs e)
 		{
-			string type = TypeDropDownList.SelectedValue;
-			DateTime expireDate = Convert.ToDateTime(ExpireDateTextBox.Text);
-			Msg.Text = string.Format("Register: {0}; Expire date: {1}", type, expireDate);
-			Employee.LoginUser().DistributionCentre.RegisterPackage(type, expireDate);
+			string medicationType = TypeDropDownList.SelectedValue;
+			string expireDate = ExpireDateTextBox.Text;
+			try
+			{
+				packageBUS.RegisterPackage(medicationType, expireDate);
+				Response.Redirect("IndexMockup.aspx");
+			}
+			catch (Exception ex)
+			{
+				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+			}
 		}
 	}
 }

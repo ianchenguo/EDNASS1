@@ -10,13 +10,21 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class SendingMockup : System.Web.UI.Page
 	{
+		private PackageBUS packageBUS;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (DistributionCentreDropDownList.Items.Count <= 1)
+			packageBUS = new PackageBUS();
+			if (!Page.IsPostBack)
 			{
-				DistributionCentreDropDownList.Items.Add(new ListItem("Liverpool Office", "1"));
-				DistributionCentreDropDownList.Items.Add(new ListItem("Glebe Office", "2"));
-				DistributionCentreDropDownList.Items.Add(new ListItem("Ultimo Office", "3"));
+				if (!SimDB.HasInitTestData)
+				{
+					SimDB.PrepareTestData();
+				}
+				DistributionCentreDropDownList.DataSource = SimDB.distributionCentreList;
+				DistributionCentreDropDownList.DataTextField = "Name";
+				DistributionCentreDropDownList.DataValueField = "ID";
+				DistributionCentreDropDownList.DataBind();
 			}
 		}
 
@@ -24,12 +32,15 @@ namespace ENETCare.GUI.Mockup
 		{
 			string distributionCentre = DistributionCentreDropDownList.SelectedValue;
 			string barcode = BarcodeTextBox.Text;
-			Employee.LoginUser().DistributionCentre.SendPackage(barcode, distributionCentre);
+			try
+			{
+				packageBUS.SendPackage(barcode, distributionCentre);
+				Response.Redirect("IndexMockup.aspx");
+			}
+			catch (Exception ex)
+			{
+				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+			}
 		}
-
-        protected void DistributionCentreDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 	}
 }

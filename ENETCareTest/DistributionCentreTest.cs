@@ -39,7 +39,7 @@ namespace ENETCareTest
 			dc.Phone = dcPhone;
 			Assert.AreEqual(dc.Phone, dcPhone);
 		}
-
+		/*
 		[TestMethod]
 		public void DistributionCentre_packagelist_canBeStored()
 		{
@@ -47,5 +47,6 @@ namespace ENETCareTest
 			dc.packages = dcPackages;
 			Assert.AreEqual(dc.packages, dcPackages);
 		}
+		*/
 	}
 }

@@ -17,11 +17,6 @@ namespace ENETCare.Business
 		public DistributionCentre SourceDC { get; set; }
 		public DistributionCentre DestinationDC { get; set; }
 		public DateTime UpdateTime { get; set; }
-
-		public static string GenerateBarcode()
-		{
-			return Guid.NewGuid().ToString();
-		}
 	}
 
 	public enum PackageStatus

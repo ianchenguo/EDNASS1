@@ -44,12 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeHelper.cs" />
     <Compile Include="DistributionCentre.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="MedicationPackage.cs" />
     <Compile Include="MedicationType.cs" />
+    <Compile Include="PackageBUS.cs" />
+    <Compile Include="PackageDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimDB.cs" />
+    <Compile Include="SQLServerPackageDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

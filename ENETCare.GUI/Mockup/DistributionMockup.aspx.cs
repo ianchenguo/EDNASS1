@@ -10,15 +10,25 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class Distribution : System.Web.UI.Page
 	{
+		private PackageBUS packageBUS;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			packageBUS = new PackageBUS();
 		}
 
 		protected void DistributeButton_Click(object sender, EventArgs e)
 		{
 			string barcode = BarcodeTextBox.Text;
-			Employee.LoginUser().DistributionCentre.DistributePackage(barcode);
+			try
+			{
+				packageBUS.DistributePackage(barcode);
+				Response.Redirect("IndexMockup.aspx");
+			}
+			catch (Exception ex)
+			{
+				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+			}
 		}
 	}
 }

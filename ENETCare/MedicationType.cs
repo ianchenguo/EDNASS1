@@ -15,10 +15,12 @@ namespace ENETCare.Business
 		public double Value { get; set; }
 		public bool IsSensitive { get; set; }
 
-		public DateTime GetDefaultExpireDate()
+		public DateTime DefaultExpireDate
 		{
-			DateTime expireDate = DateTime.Today.AddDays(ShelfLife);
-			return expireDate;
+			get
+			{
+				return DateTime.Today.AddDays(ShelfLife);
+			}
 		}
 	}
 }
