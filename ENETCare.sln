@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENETCare.Business", "ENETCare\ENETCare.Business.csproj", "{9F876451-A2D2-45B1-A517-6107856497F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENETCareTest", "ENETCareTest\ENETCareTest.csproj", "{14E80A42-8070-4D67-B5DF-40305BFCD634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENETCare.Presentation", "ENETCare.Presentation\ENETCare.Presentation.csproj", "{42371A5F-4D48-4C73-B66D-9C75EB63835C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENETCare.GUI", "ENETCare.GUI\ENETCare.GUI.csproj", "{F723AE47-CC46-4FDE-8AE9-BAD00FB4A841}"
 EndProject
@@ -23,6 +25,10 @@ Global
 		{14E80A42-8070-4D67-B5DF-40305BFCD634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14E80A42-8070-4D67-B5DF-40305BFCD634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14E80A42-8070-4D67-B5DF-40305BFCD634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42371A5F-4D48-4C73-B66D-9C75EB63835C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42371A5F-4D48-4C73-B66D-9C75EB63835C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42371A5F-4D48-4C73-B66D-9C75EB63835C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42371A5F-4D48-4C73-B66D-9C75EB63835C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F723AE47-CC46-4FDE-8AE9-BAD00FB4A841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F723AE47-CC46-4FDE-8AE9-BAD00FB4A841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F723AE47-CC46-4FDE-8AE9-BAD00FB4A841}.Release|Any CPU.ActiveCfg = Release|Any CPU
