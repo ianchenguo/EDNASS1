@@ -36,11 +36,11 @@ namespace ENETCare.GUI.Mockup
 			{
 				packageBUS.SendPackage(barcode, distributionCentre);
 				Response.Redirect("IndexMockup.aspx");
-			}
+		}
 			catch (Exception ex)
-			{
+        {
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}
-		}
+        }
 	}
 }

@@ -68,12 +68,19 @@
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\style.css" />
+    <Content Include="Doctor\DoctorHome.aspx" />
+    <Content Include="Doctor\DoctorReceivePackage.aspx" />
+    <Content Include="Doctor\DoctorRegisterPackage.aspx" />
+    <Content Include="Doctor\DoctorSendPackage.aspx" />
+    <Content Include="Doctor\DoctorViewReport.aspx" />
     <Content Include="Layout\Main.master" />
     <Content Include="Content\Styles\bootstrap-theme.css.map" />
     <Content Include="Content\Styles\bootstrap.css.map" />
     <Content Include="Index.aspx" />
     <Content Include="Layout\Features.master" />
     <Content Include="AgentFeatures\AgentFeatures.master" />
+    <Content Include="Doctor\DoctorFeatures.master" />
+    <Content Include="Manager\MagFeatures.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -82,6 +89,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Manager\MagHOgenerated.aspx" />
+    <Content Include="Manager\MagHome.aspx" />
+    <Content Include="Manager\MagHORep.aspx" />
+    <Content Include="Manager\MagRDCgenerated.aspx" />
+    <Content Include="Manager\MagRDCRep.aspx" />
+    <Content Include="Manager\ViewReportMag.aspx" />
     <Content Include="Mockup\IndexMockup.aspx" />
     <Content Include="Mockup\DiscardMockup.aspx" />
     <Content Include="Mockup\DistributionMockup.aspx" />
@@ -140,6 +153,48 @@
     <Compile Include="AgentFeatures\AgentHome.aspx.designer.cs">
       <DependentUpon>AgentHome.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\DoctorFeatures.master.cs">
+      <DependentUpon>DoctorFeatures.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorFeatures.master.designer.cs">
+      <DependentUpon>DoctorFeatures.master</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorHome.aspx.cs">
+      <DependentUpon>DoctorHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorHome.aspx.designer.cs">
+      <DependentUpon>DoctorHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorReceivePackage.aspx.cs">
+      <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorReceivePackage.aspx.designer.cs">
+      <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorRegisterPackage.aspx.cs">
+      <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorRegisterPackage.aspx.designer.cs">
+      <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorSendPackage.aspx.cs">
+      <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorSendPackage.aspx.designer.cs">
+      <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorViewReport.aspx.cs">
+      <DependentUpon>DoctorViewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorViewReport.aspx.designer.cs">
+      <DependentUpon>DoctorViewReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Main.master.cs">
       <DependentUpon>Main.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,6 +215,55 @@
     </Compile>
     <Compile Include="Layout\Features.master.designer.cs">
       <DependentUpon>Features.master</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagFeatures.master.cs">
+      <DependentUpon>MagFeatures.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagFeatures.master.designer.cs">
+      <DependentUpon>MagFeatures.master</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagHOgenerated.aspx.cs">
+      <DependentUpon>MagHOgenerated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagHOgenerated.aspx.designer.cs">
+      <DependentUpon>MagHOgenerated.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagHome.aspx.cs">
+      <DependentUpon>MagHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagHome.aspx.designer.cs">
+      <DependentUpon>MagHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagHORep.aspx.cs">
+      <DependentUpon>MagHORep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagHORep.aspx.designer.cs">
+      <DependentUpon>MagHORep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagRDCgenerated.aspx.cs">
+      <DependentUpon>MagRDCgenerated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagRDCgenerated.aspx.designer.cs">
+      <DependentUpon>MagRDCgenerated.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\MagRDCRep.aspx.cs">
+      <DependentUpon>MagRDCRep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\MagRDCRep.aspx.designer.cs">
+      <DependentUpon>MagRDCRep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ViewReportMag.aspx.cs">
+      <DependentUpon>ViewReportMag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\ViewReportMag.aspx.designer.cs">
+      <DependentUpon>ViewReportMag.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mockup\DiscardMockup.aspx.cs">
       <DependentUpon>DiscardMockup.aspx</DependentUpon>

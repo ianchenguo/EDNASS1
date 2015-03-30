@@ -12,14 +12,22 @@
         <!--panel-body-start-->
         <div class="panel-body">
 
-            <form class="form-horizontal col-sm-10 col-sm-offset-1" action="">
+            <form class="form-horizontal col-sm-10 col-sm-offset-1" runat="server">
+
+                <div class="form-group">
+                    <label for="ned-package-receive-form-from" class="col-xs-3">Barcode</label>
+
+                    <div class="col-xs-9">
+                        <asp:TextBox ID="AgentReceivebarcode" runat="server"></asp:TextBox>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="ned-package-receive-form-from" class="col-xs-3">From</label>
 
                     <div class="col-xs-9">
                         <input class="form-control" id="ned-package-receive-form-from" type="text"
-                            placeholder="From" disabled />
+                            placeholder="Package Type" readonly />
                     </div>
                 </div>
 
@@ -28,7 +36,7 @@
 
                     <div class="col-xs-9">
                         <input class="form-control" id="ned-package-receive-form-type" type="text"
-                            placeholder="Package Type" disabled />
+                            placeholder="Package Type" readonly />
                     </div>
                 </div>
 
@@ -36,7 +44,7 @@
                     <label for="ned-package-receive-form-expire-date" class="col-xs-3">Expiration Date</label>
 
                     <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-expire-date" type="date" disabled />
+                        <input class="form-control" id="ned-package-receive-form-expire-date" type="date" readonly />
                     </div>
                 </div>
 
@@ -45,21 +53,12 @@
 
                     <div class="col-xs-9">
                         <input class="form-control" id="ned-package-receive-form-value" type="text"
-                            placeholder="Value in AUD" disabled />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ned-package-receive-form-barcode" class="col-xs-3">Package Barcode</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-barcode" type="text"
-                            placeholder="Package Barcode" />
+                            placeholder="Value in AUD" readonly />
                     </div>
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
-                <button class="btn btn-success btn-float-right" type="submit">Submit</button>
+                <asp:Button ID="AgentReceiveButton" runat="server" OnClick="AgentReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right"/>
 
             </form>
         </div>
