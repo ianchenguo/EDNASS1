@@ -36,7 +36,7 @@ namespace ENETCareTest
 			Assert.AreEqual("WarCraft", employee.Fullname);
 			Assert.AreEqual("WarCraft@blizzard.com", employee.Email);
 		}
-
+		/*
 		[TestMethod]
 		public void Employee_CheckPackage()
 		{
@@ -76,5 +76,6 @@ namespace ENETCareTest
 			Assert.AreEqual(1, dc.packages.Count);
 			Assert.AreEqual(PackageStatus.InStock, package.Status);
 		}
+		*/ 
 	}
 }

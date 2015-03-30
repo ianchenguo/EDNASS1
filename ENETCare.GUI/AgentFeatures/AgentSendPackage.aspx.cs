@@ -25,7 +25,7 @@ namespace ENETCare.GUI.AgentFeatures
             string agentSelectedDistributionCenter = AgentSendingDropDownList.SelectedValue;
             string barcode = ASbarcode.Text;
             Console.WriteLine(agentSelectedDistributionCenter, barcode);
-            Employee.LoginUser().DistributionCentre.SendPackage(barcode, agentSelectedDistributionCenter);
+            //Employee.LoginUser().DistributionCentre.SendPackage(barcode, agentSelectedDistributionCenter);
         }
 
         protected void AgentSendingDropDownList_SelectedIndexChanged(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace ENETCare.GUI.AgentFeatures
         protected void AgentReceiveButton_Click(object sender, EventArgs e)
         {
             string barcode = AgentReceivebarcode.Text;
-            Employee.LoginUser().DistributionCentre.ReceivePackage(barcode);
+            //Employee.LoginUser().DistributionCentre.ReceivePackage(barcode);
         }
     }
 }
