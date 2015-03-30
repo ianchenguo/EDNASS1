@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentRegisterPackage.aspx.cs" Inherits="ENETCare.GUI.AgentFeatures.AgentRegisterPackage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" 
+    CodeBehind="AgentRegisterPackage.aspx.cs" Inherits="ENETCare.GUI.AgentFeatures.AgentRegisterPackage" %>
 
 <asp:Content ID="PackageRegistration" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
     <!--panel-start-->
