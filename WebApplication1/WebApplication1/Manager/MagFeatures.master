@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" 
+    CodeBehind="MagFeatures.master.cs" Inherits="WebApplication1.Manager.MagFeatures" %>
+
+<asp:Content ID="MagFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
+    <!--panel start-->
+    <div class="panel panel-default">
+        <!-- panel contents -->
+        <div class="panel-heading">Reports</div>
+
+        <!-- list group -->
+        <div class="list-group">
+            <a class="list-group-item" href="MagHORep.aspx">Head Office</a>
+            <a class="list-group-item" href="MagRDCRep.aspx">Remote Center</a>
+        </div>
+        <!-- panel ocntents end -->
+    </div>
+    <!--panel end-->
+</asp:Content>
+<asp:Content ID="MagFeatureMainContent" ContentPlaceHolderID="FeatureMainContent" runat="server">
+    <asp:contentplaceholder id="SpecificMagFeatureMainContent" runat="server">
+    </asp:contentplaceholder>
+</asp:Content>

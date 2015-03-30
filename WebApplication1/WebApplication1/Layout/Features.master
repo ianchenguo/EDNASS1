@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Main.Master" AutoEventWireup="true" CodeBehind="Features.master.cs" Inherits="WebApplication1.Layout.Features" %>
+
+<asp:Content ID="FeatureLayout" ContentPlaceHolderID="MainContent" runat="server">
+    <!--main-container-start-->
+    <section class="container-fluid">
+        <!--row-start-->
+        <div class="row row-same-height">
+            <!--side-menu-start-->
+            <aside class="col-xs-12 col-sm-2 ned-side-menu col-sm-height">
+
+                <asp:ContentPlaceHolder ID="FeatureAsideContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </aside>
+            <!--side-menu-end-->
+
+            <!--main-section-start-->
+            <section class="col-xs-12 col-sm-9 col-sm-offset-1 ned-main-section col-sm-height">
+
+                <asp:ContentPlaceHolder ID="FeatureMainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </section>
+            <!--main-section-end-->
+        </div>
+        <!--row-end-->
+    </section>
+    <!--main-container-end-->
+
+</asp:Content>
