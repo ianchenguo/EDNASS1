@@ -6,20 +6,14 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using ENETCare.Presentation.Models;
 
-namespace ENETCare.Presentation
+namespace ENETCare.Presentation.Layout
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Main : MasterPage
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-
-        private string userRoles, homeUrl;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -74,10 +68,7 @@ namespace ENETCare.Presentation
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //var userId = Context.User.Identity.GetUserId();
-            //userRoles = manager.GetRoles(userId);
-            //homeUrl = "~/" + userRoles[0] + "Features/" + userRoles[0] + "Home.aspx";
+
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
