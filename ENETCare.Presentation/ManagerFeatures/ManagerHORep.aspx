@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="MagHORep.aspx.cs" Inherits="ENETCare.Presentation.Manager.MagHORep" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+    CodeBehind="ManagerHORep.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerHORep" %>
 
 <asp:Content ID="MagRepRho" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
     <!--panel-start-->
@@ -83,8 +83,8 @@
             </table>
 
             <!-- the following link should be optimised -->
-            <a class="btn btn-success btn-float-right btn-margin-left" type="a" href="MagHOgenerated.aspx">Generate</a>
-            <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="MagHome.aspx">Cancel</a>
+            <a class="btn btn-success btn-float-right btn-margin-left" type="a" href="ManagerHOgenerated.aspx">Generate</a>
+            <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="ManagerHome.aspx">Cancel</a>
 
         </div>
         <!--panel-body-end-->

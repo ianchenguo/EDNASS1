@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.Manager
+namespace ENETCare.Presentation.ManagerFeatures
 {
-    public partial class MagHome : System.Web.UI.Page
+    public partial class ManagerHORep : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

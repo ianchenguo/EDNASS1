@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" 
-    CodeBehind="MagFeatures.master.cs" Inherits="ENETCare.Presentation.Manager.MagFeatures" %>
+    CodeBehind="ManagerFeatures.master.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerFeatures" %>
 
 <asp:Content ID="MagFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
     <!--panel start-->
@@ -9,8 +9,8 @@
 
         <!-- list group -->
         <div class="list-group">
-            <a class="list-group-item" href="MagHORep.aspx">Head Office</a>
-            <a class="list-group-item" href="MagRDCRep.aspx">Remote Center</a>
+            <a class="list-group-item" href="ManagerHORep.aspx">Head Office</a>
+            <a class="list-group-item" href="ManagerRDCRep.aspx">Remote Center</a>
         </div>
         <!-- panel ocntents end -->
     </div>

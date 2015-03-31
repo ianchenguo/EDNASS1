@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="MagHome.aspx.cs" Inherits="ENETCare.Presentation.Manager.MagHome" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+    CodeBehind="ManagerHome.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerHome" %>
 
 <asp:Content ID="MagHome" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
 

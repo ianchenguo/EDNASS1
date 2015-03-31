@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.GUI.Layout {
+namespace ENETCare.GUI {
     
     
-    public partial class Features {
+    public partial class ENETCare {
         
         /// <summary>
-        /// FeatureAsideContent control.
+        /// MainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeatureAsideContent;
-        
-        /// <summary>
-        /// FeatureMainContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeatureMainContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }
