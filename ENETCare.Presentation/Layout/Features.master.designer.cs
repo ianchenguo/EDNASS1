@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.Layout {
+namespace ENETCare.GUI.Layout {
     
     
     public partial class Features {

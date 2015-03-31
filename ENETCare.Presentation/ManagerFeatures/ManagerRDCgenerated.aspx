@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="MagRDCgenerated.aspx.cs" Inherits="ENETCare.Presentation.Manager.MagRDCgenerated" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+    CodeBehind="ManagerRDCgenerated.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerRDCgenerated" %>
 
 <asp:Content ID="MagRDCgent" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
     <div class="panel panel-default">
@@ -71,10 +71,10 @@
                 </tbody>
             </table>
 
-            <a href="ViewReportMag.aspx" type="a">
+            <a href="ViewReportManager.aspx" type="a">
                 <button class="btn btn-success btn-float-right" type="submit">Submit</button>
             </a>
-            <a href="MagRDCRep.aspx" type="a">
+            <a href="ManagerRDCRep.aspx" type="a">
                 <button class="btn btn-danger btn-float-right" type="submit">Cancle</button>
             </a>
 </asp:Content>

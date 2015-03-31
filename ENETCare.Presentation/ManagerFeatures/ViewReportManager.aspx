@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/MagFeatures.master" AutoEventWireup="true" 
-    CodeBehind="ViewReportMag.aspx.cs" Inherits="ENETCare.Presentation.Manager.ViewReportMag" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+    CodeBehind="ViewReportManager.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ViewReportManager" %>
 
 <asp:Content ID="MagViewRep" ContentPlaceHolderID="SpecificMagFeatureMainContent" runat="server">
     <!--panel-start-->
@@ -50,7 +50,7 @@
     				</tbody>
     			</table>
 
-    			<a href="MagHome.aspx" type="a">
+    			<a href="ManagerHome.aspx" type="a">
                 	<button class="btn btn-success btn-float-right" type="button">Done</button>
             	</a>
     		</div>
