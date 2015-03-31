@@ -39,7 +39,7 @@ namespace ENETCare.Presentation.Account
                     //redirects the route
                     //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                     var userRoles = manager.GetRoles(user.Id);
-                    IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRoles[0] + "Features/" + userRoles[0] + "Home.aspx"), Response);
+                    IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/AgentFeatures/" + userRoles[0] + "Home.aspx"), Response);
                 }
                 else
                 {
