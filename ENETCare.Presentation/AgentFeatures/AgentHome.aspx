@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentHome.aspx.cs" Inherits="ENETCare.GUI.AgentFeatures.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentHome.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
 
