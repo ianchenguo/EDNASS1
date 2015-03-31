@@ -12,7 +12,10 @@ namespace ENETCare.Presentation.AgentFeatures
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!SimDB.HasInitTestData)
+            {
+                SimDB.PrepareTestData();
+            }
         }
         protected void Submit(object sender, EventArgs e)
         {

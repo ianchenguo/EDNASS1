@@ -12,7 +12,7 @@
 
         <!--panel-body-start-->
         <div class="panel-body">
-            <form class="form-horizontal col-sm-10 col-sm-offset-1"  runat="server">
+            <div class="form-horizontal col-sm-10 col-sm-offset-1"  runat="server">
 
                 <div class="form-group">
                     <label for="ned-package-send-form-dest" class="col-xs-3">Destination</label>
@@ -57,7 +57,7 @@
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <asp:Button ID="ASbtnSending" runat="server" Text="Send" OnClick="ASsendingBTN_Click" class="btn btn-success btn-float-right"/>
 
-            </form>
+            </div>
         </div>
         <!--panel-body-end-->
     </div>
