@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.GUI {
+namespace ENETCare.Presentation {
     
     
-    public partial class ENETCare {
+    public partial class SiteMaster {
         
         /// <summary>
         /// MainContent control.
