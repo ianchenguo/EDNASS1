@@ -1,5 +1,4 @@
-﻿using ENETCare.Business;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,16 +14,6 @@ namespace ENETCare.Presentation.AgentFeatures
             if (!SimDB.HasInitTestData)
             {
                 SimDB.PrepareTestData();
-            }
-        }
-        protected void Submit(object sender, EventArgs e)
-        {
-            //what's this for?
-            if (IsValid)
-            {
-                var test = NedPackageRegisterFormPackageType.Text;
-                PackageBUS packageBUS = new PackageBUS();
-                packageBUS.RegisterPackage(NedPackageRegisterFormPackageType.Text, NedPackageRegisterFormExpireDate.Text);
             }
         }
     }
