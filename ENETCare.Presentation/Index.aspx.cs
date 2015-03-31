@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation
+namespace ENETCare.GUI
 {
     public partial class Index : System.Web.UI.Page
     {

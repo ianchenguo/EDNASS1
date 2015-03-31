@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.AccountEdit
+namespace ENETCare.GUI.AccountEdit
 {
     public partial class AccountEdit : System.Web.UI.Page
     {

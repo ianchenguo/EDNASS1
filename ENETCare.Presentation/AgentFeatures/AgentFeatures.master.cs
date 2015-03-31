@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.Layout
+namespace ENETCare.GUI.Layout
 {
     public partial class AgentFeatures : System.Web.UI.MasterPage
     {

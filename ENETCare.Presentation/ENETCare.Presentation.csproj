@@ -165,12 +165,12 @@
     <Content Include="DoctorFeatures\DoctorRegisterPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorSendPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorViewReport.aspx" />
-    <Content Include="ManagerFeatures\ManagerHOgenerated.aspx" />
-    <Content Include="ManagerFeatures\ManagerHome.aspx" />
-    <Content Include="ManagerFeatures\ManagerHORep.aspx" />
-    <Content Include="ManagerFeatures\ManagerRDCgenerated.aspx" />
-    <Content Include="ManagerFeatures\ManagerRDCRep.aspx" />
-    <Content Include="ManagerFeatures\ViewReportManager.aspx" />
+    <Content Include="ManagerFeatures\MagHOgenerated.aspx" />
+    <Content Include="ManagerFeatures\MagHome.aspx" />
+    <Content Include="ManagerFeatures\MagHORep.aspx" />
+    <Content Include="ManagerFeatures\MagRDCgenerated.aspx" />
+    <Content Include="ManagerFeatures\MagRDCRep.aspx" />
+    <Content Include="ManagerFeatures\ViewReportMag.aspx" />
     <Content Include="Obsolete\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -183,11 +183,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Layout\Features.master" />
     <Content Include="AgentFeatures\AgentFeatures.master" />
     <Content Include="DoctorFeatures\DoctorFeatures.master" />
-    <Content Include="ManagerFeatures\ManagerFeatures.master" />
-    <Content Include="Layout\Features.master" />
-    <Content Include="Layout\Main.master" />
+    <Content Include="ManagerFeatures\MagFeatures.master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -220,6 +219,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Layout\Main.Master" />
     <Content Include="Obsolete\ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -332,84 +332,52 @@
       <DependentUpon>DoctorFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DoctorFeatures\DoctorFeatures.master.designer.cs">
-      <DependentUpon>DoctorFeatures.master</DependentUpon>
-    </Compile>
     <Compile Include="DoctorFeatures\DoctorHome.aspx.cs">
       <DependentUpon>DoctorHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DoctorFeatures\DoctorHome.aspx.designer.cs">
-      <DependentUpon>DoctorHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorFeatures\DoctorReceivePackage.aspx.cs">
       <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DoctorFeatures\DoctorReceivePackage.aspx.designer.cs">
-      <DependentUpon>DoctorReceivePackage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DoctorFeatures\DoctorRegisterPackage.aspx.cs">
       <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DoctorFeatures\DoctorRegisterPackage.aspx.designer.cs">
-      <DependentUpon>DoctorRegisterPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorFeatures\DoctorSendPackage.aspx.cs">
       <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DoctorFeatures\DoctorSendPackage.aspx.designer.cs">
-      <DependentUpon>DoctorSendPackage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DoctorFeatures\DoctorViewReport.aspx.cs">
       <DependentUpon>DoctorViewReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DoctorFeatures\DoctorViewReport.aspx.designer.cs">
-      <DependentUpon>DoctorViewReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\Features.master.cs">
-      <DependentUpon>Features.master</DependentUpon>
+    <Compile Include="ManagerFeatures\MagFeatures.master.cs">
+      <DependentUpon>MagFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layout\Features.master.designer.cs">
-      <DependentUpon>Features.master</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\Main.master.cs">
-      <DependentUpon>Main.master</DependentUpon>
+    <Compile Include="ManagerFeatures\MagHOgenerated.aspx.cs">
+      <DependentUpon>MagHOgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layout\Main.master.designer.cs">
-      <DependentUpon>Main.master</DependentUpon>
-    </Compile>
-    <Compile Include="ManagerFeatures\ManagerFeatures.master.cs">
-      <DependentUpon>ManagerFeatures.master</DependentUpon>
+    <Compile Include="ManagerFeatures\MagHome.aspx.cs">
+      <DependentUpon>MagHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerHOgenerated.aspx.cs">
-      <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\MagHORep.aspx.cs">
+      <DependentUpon>MagHORep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerHome.aspx.cs">
-      <DependentUpon>ManagerHome.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\MagRDCgenerated.aspx.cs">
+      <DependentUpon>MagRDCgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerHORep.aspx.cs">
-      <DependentUpon>ManagerHORep.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\MagRDCRep.aspx.cs">
+      <DependentUpon>MagRDCRep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerRDCgenerated.aspx.cs">
-      <DependentUpon>ManagerRDCgenerated.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\ManagerRDCRep.aspx.cs">
-      <DependentUpon>ManagerRDCRep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\ViewReportManager.aspx.cs">
-      <DependentUpon>ViewReportManager.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ViewReportMag.aspx.cs">
+      <DependentUpon>ViewReportMag.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Migrations\201503291326098_AddedProperties.cs" />
@@ -444,6 +412,10 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Layout\Features.master.cs">
+      <DependentUpon>Features.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Migrations\201503291217362_InitialCreate.cs" />
     <Compile Include="Migrations\201503291217362_InitialCreate.Designer.cs">
       <DependentUpon>201503291217362_InitialCreate.cs</DependentUpon>
@@ -451,6 +423,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Layout\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
     <Compile Include="Obsolete\Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
