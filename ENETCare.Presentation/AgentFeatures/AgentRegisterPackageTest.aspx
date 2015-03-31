@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" 
-    CodeBehind="AgentRegisterPackage.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.AgentRegisterPackage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentRegisterPackageTest.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.AgentRegisterPackageTest" %>
 
 <asp:Content ID="PackageRegistration" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
     <!--panel-start-->
@@ -48,13 +47,13 @@
                     </div>
                 </div>
 
-                <%--<div class="form-group">
-                                        <label for="ned-package-register-form-value" class="col-xs-3">Value (AUD)</label>
+                <div class="form-group">
+                    <%--                    <label for="ned-package-register-form-value" class="col-xs-3">Value (AUD)</label>
 
                     <div class="col-xs-9">
                         <input class="form-control" id="ned-package-register-form-value" type="text"
                             placeholder="Value in AUD" />
-                    </div>
+                    </div>--%>
 
                     <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormValue" CssClass="col-xs-3">Value</asp:Label>
 
@@ -63,7 +62,7 @@
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormValue"
                             CssClass="text-danger" ErrorMessage="The Value field is required." />
                     </div>
-                </div>--%>
+                </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <%--                <button class="btn btn-success btn-float-right" type="submit">Submit</button>--%>
@@ -75,3 +74,4 @@
     </div>
     <!--panel-end-->
 </asp:Content>
+

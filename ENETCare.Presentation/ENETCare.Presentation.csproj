@@ -158,6 +158,7 @@
     <Content Include="AgentFeatures\AgentHome.aspx" />
     <Content Include="AgentFeatures\AgentReceivePackage.aspx" />
     <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
+    <Content Include="AgentFeatures\AgentRegisterPackageTest.aspx" />
     <Content Include="AgentFeatures\AgentSendPackage.aspx" />
     <Content Include="AgentFeatures\AgentViewReport.aspx" />
     <Content Include="DoctorFeatures\DoctorHome.aspx" />
@@ -304,25 +305,50 @@
       <DependentUpon>AgentFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AgentFeatures\AgentFeatures.master.designer.cs">
+      <DependentUpon>AgentFeatures.master</DependentUpon>
+    </Compile>
     <Compile Include="AgentFeatures\AgentHome.aspx.cs">
       <DependentUpon>AgentHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentHome.aspx.designer.cs">
+      <DependentUpon>AgentHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentFeatures\AgentReceivePackage.aspx.cs">
       <DependentUpon>AgentReceivePackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AgentFeatures\AgentReceivePackage.aspx.designer.cs">
+      <DependentUpon>AgentReceivePackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentFeatures\AgentRegisterPackage.aspx.cs">
       <DependentUpon>AgentRegisterPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentRegisterPackage.aspx.designer.cs">
+      <DependentUpon>AgentRegisterPackage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentRegisterPackageTest.aspx.cs">
+      <DependentUpon>AgentRegisterPackageTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentRegisterPackageTest.aspx.designer.cs">
+      <DependentUpon>AgentRegisterPackageTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentFeatures\AgentSendPackage.aspx.cs">
       <DependentUpon>AgentSendPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AgentFeatures\AgentSendPackage.aspx.designer.cs">
+      <DependentUpon>AgentSendPackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentFeatures\AgentViewReport.aspx.cs">
       <DependentUpon>AgentViewReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AgentViewReport.aspx.designer.cs">
+      <DependentUpon>AgentViewReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
