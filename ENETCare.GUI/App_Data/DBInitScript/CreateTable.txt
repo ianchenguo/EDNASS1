@@ -1,0 +1,90 @@
+﻿1. DistributionCentre
+
+CREATE TABLE [dbo].[DistributionCentre](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Address] [nvarchar](200) NULL,
+	[Phone] [varchar](20) NULL,
+ CONSTRAINT [PK_DistributionCentre] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+2. Employee
+
+CREATE TABLE [dbo].[Employee](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Role] [smallint] NOT NULL,
+	[Username] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Fullname] [nvarchar](50) NOT NULL,
+	[Email] [varchar](50) NULL,
+	[DistributionCentre] [int] NOT NULL,
+ CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[Employee]  WITH CHECK ADD  CONSTRAINT [FK_Employee_DistributionCentre] FOREIGN KEY([DistributionCentre])
+REFERENCES [dbo].[DistributionCentre] ([Id])
+
+ALTER TABLE [dbo].[Employee] CHECK CONSTRAINT [FK_Employee_DistributionCentre]
+
+
+3. MedicationType
+
+CREATE TABLE [dbo].[MedicationType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](512) NULL,
+	[ShelfLife] [smallint] NOT NULL,
+	[Value] [decimal](10, 2) NOT NULL,
+	[IsSensitive] [bit] NOT NULL CONSTRAINT [DF_MedicationType_IsSensitive]  DEFAULT ((0)),
+ CONSTRAINT [PK_MedicationType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+
+4. MedicationPackage
+
+CREATE TABLE [dbo].[MedicationPackage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Barcode] [varchar](50) NOT NULL,
+	[Type] [int] NOT NULL,
+	[ExpireDate] [date] NOT NULL,
+	[Status] [smallint] NOT NULL,
+	[StockDC] [int] NULL,
+	[SourceDC] [int] NULL,
+	[DestinationDC] [int] NULL,
+	[Updatetime] [datetime] NOT NULL,
+ CONSTRAINT [PK_MedicationPackage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[MedicationPackage]  WITH CHECK ADD  CONSTRAINT [FK_MedicationPackage_DistributionCentre_DestinationDC] FOREIGN KEY([DestinationDC])
+REFERENCES [dbo].[DistributionCentre] ([Id])
+
+ALTER TABLE [dbo].[MedicationPackage] CHECK CONSTRAINT [FK_MedicationPackage_DistributionCentre_DestinationDC]
+
+ALTER TABLE [dbo].[MedicationPackage]  WITH CHECK ADD  CONSTRAINT [FK_MedicationPackage_DistributionCentre_SourceDC] FOREIGN KEY([SourceDC])
+REFERENCES [dbo].[DistributionCentre] ([Id])
+
+ALTER TABLE [dbo].[MedicationPackage] CHECK CONSTRAINT [FK_MedicationPackage_DistributionCentre_SourceDC]
+
+ALTER TABLE [dbo].[MedicationPackage]  WITH CHECK ADD  CONSTRAINT [FK_MedicationPackage_DistributionCentre_StockDC] FOREIGN KEY([StockDC])
+REFERENCES [dbo].[DistributionCentre] ([Id])
+
+ALTER TABLE [dbo].[MedicationPackage] CHECK CONSTRAINT [FK_MedicationPackage_DistributionCentre_StockDC]
+
+ALTER TABLE [dbo].[MedicationPackage]  WITH CHECK ADD  CONSTRAINT [FK_MedicationPackage_MedicationType] FOREIGN KEY([Type])
+REFERENCES [dbo].[MedicationType] ([Id])
+
+ALTER TABLE [dbo].[MedicationPackage] CHECK CONSTRAINT [FK_MedicationPackage_MedicationType]
