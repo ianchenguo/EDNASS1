@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
-            <h3 class="panel-title">Register Medication Package</h3>
+            <h3 class="panel-title">Agent Register Medication Package</h3>
         </div>
         <!--panel-heading-end-->
 
@@ -24,14 +24,19 @@
                             placeholder="Package Type" />
                     </div>--%>
 
-                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormPackageType" CssClass="col-xs-3">Package Type</asp:Label>
+                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormPackageType" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:TextBox runat="server" ID="NedPackageRegisterFormPackageType" CssClass="form-control" TextMode="SingleLine" />
+                        <%--<asp:TextBox runat="server" ID="NedPackageRegisterFormPackageType" CssClass="form-control" TextMode="SingleLine" />
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormPackageType"
-                            CssClass="text-danger" ErrorMessage="The Package Type field is required." />
+                            CssClass="text-danger" ErrorMessage="The Package Type field is required." />--%>
+                        <asp:DropDownList ID="AgentPackageRegisterPackageTypeDropDwonList" runat="server">
+                            <asp:ListItem>Please select</asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                 </div>
+
+                <br />
 
                 <div class="form-group">
                     <%--                    <label for="ned-package-register-form-expire-date" class="col-xs-3">Expiration Date</label>
@@ -39,10 +44,10 @@
                     <div class="col-xs-9">
                         <input class="form-control" id="ned-package-register-form-expire-date" type="date" />
                     </div>--%>
-                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date</asp:Label>
+                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:TextBox runat="server" ID="NedPackageRegisterFormExpireDate" CssClass="form-control" TextMode="Date" />
+                        <asp:TextBox ID="NedPackageRegisterFormExpireDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormExpireDate"
                             CssClass="text-danger" ErrorMessage="The Expiration Date field is required." />
                     </div>
@@ -65,10 +70,13 @@
                     </div>
                 </div>--%>
                 <!-- the following link should be optimised -->
+                <p>
+                    <asp:Label ID="AgentRegisterMessage" runat="server" />
+                </p>
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
-                <%--                <button class="btn btn-success btn-float-right" type="submit">Submit</button>--%>
-                <asp:Button ID="NedPackageRegisterSubmit"  runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />
-
+                <%--<asp:Button ID="NedPackageRegisterSubmit" runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />--%>
+                <asp:Button ID="AgentRegisterButton" runat="server" OnClick="AgentRegisterButton_Click"
+                    Text="Agent Register" CssClass="btn btn-success btn-float-right" />
             </div>
         </div>
         <!--panel-body-end-->
