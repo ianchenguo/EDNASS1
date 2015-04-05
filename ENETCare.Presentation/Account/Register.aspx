@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/layout/Main.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="ENETCare.Presentation.Account.Register" %>
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/layout/Main.Master" AutoEventWireup="true" 
+    CodeBehind="Register.aspx.cs" Inherits="ENETCare.Presentation.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>

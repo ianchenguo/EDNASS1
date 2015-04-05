@@ -16,7 +16,7 @@
 
 
 
-                <div class="form-group">
+                <div class="form-group" runat="server">
                     <%--                    <label for="ned-package-register-form-type" class="col-xs-3">Package Type</label>
 
                     <div class="col-xs-9">
@@ -24,7 +24,7 @@
                             placeholder="Package Type" />
                     </div>--%>
 
-                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormPackageType" CssClass="col-xs-3">Medication Type: </asp:Label>
+                    <asp:Label runat="server" AssociatedControlID="AgentPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
                         <%--<asp:TextBox runat="server" ID="NedPackageRegisterFormPackageType" CssClass="form-control" TextMode="SingleLine" />
