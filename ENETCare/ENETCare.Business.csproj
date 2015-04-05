@@ -41,16 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarcodeHelper.cs" />
-    <Compile Include="DistributionCentre.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="MedicationPackage.cs" />
-    <Compile Include="MedicationType.cs" />
-    <Compile Include="PackageBUS.cs" />
-    <Compile Include="PackageDAO.cs" />
+    <Compile Include="DAL\DBSchema.cs" />
+    <Compile Include="Helper\BarcodeHelper.cs" />
+    <Compile Include="DAL\DAOFactory.cs" />
+    <Compile Include="BLL\EmployeeBLL.cs" />
+    <Compile Include="BLL\DistributionCentreBLL.cs" />
+    <Compile Include="Entity\DistributionCentre.cs" />
+    <Compile Include="DAL\DistributionCentreDAO.cs" />
+    <Compile Include="DAL\DistributionCentreDataReaderDAO.cs" />
+    <Compile Include="Entity\Employee.cs" />
+    <Compile Include="DAL\EmployeeDAO.cs" />
+    <Compile Include="DAL\EmployeeDataReaderDAO.cs" />
+    <Compile Include="Entity\MedicationPackage.cs" />
+    <Compile Include="Entity\MedicationType.cs" />
+    <Compile Include="BLL\MedicationTypeBLL.cs" />
+    <Compile Include="DAL\MedicationTypeDAO.cs" />
+    <Compile Include="DAL\MedicationTypeDataReaderDAO.cs" />
+    <Compile Include="BLL\MedicationPackageBLL.cs" />
+    <Compile Include="DAL\MedicationPackageDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimDB.cs" />
-    <Compile Include="SQLServerPackageDAO.cs" />
+    <Compile Include="DAL\SimDB.cs" />
+    <Compile Include="DAL\MedicationPackageDataReaderDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -23,7 +23,7 @@ namespace ENETCareTest
 			employee.Email = "StarCraft@blizzard.com";
 			employee.DistributionCentre = dc;
 		}
-
+		/*
 		[TestMethod]
 		public void Employee_UpdateProfile()
 		{
@@ -36,7 +36,7 @@ namespace ENETCareTest
 			Assert.AreEqual("WarCraft", employee.Fullname);
 			Assert.AreEqual("WarCraft@blizzard.com", employee.Email);
 		}
-		/*
+		
 		[TestMethod]
 		public void Employee_CheckPackage()
 		{

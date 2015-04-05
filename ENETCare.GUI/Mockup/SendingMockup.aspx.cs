@@ -10,18 +10,14 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class SendingMockup : System.Web.UI.Page
 	{
-		private PackageBUS packageBUS;
+		private MedicationPackageBLL medicationPackageBLL;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			packageBUS = new PackageBUS();
+			medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
 			if (!Page.IsPostBack)
 			{
-				if (!SimDB.HasInitTestData)
-				{
-					SimDB.PrepareTestData();
-				}
-				DistributionCentreDropDownList.DataSource = SimDB.distributionCentreList;
+				DistributionCentreDropDownList.DataSource = new DistributionCentreBLL().GetDistributionCentreList();
 				DistributionCentreDropDownList.DataTextField = "Name";
 				DistributionCentreDropDownList.DataValueField = "ID";
 				DistributionCentreDropDownList.DataBind();
@@ -34,13 +30,13 @@ namespace ENETCare.GUI.Mockup
 			string barcode = BarcodeTextBox.Text;
 			try
 			{
-				packageBUS.SendPackage(barcode, distributionCentre);
+				medicationPackageBLL.SendPackage(barcode, Convert.ToInt32(distributionCentre));
 				Response.Redirect("IndexMockup.aspx");
-		}
+			}
 			catch (Exception ex)
-        {
+			{
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}
-        }
+		}
 	}
 }

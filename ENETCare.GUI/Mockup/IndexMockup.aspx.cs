@@ -12,8 +12,8 @@ namespace ENETCare.GUI.Mockup
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			GridView1.DataSource = SimDB.FindAllPackagesTest();
-			GridView1.DataBind();
+			//GridView1.DataSource = SimDB.FindAllPackagesTest();
+			//GridView1.DataBind();
 		}
 	}
 }

@@ -10,11 +10,11 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class Discard : System.Web.UI.Page
 	{
-		private PackageBUS packageBUS;
+		private MedicationPackageBLL medicationPackageBLL;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			packageBUS = new PackageBUS();
+			medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
 		}
 
 		protected void DiscardButton_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace ENETCare.GUI.Mockup
 			string barcode = BarcodeTextBox.Text;
 			try
 			{
-				packageBUS.DiscardPackage(barcode);
+				medicationPackageBLL.DiscardPackage(barcode);
 				Response.Redirect("IndexMockup.aspx");
 			}
 			catch (Exception ex)

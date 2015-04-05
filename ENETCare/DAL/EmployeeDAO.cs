@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class SQLServerPackageDAO : PackageDAO
+	public interface EmployeeDAO
 	{
+		Employee FindEmployeeByUserName(string username);
 	}
 }

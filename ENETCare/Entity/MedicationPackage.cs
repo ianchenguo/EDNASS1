@@ -21,10 +21,10 @@ namespace ENETCare.Business
 
 	public enum PackageStatus
 	{
-		InStock,
-		Discarded,
-		Lost,
-		Distributed,
-		InTransit
+		InStock = 0,
+		InTransit = 1,
+		Distributed = 2,
+		Discarded = 3,
+		Lost = 4
 	};
 }

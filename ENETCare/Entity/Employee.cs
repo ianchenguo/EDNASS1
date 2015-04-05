@@ -15,7 +15,7 @@ namespace ENETCare.Business
 		public string Fullname { get; set; }
 		public string Email { get; set; }
 		public DistributionCentre DistributionCentre { get; set; }
-
+		/*
 		public void UpdatePassword(string oldPassword, string newPassword)
 		{
 			Password = newPassword;
@@ -33,10 +33,11 @@ namespace ENETCare.Business
 				SimDB.UpdateEmployee(this);
 			}
 		}
-
-		public static Employee LoginUser()
+		*/
+		// for mockup test only
+		public static string LoginUserName()
 		{
-			return SimDB.employee1;
+			return "starcraft";
 		}
 	}
 

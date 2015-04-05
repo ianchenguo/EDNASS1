@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class SimDB : PackageDAO
+	public class SimDB
 	{
 		public static List<MedicationPackage> packages = new List<MedicationPackage>();
 		public static List<MedicationType> medicationTypeList = new List<MedicationType>();

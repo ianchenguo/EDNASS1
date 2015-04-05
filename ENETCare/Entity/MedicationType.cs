@@ -12,7 +12,7 @@ namespace ENETCare.Business
 		public string Name { get; set; }
 		public string Description { get; set; }
 		public int ShelfLife { get; set; }
-		public double Value { get; set; }
+		public decimal Value { get; set; }
 		public bool IsSensitive { get; set; }
 
 		public DateTime DefaultExpireDate

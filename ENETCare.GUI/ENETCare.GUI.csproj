@@ -63,6 +63,10 @@
     <Content Include="AgentFeatures\AgentSendPackage.aspx" />
     <Content Include="AgentFeatures\AgentViewReport.aspx" />
     <Content Include="AgentFeatures\AgentHome.aspx" />
+    <Content Include="App_Data\MockupDB.mdf" />
+    <Content Include="App_Data\MockupDB_log.ldf">
+      <DependentUpon>MockupDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\bootstrap-theme.css" />
     <Content Include="Content\Styles\bootstrap-theme.min.css" />
     <Content Include="Content\Styles\bootstrap.css" />

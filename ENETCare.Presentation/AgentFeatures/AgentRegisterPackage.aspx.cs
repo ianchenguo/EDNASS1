@@ -20,7 +20,7 @@ namespace ENETCare.Presentation.AgentFeatures
             if (IsValid)
             {
                 var test = NedPackageRegisterFormPackageType.Text;
-                PackageBUS packageBUS = new PackageBUS();
+                MedicationPackageBLL packageBUS = new MedicationPackageBLL();
                 packageBUS.RegisterPackage(NedPackageRegisterFormPackageType.Text, NedPackageRegisterFormExpireDate.Text);
             }
         }

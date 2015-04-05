@@ -10,11 +10,11 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class ReceivingMockup : System.Web.UI.Page
 	{
-		private PackageBUS packageBUS;
+		private MedicationPackageBLL medicationPackageBLL;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			packageBUS = new PackageBUS();
+			medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
 		}
 
 		protected void ReceiveButton_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace ENETCare.GUI.Mockup
 			string barcode = BarcodeTextBox.Text;
 			try
 			{
-				packageBUS.ReceivePackage(barcode);
+				medicationPackageBLL.ReceivePackage(barcode);
 				Response.Redirect("IndexMockup.aspx");
 			}
 			catch (Exception ex)

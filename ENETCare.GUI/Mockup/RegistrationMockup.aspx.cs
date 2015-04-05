@@ -10,18 +10,14 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class RegistrationMockup : System.Web.UI.Page
 	{
-		private PackageBUS packageBUS;
+		private MedicationPackageBLL medicationPackageBLL;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			packageBUS = new PackageBUS();
+			medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
 			if (!Page.IsPostBack)
 			{
-				if (!SimDB.HasInitTestData)
-				{
-					SimDB.PrepareTestData();
-				}
-				TypeDropDownList.DataSource = SimDB.medicationTypeList;
+				TypeDropDownList.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
 				TypeDropDownList.DataTextField = "Name";
 				TypeDropDownList.DataValueField = "ID";
 				TypeDropDownList.DataBind();
@@ -34,7 +30,7 @@ namespace ENETCare.GUI.Mockup
 			string expireDate = ExpireDateTextBox.Text;
 			try
 			{
-				packageBUS.RegisterPackage(medicationType, expireDate);
+				medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
 				Response.Redirect("IndexMockup.aspx");
 			}
 			catch (Exception ex)

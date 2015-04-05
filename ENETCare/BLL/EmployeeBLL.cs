@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	interface PackageDAO
+	public class EmployBLL
 	{
-		
+		EmployeeDAO EmployeeDAO
+		{
+			get { return DAOFactory.GetEmployeeDAO(); }
+		}
 	}
 }

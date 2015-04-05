@@ -6,21 +6,42 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class PackageBUS
+	public class MedicationPackageBLL
 	{
+		#region Constructor
+
+		// This part should be changed according to Identity Framework
+		// Presentation should pass in a parameter standing for the current user
+		// So that the business layer could know who is the current user
+
+		Employee User { get; set; }
+
+		public MedicationPackageBLL(string username)
+		{
+			User = new EmployeeDataReaderDAO().FindEmployeeByUserName(username);
+			if (User == null)
+			{
+				throw new Exception("Invalid current user");
+			}
+		}
+
+		#endregion
+
 		#region Properties
 
-		private PackageDAO packageDAO;
-		PackageDAO PackageDAO
+		MedicationPackageDAO MedicationPackageDAO
 		{
-			get
-			{
-				if (packageDAO == null)
-				{
-					packageDAO = new SQLServerPackageDAO();
-				}
-				return packageDAO;
-			}
+			get { return DAOFactory.GetMedicationPackageDAO(); }
+		}
+
+		MedicationTypeDAO MedicationTypeDAO
+		{
+			get { return DAOFactory.GetMedicationTypeDAO(); }
+		}
+
+		DistributionCentreDAO DistributionCentreDAO
+		{
+			get { return DAOFactory.GetDistributionCentreDAO(); }
 		}
 
 		#endregion
@@ -29,29 +50,26 @@ namespace ENETCare.Business
 
 		public MedicationPackage ScanPackage(string barcode)
 		{
-			MedicationPackage package = SimDB.FindPackageByBarcode(barcode);
-			return package;
+			return MedicationPackageDAO.FindPackageByBarcode(barcode);
 		}
 
 		#endregion
 
 		#region Register
 
-		public void RegisterPackage(string medicationType, string expireDate)
+		public void RegisterPackage(int medicationTypeId, string expireDate)
 		{
-			DateTime convertedDate;
-			if (!DateTime.TryParse(expireDate, out convertedDate))
+			DateTime parsedExpireDate;
+			if (!DateTime.TryParse(expireDate, out parsedExpireDate))
 			{
-				//convertedDate = SimDB.GetMedicationTypeByID(medicationType).DefaultExpireDate;
 				throw new Exception("Invalid date format");
 			}
-			MedicationType convertedType;
-			convertedType = SimDB.GetMedicationTypeByID(medicationType);
-			if (convertedType == null)
+			MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeByID(medicationTypeId);
+			if (medicationType == null)
 			{
 				throw new Exception("Invalid medication type");
 			}
-			RegisterPackage(convertedType, convertedDate);
+			RegisterPackage(medicationType, parsedExpireDate);
 		}
 
 		void RegisterPackage(MedicationType medicationType, DateTime expireDate)
@@ -61,17 +79,17 @@ namespace ENETCare.Business
 			package.Type = medicationType;
 			package.ExpireDate = expireDate;
 			package.Status = PackageStatus.InStock;
-			package.StockDC = Employee.LoginUser().DistributionCentre;
-			SimDB.InsertPackage(package);
+			package.StockDC = User.DistributionCentre;
+			MedicationPackageDAO.InsertPackage(package);
 		}
 
 		#endregion
 
 		#region Send
 
-		public void SendPackage(string barcode, string distributionCentreID)
+		public void SendPackage(string barcode, int distributionCentreId)
 		{
-			DistributionCentre distributionCentre = SimDB.GetDistributionCentreByID(distributionCentreID);
+			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreByID(distributionCentreId);
 			if (distributionCentre == null)
 			{
 				throw new Exception("Distribution Centre not found");
@@ -90,7 +108,7 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Package not in stock, current status is: " + package.Status);
 			}
-			if (package.StockDC == null || package.StockDC.ID != Employee.LoginUser().DistributionCentre.ID)
+			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 			{
 				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
 			}
@@ -100,9 +118,9 @@ namespace ENETCare.Business
 			}
 			package.Status = PackageStatus.InTransit;
 			package.StockDC = null;
-			package.SourceDC = Employee.LoginUser().DistributionCentre;
+			package.SourceDC = User.DistributionCentre;
 			package.DestinationDC = destination;
-			SimDB.UpdatePackage(package);
+			MedicationPackageDAO.UpdatePackage(package);
 		}
 
 		#endregion
@@ -120,16 +138,16 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Package not in transit, current status is: " + package.Status);
 			}
-			if (package.DestinationDC == null || package.DestinationDC.ID != Employee.LoginUser().DistributionCentre.ID)
+			if (package.DestinationDC == null || package.DestinationDC.ID != User.DistributionCentre.ID)
 			{
 				// disabled for test purpose
 				//throw new Exception("Package not to distribution centre, the destinationDC is: " + package.DestinationDC.Name);
 			}
 			package.Status = PackageStatus.InStock;
-			package.StockDC = Employee.LoginUser().DistributionCentre;
+			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
-			SimDB.UpdatePackage(package);
+			MedicationPackageDAO.UpdatePackage(package);
 		}
 
 		#endregion
@@ -147,15 +165,15 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Package not in stock, current status is: " + package.Status);
 			}
-			if (package.StockDC == null || package.StockDC.ID != Employee.LoginUser().DistributionCentre.ID)
+			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 			{
 				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
 			}
 			package.Status = PackageStatus.Distributed;
-			package.StockDC = Employee.LoginUser().DistributionCentre;
+			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
-			SimDB.UpdatePackage(package);
+			MedicationPackageDAO.UpdatePackage(package);
 		}
 
 		#endregion
@@ -173,15 +191,15 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Package not in stock, current status is: " + package.Status);
 			}
-			if (package.StockDC == null || package.StockDC.ID != Employee.LoginUser().DistributionCentre.ID)
+			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 			{
 				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
 			}
 			package.Status = PackageStatus.Discarded;
-			package.StockDC = Employee.LoginUser().DistributionCentre;
+			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
-			SimDB.UpdatePackage(package);
+			MedicationPackageDAO.UpdatePackage(package);
 		}
 
 		#endregion
