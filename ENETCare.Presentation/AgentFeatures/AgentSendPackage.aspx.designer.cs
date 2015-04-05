@@ -13,6 +13,15 @@ namespace ENETCare.Presentation.AgentFeatures {
     public partial class AgentSendPackage {
         
         /// <summary>
+        /// AgentSendPackageDestination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AgentSendPackageDestination;
+        
+        /// <summary>
         /// AgentSendingDropDownList control.
         /// </summary>
         /// <remarks>
@@ -22,21 +31,57 @@ namespace ENETCare.Presentation.AgentFeatures {
         protected global::System.Web.UI.WebControls.DropDownList AgentSendingDropDownList;
         
         /// <summary>
-        /// ASbarcode control.
+        /// AgentSendPackageTypebarcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ASbarcode;
+        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageTypebarcode;
         
         /// <summary>
-        /// ASbtnSending control.
+        /// AgentSendPackageTypeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ASbtnSending;
+        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageTypeTextBox;
+        
+        /// <summary>
+        /// AgentSendPackageExpirationDateTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageExpirationDateTextBox;
+        
+        /// <summary>
+        /// AgentSendPackagePriceTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AgentSendPackagePriceTextBox;
+        
+        /// <summary>
+        /// AgentSendPackageDateTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageDateTextBox;
+        
+        /// <summary>
+        /// AgentSendPackageTypeButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AgentSendPackageTypeButton;
     }
 }
