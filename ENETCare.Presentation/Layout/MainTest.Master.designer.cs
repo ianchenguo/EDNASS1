@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.Layout
+namespace ENETCare.Presentation.AgentFeatures
 {
 
 

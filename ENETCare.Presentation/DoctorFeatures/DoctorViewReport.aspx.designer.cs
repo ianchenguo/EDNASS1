@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.Doctor
+namespace ENETCare.Presentation.DoctorFeatures
 {
 
 

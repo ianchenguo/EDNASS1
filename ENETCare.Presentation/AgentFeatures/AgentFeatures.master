@@ -1,5 +1,5 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" CodeBehind="AgentFeatures.master.cs" 
-    Inherits="ENETCare.Presentation.Layout.AgentFeatures" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" CodeBehind="AgentFeatures.master.cs"
+    Inherits="ENETCare.Presentation.AgentFeatures.AgentFeatures" %>
 
 <asp:Content ID="AgentFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
     <!--panel start-->

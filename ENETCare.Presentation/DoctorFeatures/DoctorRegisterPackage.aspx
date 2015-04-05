@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DoctorFeatures/DoctorFeatures.master" AutoEventWireup="true" 
-    CodeBehind="DoctorRegisterPackage.aspx.cs" Inherits="ENETCare.Presentation.Doctor.DoctorRegisterPackage" %>
+    CodeBehind="DoctorRegisterPackage.aspx.cs" Inherits="ENETCare.Presentation.DoctorFeatures.DoctorRegisterPackage" %>
 
-<asp:Content ID="DocRigs" ContentPlaceHolderID="SpecificDoctorFeatureMainContent" runat="server">
+<asp:Content ID="DoctorRigsContent" ContentPlaceHolderID="SpecificDoctorFeatureMainContent" runat="server">
     <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->

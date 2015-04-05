@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" CodeBehind="AgentViewReport.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.AgentViewReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentFeatures/AgentFeatures.master" AutoEventWireup="true" 
+    CodeBehind="AgentViewReport.aspx.cs" Inherits="ENETCare.Presentation.AgentFeatures.AgentViewReport" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
+<asp:Content ID="AgentViewReportContent" ContentPlaceHolderID="SpecificAgentFeatureMainContent" runat="server">
     <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="ENETCare.Presentation.Layout.Main" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="ENETCare.Presentation.AgentFeatures.Main" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -77,7 +77,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - ENETCare</p>
+                <p><i class="glyphicon glyphicon-copyright-mark"></i><%: DateTime.Now.Year %> - ENETCare</p>
             </footer>
         </div>
     </form>

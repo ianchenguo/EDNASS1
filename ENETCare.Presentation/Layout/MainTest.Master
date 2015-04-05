@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainTest.master.cs" Inherits="ENETCare.Presentation.Layout.MainTest" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainTest.master.cs" Inherits="ENETCare.Presentation.AgentFeatures.MainTest" %>
 
 <!DOCTYPE html>
 

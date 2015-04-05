@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ENETCare.Business;
 
-namespace ENETCare.Presentation.Manager
+namespace ENETCare.Presentation.ManagerFeatures
 {
-    public partial class ViewReportMag : System.Web.UI.Page
+    public partial class ManagerHORep : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

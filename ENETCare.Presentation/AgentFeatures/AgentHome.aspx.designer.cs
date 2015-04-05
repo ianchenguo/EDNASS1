@@ -11,7 +11,7 @@ namespace ENETCare.Presentation.AgentFeatures
 {
 
 
-	public partial class WebForm1
+    public partial class AgentHome
 	{
 	}
 }

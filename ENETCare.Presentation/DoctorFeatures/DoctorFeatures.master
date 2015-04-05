@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" 
-    CodeBehind="DoctorFeatures.master.cs" Inherits="ENETCare.Presentation.Doctor.DoctorFeatures" %>
+    CodeBehind="DoctorFeatures.master.cs" Inherits="ENETCare.Presentation.DoctorFeatures.DoctorFeatures" %>
 
 <asp:Content ID="DoctorFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
     <!--panel start-->

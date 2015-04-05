@@ -165,12 +165,12 @@
     <Content Include="DoctorFeatures\DoctorRegisterPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorSendPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorViewReport.aspx" />
-    <Content Include="ManagerFeatures\MagHOgenerated.aspx" />
-    <Content Include="ManagerFeatures\MagHome.aspx" />
-    <Content Include="ManagerFeatures\MagHORep.aspx" />
-    <Content Include="ManagerFeatures\MagRDCgenerated.aspx" />
-    <Content Include="ManagerFeatures\MagRDCRep.aspx" />
-    <Content Include="ManagerFeatures\ViewReportMag.aspx" />
+    <Content Include="ManagerFeatures\ManagerHOgenerated.aspx" />
+    <Content Include="ManagerFeatures\ManagerHome.aspx" />
+    <Content Include="ManagerFeatures\ManagerHORep.aspx" />
+    <Content Include="ManagerFeatures\ManagerRDCgenerated.aspx" />
+    <Content Include="ManagerFeatures\ManagerRDCRep.aspx" />
+    <Content Include="ManagerFeatures\ViewReportManager.aspx" />
     <Content Include="Obsolete\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -186,7 +186,7 @@
     <Content Include="Layout\Features.master" />
     <Content Include="AgentFeatures\AgentFeatures.master" />
     <Content Include="DoctorFeatures\DoctorFeatures.master" />
-    <Content Include="ManagerFeatures\MagFeatures.master" />
+    <Content Include="ManagerFeatures\ManagerFeatures.master" />
     <Content Include="Layout\Main.Master" />
     <Content Include="Layout\MainTest.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -407,32 +407,32 @@
     <Compile Include="Layout\MainTest.Master.designer.cs">
       <DependentUpon>MainTest.Master</DependentUpon>
     </Compile>
-    <Compile Include="ManagerFeatures\MagFeatures.master.cs">
-      <DependentUpon>MagFeatures.master</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerFeatures.master.cs">
+      <DependentUpon>ManagerFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\MagHOgenerated.aspx.cs">
-      <DependentUpon>MagHOgenerated.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerHOgenerated.aspx.cs">
+      <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\MagHome.aspx.cs">
-      <DependentUpon>MagHome.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerHome.aspx.cs">
+      <DependentUpon>ManagerHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\MagHORep.aspx.cs">
-      <DependentUpon>MagHORep.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerHORep.aspx.cs">
+      <DependentUpon>ManagerHORep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\MagRDCgenerated.aspx.cs">
-      <DependentUpon>MagRDCgenerated.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerRDCgenerated.aspx.cs">
+      <DependentUpon>ManagerRDCgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\MagRDCRep.aspx.cs">
-      <DependentUpon>MagRDCRep.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ManagerRDCRep.aspx.cs">
+      <DependentUpon>ManagerRDCRep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ViewReportMag.aspx.cs">
-      <DependentUpon>ViewReportMag.aspx</DependentUpon>
+    <Compile Include="ManagerFeatures\ViewReportManager.aspx.cs">
+      <DependentUpon>ViewReportManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Migrations\201503291326098_AddedProperties.cs" />

@@ -7,7 +7,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.Layout
+namespace ENETCare.Presentation.AgentFeatures
 {
     public partial class Main : MasterPage
     {
