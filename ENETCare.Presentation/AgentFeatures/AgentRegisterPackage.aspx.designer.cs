@@ -13,13 +13,13 @@ namespace ENETCare.Presentation.AgentFeatures {
     public partial class AgentRegisterPackage {
         
         /// <summary>
-        /// NedPackageRegisterFormPackageType control.
+        /// AgentPackageRegisterPackageTypeDropDwonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NedPackageRegisterFormPackageType;
+        protected global::System.Web.UI.WebControls.DropDownList AgentPackageRegisterPackageTypeDropDwonList;
         
         /// <summary>
         /// NedPackageRegisterFormExpireDate control.
@@ -31,12 +31,21 @@ namespace ENETCare.Presentation.AgentFeatures {
         protected global::System.Web.UI.WebControls.TextBox NedPackageRegisterFormExpireDate;
         
         /// <summary>
-        /// NedPackageRegisterSubmit control.
+        /// AgentRegisterMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button NedPackageRegisterSubmit;
+        protected global::System.Web.UI.WebControls.Label AgentRegisterMessage;
+        
+        /// <summary>
+        /// AgentRegisterButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AgentRegisterButton;
     }
 }

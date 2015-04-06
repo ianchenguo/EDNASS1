@@ -208,12 +208,12 @@ namespace ENETCare.Business
 
 		public void RemoveLostPackages(List<MedicationPackage> inStockList, List<MedicationPackage> scannedList)
 		{
-
+			throw new System.NotImplementedException();
 		}
 
 		public void UpdateFoundPackages(List<MedicationPackage> inStockList, List<MedicationPackage> scannedList)
 		{
-
+			throw new System.NotImplementedException();
 		}
 
 		#endregion
