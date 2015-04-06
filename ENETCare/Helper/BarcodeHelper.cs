@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ENETCare
+namespace ENETCare.Business
 {
 	public class BarcodeHelper
 	{
 		public static string GenerateBarcode()
 		{
-			return Guid.NewGuid().ToString();
+			return DateTime.Now.Ticks.ToString();
 		}
 	}
 }

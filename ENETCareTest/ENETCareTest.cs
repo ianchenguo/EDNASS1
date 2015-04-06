@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ENETCare.Business;
 
@@ -23,6 +24,19 @@ namespace ENETCareTest
 			employee.Email = "StarCraft@blizzard.com";
 			employee.DistributionCentre = dc;
 		}
+
+		[TestMethod]
+		public void BarcodeContainsOnlyDigits()
+		{
+			string barcode = BarcodeHelper.GenerateBarcode();
+			Assert.AreEqual(true, IsAllDigits(barcode));
+		}
+
+		bool IsAllDigits(string s)
+		{
+			return s.All(Char.IsDigit);
+		}
+
 		/*
 		[TestMethod]
 		public void Employee_UpdateProfile()
