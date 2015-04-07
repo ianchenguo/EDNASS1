@@ -15,6 +15,11 @@
 
             <div class="form-horizontal col-sm-10 col-sm-offset-1">
 
+                <div class="form-group col-xs-12">
+                    <asp:Label AssociatedControlID="DoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
+                    <asp:TextBox ID="DoctorReceivePackagesBarcode" runat="server"></asp:TextBox>
+                </div>
+
                 <div class="form-group">
                     <label for="ned-package-receive-form-from" class="col-xs-3">From</label>
 
@@ -60,7 +65,9 @@
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="DoctorHome.aspx">Cancel</a>
-                <button class="btn btn-success btn-float-right" type="submit">Submit</button>
+                <%--<button class="btn btn-success btn-float-right" type="submit">Submit</button>--%>
+                <asp:Button ID="DoctorReceivePackageButton" runat="server" Text="Doctor Receive" 
+                    CssClass="btn btn-success btn-float-right" OnClick="DoctorReceivePackageButton_Click" />
 
             </div>
         </div>

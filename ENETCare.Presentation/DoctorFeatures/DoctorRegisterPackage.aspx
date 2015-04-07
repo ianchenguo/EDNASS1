@@ -13,16 +13,14 @@
         <!--panel-body-start-->
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1">
-                <div class="form-group" runat="server">
-                    <asp:Label runat="server" Text="Medication Type: " AssociatedControlID="DoctorRegisterPackageTypeDropDownList" CssClass="col-xs-3"></asp:Label>
+                <div class="form-group col-xs-12" runat="server">
+                    <asp:Label runat="server" Text="Medication Type: " AssociatedControlID="DoctorRegisterPackageTypeDropDownList"></asp:Label>
 
-                    <div class="col-xs-9">
-                        <%--<input class="form-control" id="ned-package-register-form-type" type="text"
+                    <%--<input class="form-control" id="ned-package-register-form-type" type="text"
                             placeholder="Package Type" />--%>
-                        <asp:DropDownList ID="DoctorRegisterPackageTypeDropDownList" runat="server">
-                            <asp:ListItem>Please select</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
+                    <asp:DropDownList ID="DoctorRegisterPackageTypeDropDownList" runat="server">
+                        <asp:ListItem>Please select</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
 
                 <div class="form-group">

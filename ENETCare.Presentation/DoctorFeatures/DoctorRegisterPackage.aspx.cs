@@ -8,7 +8,7 @@ using ENETCare.Business;
 
 namespace ENETCare.Presentation.DoctorFeatures
 {
-    public partial class DoctorRegisterPackage : System.Web.UI.Page
+    public partial class DoctorRegisterPackage : Page
     {
         private MedicationPackageBLL medicationPackageBLL;
         protected void Page_Load(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace ENETCare.Presentation.DoctorFeatures
             try
             {
                 medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
-                Response.Redirect("IndexMockup.aspx");
+                Response.Redirect("DoctorHome.aspx");
             }
             catch (Exception ex)
             {

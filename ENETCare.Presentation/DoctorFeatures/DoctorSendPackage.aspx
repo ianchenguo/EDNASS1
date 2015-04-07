@@ -14,18 +14,16 @@
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1">
 
-                <div class="form-group">
-                    <label for="ned-package-send-form-dest" class="col-xs-3">Destination</label>
+                <div class="form-group col-xs-12">
+                        <asp:Label AssociatedControlID="DoctorPackageSendingDestination"
+                            runat="server" Text="Destination Distribution Centre:&nbsp"></asp:Label>
 
-                    <div class="col-xs-9">
-                        <select class="form-control" id="ned-package-send-form-dest">
-                            <option>UTS Centre</option>
-                            <option>Dummy Centre 1</option>
-                            <option>Dummy Centre 2</option>
-                            <option>Dummy Centre 3</option>
-                            <option>Dummy Centre 4</option>
-                        </select>
-                    </div>
+                        <asp:DropDownList ID="DoctorPackageSendingDestination" runat="server" OnSelectedIndexChanged="DoctorPackageSendingDestinationLabel_SelectedIndexChanged">
+                            <asp:ListItem>Please select</asp:ListItem>
+                        </asp:DropDownList>&nbsp
+                        
+                    <asp:Label AssociatedControlID="DoctorSendBarcodeTextBox" runat="server" Text="Barcode:&nbsp"></asp:Label>
+                        <asp:TextBox ID="DoctorSendBarcodeTextBox" runat="server"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
@@ -64,7 +62,7 @@
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="DoctorHome.aspx">Cancel</a>
-                <button class="btn btn-success btn-float-right" type="submit">Submit</button>
+                <asp:Button ID="DoctorSendButton" runat="server" OnClick="DoctorSendButton_Click" Text="Doctor Send" CssClass="btn btn-success btn-float-right" />
 
             </div>
         </div>

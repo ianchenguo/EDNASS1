@@ -7,9 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.DoctorFeatures
-{
+namespace ENETCare.Presentation.DoctorFeatures {
+    
     
     public partial class DoctorReceivePackage {
+        
+        /// <summary>
+        /// DoctorReceivePackagesBarcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DoctorReceivePackagesBarcode;
+        
+        /// <summary>
+        /// DoctorReceivePackageButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DoctorReceivePackageButton;
     }
 }
