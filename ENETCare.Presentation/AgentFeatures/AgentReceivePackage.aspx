@@ -15,12 +15,9 @@
 
             <div class="form-horizontal col-sm-10 col-sm-offset-1" runat="server">
 
-                <div class="form-group">
-                    <label for="ned-package-receive-form-from" class="col-xs-3">Barcode</label>
-
-                    <div class="col-xs-9">
-                        <asp:TextBox ID="AgentReceivebarcode" runat="server"></asp:TextBox>
-                    </div>
+                <div class="form-group col-xs-12">
+                    <asp:Label AssociatedControlID="AgentReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
+                    <asp:TextBox ID="AgentReceivePackagesBarcode" runat="server"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
@@ -59,7 +56,9 @@
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
-                <asp:Button ID="AgentReceiveButton" runat="server" OnClick="AgentReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right"/>
+                <%--<asp:Button ID="" runat="server" OnClick="AgentReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right" />--%>
+                <asp:Button ID="AgentReceivePackageButton" runat="server" Text="Agent Receive" 
+                    CssClass="btn btn-success btn-float-right" OnClick="AgentReceivePackageButton_Click"/>
 
             </div>
         </div>

@@ -8,7 +8,7 @@ using ENETCare.Business;
 
 namespace ENETCare.Presentation.AgentFeatures
 {
-    public partial class AgentRegisterPackage : System.Web.UI.Page
+    public partial class AgentRegisterPackage : Page
     {
         private MedicationPackageBLL medicationPackageBLL;
         protected void Page_Load(object sender, EventArgs e)

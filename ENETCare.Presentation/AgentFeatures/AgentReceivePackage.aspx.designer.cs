@@ -13,21 +13,21 @@ namespace ENETCare.Presentation.AgentFeatures {
     public partial class AgentReceivePackage {
         
         /// <summary>
-        /// AgentReceivebarcode control.
+        /// AgentReceivePackagesBarcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgentReceivebarcode;
+        protected global::System.Web.UI.WebControls.TextBox AgentReceivePackagesBarcode;
         
         /// <summary>
-        /// AgentReceiveButton control.
+        /// AgentReceivePackageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AgentReceiveButton;
+        protected global::System.Web.UI.WebControls.Button AgentReceivePackageButton;
     }
 }

@@ -32,11 +32,11 @@ namespace ENETCare.Presentation.AgentFeatures
         protected void AgentSendPackageTypeButton_Click(object sender, EventArgs e)
         {
             string distributionCentre = AgentSendingDropDownList.SelectedValue;
-            string barcode = AgentSendPackageTypebarcode.Text;
+            string AgentSendBarcode = AgentSendPackageTypebarcode.Text;
             try
             {
-                medicationPackageBLL.SendPackage(barcode, Convert.ToInt32(distributionCentre));
-                Response.Redirect("IndexMockup.aspx");
+                medicationPackageBLL.SendPackage(AgentSendBarcode, Convert.ToInt32(distributionCentre));
+                Response.Redirect("AgentHome.aspx");
             }
             catch (Exception ex)
             {

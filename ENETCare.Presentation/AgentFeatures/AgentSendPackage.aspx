@@ -14,17 +14,14 @@
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1" runat="server">
 
-                <div class="form-group">
+                <div class="form-group col-xs-12">
                     <asp:Label ID="AgentSendPackageDestination" runat="server" Text="Destination: "></asp:Label>
-                    <div class="col-xs-9">
 
-                        <asp:DropDownList ID="AgentSendingDropDownList" runat="server" OnSelectedIndexChanged="AgentSendingDropDownList_SelectedIndexChanged">
-                            <asp:ListItem>Please Select</asp:ListItem>
-                        </asp:DropDownList>
-                        Barcode:
+                    <asp:DropDownList ID="AgentSendingDropDownList" runat="server" OnSelectedIndexChanged="AgentSendingDropDownList_SelectedIndexChanged">
+                        <asp:ListItem>Please Select</asp:ListItem>
+                    </asp:DropDownList>
+                    Barcode:
                         <asp:TextBox ID="AgentSendPackageTypebarcode" runat="server"></asp:TextBox>
-
-                    </div>
                 </div>
 
                 <div class="form-group">
@@ -61,8 +58,8 @@
 
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
-                <asp:Button ID="AgentSendPackageTypeButton" runat="server" OnClick="AgentSendPackageTypeButton_Click" 
-                    Text="Agent Send" CssClass="btn btn-success btn-float-right"/>
+                <asp:Button ID="AgentSendPackageTypeButton" runat="server" OnClick="AgentSendPackageTypeButton_Click"
+                    Text="Agent Send" CssClass="btn btn-success btn-float-right" />
 
             </div>
         </div>
