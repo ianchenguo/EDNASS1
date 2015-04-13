@@ -8,6 +8,20 @@ namespace ENETCare.Business
 {
 	public class EmployeeDataReaderDAO : EmployeeDAO
 	{
+		public Employee FindEmployeeByUserId(int userid)
+		{
+			// should be changed according to Identity Framework
+			Employee employee = new Employee();
+			employee.ID = 1;
+			employee.Username = "starcraft";
+			employee.Role = Role.Doctor;
+			employee.Fullname = "StarCraft";
+			employee.Email = "StarCraft@blizzard.com";
+			DistributionCentre dc = new DistributionCentreDataReaderDAO().GetDistributionCentreById(1);
+			employee.DistributionCentre = dc;
+			return employee;
+		}
+
 		public Employee FindEmployeeByUserName(string username)
 		{
 			// should be changed according to Identity Framework
@@ -17,7 +31,7 @@ namespace ENETCare.Business
 			employee.Role = Role.Doctor;
 			employee.Fullname = "StarCraft";
 			employee.Email = "StarCraft@blizzard.com";
-			DistributionCentre dc = new DistributionCentreDataReaderDAO().GetDistributionCentreByID(1);
+			DistributionCentre dc = new DistributionCentreDataReaderDAO().GetDistributionCentreById(1);
 			employee.DistributionCentre = dc;
 			return employee;
 		}

@@ -33,7 +33,7 @@ namespace ENETCare.Business
 			return distributionCentreList;
 		}
 
-		public DistributionCentre GetDistributionCentreByID(int id)
+		public DistributionCentre GetDistributionCentreById(int id)
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,24 +33,43 @@ namespace ENETCare.Business
 			}
 			return packageList;
 		}
-
-		public List<MedicationPackage> FindPackagesInDistributionCentre(int distributionCentreId)
+		
+		public List<object> FindPackagesInDistributionCentre(int distributionCentreId)
 		{
-			List<MedicationPackage> packageList = new List<MedicationPackage>();
+			List<object> packageList = new List<object>();
+			const int warningDays = 7;
 			using (SqlConnection conn = new SqlConnection())
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), UpdateTime
+				string query = @"select Barcode, Type, ExpireDate
 								   from MedicationPackage
-								  where ID = @id";
+								  where StockDC = @id";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					while (reader.Read())
 					{
-						MedicationPackage package = GetMedicationPackageFromDataReader(reader);
+						string barcode = reader.GetString(0);
+						string type = GetMedicationTypeByID(reader.GetInt32(1)).Name;
+						DateTime expireDate = reader.GetDateTime(2);
+						string expireStatus = "NotExpired";
+						if (DateTime.Now > expireDate)
+						{
+							expireStatus = "Expired";
+						}
+						else if (DateTime.Now.AddDays(warningDays) > expireDate)
+						{
+							expireStatus = "AboutToExpired";
+						}
+						var package = new
+						{
+							Barcode = barcode,
+							Type = type,
+							ExpireDate = expireDate.ToString("d", new CultureInfo("en-au")),
+							ExpireStatus = expireStatus
+						};
 						packageList.Add(package);
 					}
 				}
@@ -132,12 +152,12 @@ namespace ENETCare.Business
 
 		MedicationType GetMedicationTypeByID(int id)
 		{
-			return new MedicationTypeDataReaderDAO().GetMedicationTypeByID(id);
+			return new MedicationTypeDataReaderDAO().GetMedicationTypeById(id);
 		}
 
 		DistributionCentre GetDistributionCentreByID(int id)
 		{
-			return new DistributionCentreDataReaderDAO().GetDistributionCentreByID(id);
+			return new DistributionCentreDataReaderDAO().GetDistributionCentreById(id);
 		}
 	}
 }

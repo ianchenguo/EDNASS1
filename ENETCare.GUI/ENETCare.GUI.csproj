@@ -105,6 +105,7 @@
     <Content Include="Mockup\ReceivingMockup.aspx" />
     <Content Include="Mockup\RegistrationMockup.aspx" />
     <Content Include="Mockup\SendingMockup.aspx" />
+    <Content Include="Mockup\StocktakingMockup.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +311,13 @@
     </Compile>
     <Compile Include="Mockup\SendingMockup.aspx.designer.cs">
       <DependentUpon>SendingMockup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mockup\StocktakingMockup.aspx.cs">
+      <DependentUpon>StocktakingMockup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mockup\StocktakingMockup.aspx.designer.cs">
+      <DependentUpon>StocktakingMockup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

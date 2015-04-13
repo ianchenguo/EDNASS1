@@ -8,6 +8,7 @@ namespace ENETCare.Business
 {
 	public interface EmployeeDAO
 	{
+		Employee FindEmployeeByUserId(int id);
 		Employee FindEmployeeByUserName(string username);
 	}
 }

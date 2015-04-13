@@ -16,6 +16,15 @@ namespace ENETCare.Business
 
 		Employee User { get; set; }
 
+		public MedicationPackageBLL(int userid)
+		{
+			User = new EmployeeDataReaderDAO().FindEmployeeByUserId(userid);
+			if (User == null)
+			{
+				throw new Exception("Invalid current user");
+			}
+		}
+
 		public MedicationPackageBLL(string username)
 		{
 			User = new EmployeeDataReaderDAO().FindEmployeeByUserName(username);
@@ -64,7 +73,7 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Invalid date format");
 			}
-			MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeByID(medicationTypeId);
+			MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
 			if (medicationType == null)
 			{
 				throw new Exception("Invalid medication type");
@@ -89,7 +98,7 @@ namespace ENETCare.Business
 
 		public void SendPackage(string barcode, int distributionCentreId)
 		{
-			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreByID(distributionCentreId);
+			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreById(distributionCentreId);
 			if (distributionCentre == null)
 			{
 				throw new Exception("Distribution Centre not found");
@@ -200,6 +209,15 @@ namespace ENETCare.Business
 			package.SourceDC = null;
 			package.DestinationDC = null;
 			MedicationPackageDAO.UpdatePackage(package);
+		}
+
+		#endregion
+
+		#region Stocktake
+
+		public List<object> Stocktake()
+		{
+			return MedicationPackageDAO.FindPackagesInDistributionCentre(User.DistributionCentre.ID);
 		}
 
 		#endregion

@@ -33,7 +33,7 @@ namespace ENETCare.Business
 			return medicationTypeList;
 		}
 
-		public MedicationType GetMedicationTypeByID(int id)
+		public MedicationType GetMedicationTypeById(int id)
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{

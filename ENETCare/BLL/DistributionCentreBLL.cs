@@ -13,6 +13,11 @@ namespace ENETCare.Business
 			get { return DAOFactory.GetDistributionCentreDAO(); }
 		}
 
+		public DistributionCentre GetDistributionCentreById(int id)
+		{
+			return DistributionCentreDAO.GetDistributionCentreById(id);
+		}
+
 		public List<DistributionCentre> GetDistributionCentreList()
 		{
 			return DistributionCentreDAO.FindAllDistributionCentres();

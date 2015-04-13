@@ -13,6 +13,11 @@ namespace ENETCare.Business
 			get { return DAOFactory.GetMedicationTypeDAO(); }
 		}
 
+		public MedicationType GetMedicationTypeById(int id)
+		{
+			return MedicationTypeDAO.GetMedicationTypeById(id);
+		}
+
 		public List<MedicationType> GetMedicationTypeList()
 		{
 			return MedicationTypeDAO.FindAllMedicationTypes();

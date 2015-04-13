@@ -23,8 +23,6 @@
         <a href="ReceivingMockup.aspx">Receiving</a>
         <a href="DistributionMockup.aspx">Distribution</a>
         <a href="DiscardMockup.aspx">Discard</a>
-        <asp:GridView ID="GridView1" runat="server">
-        </asp:GridView>
     </div>
     </form>
 </body>
