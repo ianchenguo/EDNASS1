@@ -66,7 +66,7 @@ namespace ENETCare.Business
 
 		#region Register
 
-		public void RegisterPackage(int medicationTypeId, string expireDate)
+		public string RegisterPackage(int medicationTypeId, string expireDate)
 		{
 			DateTime parsedExpireDate;
 			if (!DateTime.TryParse(expireDate, out parsedExpireDate))
@@ -78,18 +78,20 @@ namespace ENETCare.Business
 			{
 				throw new Exception("Invalid medication type");
 			}
-			RegisterPackage(medicationType, parsedExpireDate);
+			return RegisterPackage(medicationType, parsedExpireDate);
 		}
 
-		void RegisterPackage(MedicationType medicationType, DateTime expireDate)
+		string RegisterPackage(MedicationType medicationType, DateTime expireDate)
 		{
 			MedicationPackage package = new MedicationPackage();
-			package.Barcode = BarcodeHelper.GenerateBarcode();
+			string barcode = BarcodeHelper.GenerateBarcode();
+			package.Barcode = barcode;
 			package.Type = medicationType;
 			package.ExpireDate = expireDate;
 			package.Status = PackageStatus.InStock;
 			package.StockDC = User.DistributionCentre;
 			MedicationPackageDAO.InsertPackage(package);
+			return barcode;
 		}
 
 		#endregion

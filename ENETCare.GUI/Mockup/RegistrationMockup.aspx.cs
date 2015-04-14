@@ -30,8 +30,9 @@ namespace ENETCare.GUI.Mockup
 			string expireDate = ExpireDateTextBox.Text;
 			try
 			{
-				medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
-				Response.Redirect("IndexMockup.aspx");
+				string barcode = medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
+				BarcodeImage.ImageUrl = string.Format("BarcodeImageMockup.aspx?barcode={0}", barcode);
+				//Response.Redirect("IndexMockup.aspx");
 			}
 			catch (Exception ex)
 			{

@@ -99,6 +99,7 @@
     <Content Include="Manager\MagRDCgenerated.aspx" />
     <Content Include="Manager\MagRDCRep.aspx" />
     <Content Include="Manager\ViewReportMag.aspx" />
+    <Content Include="Mockup\BarcodeImageMockup.aspx" />
     <Content Include="Mockup\IndexMockup.aspx" />
     <Content Include="Mockup\DiscardMockup.aspx" />
     <Content Include="Mockup\DistributionMockup.aspx" />
@@ -269,6 +270,13 @@
     </Compile>
     <Compile Include="Manager\ViewReportMag.aspx.designer.cs">
       <DependentUpon>ViewReportMag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mockup\BarcodeImageMockup.aspx.cs">
+      <DependentUpon>BarcodeImageMockup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mockup\BarcodeImageMockup.aspx.designer.cs">
+      <DependentUpon>BarcodeImageMockup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mockup\DiscardMockup.aspx.cs">
       <DependentUpon>DiscardMockup.aspx</DependentUpon>
