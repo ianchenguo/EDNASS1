@@ -10,6 +10,7 @@ namespace ENETCare.Business
 	{
 		List<MedicationPackage> FindAllPackages();
 		List<object> FindPackagesInDistributionCentre(int distributionCentreId);
+		List<MedicationPackage> FindPackages(int medicationTypeId, int distributionCentreId);
 		MedicationPackage FindPackageByBarcode(string barcode);
 		void InsertPackage(MedicationPackage package);
 		void UpdatePackage(MedicationPackage package);

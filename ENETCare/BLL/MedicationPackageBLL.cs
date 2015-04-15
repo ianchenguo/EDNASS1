@@ -226,14 +226,45 @@ namespace ENETCare.Business
 
 		#region Audit
 
-		public void RemoveLostPackages(List<MedicationPackage> inStockList, List<MedicationPackage> scannedList)
+		public void CheckAndUpdatePackage(int medicationTypeId, string barcode)
 		{
-			throw new System.NotImplementedException();
+			MedicationPackage package = MedicationPackageDAO.FindPackageByBarcode(barcode);
+			if (package == null)
+			{
+				MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
+				DateTime expireDate = DateTime.Today.AddDays(medicationType.ShelfLife);
+				RegisterPackage(medicationType, expireDate);
+			}
+			else if (package.Type.ID != medicationTypeId)
+			{
+				throw new Exception("Package type not matched");
+			}
+			else if (package.Status != PackageStatus.InStock || package.StockDC.ID != User.DistributionCentre.ID)
+			{
+				package.Status = PackageStatus.InStock;
+				package.StockDC = User.DistributionCentre;
+				package.SourceDC = null;
+				package.DestinationDC = null;
+				MedicationPackageDAO.UpdatePackage(package);
+			}
 		}
 
-		public void UpdateFoundPackages(List<MedicationPackage> inStockList, List<MedicationPackage> scannedList)
+		public void AuditPackages(int medicationTypeId, List<int> scannedList)
 		{
-			throw new System.NotImplementedException();
+			List<MedicationPackage> inStockList = GetInStockList(medicationTypeId);
+			foreach (MedicationPackage package in inStockList)
+			{
+				if (!scannedList.Contains(package.ID))
+				{
+					package.Status = PackageStatus.Lost;
+					MedicationPackageDAO.UpdatePackage(package);
+				}
+			}
+		}
+
+		public List<MedicationPackage> GetInStockList(int medicationTypeId)
+		{
+			return MedicationPackageDAO.FindPackages(medicationTypeId, User.DistributionCentre.ID);
 		}
 
 		#endregion

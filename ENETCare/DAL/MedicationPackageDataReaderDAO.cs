@@ -77,6 +77,32 @@ namespace ENETCare.Business
 			return packageList;
 		}
 
+		public List<MedicationPackage> FindPackages(int medicationTypeId, int distributionCentreId)
+		{
+			List<MedicationPackage> packageList = new List<MedicationPackage>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), UpdateTime
+								   from MedicationPackage
+								  where Type = @type
+									and StockDC = @dc";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("type", medicationTypeId));
+				command.Parameters.Add(new SqlParameter("dc", distributionCentreId));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						MedicationPackage package = GetMedicationPackageFromDataReader(reader);
+						packageList.Add(package);
+					}
+				}
+			}
+			return packageList;
+		}
+		
 		public MedicationPackage FindPackageByBarcode(string barcode)
 		{
 			using (SqlConnection conn = new SqlConnection())
