@@ -5,7 +5,8 @@ http://channel9.msdn.com/Series/Customizing-ASPNET-Authentication-with-Identity/
 identity customise database 从5分49秒
 
 
-DKK 17-Aor-2015 1:17:
+DKK 17-Apr-2015 1:17
+
 Using NuGet without committing packages to source control
 1. Open VS2013
 2. Options -> Package Manager -> General
