@@ -10,8 +10,8 @@ namespace ENETCareTest
     public class MedicationPackageDAOTest
     {
         MedicationPackage package = new MedicationPackage();
-        int distributionCentreId;
-        string barcode;
+        //int distributionCentreId;
+        //string barcode;
 
         [TestInitialize]
         public void Setup()
@@ -52,9 +52,9 @@ namespace ENETCareTest
         {
             
             var findp = new Mock<MedicationPackageDAO>();
-            findp.Setup(x => x.FindPackagesInDistributionCentre(distributionCentreId)).Returns(new List<MedicationPackage>());
-            findp.Object.FindPackagesInDistributionCentre(distributionCentreId);
-            Assert.AreNotSame(new List<MedicationPackage>(), findp.Object.FindPackagesInDistributionCentre(distributionCentreId));
+            //findp.Setup(x => x.FindPackagesInDistributionCentre(distributionCentreId)).Returns(new List<MedicationPackage>());
+            //findp.Object.FindPackagesInDistributionCentre(distributionCentreId);
+            //Assert.AreNotSame(new List<MedicationPackage>(), findp.Object.FindPackagesInDistributionCentre(distributionCentreId));
         }
 
         [TestMethod]
@@ -63,8 +63,8 @@ namespace ENETCareTest
             
             var findpb = new Mock<MedicationPackageDAO>();
             //findpb.Setup(x => x.FindPackageByBarcode(barcode)).Returns(null);
-            findpb.Object.FindPackageByBarcode(barcode);
-            Assert.IsNull(findpb.Object.FindPackageByBarcode(barcode));
+            //findpb.Object.FindPackageByBarcode(barcode);
+            //Assert.IsNull(findpb.Object.FindPackageByBarcode(barcode));
         }
     }
 }
