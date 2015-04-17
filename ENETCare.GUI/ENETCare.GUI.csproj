@@ -105,6 +105,7 @@
     <Content Include="Mockup\DistributionMockup.aspx" />
     <Content Include="Mockup\ReceivingMockup.aspx" />
     <Content Include="Mockup\RegistrationMockup.aspx" />
+    <Content Include="Mockup\DistributionCentreStockReport.aspx" />
     <Content Include="Mockup\SendingMockup.aspx" />
     <Content Include="Mockup\StocktakingMockup.aspx" />
     <Content Include="Web.config" />
@@ -312,6 +313,13 @@
     </Compile>
     <Compile Include="Mockup\RegistrationMockup.aspx.designer.cs">
       <DependentUpon>RegistrationMockup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mockup\DistributionCentreStockReport.aspx.cs">
+      <DependentUpon>DistributionCentreStockReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mockup\DistributionCentreStockReport.aspx.designer.cs">
+      <DependentUpon>DistributionCentreStockReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mockup\SendingMockup.aspx.cs">
       <DependentUpon>SendingMockup.aspx</DependentUpon>

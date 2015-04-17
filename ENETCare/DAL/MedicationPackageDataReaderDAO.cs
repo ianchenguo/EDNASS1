@@ -185,5 +185,48 @@ namespace ENETCare.Business
 		{
 			return new DistributionCentreDataReaderDAO().GetDistributionCentreById(id);
 		}
+
+		#region Report
+
+		/*
+		 * This report shows the quantity and total value for each product type in stock at a given distribution centre. 
+		 * It also has a grand total for all products at the distribution centre.
+		 */
+		public List<object> DistributionCentreStockReport(int distributionCentreId)
+		{
+			List<object> list = new List<object>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string query = @"select b.Name, count(*), sum(b.Value)
+								   from MedicationPackage a, MedicationType b
+								  where a.Type = b.Id
+									and a.Status = 0
+									and a.StockDC = @id
+								  group by b.Name";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						string name = reader.GetString(0);
+						int quantity = reader.GetInt32(1);
+						decimal value = reader.GetDecimal(2);
+						var type = new
+						{
+							Name = name,
+							Quantity = quantity,
+							Value = value
+						};
+						list.Add(type);
+					}
+				}
+			}
+			return list;
+		}
+
+		#endregion
 	}
 }
