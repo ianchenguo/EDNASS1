@@ -162,6 +162,10 @@
     <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
     <Content Include="AgentFeatures\AgentSendPackage.aspx" />
     <Content Include="AgentFeatures\AgentViewReport.aspx" />
+    <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129.mdf" />
+    <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129_log.ldf">
+      <DependentUpon>aspnet-ENETCare.Presentation-20150329093129.mdf</DependentUpon>
+    </Content>
     <Content Include="DoctorFeatures\DoctorHome.aspx" />
     <Content Include="DoctorFeatures\DoctorReceivePackage.aspx" />
     <Content Include="DoctorFeatures\DoctorRegisterPackage.aspx" />
@@ -497,9 +501,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
