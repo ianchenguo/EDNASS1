@@ -67,6 +67,11 @@ namespace ENETCare.Business
 			return MedicationPackageDAO.DistributionCentreStockReport(distributionCentreId);
 		}
 
+        public List<object> DistributionCentreGlobalStock(int distributionCentreId2)
+        {
+            return MedicationPackageDAO.DistributionCentreStockReport(distributionCentreId2);
+        }
+
 		#endregion
 	}
 }

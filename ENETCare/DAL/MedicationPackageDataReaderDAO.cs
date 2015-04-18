@@ -227,6 +227,43 @@ namespace ENETCare.Business
 			return list;
 		}
 
+        public List<object> DistributionCentreGlobalStockReport(int distributionCentreId2)
+        {
+            List<object> list = new List<object>();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = connectionString;
+                conn.Open();
+                string query = @"select c.Name,b.Name, count(*), sum(b.Value)
+								   from MedicationPackage a, MedicationType b,DistributionCentre c
+								  where a.Type = b.Id
+								    and c.Id = a.DestinationDC
+									and a.Status = 0
+									and a.StockDC = @id
+								  group by c.Name,b.Name";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.Add(new SqlParameter("id", distributionCentreId2));
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string distributioncentre = reader.GetString(0);
+                        string typename = reader.GetString(1);
+                        int quantity = reader.GetInt32(2);
+                        decimal value = reader.GetDecimal(3);
+                        var type = new
+                        {
+                            DistributionCentre = distributioncentre,
+                            PackageName = typename,
+                            Quantity = quantity,
+                            Value = value
+                        };
+                        list.Add(type);
+                    }
+                }
+            }
+            return list;
+        }
 		#endregion
 	}
 }
