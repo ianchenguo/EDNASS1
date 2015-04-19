@@ -31,6 +31,24 @@ namespace ENETCare.Presentation.DoctorFeatures {
         protected global::System.Web.UI.WebControls.TextBox DoctorSendBarcodeTextBox;
         
         /// <summary>
+        /// DoctorSendDateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DoctorSendDateLabel;
+        
+        /// <summary>
+        /// DoctorSendPackageDateTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DoctorSendPackageDateTextBox;
+        
+        /// <summary>
         /// DoctorSendButton control.
         /// </summary>
         /// <remarks>

@@ -22,7 +22,7 @@ namespace ENETCare.Presentation.DoctorFeatures
             try
             {
                 medicationPackageBLL.ReceivePackage(DoctorReceivebarcode);
-                Response.Redirect("DoctorHome.aspx");
+                //Response.Redirect("DoctorHome.aspx");
             }
             catch (Exception ex)
             {
