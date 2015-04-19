@@ -71,7 +71,10 @@
                 </div>--%>
                 <!-- the following link should be optimised -->
                 <p>
+                    &nbsp;</p>
+                <p>
                     <asp:Label ID="AgentRegisterMessage" runat="server" />
+                    <asp:Image ID="AgentRegisterBarcodeImage" runat="server" />
                 </p>
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <%--<asp:Button ID="NedPackageRegisterSubmit" runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />--%>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 using ENETCare.Business;
 
 namespace ENETCare.Presentation.AgentFeatures
@@ -22,6 +23,7 @@ namespace ENETCare.Presentation.AgentFeatures
 				AgentPackageRegisterPackageTypeDropDwonList.DataBind();
 			}
         }
+
         //protected void Submit(object sender, EventArgs e)
         //{
         //    //what's this for?
@@ -36,16 +38,31 @@ namespace ENETCare.Presentation.AgentFeatures
         protected void AgentRegisterButton_Click(object sender, EventArgs e)
         {
             string medicationType = AgentPackageRegisterPackageTypeDropDwonList.SelectedValue;
-            string expireDate = NedPackageRegisterFormExpireDate.Text;
+            string originalDateStr = NedPackageRegisterFormExpireDate.Text;
+            string expireDate = FormatDateStr(originalDateStr);
             try
             {
-                medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
-                Response.Redirect("AgentHome.aspx");
+                string barcodeUnique = medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
+                AgentRegisterBarcodeImage.ImageUrl = string.Format("~/Layout/PresentBarcode.aspx?barcode={0}", barcodeUnique);
+                if(barcodeUnique != null){
+                    Response.Write(expireDate);
+                    AgentRegisterMessage.Text = AgentPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
+                }
+                //Response.Redirect("AgentHome.aspx");
             }
             catch (Exception ex)
             {
                 Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
             }
+        }
+
+        private string FormatDateStr(string theDateStr)
+        {
+            string patternDate = "yyyy-MM-dd";
+            DateTime convertDate = DateTime.ParseExact(theDateStr, patternDate, null, DateTimeStyles.None);
+            string FormatedStr = convertDate.ToString();
+                
+            return FormatedStr;
         }
     }
 }
