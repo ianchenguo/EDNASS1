@@ -16,6 +16,20 @@ namespace ENETCare.Presentation.AgentFeatures
         protected void Page_Load(object sender, EventArgs e)
         {
             AgentTestStockTaking = new MedicationPackageBLL("LoginUserName");
+            this.BindStockTakingDataSource();
+        }
+
+        protected void AgentTestGV_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteRow")
+            {
+                AgentTestStockTaking.DiscardPackage(e.CommandArgument.ToString());
+                this.BindStockTakingDataSource();
+            }
+        }
+
+        private void BindStockTakingDataSource()
+        {
             AgentTestGV.DataSource = AgentTestStockTaking.Stocktake();
             AgentTestGV.DataBind();
         }

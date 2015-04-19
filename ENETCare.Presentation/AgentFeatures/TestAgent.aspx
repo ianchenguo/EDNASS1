@@ -15,11 +15,12 @@
         </Columns>
     </asp:GridView>--%>
 
-    <asp:GridView ID="AgentTestGV" runat="server">
+    <asp:GridView ID="AgentTestGV" runat="server" OnRowCommand="AgentTestGV_RowCommand">
         <Columns>
             <asp:TemplateField HeaderText="Delete Expired">
                 <ItemTemplate>
-                    <asp:LinkButton ID="AgentStockTakingDelete" Text="Delet" runat="server" Font-Italic="true" OnClientClick="return confirm('Are you sure?')" />
+                    <asp:LinkButton ID="lbDelete" CausesValidation="false" OnClientClick ="return confirm('Are you sure you want to delete it?');" 
+                        CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delet" ForeColor="#cc0000" runat="server" Font-Italic="true" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
