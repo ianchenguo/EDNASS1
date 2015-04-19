@@ -44,9 +44,11 @@ namespace ENETCare.Business
 				conn.Open();
 				string query = @"select Barcode, Type, ExpireDate
 								   from MedicationPackage
-								  where StockDC = @id";
+								  where StockDC = @id
+									and Status = @status";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					while (reader.Read())

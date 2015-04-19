@@ -38,6 +38,7 @@
       <HintPath>..\packages\Aspose.BarCode.6.8.0\lib\net4.5\Aspose.BarCode.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
