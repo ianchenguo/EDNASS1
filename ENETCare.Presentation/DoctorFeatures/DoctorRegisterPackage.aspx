@@ -44,6 +44,7 @@
                 <!-- the following link should be optimised -->
                 <p>
                     <asp:Label ID="DoctorRegisterMessage" runat="server" />
+                    <asp:Image ID="DoctorRegisterBarcodeImage" runat="server" />
                 </p>
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="DoctorHome.aspx">Cancel</a>
                 <asp:Button ID="DoctorRegisterButton" runat="server" OnClick="DoctorRegisterButton_Click"

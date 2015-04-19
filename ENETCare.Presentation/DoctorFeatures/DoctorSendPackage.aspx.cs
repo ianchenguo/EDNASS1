@@ -21,6 +21,7 @@ namespace ENETCare.Presentation.DoctorFeatures
                 DoctorPackageSendingDestination.DataValueField = "ID";
                 DoctorPackageSendingDestination.DataBind();
             }
+            DoctorSendPackageDateTextBox.Text = DateTime.Now.ToShortDateString();
         }
 
         protected void DoctorSendButton_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace ENETCare.Presentation.DoctorFeatures
             try
             {
                 medicationPackageBLL.SendPackage(DoctorSendingPackageBarcode, Convert.ToInt32(distributionCentre));
-                Response.Redirect("DoctorHome.aspx");
+                //Response.Redirect("DoctorHome.aspx");
             }
             catch (Exception ex)
             {

@@ -26,6 +26,10 @@
     float: none !important;
 }
 
+.AgentStockTaking {
+    text-align:center;
+}
+
 @media (min-width: 768px) {
     .col-sm-height {
         display: table-cell;

@@ -26,7 +26,7 @@
                         <asp:TextBox ID="DoctorSendBarcodeTextBox" runat="server"></asp:TextBox>
                 </div>
 
-                <div class="form-group">
+               <%-- <div class="form-group">
                     <label for="ned-package-send-form-type" class="col-xs-3">Package Type</label>
 
                     <div class="col-xs-9">
@@ -50,14 +50,13 @@
                         <input class="form-control" id="ned-package-send-form-value" type="text"
                             placeholder="Value in AUD" disabled />
                     </div>
-                </div>
+                </div>--%>
 
                 <div class="form-group">
-                    <label for="ned-package-send-form-barcode" class="col-xs-3">Package Barcode</label>
+                    <asp:Label ID="DoctorSendDateLabel" Text="&nbsp;&nbsp;&nbsp;&nbsp;Send Date" runat="server" Font-Bold="true" />
 
                     <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-send-form-barcode" type="text"
-                            placeholder="Package Barcode" />
+                        <asp:TextBox ID="DoctorSendPackageDateTextBox" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
                 <!-- the following link should be optimised -->

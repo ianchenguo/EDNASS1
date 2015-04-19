@@ -28,7 +28,7 @@ namespace ENETCare.Presentation.AgentFeatures
             try
             {
                 medicationPackageBLL.ReceivePackage(AgentReceivePackageBarcode);
-                Response.Redirect("AgentHome.aspx");
+                //Response.Redirect("AgentHome.aspx");
             }
             catch (Exception ex)
             {

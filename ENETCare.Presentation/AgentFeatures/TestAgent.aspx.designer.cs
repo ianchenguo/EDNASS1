@@ -10,15 +10,15 @@
 namespace ENETCare.Presentation.AgentFeatures {
     
     
-    public partial class AgentViewReport {
+    public partial class TestAgent {
         
         /// <summary>
-        /// AgentReportStockTakingGV control.
+        /// AgentTestGV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AgentReportStockTakingGV;
+        protected global::System.Web.UI.WebControls.GridView AgentTestGV;
     }
 }

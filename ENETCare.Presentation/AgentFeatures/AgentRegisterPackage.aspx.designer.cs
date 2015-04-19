@@ -40,6 +40,15 @@ namespace ENETCare.Presentation.AgentFeatures {
         protected global::System.Web.UI.WebControls.Label AgentRegisterMessage;
         
         /// <summary>
+        /// AgentRegisterBarcodeImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image AgentRegisterBarcodeImage;
+        
+        /// <summary>
         /// AgentRegisterButton control.
         /// </summary>
         /// <remarks>

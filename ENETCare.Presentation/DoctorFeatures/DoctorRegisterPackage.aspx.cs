@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
+using System.Globalization;
 
 namespace ENETCare.Presentation.DoctorFeatures
 {
@@ -26,16 +27,32 @@ namespace ENETCare.Presentation.DoctorFeatures
         protected void DoctorRegisterButton_Click(object sender, EventArgs e)
         {
             string medicationType = DoctorRegisterPackageTypeDropDownList.SelectedValue;
-            string expireDate = DoctorRegisterPackageFormExpireDateTextBox.Text;
+            string DoctorOriginalExpireDate = DoctorRegisterPackageFormExpireDateTextBox.Text;
+            string expireDate = FormatDateStr(DoctorOriginalExpireDate);
             try
             {
-                medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
-                Response.Redirect("DoctorHome.aspx");
+                string barcodeUnique = medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
+                DoctorRegisterBarcodeImage.ImageUrl = string.Format("~/Layout/PresentBarcode.aspx?barcode={0}", barcodeUnique);
+                //Response.Redirect("DoctorHome.aspx");
+                if (barcodeUnique != null)
+                {
+                    //Response.Write(expireDate);
+                    DoctorRegisterMessage.Text = DoctorRegisterPackageTypeDropDownList.SelectedItem.ToString();
+                }
             }
             catch (Exception ex)
             {
                 Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
             }
+        }
+
+        private string FormatDateStr(string theDateStr)
+        {
+            string patternDate = "yyyy-MM-dd";
+            DateTime convertDate = DateTime.ParseExact(theDateStr, patternDate, null, DateTimeStyles.None);
+            string FormatedStr = convertDate.ToString();
+
+            return FormatedStr;
         }
     }
 }

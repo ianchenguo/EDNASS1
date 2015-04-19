@@ -10,9 +10,28 @@ namespace ENETCare.Presentation.AgentFeatures
 {
     public partial class AgentViewReport : System.Web.UI.Page
     {
+        private MedicationPackageBLL AgentReportStockTaking;
         protected void Page_Load(object sender, EventArgs e)
         {
+            AgentReportStockTaking = new MedicationPackageBLL("LoginUserName");
+            if(!IsPostBack)
+            {
+                this.AgentReportStockTakeDataBind();
+            }
+        }
+        private void AgentReportStockTakeDataBind()
+        {
+            AgentReportStockTakingGV.DataSource = AgentReportStockTaking.Stocktake();
+            AgentReportStockTakingGV.DataBind();
+        }
 
+        protected void AgentReportStockTakingGV_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteRow")
+            {
+                AgentReportStockTaking.DiscardPackage(e.CommandArgument.ToString());
+                this.AgentReportStockTakeDataBind();
+            }
         }
     }
 }
