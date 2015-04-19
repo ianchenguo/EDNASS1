@@ -17,14 +17,14 @@
                 <div class="form-group col-xs-12">
                     <asp:Label ID="AgentSendPackageDestination" runat="server" Text="Destination: "></asp:Label>
 
-                    <asp:DropDownList ID="AgentSendingDropDownList" runat="server" OnSelectedIndexChanged="AgentSendingDropDownList_SelectedIndexChanged">
+                    <asp:DropDownList ID="AgentSendingDropDownList" runat="server">
                         <asp:ListItem>Please Select</asp:ListItem>
                     </asp:DropDownList>
                     Barcode:
                         <asp:TextBox ID="AgentSendPackageTypebarcode" runat="server"></asp:TextBox>
                 </div>
 
-                <div class="form-group">
+                <%--<div class="form-group">
                     <asp:Label AssociatedControlID="AgentSendPackageTypeTextBox" runat="server" Text="Package Type: " CssClass="col-xs-3"></asp:Label>
 
                     <div class="col-xs-9">
@@ -46,13 +46,13 @@
                     <div class="col-xs-9">
                         <asp:TextBox ID="AgentSendPackagePriceTextBox" CssClass="form-control" runat="server" ReadOnly="true" TextMode="Number"></asp:TextBox>
                     </div>
-                </div>
+                </div>--%>
 
                 <div class="form-group">
                     <asp:Label AssociatedControlID="AgentSendPackageDateTextBox" runat="server" Text="Send Date: " CssClass="col-xs-3"></asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:TextBox ID="AgentSendPackageDateTextBox" CssClass="form-control" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="AgentSendPackageDateTextBox" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                     </div>
                 </div>
 
@@ -60,8 +60,10 @@
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <asp:Button ID="AgentSendPackageTypeButton" runat="server" OnClick="AgentSendPackageTypeButton_Click"
                     Text="Agent Send" CssClass="btn btn-success btn-float-right" />
-
             </div>
+            <%--<div>
+                <asp:GridView ID="SmpGV" runat="server"></asp:GridView>
+            </div>--%>
         </div>
         <!--panel-body-end-->
     </div>

@@ -20,7 +20,7 @@
                     <asp:TextBox ID="AgentReceivePackagesBarcode" runat="server"></asp:TextBox>
                 </div>
 
-                <div class="form-group">
+                <%--<div class="form-group">
                     <label for="ned-package-receive-form-from" class="col-xs-3">From</label>
 
                     <div class="col-xs-9">
@@ -53,7 +53,7 @@
                         <input class="form-control" id="ned-package-receive-form-value" type="text"
                             placeholder="Value in AUD" readonly />
                     </div>
-                </div>
+                </div>--%>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentHome.aspx">Cancel</a>
                 <%--<asp:Button ID="" runat="server" OnClick="AgentReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right" />--%>

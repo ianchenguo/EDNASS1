@@ -40,33 +40,6 @@ namespace ENETCare.Presentation.AgentFeatures {
         protected global::System.Web.UI.WebControls.TextBox AgentSendPackageTypebarcode;
         
         /// <summary>
-        /// AgentSendPackageTypeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageTypeTextBox;
-        
-        /// <summary>
-        /// AgentSendPackageExpirationDateTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgentSendPackageExpirationDateTextBox;
-        
-        /// <summary>
-        /// AgentSendPackagePriceTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AgentSendPackagePriceTextBox;
-        
-        /// <summary>
         /// AgentSendPackageDateTextBox control.
         /// </summary>
         /// <remarks>
