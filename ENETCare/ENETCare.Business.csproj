@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BLL\ReportBLL.cs" />
     <Compile Include="DAL\DBSchema.cs" />
+    <Compile Include="Entity\Report.cs" />
     <Compile Include="Helper\BarcodeHelper.cs" />
     <Compile Include="DAL\DAOFactory.cs" />
     <Compile Include="BLL\EmployeeBLL.cs" />

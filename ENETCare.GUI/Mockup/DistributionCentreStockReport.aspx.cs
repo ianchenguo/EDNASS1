@@ -22,6 +22,20 @@ namespace ENETCare.GUI.Mockup
 				DistributionCentreDropDownList.DataTextField = "Name";
 				DistributionCentreDropDownList.DataValueField = "ID";
 				DistributionCentreDropDownList.DataBind();
+
+				try
+				{
+					reportBLL = new ReportBLL();
+					List<DistributionCentreStockViewData> list = reportBLL.GlobalStock();
+					string total = list.Sum(type => type.Value).ToString();
+					GridView2.DataSource = list;
+					GridView2.DataBind();
+					Label2.Text = total;
+				}
+				catch (Exception ex)
+				{
+					Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+				}
 			}
 			
 		}
@@ -32,8 +46,11 @@ namespace ENETCare.GUI.Mockup
 			try
 			{
 				reportBLL = new ReportBLL();
-				GridView1.DataSource = reportBLL.DistributionCentreStock(Convert.ToInt32(distributionCentre));
+				List<DistributionCentreStockViewData> list = reportBLL.DistributionCentreStock(Convert.ToInt32(distributionCentre));
+				string total = list.Sum(type => type.Value).ToString();
+				GridView1.DataSource = list;
 				GridView1.DataBind();
+				Label1.Text = total;
 			}
 			catch (Exception ex)
 			{

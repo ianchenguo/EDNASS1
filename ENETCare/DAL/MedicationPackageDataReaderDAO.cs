@@ -33,10 +33,10 @@ namespace ENETCare.Business
 			}
 			return packageList;
 		}
-		
-		public List<object> FindPackagesInDistributionCentre(int distributionCentreId)
+
+		public List<StocktakingViewData> FindPackagesInDistributionCentre(int distributionCentreId)
 		{
-			List<object> packageList = new List<object>();
+			List<StocktakingViewData> packageList = new List<StocktakingViewData>();
 			const int warningDays = 7;
 			using (SqlConnection conn = new SqlConnection())
 			{
@@ -56,16 +56,16 @@ namespace ENETCare.Business
 						string barcode = reader.GetString(0);
 						string type = GetMedicationTypeByID(reader.GetInt32(1)).Name;
 						DateTime expireDate = reader.GetDateTime(2);
-						string expireStatus = "NotExpired";
+						ExpireStatus expireStatus = ExpireStatus.NotExpired;
 						if (DateTime.Now > expireDate)
 						{
-							expireStatus = "Expired";
+							expireStatus = ExpireStatus.Expired;
 						}
 						else if (DateTime.Now.AddDays(warningDays) > expireDate)
 						{
-							expireStatus = "AboutToExpired";
+							expireStatus = ExpireStatus.AboutToExpired;
 						}
-						var package = new
+						var package = new StocktakingViewData
 						{
 							Barcode = barcode,
 							Type = type,
@@ -190,13 +190,15 @@ namespace ENETCare.Business
 
 		#region Report
 
-		/*
-		 * This report shows the quantity and total value for each product type in stock at a given distribution centre. 
-		 * It also has a grand total for all products at the distribution centre.
-		 */
-		public List<object> DistributionCentreStockReport(int distributionCentreId)
+		/// <summary>
+		/// This report shows the quantity and total value for each product type in stock at a given distribution centre. 
+		/// It also has a grand total for all products at the distribution centre.
+		/// </summary>
+		/// <param name="distributionCentreId"></param>
+		/// <returns></returns>
+		public List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId)
 		{
-			List<object> list = new List<object>();
+			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
 			using (SqlConnection conn = new SqlConnection())
 			{
 				conn.ConnectionString = connectionString;
@@ -204,23 +206,21 @@ namespace ENETCare.Business
 				string query = @"select b.Name, count(*), sum(b.Value)
 								   from MedicationPackage a, MedicationType b
 								  where a.Type = b.Id
-									and a.Status = 0
 									and a.StockDC = @id
+									and a.Status = @status
 								  group by b.Name";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					while (reader.Read())
 					{
-						string name = reader.GetString(0);
-						int quantity = reader.GetInt32(1);
-						decimal value = reader.GetDecimal(2);
-						var type = new
+						var type = new DistributionCentreStockViewData
 						{
-							Name = name,
-							Quantity = quantity,
-							Value = value
+							Type = reader.GetString(0),
+							Quantity = reader.GetInt32(1),
+							Value = reader.GetDecimal(2)
 						};
 						list.Add(type);
 					}
@@ -229,43 +229,37 @@ namespace ENETCare.Business
 			return list;
 		}
 
-        public List<object> DistributionCentreGlobalStockReport(int distributionCentreId2)
-        {
-            List<object> list = new List<object>();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = connectionString;
-                conn.Open();
-                string query = @"select c.Name,b.Name, count(*), sum(b.Value)
-								   from MedicationPackage a, MedicationType b,DistributionCentre c
+		public List<DistributionCentreStockViewData> GlobalStockReport()
+		{
+			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string query = @"select b.Name, count(*), sum(b.Value)
+								   from MedicationPackage a, MedicationType b
 								  where a.Type = b.Id
-								    and c.Id = a.DestinationDC
-									and a.Status = 0
-									and a.StockDC = @id
-								  group by c.Name,b.Name";
-                SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.Add(new SqlParameter("id", distributionCentreId2));
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string distributioncentre = reader.GetString(0);
-                        string typename = reader.GetString(1);
-                        int quantity = reader.GetInt32(2);
-                        decimal value = reader.GetDecimal(3);
-                        var type = new
-                        {
-                            DistributionCentre = distributioncentre,
-                            PackageName = typename,
-                            Quantity = quantity,
-                            Value = value
-                        };
-                        list.Add(type);
-                    }
-                }
-            }
-            return list;
-        }
+									and a.Status = @status
+								  group by b.Name";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						var type = new DistributionCentreStockViewData
+						{
+							Type = reader.GetString(0),
+							Quantity = reader.GetInt32(1),
+							Value = reader.GetDecimal(2)
+						};
+						list.Add(type);
+					}
+				}
+			}
+			return list;
+		}
+
 		#endregion
 	}
 }

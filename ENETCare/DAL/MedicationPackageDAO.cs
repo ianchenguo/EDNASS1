@@ -9,11 +9,13 @@ namespace ENETCare.Business
 	public interface MedicationPackageDAO
 	{
 		List<MedicationPackage> FindAllPackages();
-		List<object> FindPackagesInDistributionCentre(int distributionCentreId);
+		List<StocktakingViewData> FindPackagesInDistributionCentre(int distributionCentreId);
 		List<MedicationPackage> FindPackages(int medicationTypeId, int distributionCentreId);
 		MedicationPackage FindPackageByBarcode(string barcode);
 		void InsertPackage(MedicationPackage package);
 		void UpdatePackage(MedicationPackage package);
-		List<object> DistributionCentreStockReport(int distributionCentreId);
+		List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId);
+		List<DistributionCentreStockViewData> GlobalStockReport();
+		
 	}
 }

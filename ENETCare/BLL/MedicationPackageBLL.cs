@@ -217,7 +217,7 @@ namespace ENETCare.Business
 
 		#region Stocktake
 
-		public List<object> Stocktake()
+		public List<StocktakingViewData> Stocktake()
 		{
 			return MedicationPackageDAO.FindPackagesInDistributionCentre(User.DistributionCentre.ID);
 		}
