@@ -17,7 +17,7 @@ namespace ENETCare.Business
 		public DistributionCentre SourceDC { get; set; }
 		public DistributionCentre DestinationDC { get; set; }
 		public DateTime UpdateTime { get; set; }
-		public int Operator { get; set; }
+		public string Operator { get; set; }
 	}
 
 	public enum PackageStatus

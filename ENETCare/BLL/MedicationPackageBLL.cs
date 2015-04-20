@@ -18,7 +18,7 @@ namespace ENETCare.Business
 
 		public MedicationPackageBLL(int userid)
 		{
-			User = new EmployeeDataReaderDAO().FindEmployeeByUserId(userid);
+			User = EmployeeDAO.FindEmployeeByUserId(userid);
 			if (User == null)
 			{
 				throw new Exception("Invalid current user");
@@ -27,7 +27,7 @@ namespace ENETCare.Business
 
 		public MedicationPackageBLL(string username)
 		{
-			User = new EmployeeDataReaderDAO().FindEmployeeByUserName(username);
+			User = EmployeeDAO.FindEmployeeByUserName(username);
 			if (User == null)
 			{
 				throw new Exception("Invalid current user");
@@ -51,6 +51,11 @@ namespace ENETCare.Business
 		DistributionCentreDAO DistributionCentreDAO
 		{
 			get { return DAOFactory.GetDistributionCentreDAO(); }
+		}
+
+		EmployeeDAO EmployeeDAO
+		{
+			get { return DAOFactory.GetEmployeeDAO(); }
 		}
 
 		#endregion
@@ -90,7 +95,7 @@ namespace ENETCare.Business
 			package.ExpireDate = expireDate;
 			package.Status = PackageStatus.InStock;
 			package.StockDC = User.DistributionCentre;
-			package.Operator = User.ID;
+			package.Operator = User.Username;
 			MedicationPackageDAO.InsertPackage(package);
 			return barcode;
 		}
