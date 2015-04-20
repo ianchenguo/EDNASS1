@@ -26,11 +26,27 @@ namespace ENETCare.GUI.Mockup
 				try
 				{
 					reportBLL = new ReportBLL();
-					List<DistributionCentreStockViewData> list = reportBLL.GlobalStock();
-					string total = list.Sum(type => type.Value).ToString();
-					GridView2.DataSource = list;
+					List<DistributionCentreStockViewData> list2 = reportBLL.GlobalStock();
+					string total2 = list2.Sum(type => type.Value).ToString();
+					GridView2.DataSource = list2;
 					GridView2.DataBind();
-					Label2.Text = total;
+					Label2.Text = total2;
+
+					List<DistributionCentreLossesViewData> list3 = reportBLL.DistributionCentreLosses();
+					GridView3.DataSource = list3;
+					GridView3.DataBind();
+
+					List<ValueInTransitViewData> list4 = reportBLL.ValueInTransit();
+					string total4 = list4.Sum(type => type.Value).ToString();
+					GridView4.DataSource = list4;
+					GridView4.DataBind();
+					Label4.Text = total4;
+
+					List<DistributionCentreStockViewData> list5 = reportBLL.DoctorActivity(1);
+					string total5 = list5.Sum(type => type.Value).ToString();
+					GridView5.DataSource = list5;
+					GridView5.DataBind();
+					Label5.Text = total5;
 				}
 				catch (Exception ex)
 				{

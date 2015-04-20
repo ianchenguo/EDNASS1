@@ -25,4 +25,20 @@ namespace ENETCare.Business
 		public int Quantity { get; set; }
 		public decimal Value { get; set; }
 	}
+
+	public class DistributionCentreLossesViewData
+	{
+		public string DistributionCentre { get; set; }
+		public decimal LossRatio { get; set; }
+		public decimal LossValue { get; set; }
+		public DistributionCentreRiskLevel RiskLevel { get; set; }
+	}
+
+	public class ValueInTransitViewData
+	{
+		public string FromDistributionCentre { get; set; }
+		public string ToDistributionCentre { get; set; }
+		public int Packages { get; set; }
+		public decimal Value { get; set; }
+	}
 }

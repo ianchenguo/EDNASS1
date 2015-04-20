@@ -90,6 +90,7 @@ namespace ENETCare.Business
 			package.ExpireDate = expireDate;
 			package.Status = PackageStatus.InStock;
 			package.StockDC = User.DistributionCentre;
+			package.Operator = User.ID;
 			MedicationPackageDAO.InsertPackage(package);
 			return barcode;
 		}

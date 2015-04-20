@@ -133,14 +133,15 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"insert into MedicationPackage (Barcode, Type, ExpireDate, Status, StockDC, UpdateTime)
-								 values (@barcode, @type, @expiredate, @status, @stockdc, getdate())";
+				string query = @"insert into MedicationPackage (Barcode, Type, ExpireDate, Status, StockDC, UpdateTime, Operator)
+								 values (@barcode, @type, @expiredate, @status, @stockdc, getdate(), @operator)";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("barcode", package.Barcode));
 				command.Parameters.Add(new SqlParameter("type", package.Type.ID));
 				command.Parameters.Add(new SqlParameter("expiredate", package.ExpireDate));
 				command.Parameters.Add(new SqlParameter("status", package.Status));
 				command.Parameters.Add(new SqlParameter("stockdc", package.StockDC.ID));
+				command.Parameters.Add(new SqlParameter("operator", package.Operator));
 				command.ExecuteNonQuery();
 			}
 		}
@@ -152,7 +153,7 @@ namespace ENETCare.Business
 				conn.ConnectionString = connectionString;
 				conn.Open();
 				string query = @"update MedicationPackage
-									set Status = @status, StockDC = @stockdc, SourceDC = @sourcedc, DestinationDC = @destinationdc, UpdateTime = getdate()
+									set Status = @status, StockDC = @stockdc, SourceDC = @sourcedc, DestinationDC = @destinationdc, UpdateTime = getdate(), Operator = @operator
 								  where ID = @id";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("id", package.ID));
@@ -160,6 +161,7 @@ namespace ENETCare.Business
 				command.Parameters.Add(new SqlParameter("stockdc", package.StockDC != null ? (object)package.StockDC.ID : DBNull.Value));
 				command.Parameters.Add(new SqlParameter("sourcedc", package.SourceDC != null ? (object)package.SourceDC.ID : DBNull.Value));
 				command.Parameters.Add(new SqlParameter("destinationdc", package.DestinationDC != null ? (object)package.DestinationDC.ID : DBNull.Value));
+				command.Parameters.Add(new SqlParameter("operator", package.Operator));
 				command.ExecuteNonQuery();
 			}
 		}
@@ -190,13 +192,23 @@ namespace ENETCare.Business
 
 		#region Report
 
+		DistributionCentreStockViewData GetDistributionCentreStockViewDataFromDataReader(SqlDataReader reader)
+		{
+			var row = new DistributionCentreStockViewData
+			{
+				Type = reader.GetString(0),
+				Quantity = reader.GetInt32(1),
+				Value = reader.GetDecimal(2)
+			};
+			return row;
+		}
+
 		/// <summary>
-		/// This report shows the quantity and total value for each product type in stock at a given distribution centre. 
-		/// It also has a grand total for all products at the distribution centre.
+		/// This report shows the quantity and total value for each product type in stock at a given distribution centre.
 		/// </summary>
 		/// <param name="distributionCentreId"></param>
 		/// <returns></returns>
-		public List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId)
+		public List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId, params PackageStatus[] statuses)
 		{
 			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
 			using (SqlConnection conn = new SqlConnection())
@@ -204,31 +216,36 @@ namespace ENETCare.Business
 				conn.ConnectionString = connectionString;
 				conn.Open();
 				string query = @"select b.Name, count(*), sum(b.Value)
-								   from MedicationPackage a, MedicationType b
-								  where a.Type = b.Id
-									and a.StockDC = @id
-									and a.Status = @status
+								   from MedicationPackage a
+								   join MedicationType b on a.Type = b.Id
+								  where a.StockDC = @id
+									and a.Status in ({0})
 								  group by b.Name";
-				SqlCommand command = new SqlCommand(query, conn);
+				string[] paramNames = statuses.Select((s, i) => "@status" + i.ToString()).ToArray();
+				string inClause = string.Join(",", paramNames);
+				string cmdText = string.Format(query, inClause);
+				SqlCommand command = new SqlCommand(cmdText, conn);
 				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
-				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
+				for (int i = 0; i < paramNames.Length; i++)
+				{
+					command.Parameters.Add(new SqlParameter(paramNames[i], statuses[i]));
+				}
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					while (reader.Read())
 					{
-						var type = new DistributionCentreStockViewData
-						{
-							Type = reader.GetString(0),
-							Quantity = reader.GetInt32(1),
-							Value = reader.GetDecimal(2)
-						};
-						list.Add(type);
+						DistributionCentreStockViewData row = GetDistributionCentreStockViewDataFromDataReader(reader);
+						list.Add(row);
 					}
 				}
 			}
 			return list;
 		}
 
+		/// <summary>
+		/// This report shows the quantity and total value for each product type in stock across all distribution centres.
+		/// </summary>
+		/// <returns></returns>
 		public List<DistributionCentreStockViewData> GlobalStockReport()
 		{
 			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
@@ -237,9 +254,9 @@ namespace ENETCare.Business
 				conn.ConnectionString = connectionString;
 				conn.Open();
 				string query = @"select b.Name, count(*), sum(b.Value)
-								   from MedicationPackage a, MedicationType b
-								  where a.Type = b.Id
-									and a.Status = @status
+								   from MedicationPackage a
+								   join MedicationType b on a.Type = b.Id
+								  where a.Status = @status
 								  group by b.Name";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
@@ -247,13 +264,76 @@ namespace ENETCare.Business
 				{
 					while (reader.Read())
 					{
-						var type = new DistributionCentreStockViewData
+						DistributionCentreStockViewData row = GetDistributionCentreStockViewDataFromDataReader(reader);
+						list.Add(row);
+					}
+				}
+			}
+			return list;
+		}
+
+		/// <summary>
+		/// This report shows the quantity, package types and values of packages distributed by a given doctor.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public List<DistributionCentreStockViewData> DoctorActivityReport(int userId)
+		{
+			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string query = @"select b.Name, count(*), sum(b.Value)
+								   from MedicationPackage a
+								   join MedicationType b on a.Type = b.Id
+								  where a.Operator = @id
+									and a.Status = @status
+								  group by b.Name";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("id", userId));
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.Distributed));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						DistributionCentreStockViewData row = GetDistributionCentreStockViewDataFromDataReader(reader);
+						list.Add(row);
+					}
+				}
+			}
+			return list;
+		}
+		
+		public List<ValueInTransitViewData> DistributionCentreTransit()
+		{
+			List<ValueInTransitViewData> list = new List<ValueInTransitViewData>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string query = @"select y1.Name, y2.Name, x.Packages, x.Value
+								   from (select a.SourceDC, a.DestinationDC, count(*) Packages, sum(b.Value) Value
+										   from MedicationPackage a
+										   join MedicationType b on a.Type = b.Id
+										  where a.Status = @status
+										  group by a.SourceDC, a.DestinationDC) x
+								   join DistributionCentre y1 ON x.SourceDC = y1.Id
+								   join DistributionCentre y2 ON x.DestinationDC = y2.Id";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.InTransit));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						var row = new ValueInTransitViewData
 						{
-							Type = reader.GetString(0),
-							Quantity = reader.GetInt32(1),
-							Value = reader.GetDecimal(2)
+							FromDistributionCentre = reader.GetString(0),
+							ToDistributionCentre = reader.GetString(1),
+							Packages = reader.GetInt32(2),
+							Value = reader.GetDecimal(3)
 						};
-						list.Add(type);
+						list.Add(row);
 					}
 				}
 			}

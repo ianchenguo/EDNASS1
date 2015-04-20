@@ -34,8 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-// Make the assembly internals visible to following projects.
-[assembly: InternalsVisibleTo("ENETCare.GUI")]
-[assembly: InternalsVisibleTo("ENETCare.Presentation")]
-[assembly: InternalsVisibleTo("ENETCareTest")]

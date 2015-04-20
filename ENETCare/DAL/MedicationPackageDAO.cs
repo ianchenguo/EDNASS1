@@ -14,8 +14,9 @@ namespace ENETCare.Business
 		MedicationPackage FindPackageByBarcode(string barcode);
 		void InsertPackage(MedicationPackage package);
 		void UpdatePackage(MedicationPackage package);
-		List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId);
+		List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId, params PackageStatus[] statuses);
 		List<DistributionCentreStockViewData> GlobalStockReport();
-		
+		List<DistributionCentreStockViewData> DoctorActivityReport(int userId);
+		List<ValueInTransitViewData> DistributionCentreTransit();
 	}
 }

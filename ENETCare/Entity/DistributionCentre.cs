@@ -13,4 +13,10 @@ namespace ENETCare.Business
 		public string Address { get; set; }
 		public string Phone { get; set; }
 	}
+
+	public enum DistributionCentreRiskLevel
+	{
+		Low = 0,
+		High = 1
+	};
 }
