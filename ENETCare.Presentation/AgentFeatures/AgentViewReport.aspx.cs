@@ -13,7 +13,7 @@ namespace ENETCare.Presentation.AgentFeatures
         private MedicationPackageBLL AgentReportStockTaking;
         protected void Page_Load(object sender, EventArgs e)
         {
-            AgentReportStockTaking = new MedicationPackageBLL("LoginUserName");
+            AgentReportStockTaking = new MedicationPackageBLL(User.Identity.Name);
             if(!IsPostBack)
             {
                 this.AgentReportStockTakeDataBind();

@@ -13,7 +13,7 @@ namespace ENETCare.Presentation.AgentFeatures
         private MedicationPackageBLL medicationPackageBLL;
         protected void Page_Load(object sender, EventArgs e)
         {
-            medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
+            medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
             if (!Page.IsPostBack)
             {
                 AgentSendingDropDownList.DataSource = new DistributionCentreBLL().GetDistributionCentreList();

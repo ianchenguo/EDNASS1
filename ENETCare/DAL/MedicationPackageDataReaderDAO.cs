@@ -19,7 +19,7 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), UpdateTime
+				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
 								   from MedicationPackage";
 				SqlCommand command = new SqlCommand(query, conn);
 				using (SqlDataReader reader = command.ExecuteReader())
@@ -86,7 +86,7 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), UpdateTime
+				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
 								   from MedicationPackage
 								  where Type = @type
 									and StockDC = @dc";
@@ -111,7 +111,7 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), UpdateTime
+				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
 								   from MedicationPackage
 								  where Barcode = @barcode";
 				SqlCommand command = new SqlCommand(query, conn);
@@ -177,6 +177,7 @@ namespace ENETCare.Business
 			package.StockDC = GetDistributionCentreByID(reader.GetInt32(5));
 			package.SourceDC = GetDistributionCentreByID(reader.GetInt32(6));
 			package.DestinationDC = GetDistributionCentreByID(reader.GetInt32(7));
+			package.Operator = reader.GetString(8);
 			return package;
 		}
 

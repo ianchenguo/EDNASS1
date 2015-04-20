@@ -21,7 +21,7 @@ namespace ENETCare.Business
 			User = EmployeeDAO.FindEmployeeByUserId(userid);
 			if (User == null)
 			{
-				throw new Exception("Invalid current user");
+				throw new Exception("Invalid current user: " + userid);
 			}
 		}
 
@@ -30,7 +30,7 @@ namespace ENETCare.Business
 			User = EmployeeDAO.FindEmployeeByUserName(username);
 			if (User == null)
 			{
-				throw new Exception("Invalid current user");
+				throw new Exception("Invalid current user: " + username);
 			}
 		}
 
@@ -137,6 +137,7 @@ namespace ENETCare.Business
 			package.StockDC = null;
 			package.SourceDC = User.DistributionCentre;
 			package.DestinationDC = destination;
+			package.Operator = User.Username;
 			MedicationPackageDAO.UpdatePackage(package);
 		}
 
@@ -157,13 +158,13 @@ namespace ENETCare.Business
 			}
 			if (package.DestinationDC == null || package.DestinationDC.ID != User.DistributionCentre.ID)
 			{
-				// disabled for test purpose
-				//throw new Exception("Package not to distribution centre, the destinationDC is: " + package.DestinationDC.Name);
+				throw new Exception("Package not to distribution centre, the destinationDC is: " + package.DestinationDC.Name);
 			}
 			package.Status = PackageStatus.InStock;
 			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
+			package.Operator = User.Username;
 			MedicationPackageDAO.UpdatePackage(package);
 		}
 
@@ -190,6 +191,7 @@ namespace ENETCare.Business
 			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
+			package.Operator = User.Username;
 			MedicationPackageDAO.UpdatePackage(package);
 		}
 
@@ -216,6 +218,7 @@ namespace ENETCare.Business
 			package.StockDC = User.DistributionCentre;
 			package.SourceDC = null;
 			package.DestinationDC = null;
+			package.Operator = User.Username;
 			MedicationPackageDAO.UpdatePackage(package);
 		}
 
@@ -251,6 +254,7 @@ namespace ENETCare.Business
 				package.StockDC = User.DistributionCentre;
 				package.SourceDC = null;
 				package.DestinationDC = null;
+				package.Operator = User.Username;
 				MedicationPackageDAO.UpdatePackage(package);
 			}
 		}
