@@ -27,5 +27,10 @@ namespace ENETCare.Business
 		{
 			return new MedicationPackageDataReaderDAO();
 		}
+
+		public static ReportDAO GetReportDAO()
+		{
+			return new ReportDataReaderDAO();
+		}
 	}
 }

@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class Report
-	{
-		
-	}
-
 	public class StocktakingViewData
 	{
 		public string Barcode { get; set; }
@@ -19,18 +14,18 @@ namespace ENETCare.Business
 		public ExpireStatus ExpireStatus { get; set; }
 	}
 
-	public class DistributionCentreStockViewData
+	public class MedicationTypeViewData
 	{
 		public string Type { get; set; }
 		public int Quantity { get; set; }
 		public decimal Value { get; set; }
 	}
 
-	public class DistributionCentreLossesViewData
+	public class DistributionCentreLossViewData
 	{
 		public string DistributionCentre { get; set; }
-		public double LossRatio { get; set; }
 		public decimal LossValue { get; set; }
+		public double LossRatio { get; set; }
 		public DistributionCentreRiskLevel RiskLevel { get; set; }
 	}
 

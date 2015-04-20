@@ -19,9 +19,9 @@ namespace ENETCareTest
         public void FindEmployeeByUserName_Test()
         {
             var employeeone = new Mock<EmployeeDAO>();
-            employeeone.Setup(x => x.FindEmployeeByUserName("jeff")).Returns(new Employee());
-            employeeone.Object.FindEmployeeByUserName("jeff");
-            Assert.AreNotSame(new Employee(), employeeone.Object.FindEmployeeByUserName("jeff"));
+            employeeone.Setup(x => x.GetEmployeeByUserName("jeff")).Returns(new Employee());
+            employeeone.Object.GetEmployeeByUserName("jeff");
+            Assert.AreNotSame(new Employee(), employeeone.Object.GetEmployeeByUserName("jeff"));
         }
     }
 }

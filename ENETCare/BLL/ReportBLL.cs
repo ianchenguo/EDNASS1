@@ -8,44 +8,9 @@ namespace ENETCare.Business
 {
 	public class ReportBLL
 	{
-		#region Constructor
-
-		// This part should be changed according to Identity Framework
-		// Presentation should pass in a parameter standing for the current user
-		// So that the business layer could know who is the current user
-
-		Employee User { get; set; }
-
-		public ReportBLL()
+		ReportDAO ReportDAO
 		{
-
-		}
-
-		public ReportBLL(int userid)
-		{
-			User = new EmployeeDataReaderDAO().FindEmployeeByUserId(userid);
-			if (User == null)
-			{
-				throw new Exception("Invalid current user");
-			}
-		}
-
-		public ReportBLL(string username)
-		{
-			User = new EmployeeDataReaderDAO().FindEmployeeByUserName(username);
-			if (User == null)
-			{
-				throw new Exception("Invalid current user");
-			}
-		}
-
-		#endregion
-
-		#region Properties
-
-		MedicationPackageDAO MedicationPackageDAO
-		{
-			get { return DAOFactory.GetMedicationPackageDAO(); }
+			get { return DAOFactory.GetReportDAO(); }
 		}
 
 		MedicationTypeDAO MedicationTypeDAO
@@ -58,60 +23,57 @@ namespace ENETCare.Business
 			get { return DAOFactory.GetDistributionCentreDAO(); }
 		}
 
-		#endregion
-
-		#region Report
-
-		public List<DistributionCentreStockViewData> DistributionCentreStock(int distributionCentreId)
+		public List<MedicationTypeViewData> DistributionCentreStock(int distributionCentreId)
 		{
-			return MedicationPackageDAO.DistributionCentreStockReport(distributionCentreId, PackageStatus.InStock);
+			return ReportDAO.FindDistributionCentreStockByStatus(distributionCentreId, PackageStatus.InStock);
 		}
 
-		public List<DistributionCentreStockViewData> GlobalStock()
+		public List<MedicationTypeViewData> GlobalStock()
 		{
-			return MedicationPackageDAO.GlobalStockReport();
+			return ReportDAO.FindGlobalStock();
 		}
 
-		public List<DistributionCentreStockViewData> DoctorActivity(string username)
+		public List<DistributionCentreLossViewData> DistributionCentreLosses()
 		{
-			return MedicationPackageDAO.DoctorActivityReport(username);
-		}
-
-		public List<DistributionCentreLossesViewData> DistributionCentreLosses()
-		{
-			List<DistributionCentreLossesViewData> report = new List<DistributionCentreLossesViewData>();
-			List<DistributionCentre> distributionCentres = DistributionCentreDAO.FindAllDistributionCentres();
 			const double riskThreshold = 0.09;
+			List<DistributionCentreLossViewData> report = new List<DistributionCentreLossViewData>();
+			List<DistributionCentre> distributionCentres = DistributionCentreDAO.FindAllDistributionCentres();
+			
 			foreach (DistributionCentre distributionCentre in distributionCentres)
 			{
-				List<DistributionCentreStockViewData> listLoss = MedicationPackageDAO.DistributionCentreStockReport(distributionCentre.ID, PackageStatus.Discarded, PackageStatus.Lost);
-				decimal totalLoss = listLoss.Sum(type => type.Value);
-				List<DistributionCentreStockViewData> listTotal = MedicationPackageDAO.DistributionCentreStockReport(distributionCentre.ID, PackageStatus.Distributed, PackageStatus.Discarded, PackageStatus.Lost);
-				decimal totalTotal = listTotal.Sum(type => type.Value);
+				List<MedicationTypeViewData> lostList = ReportDAO.FindDistributionCentreStockByStatus(distributionCentre.ID, PackageStatus.Discarded, PackageStatus.Lost);
+				decimal lostTotal = lostList.Sum(type => type.Value);
+				List<MedicationTypeViewData> handledList = ReportDAO.FindDistributionCentreStockByStatus(distributionCentre.ID, PackageStatus.Distributed, PackageStatus.Discarded, PackageStatus.Lost);
+				decimal handledTotal = handledList.Sum(type => type.Value);
 				double lossRatio;
-				if (totalTotal == 0)
+				if (handledTotal == 0)
 				{
 					lossRatio = 0;
 				}
 				else
 				{
-					lossRatio = Convert.ToDouble(totalLoss / totalTotal);
+					lossRatio = Convert.ToDouble(lostTotal / handledTotal);
 				}
 				DistributionCentreRiskLevel riskLevel = DistributionCentreRiskLevel.Low;
 				if (Convert.ToDouble(lossRatio) > riskThreshold)
 				{
 					riskLevel = DistributionCentreRiskLevel.High;
 				}
-				report.Add(new DistributionCentreLossesViewData { DistributionCentre = distributionCentre.Name, LossRatio = lossRatio, LossValue = totalLoss, RiskLevel = riskLevel });
+				report.Add(new DistributionCentreLossViewData { DistributionCentre = distributionCentre.Name, LossRatio = lossRatio, LossValue = lostTotal, RiskLevel = riskLevel });
 			}
+
 			return report;
 		}
 
 		public List<ValueInTransitViewData> ValueInTransit()
 		{
-			return MedicationPackageDAO.DistributionCentreTransit();
+			return ReportDAO.FindAllValueInTransit();
 		}
 
-		#endregion
+		public List<MedicationTypeViewData> DoctorActivity(string username)
+		{
+			return ReportDAO.FindDoctorActivityByUserName(username);
+		}
+
 	}
 }

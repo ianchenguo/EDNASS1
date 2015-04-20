@@ -48,7 +48,7 @@ namespace ENETCare.Business
 				{
 					while (reader.Read())
 					{
-						return GetDistributionCentreFromDataReader(reader); ;
+						return GetDistributionCentreFromDataReader(reader);
 					}
 				}
 			}

@@ -12,5 +12,15 @@ namespace ENETCare.Business
 		{
 			get { return DAOFactory.GetEmployeeDAO(); }
 		}
+
+		public Employee GetEmployeeByUserName(string username)
+		{
+			return EmployeeDAO.GetEmployeeByUserName(username);
+		}
+
+		public List<Employee> GetEmployeeList()
+		{
+			return EmployeeDAO.FindAllEmployees();
+		}
 	}
 }

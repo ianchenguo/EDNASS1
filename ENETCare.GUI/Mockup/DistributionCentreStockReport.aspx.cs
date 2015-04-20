@@ -26,13 +26,13 @@ namespace ENETCare.GUI.Mockup
 				try
 				{
 					reportBLL = new ReportBLL();
-					List<DistributionCentreStockViewData> list2 = reportBLL.GlobalStock();
+					List<MedicationTypeViewData> list2 = reportBLL.GlobalStock();
 					string total2 = list2.Sum(type => type.Value).ToString();
 					GridView2.DataSource = list2;
 					GridView2.DataBind();
 					Label2.Text = total2;
 
-					List<DistributionCentreLossesViewData> list3 = reportBLL.DistributionCentreLosses();
+					List<DistributionCentreLossViewData> list3 = reportBLL.DistributionCentreLosses();
 					GridView3.DataSource = list3;
 					GridView3.DataBind();
 
@@ -42,7 +42,7 @@ namespace ENETCare.GUI.Mockup
 					GridView4.DataBind();
 					Label4.Text = total4;
 
-					List<DistributionCentreStockViewData> list5 = reportBLL.DoctorActivity("starcraft");
+					List<MedicationTypeViewData> list5 = reportBLL.DoctorActivity("starcraft");
 					string total5 = list5.Sum(type => type.Value).ToString();
 					GridView5.DataSource = list5;
 					GridView5.DataBind();
@@ -62,7 +62,7 @@ namespace ENETCare.GUI.Mockup
 			try
 			{
 				reportBLL = new ReportBLL();
-				List<DistributionCentreStockViewData> list = reportBLL.DistributionCentreStock(Convert.ToInt32(distributionCentre));
+				List<MedicationTypeViewData> list = reportBLL.DistributionCentreStock(Convert.ToInt32(distributionCentre));
 				string total = list.Sum(type => type.Value).ToString();
 				GridView1.DataSource = list;
 				GridView1.DataBind();

@@ -10,24 +10,11 @@ namespace ENETCare.Business
 	{
 		#region Constructor
 
-		// This part should be changed according to Identity Framework
-		// Presentation should pass in a parameter standing for the current user
-		// So that the business layer could know who is the current user
-
 		Employee User { get; set; }
-
-		public MedicationPackageBLL(int userid)
-		{
-			User = EmployeeDAO.FindEmployeeByUserId(userid);
-			if (User == null)
-			{
-				throw new Exception("Invalid current user: " + userid);
-			}
-		}
 
 		public MedicationPackageBLL(string username)
 		{
-			User = EmployeeDAO.FindEmployeeByUserName(username);
+			User = EmployeeDAO.GetEmployeeByUserName(username);
 			if (User == null)
 			{
 				throw new Exception("Invalid current user: " + username);

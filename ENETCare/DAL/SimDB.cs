@@ -60,7 +60,7 @@ namespace ENETCare.Business
 		public static void PrepareTestEmployee()
 		{
 			employee1 = new Employee();
-			employee1.ID = 1;
+			employee1.ID = "1";
 			employee1.Username = "starcraft";
 			employee1.Role = Role.Doctor;
 			employee1.Fullname = "StarCraft";
