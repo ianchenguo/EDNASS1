@@ -29,7 +29,7 @@ namespace ENETCare.Business
 	public class DistributionCentreLossesViewData
 	{
 		public string DistributionCentre { get; set; }
-		public decimal LossRatio { get; set; }
+		public double LossRatio { get; set; }
 		public decimal LossValue { get; set; }
 		public DistributionCentreRiskLevel RiskLevel { get; set; }
 	}

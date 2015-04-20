@@ -81,24 +81,24 @@ namespace ENETCare.Business
 		{
 			List<DistributionCentreLossesViewData> report = new List<DistributionCentreLossesViewData>();
 			List<DistributionCentre> distributionCentres = DistributionCentreDAO.FindAllDistributionCentres();
-			const decimal riskThreshold = 0.09m;
+			const double riskThreshold = 0.09;
 			foreach (DistributionCentre distributionCentre in distributionCentres)
 			{
 				List<DistributionCentreStockViewData> listLoss = MedicationPackageDAO.DistributionCentreStockReport(distributionCentre.ID, PackageStatus.Discarded, PackageStatus.Lost);
 				decimal totalLoss = listLoss.Sum(type => type.Value);
 				List<DistributionCentreStockViewData> listTotal = MedicationPackageDAO.DistributionCentreStockReport(distributionCentre.ID, PackageStatus.Distributed, PackageStatus.Discarded, PackageStatus.Lost);
 				decimal totalTotal = listTotal.Sum(type => type.Value);
-				decimal lossRatio;
-				if (totalTotal != 0)
-				{
-					lossRatio = totalLoss / totalTotal;
-				}
-				else
+				double lossRatio;
+				if (totalTotal == 0)
 				{
 					lossRatio = 0;
 				}
+				else
+				{
+					lossRatio = Convert.ToDouble(totalLoss / totalTotal);
+				}
 				DistributionCentreRiskLevel riskLevel = DistributionCentreRiskLevel.Low;
-				if (lossRatio > riskThreshold)
+				if (Convert.ToDouble(lossRatio) > riskThreshold)
 				{
 					riskLevel = DistributionCentreRiskLevel.High;
 				}
