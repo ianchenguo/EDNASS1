@@ -42,7 +42,7 @@ namespace ENETCare.GUI.Mockup
 					GridView4.DataBind();
 					Label4.Text = total4;
 
-					List<DistributionCentreStockViewData> list5 = reportBLL.DoctorActivity(1);
+					List<DistributionCentreStockViewData> list5 = reportBLL.DoctorActivity("starcraft");
 					string total5 = list5.Sum(type => type.Value).ToString();
 					GridView5.DataSource = list5;
 					GridView5.DataBind();

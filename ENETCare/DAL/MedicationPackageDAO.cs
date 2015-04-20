@@ -16,7 +16,7 @@ namespace ENETCare.Business
 		void UpdatePackage(MedicationPackage package);
 		List<DistributionCentreStockViewData> DistributionCentreStockReport(int distributionCentreId, params PackageStatus[] statuses);
 		List<DistributionCentreStockViewData> GlobalStockReport();
-		List<DistributionCentreStockViewData> DoctorActivityReport(int userId);
+		List<DistributionCentreStockViewData> DoctorActivityReport(string username);
 		List<ValueInTransitViewData> DistributionCentreTransit();
 	}
 }

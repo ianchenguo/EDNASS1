@@ -278,7 +278,7 @@ namespace ENETCare.Business
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <returns></returns>
-		public List<DistributionCentreStockViewData> DoctorActivityReport(int userId)
+		public List<DistributionCentreStockViewData> DoctorActivityReport(string username)
 		{
 			List<DistributionCentreStockViewData> list = new List<DistributionCentreStockViewData>();
 			using (SqlConnection conn = new SqlConnection())
@@ -292,7 +292,7 @@ namespace ENETCare.Business
 									and a.Status = @status
 								  group by b.Name";
 				SqlCommand command = new SqlCommand(query, conn);
-				command.Parameters.Add(new SqlParameter("id", userId));
+				command.Parameters.Add(new SqlParameter("id", username));
 				command.Parameters.Add(new SqlParameter("status", PackageStatus.Distributed));
 				using (SqlDataReader reader = command.ExecuteReader())
 				{

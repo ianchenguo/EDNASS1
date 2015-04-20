@@ -72,9 +72,9 @@ namespace ENETCare.Business
 			return MedicationPackageDAO.GlobalStockReport();
 		}
 
-		public List<DistributionCentreStockViewData> DoctorActivity(int userId)
+		public List<DistributionCentreStockViewData> DoctorActivity(string username)
 		{
-			return MedicationPackageDAO.DoctorActivityReport(userId);
+			return MedicationPackageDAO.DoctorActivityReport(username);
 		}
 
 		public List<DistributionCentreLossesViewData> DistributionCentreLosses()
