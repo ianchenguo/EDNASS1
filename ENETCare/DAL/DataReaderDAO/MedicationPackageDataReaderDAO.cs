@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +10,8 @@ namespace ENETCare.Business
 	public class MedicationPackageDataReaderDAO : MedicationPackageDAO
 	{
 		string connectionString = DBSchema.ConnectionString;
+		string selectStatement = "select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator";
+		string fromClause = "from MedicationPackage";
 
 		public List<MedicationPackage> FindAllPackages()
 		{
@@ -19,8 +20,7 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
-								   from MedicationPackage";
+				string query = string.Format("{0} {1}", selectStatement, fromClause);
 				SqlCommand command = new SqlCommand(query, conn);
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
@@ -33,66 +33,27 @@ namespace ENETCare.Business
 			}
 			return packageList;
 		}
-
-		public List<StocktakingViewData> FindPackagesInDistributionCentre(int distributionCentreId)
-		{
-			List<StocktakingViewData> packageList = new List<StocktakingViewData>();
-			const int warningDays = 7;
-			using (SqlConnection conn = new SqlConnection())
-			{
-				conn.ConnectionString = connectionString;
-				conn.Open();
-				string query = @"select Barcode, Type, ExpireDate
-								   from MedicationPackage
-								  where StockDC = @id
-									and Status = @status";
-				SqlCommand command = new SqlCommand(query, conn);
-				command.Parameters.Add(new SqlParameter("id", distributionCentreId));
-				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
-				using (SqlDataReader reader = command.ExecuteReader())
-				{
-					while (reader.Read())
-					{
-						string barcode = reader.GetString(0);
-						string type = GetMedicationTypeByID(reader.GetInt32(1)).Name;
-						DateTime expireDate = reader.GetDateTime(2);
-						ExpireStatus expireStatus = ExpireStatus.NotExpired;
-						if (DateTime.Now > expireDate)
-						{
-							expireStatus = ExpireStatus.Expired;
-						}
-						else if (DateTime.Now.AddDays(warningDays) > expireDate)
-						{
-							expireStatus = ExpireStatus.AboutToExpired;
-						}
-						var package = new StocktakingViewData
-						{
-							Barcode = barcode,
-							Type = type,
-							ExpireDate = expireDate.ToString("d", new CultureInfo("en-au")),
-							ExpireStatus = expireStatus
-						};
-						packageList.Add(package);
-					}
-				}
-			}
-			return packageList;
-		}
-
-		public List<MedicationPackage> FindPackages(int medicationTypeId, int distributionCentreId)
+		
+		public List<MedicationPackage> FindInStockPackagesInDistributionCentre(int distributionCentreId, int? medicationTypeId = null)
 		{
 			List<MedicationPackage> packageList = new List<MedicationPackage>();
 			using (SqlConnection conn = new SqlConnection())
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
-								   from MedicationPackage
-								  where Type = @type
-									and StockDC = @dc";
+				string whereClause = "where Status = @status and StockDC = @stockdc";
+				if (medicationTypeId != null)
+				{
+					whereClause += " and Type = @type";
+				}
+				string query = string.Format("{0} {1} {2}", selectStatement, fromClause, whereClause);
 				SqlCommand command = new SqlCommand(query, conn);
-				command.Parameters.Add(new SqlParameter("type", medicationTypeId));
-				command.Parameters.Add(new SqlParameter("dc", distributionCentreId));
+				command.Parameters.Add(new SqlParameter("status", PackageStatus.InStock));
+				command.Parameters.Add(new SqlParameter("stockdc", distributionCentreId));
+				if (medicationTypeId != null)
+				{
+					command.Parameters.Add(new SqlParameter("type", medicationTypeId));
+				}
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					while (reader.Read())
@@ -111,9 +72,8 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator
-								   from MedicationPackage
-								  where Barcode = @barcode";
+				string whereClause = "where Barcode = @barcode";
+				string query = string.Format("{0} {1} {2}", selectStatement, fromClause, whereClause);
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("barcode", barcode));
 				using (SqlDataReader reader = command.ExecuteReader())
@@ -133,8 +93,8 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"insert into MedicationPackage (Barcode, Type, ExpireDate, Status, StockDC, UpdateTime, Operator)
-								 values (@barcode, @type, @expiredate, @status, @stockdc, getdate(), @operator)";
+				string query = @"insert into MedicationPackage (Barcode, Type, ExpireDate, Status, StockDC, Operator, UpdateTime)
+								 values (@barcode, @type, @expiredate, @status, @stockdc, @operator, getdate())";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("barcode", package.Barcode));
 				command.Parameters.Add(new SqlParameter("type", package.Type.ID));
@@ -153,7 +113,7 @@ namespace ENETCare.Business
 				conn.ConnectionString = connectionString;
 				conn.Open();
 				string query = @"update MedicationPackage
-									set Status = @status, StockDC = @stockdc, SourceDC = @sourcedc, DestinationDC = @destinationdc, UpdateTime = getdate(), Operator = @operator
+									set Status = @status, StockDC = @stockdc, SourceDC = @sourcedc, DestinationDC = @destinationdc, Operator = @operator, UpdateTime = getdate()
 								  where ID = @id";
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("id", package.ID));

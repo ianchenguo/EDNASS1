@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -215,7 +216,30 @@ namespace ENETCare.Business
 
 		public List<StocktakingViewData> Stocktake()
 		{
-			return MedicationPackageDAO.FindPackagesInDistributionCentre(User.DistributionCentre.ID);
+			List<MedicationPackage> packages = MedicationPackageDAO.FindInStockPackagesInDistributionCentre(User.DistributionCentre.ID);
+			List<StocktakingViewData> list = new List<StocktakingViewData>();
+			const int warningDays = 7;
+			foreach (MedicationPackage package in packages)
+			{
+				ExpireStatus expireStatus = ExpireStatus.NotExpired;
+				if (DateTime.Now > package.ExpireDate)
+				{
+					expireStatus = ExpireStatus.Expired;
+				}
+				else if (DateTime.Now.AddDays(warningDays) > package.ExpireDate)
+				{
+					expireStatus = ExpireStatus.AboutToExpired;
+				}
+				var row = new StocktakingViewData
+				{
+					Barcode = package.Barcode,
+					Type = package.Type.Name,
+					ExpireDate = package.ExpireDate.ToString("d", new CultureInfo("en-au")),
+					ExpireStatus = expireStatus
+				};
+				list.Add(row);
+			}
+			return list;
 		}
 
 		#endregion
@@ -261,7 +285,7 @@ namespace ENETCare.Business
 
 		public List<MedicationPackage> GetInStockList(int medicationTypeId)
 		{
-			return MedicationPackageDAO.FindPackages(medicationTypeId, User.DistributionCentre.ID);
+			return MedicationPackageDAO.FindInStockPackagesInDistributionCentre(User.DistributionCentre.ID, medicationTypeId);
 		}
 
 		#endregion
