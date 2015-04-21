@@ -18,7 +18,7 @@ namespace ENETCare.Business
 			User = EmployeeDAO.GetEmployeeByUserName(username);
 			if (User == null)
 			{
-				throw new Exception("Invalid current user: " + username);
+				throw new ENETCareException("Invalid current user: " + username);
 			}
 		}
 
@@ -64,12 +64,12 @@ namespace ENETCare.Business
 			DateTime parsedExpireDate;
 			if (!DateTime.TryParse(expireDate, out parsedExpireDate))
 			{
-				throw new Exception("Invalid date format");
+				throw new ENETCareException("Invalid date format");
 			}
 			MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
 			if (medicationType == null)
 			{
-				throw new Exception("Invalid medication type");
+				throw new ENETCareException("Invalid medication type");
 			}
 			return RegisterPackage(medicationType, parsedExpireDate);
 		}
@@ -92,34 +92,37 @@ namespace ENETCare.Business
 
 		#region Send
 
-		public void SendPackage(string barcode, int distributionCentreId)
+		public void SendPackage(string barcode, int distributionCentreId, bool isTrusted = true)
 		{
 			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreById(distributionCentreId);
 			if (distributionCentre == null)
 			{
-				throw new Exception("Distribution Centre not found");
+				throw new ENETCareException("Distribution Centre not found");
 			}
-			SendPackage(barcode, distributionCentre);
+			SendPackage(barcode, distributionCentre, isTrusted);
 		}
 
-		void SendPackage(string barcode, DistributionCentre destination)
+		void SendPackage(string barcode, DistributionCentre destination, bool isTrusted)
 		{
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new Exception("Package not found");
+				throw new ENETCareException("Package not found");
 			}
-			if (package.Status != PackageStatus.InStock)
+			if (package.StockDC != null && package.StockDC.ID == destination.ID)
 			{
-				throw new Exception("Package not in stock, current status is: " + package.Status);
+				throw new ENETCareException("Choose a different distribution centre.");
 			}
-			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
+			if (!isTrusted)
 			{
-				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
-			}
-			if (package.StockDC.ID == destination.ID)
-			{
-				throw new Exception("Choose a different distribution centre.");
+				if (package.Status != PackageStatus.InStock)
+				{
+					throw new ENETCareException("Package status is not in stock");
+				}
+				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
+				{
+					throw new ENETCareException("Package not in distribution centre");
+				}
 			}
 			package.Status = PackageStatus.InTransit;
 			package.StockDC = null;
@@ -133,20 +136,23 @@ namespace ENETCare.Business
 
 		#region Receive
 
-		public void ReceivePackage(string barcode)
+		public void ReceivePackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new Exception("Package not found");
+				throw new ENETCareException("Package not found");
 			}
-			if (package.Status != PackageStatus.InTransit)
+			if (!isTrusted)
 			{
-				throw new Exception("Package not in transit, current status is: " + package.Status);
-			}
-			if (package.DestinationDC == null || package.DestinationDC.ID != User.DistributionCentre.ID)
-			{
-				throw new Exception("Package not to distribution centre, the destinationDC is: " + package.DestinationDC.Name);
+				if (package.Status != PackageStatus.InTransit)
+				{
+					throw new ENETCareException("Package not in transit");
+				}
+				if (package.DestinationDC == null || package.DestinationDC.ID != User.DistributionCentre.ID)
+				{
+					throw new ENETCareException("Package not to distribution centre");
+				}
 			}
 			package.Status = PackageStatus.InStock;
 			package.StockDC = User.DistributionCentre;
@@ -160,20 +166,23 @@ namespace ENETCare.Business
 
 		#region Distribute
 
-		public void DistributePackage(string barcode)
+		public void DistributePackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new Exception("Package not found");
+				throw new ENETCareException("Package not found");
 			}
-			if (package.Status != PackageStatus.InStock)
+			if (!isTrusted)
 			{
-				throw new Exception("Package not in stock, current status is: " + package.Status);
-			}
-			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
-			{
-				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
+				if (package.Status != PackageStatus.InStock)
+				{
+					throw new ENETCareException("Package not in stock");
+				}
+				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
+				{
+					throw new ENETCareException("Package not in distribution centre");
+				}
 			}
 			package.Status = PackageStatus.Distributed;
 			package.StockDC = User.DistributionCentre;
@@ -187,20 +196,23 @@ namespace ENETCare.Business
 
 		#region Discard
 
-		public void DiscardPackage(string barcode)
+		public void DiscardPackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new Exception("Package not found");
+				throw new ENETCareException("Package not found");
 			}
-			if (package.Status != PackageStatus.InStock)
+			if (!isTrusted)
 			{
-				throw new Exception("Package not in stock, current status is: " + package.Status);
-			}
-			if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
-			{
-				throw new Exception("Package not in distribution centre, the stockDC is: " + package.StockDC.Name);
+				if (package.Status != PackageStatus.InStock)
+				{
+					throw new ENETCareException("Package not in stock");
+				}
+				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
+				{
+					throw new ENETCareException("Package not in distribution centre");
+				}
 			}
 			package.Status = PackageStatus.Discarded;
 			package.StockDC = User.DistributionCentre;
@@ -257,7 +269,7 @@ namespace ENETCare.Business
 			}
 			else if (package.Type.ID != medicationTypeId)
 			{
-				throw new Exception("Package type not matched");
+				throw new ENETCareException("Package type not matched");
 			}
 			else if (package.Status != PackageStatus.InStock || package.StockDC.ID != User.DistributionCentre.ID)
 			{

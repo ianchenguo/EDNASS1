@@ -34,7 +34,7 @@ namespace ENETCare.GUI.Mockup
 				BarcodeImage.ImageUrl = string.Format("BarcodeImageMockup.aspx?barcode={0}", barcode);
 				//Response.Redirect("IndexMockup.aspx");
 			}
-			catch (Exception ex)
+			catch (ENETCareException ex)
 			{
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}

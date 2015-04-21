@@ -1,10 +1,17 @@
-﻿insert into DistributionCentre (Name, Address, Phone) values ('Liverpool Office', 'Macquarie Street, Liverpool NSW 2170', '96026633');
+﻿insert into DistributionCentre (Name, Address, Phone) values ('Head Office', 'Bennelong Point, Sydney NSW 2000', '92507111');
+insert into DistributionCentre (Name, Address, Phone) values ('Liverpool Office', 'Macquarie Street, Liverpool NSW 2170', '96026633');
 insert into DistributionCentre (Name, Address, Phone) values ('Glebe Office', '9-25 Derwent Street, Glebe NSW 2037', '96604549');
 insert into DistributionCentre (Name, Address, Phone) values ('Ultimo Office', '15 Broadway, Ultimo NSW 2007', '95142000');
+insert into DistributionCentre (Name, Address, Phone) values ('Bondi Office', '500 Oxford Street, Bondi Junction NSW 2022', '99478000');
 
-insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (1, 'starcraft', '', 'Jim Raynor', 'StarCraft@blizzard.com', 1);
+insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (1, 'hearthstone', '123456', 'Innkeeper', 'hearthstone@blizzard.com', 1);
+insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (1, 'diablo', '123456', 'Tyrael', 'diablo@blizzard.com', 2);
+insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (2, 'starcraft', '123456', 'Jim Raynor', 'starCraft@blizzard.com', 2);
+insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (2, 'warcraft', '123456', 'Jaina Proudmoore', 'warCraft@blizzard.com', 3);
+insert into Employee (Role, UserName, Password, Fullname, Email, DistributionCentre) values (3, 'heroes', '123456', 'ETC', 'heroes@blizzard.com', 1);
 
 insert into MedicationType (Name, ShelfLife, Value, IsSensitive) values ('100 polio vaccinations', 365, 500, 1);
 insert into MedicationType (Name, ShelfLife, Value, IsSensitive) values ('box of 500 x 28 pack chloroquine pills', 730, 3000, 0);
 insert into MedicationType (Name, ShelfLife, Value, IsSensitive) values ('10L Polyheme', 90, 100, 0);
 insert into MedicationType (Name, ShelfLife, Value, IsSensitive) values ('water purification kit', 3650, 10, 0);
+insert into MedicationType (Name, ShelfLife, Value, IsSensitive) values ('100 Panadol - 10 Capsules', 730, 200, 0);

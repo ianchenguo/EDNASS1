@@ -25,7 +25,7 @@ namespace ENETCare.GUI.Mockup
 				medicationPackageBLL.DistributePackage(barcode);
 				Response.Redirect("IndexMockup.aspx");
 			}
-			catch (Exception ex)
+			catch (ENETCareException ex)
 			{
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}

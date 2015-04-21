@@ -33,7 +33,7 @@ namespace ENETCare.GUI.Mockup
 				medicationPackageBLL.SendPackage(barcode, Convert.ToInt32(distributionCentre));
 				Response.Redirect("IndexMockup.aspx");
 			}
-			catch (Exception ex)
+			catch (ENETCareException ex)
 			{
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}

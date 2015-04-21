@@ -48,7 +48,7 @@ namespace ENETCare.GUI.Mockup
 					GridView5.DataBind();
 					Label5.Text = total5;
 				}
-				catch (Exception ex)
+				catch (ENETCareException ex)
 				{
 					Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 				}
@@ -68,7 +68,7 @@ namespace ENETCare.GUI.Mockup
 				GridView1.DataBind();
 				Label1.Text = total;
 			}
-			catch (Exception ex)
+			catch (ENETCareException ex)
 			{
 				Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
 			}

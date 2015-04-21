@@ -62,6 +62,7 @@ CREATE TABLE [dbo].[MedicationPackage](
 	[StockDC] [int] NULL,
 	[SourceDC] [int] NULL,
 	[DestinationDC] [int] NULL,
+	[Operator] [varchar](50) NOT NULL,
 	[Updatetime] [datetime] NOT NULL,
  CONSTRAINT [PK_MedicationPackage] PRIMARY KEY CLUSTERED 
 (
