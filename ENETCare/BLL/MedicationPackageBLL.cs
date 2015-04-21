@@ -18,7 +18,7 @@ namespace ENETCare.Business
 			User = EmployeeDAO.GetEmployeeByUserName(username);
 			if (User == null)
 			{
-				throw new ENETCareException("Invalid current user: " + username);
+				throw new ENETCareException(string.Format("{0}: {1}", Properties.Resources.InvalidUser, username));
 			}
 		}
 
@@ -64,12 +64,12 @@ namespace ENETCare.Business
 			DateTime parsedExpireDate;
 			if (!DateTime.TryParse(expireDate, out parsedExpireDate))
 			{
-				throw new ENETCareException("Invalid date format");
+				throw new ENETCareException(Properties.Resources.InvalidDateFormat);
 			}
 			MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
 			if (medicationType == null)
 			{
-				throw new ENETCareException("Invalid medication type");
+				throw new ENETCareException(Properties.Resources.MedicationTypeNotFound);
 			}
 			return RegisterPackage(medicationType, parsedExpireDate);
 		}
@@ -97,7 +97,7 @@ namespace ENETCare.Business
 			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreById(distributionCentreId);
 			if (distributionCentre == null)
 			{
-				throw new ENETCareException("Distribution Centre not found");
+				throw new ENETCareException(Properties.Resources.DistributionCentreNotFound);
 			}
 			SendPackage(barcode, distributionCentre, isTrusted);
 		}
@@ -107,21 +107,21 @@ namespace ENETCare.Business
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new ENETCareException("Package not found");
+				throw new ENETCareException(Properties.Resources.MedicationPackageNotFound);
 			}
-			if (package.StockDC != null && package.StockDC.ID == destination.ID)
+			if (User.DistributionCentre.ID == destination.ID)
 			{
-				throw new ENETCareException("Choose a different distribution centre.");
+				throw new ENETCareException(Properties.Resources.AnotherDistributionCentre);
 			}
 			if (!isTrusted)
 			{
 				if (package.Status != PackageStatus.InStock)
 				{
-					throw new ENETCareException("Package status is not in stock");
+					throw new ENETCareException(Properties.Resources.IncorrectPackageStatus);
 				}
 				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 				{
-					throw new ENETCareException("Package not in distribution centre");
+					throw new ENETCareException(Properties.Resources.IncorrectDistributionCentreStock);
 				}
 			}
 			package.Status = PackageStatus.InTransit;
@@ -141,17 +141,17 @@ namespace ENETCare.Business
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new ENETCareException("Package not found");
+				throw new ENETCareException(Properties.Resources.MedicationPackageNotFound);
 			}
 			if (!isTrusted)
 			{
 				if (package.Status != PackageStatus.InTransit)
 				{
-					throw new ENETCareException("Package not in transit");
+					throw new ENETCareException(Properties.Resources.IncorrectPackageStatus);
 				}
 				if (package.DestinationDC == null || package.DestinationDC.ID != User.DistributionCentre.ID)
 				{
-					throw new ENETCareException("Package not to distribution centre");
+					throw new ENETCareException(Properties.Resources.IncorrectDistributionCentreDestination);
 				}
 			}
 			package.Status = PackageStatus.InStock;
@@ -171,17 +171,17 @@ namespace ENETCare.Business
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new ENETCareException("Package not found");
+				throw new ENETCareException(Properties.Resources.MedicationPackageNotFound);
 			}
 			if (!isTrusted)
 			{
 				if (package.Status != PackageStatus.InStock)
 				{
-					throw new ENETCareException("Package not in stock");
+					throw new ENETCareException(Properties.Resources.IncorrectPackageStatus);
 				}
 				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 				{
-					throw new ENETCareException("Package not in distribution centre");
+					throw new ENETCareException(Properties.Resources.IncorrectDistributionCentreStock);
 				}
 			}
 			package.Status = PackageStatus.Distributed;
@@ -201,17 +201,17 @@ namespace ENETCare.Business
 			MedicationPackage package = ScanPackage(barcode);
 			if (package == null)
 			{
-				throw new ENETCareException("Package not found");
+				throw new ENETCareException(Properties.Resources.MedicationPackageNotFound);
 			}
 			if (!isTrusted)
 			{
 				if (package.Status != PackageStatus.InStock)
 				{
-					throw new ENETCareException("Package not in stock");
+					throw new ENETCareException(Properties.Resources.IncorrectPackageStatus);
 				}
 				if (package.StockDC == null || package.StockDC.ID != User.DistributionCentre.ID)
 				{
-					throw new ENETCareException("Package not in distribution centre");
+					throw new ENETCareException(Properties.Resources.IncorrectDistributionCentreStock);
 				}
 			}
 			package.Status = PackageStatus.Discarded;
@@ -269,7 +269,7 @@ namespace ENETCare.Business
 			}
 			else if (package.Type.ID != medicationTypeId)
 			{
-				throw new ENETCareException("Package type not matched");
+				throw new ENETCareException(Properties.Resources.MedicationTypeNotMatched);
 			}
 			else if (package.Status != PackageStatus.InStock || package.StockDC.ID != User.DistributionCentre.ID)
 			{
