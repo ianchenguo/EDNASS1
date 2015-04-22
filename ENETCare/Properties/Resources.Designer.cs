@@ -158,5 +158,32 @@ namespace ENETCare.Properties {
                 return ResourceManager.GetString("MedicationTypeNotMatched", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agent.
+        /// </summary>
+        internal static string RoleAgent {
+            get {
+                return ResourceManager.GetString("RoleAgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctor.
+        /// </summary>
+        internal static string RoleDoctor {
+            get {
+                return ResourceManager.GetString("RoleDoctor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manager.
+        /// </summary>
+        internal static string RoleManager {
+            get {
+                return ResourceManager.GetString("RoleManager", resourceCulture);
+            }
+        }
     }
 }

@@ -12,13 +12,13 @@ namespace ENETCareTest
 		[AssemblyInitialize]
 		public static void SetupDataDirectory(TestContext context)
 		{
-			AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(@"..\..\..\ENETCare.GUI\App_Data\"));
+			AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(@"..\..\..\ENETCare.Presentation\App_Data\"));
 		}
 
 		[TestMethod()]
 		public void Connection_OpenClose_Succeeds()
 		{
-			string connectionString = ConfigurationManager.ConnectionStrings["MockupDb"].ConnectionString;
+			string connectionString = ConfigurationManager.ConnectionStrings["LocalDb"].ConnectionString;
 			SqlConnection conn = new SqlConnection(connectionString);
 			conn.Open();
 			conn.Close();

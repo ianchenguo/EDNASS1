@@ -18,8 +18,9 @@ namespace ENETCare.Business
 
 	public enum Role
 	{
-		Agent,
-		Doctor,
-		Manager
+		Agent = 1,
+		Doctor = 2,
+		Manager = 3,
+		Undefined = 4
 	};
 }

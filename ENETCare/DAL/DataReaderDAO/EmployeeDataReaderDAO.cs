@@ -10,6 +10,10 @@ namespace ENETCare.Business
 	public class EmployeeDataReaderDAO : EmployeeDAO
 	{
 		string connectionString = DBSchema.ConnectionString;
+		string selectStatement = "select a.Id, a.UserName, a.Fullname, a.Email, a.DistributionCentre_ID, c.Name";
+		string fromClause = "from AspNetUsers a";
+		string joinClause1 = "join AspNetUserRoles b on a.Id = b.UserId";
+		string joinClause2 = "join AspNetRoles c on b.RoleId = c.Id";
 
 		public List<Employee> FindAllEmployees()
 		{
@@ -18,8 +22,7 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select Id, UserName, Fullname, Email, DistributionCentre_ID
-								   from AspNetUsers";
+				string query = string.Format("{0} {1} {2} {3}", selectStatement, fromClause, joinClause1, joinClause2);
 				SqlCommand command = new SqlCommand(query, conn);
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
@@ -39,9 +42,8 @@ namespace ENETCare.Business
 			{
 				conn.ConnectionString = connectionString;
 				conn.Open();
-				string query = @"select Id, UserName, Fullname, Email, DistributionCentre_ID
-								   from AspNetUsers
-								  where UserName = @username";
+				string whereClause = "where a.UserName = @username";
+				string query = string.Format("{0} {1} {2} {3} {4}", selectStatement, fromClause, joinClause1, joinClause2, whereClause);
 				SqlCommand command = new SqlCommand(query, conn);
 				command.Parameters.Add(new SqlParameter("username", username));
 				using (SqlDataReader reader = command.ExecuteReader())
@@ -75,7 +77,28 @@ namespace ENETCare.Business
 			employee.Fullname = reader.GetString(2);
 			employee.Email = reader.GetString(3);
 			employee.DistributionCentre = new DistributionCentreDataReaderDAO().GetDistributionCentreById(reader.GetInt32(4));
+			employee.Role = GetRoleFromRoleName(reader.GetString(5));
 			return employee;
+		}
+
+		Role GetRoleFromRoleName(string roleName)
+		{
+			if (roleName == Properties.Resources.RoleAgent)
+			{
+				return Role.Agent;
+			}
+			else if (roleName == Properties.Resources.RoleDoctor)
+			{
+				return Role.Doctor;
+			}
+			else if (roleName == Properties.Resources.RoleManager)
+			{
+				return Role.Manager;
+			}
+			else
+			{
+				return Role.Undefined;
+			}
 		}
 	}
 }
