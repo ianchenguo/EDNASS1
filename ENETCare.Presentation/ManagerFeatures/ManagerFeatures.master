@@ -1,22 +1,31 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true" 
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true"
     CodeBehind="ManagerFeatures.master.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerFeatures" %>
 
 <asp:Content ID="ManagerFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
     <!--panel start-->
     <div class="panel panel-default">
-        <!-- panel contents -->
-        <div class="panel-heading">Reports</div>
+        <!-- Default panel contents -->
+        <div class="panel-heading">Tasks</div>
 
-        <!-- list group -->
+        <!-- List group -->
         <div class="list-group">
-            <a class="list-group-item" href="ManagerHORep.aspx">Head Office</a>
-            <a class="list-group-item" href="ManagerRDCRep.aspx">Remote Center</a>
+            <a class="list-group-item" href="ManagerDistributionCentreStockCentres.aspx">Distribution Centre Stock</a>
+            <a class="list-group-item" href="managerGlobalStock.html">Global Stock</a>
+            <a class="list-group-item" href="managerDistributionCentreLosses.html">Distribution Centre Losses</a>
+            <a class="list-group-item" href="managerValueInTransition.html">Value in Transition</a>
+            <a class="list-group-item" href="managerDoctorActivity.html">Doctor Activity</a>
         </div>
-        <!-- panel ocntents end -->
     </div>
     <!--panel end-->
 </asp:Content>
 <asp:Content ID="ManagerFeatureMainContent" ContentPlaceHolderID="FeatureMainContent" runat="server">
-    <asp:contentplaceholder id="SpecificManagerFeatureMainContent" runat="server">
-    </asp:contentplaceholder>
+    
+    <!--Site Map Navigation-->
+    <div class="breadcrumb">
+        <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+    </div>
+    <!--Site Map Navigation end-->
+
+    <asp:ContentPlaceHolder ID="SpecificManagerFeatureMainContent" runat="server">
+    </asp:ContentPlaceHolder>
 </asp:Content>

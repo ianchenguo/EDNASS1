@@ -171,12 +171,14 @@
     <Content Include="DoctorFeatures\DoctorRegisterPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorSendPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorViewReport.aspx" />
-    <Content Include="ManagerFeatures\ManagerHOgenerated.aspx" />
+    <Content Include="ManagerFeatures\ManagerDistributionCentreStock.aspx" />
+    <Content Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx" />
+    <Content Include="ManagerFeatures\old\ManagerHOgenerated.aspx" />
     <Content Include="ManagerFeatures\ManagerHome.aspx" />
-    <Content Include="ManagerFeatures\ManagerHORep.aspx" />
-    <Content Include="ManagerFeatures\ManagerRDCgenerated.aspx" />
-    <Content Include="ManagerFeatures\ManagerRDCRep.aspx" />
-    <Content Include="ManagerFeatures\ViewReportManager.aspx" />
+    <Content Include="ManagerFeatures\old\ManagerHORep.aspx" />
+    <Content Include="ManagerFeatures\old\ManagerRDCgenerated.aspx" />
+    <Content Include="ManagerFeatures\old\ManagerRDCRep.aspx" />
+    <Content Include="ManagerFeatures\old\ViewReportManager.aspx" />
     <Content Include="Obsolete\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -239,6 +241,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\obsolete\AccountEdit.aspx.cs">
@@ -413,11 +416,25 @@
     <Compile Include="Layout\MainTest.Master.designer.cs">
       <DependentUpon>MainTest.Master</DependentUpon>
     </Compile>
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreStock.aspx.cs">
+      <DependentUpon>ManagerDistributionCentreStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreStock.aspx.designer.cs">
+      <DependentUpon>ManagerDistributionCentreStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx.cs">
+      <DependentUpon>ManagerDistributionCentreStockCentres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx.designer.cs">
+      <DependentUpon>ManagerDistributionCentreStockCentres.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerFeatures\ManagerFeatures.master.cs">
       <DependentUpon>ManagerFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerHOgenerated.aspx.cs">
+    <Compile Include="ManagerFeatures\old\ManagerHOgenerated.aspx.cs">
       <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -425,19 +442,19 @@
       <DependentUpon>ManagerHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerHORep.aspx.cs">
+    <Compile Include="ManagerFeatures\old\ManagerHORep.aspx.cs">
       <DependentUpon>ManagerHORep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerRDCgenerated.aspx.cs">
+    <Compile Include="ManagerFeatures\old\ManagerRDCgenerated.aspx.cs">
       <DependentUpon>ManagerRDCgenerated.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ManagerRDCRep.aspx.cs">
+    <Compile Include="ManagerFeatures\old\ManagerRDCRep.aspx.cs">
       <DependentUpon>ManagerRDCRep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ManagerFeatures\ViewReportManager.aspx.cs">
+    <Compile Include="ManagerFeatures\old\ViewReportManager.aspx.cs">
       <DependentUpon>ViewReportManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
