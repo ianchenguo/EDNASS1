@@ -10,7 +10,7 @@ namespace ENETCare.Presentation.ManagerFeatures
 {
     public partial class ManagerDoctorActivityDoctors : System.Web.UI.Page
     {
-        private EmployBLL employeeManager = new EmployBLL();
+        private EmployeeBLL employeeManager = new EmployeeBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
             //retrives all employees from data source

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class EmployBLL
+	public class EmployeeBLL
 	{
 		EmployeeDAO EmployeeDAO
 		{
@@ -23,9 +23,9 @@ namespace ENETCare.Business
 			return EmployeeDAO.FindAllEmployees();
 		}
 
-        public List<Employee> GetEmployeeListByRole(Role role)
-        {
-            return EmployeeDAO.FindEmployeesByRole(role);
-        }
+		public List<Employee> GetEmployeeListByRole(Role role)
+		{
+			return EmployeeDAO.FindEmployeesByRole(role);
+		}
 	}
 }
