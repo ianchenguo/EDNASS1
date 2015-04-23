@@ -171,6 +171,7 @@
     <Content Include="DoctorFeatures\DoctorRegisterPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorSendPackage.aspx" />
     <Content Include="DoctorFeatures\DoctorViewReport.aspx" />
+    <Content Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStock.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx" />
     <Content Include="ManagerFeatures\ManagerGlobalStock.aspx" />
@@ -418,6 +419,13 @@
       <DependentUpon>MainTest.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Code\ReportHelper.cs" />
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx.cs">
+      <DependentUpon>ManagerDistributionCentreLosses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx.designer.cs">
+      <DependentUpon>ManagerDistributionCentreLosses.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerFeatures\ManagerDistributionCentreStock.aspx.cs">
       <DependentUpon>ManagerDistributionCentreStock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

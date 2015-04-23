@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode title="Home" description="Home" url="~/Index.aspx">
+
+    <siteMapNode title="Manager Home" description="Manager Role's home page"
+      url="~/ManagerFeatures/ManagerHome">
+      <siteMapNode title="Distribution Centre List" description="Distribution centres"
+        url="~/ManagerFeatures/ManagerDistributionCentreStockCentres">
+        <siteMapNode title="Distribution Centre Stock" description="Stock of each distribution centre"
+                     url="~/ManagerFeatures/ManagerDistributionCentreStock"/>
+      </siteMapNode>
+
+      <siteMapNode title="Global Stock" description="Global stock"
+                     url="~/ManagerFeatures/ManagerGlobalStock"/>
+
+    </siteMapNode>
+
+
+  </siteMapNode>
+</siteMap>
