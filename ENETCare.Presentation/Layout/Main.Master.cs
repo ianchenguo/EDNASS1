@@ -6,10 +6,16 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Owin;
+using ENETCare.Presentation.Models;
+using ENETCare.Presentation;
 
-namespace ENETCare.Presentation.AgentFeatures
+namespace ENETCare.Presentation.Layout
 {
-    public partial class Main : MasterPage
+    public partial class Main : System.Web.UI.MasterPage
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
@@ -74,6 +80,19 @@ namespace ENETCare.Presentation.AgentFeatures
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();
+        }
+
+        protected void MyHomeButton_OnClick(object sender, EventArgs e)
+        {
+            //gets current application user
+            ApplicationUserManager manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ApplicationUser user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //redirects to the home page corresponding to the user's role
+            var userRoles = manager.GetRoles(user.Id);
+            IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRoles[0] + "Features/" + userRoles[0] + "Home.aspx"), Response);
+
+
+
         }
     }
 

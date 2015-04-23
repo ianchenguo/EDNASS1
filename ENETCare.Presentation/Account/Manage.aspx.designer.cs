@@ -55,7 +55,16 @@ namespace ENETCare.Presentation.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DistributionCentre;
+        protected global::System.Web.UI.WebControls.DropDownList DistributionCentre;
+        
+        /// <summary>
+        /// DistributionCentreSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource DistributionCentreSource;
         
         /// <summary>
         /// CurrentPasswordLabel control.

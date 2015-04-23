@@ -49,7 +49,20 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="DistributionCentre" CssClass="col-md-2 control-label">Distribution Centre</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="DistributionCentre" CssClass="form-control" TextMode="SingleLine" Enabled="false"/>
+
+                <asp:DropDownList ID="DistributionCentre"
+                    CssClass="form-control"
+                    runat="server" DataSourceID="DistributionCentreSource" DataTextField="Name" DataValueField="ID">
+                </asp:DropDownList>
+
+
+                <asp:ObjectDataSource runat="server" 
+                    ID="DistributionCentreSource" 
+                    SelectMethod="GetDistributionCentreList" 
+                    TypeName="ENETCare.Business.DistributionCentreBLL">
+
+                </asp:ObjectDataSource>
+
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DistributionCentre" Enabled="false"
                     CssClass="text-danger" ErrorMessage="The Distribution Centre field is required." />
             </div>

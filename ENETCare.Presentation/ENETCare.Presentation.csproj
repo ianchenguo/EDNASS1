@@ -178,12 +178,7 @@
     <Content Include="ManagerFeatures\ManagerDoctorActivityDoctors.aspx" />
     <Content Include="ManagerFeatures\ManagerGlobalStock.aspx" />
     <Content Include="ManagerFeatures\ManagerValueInTransit.aspx" />
-    <Content Include="ManagerFeatures\old\ManagerHOgenerated.aspx" />
     <Content Include="ManagerFeatures\ManagerHome.aspx" />
-    <Content Include="ManagerFeatures\old\ManagerHORep.aspx" />
-    <Content Include="ManagerFeatures\old\ManagerRDCgenerated.aspx" />
-    <Content Include="ManagerFeatures\old\ManagerRDCRep.aspx" />
-    <Content Include="ManagerFeatures\old\ViewReportManager.aspx" />
     <Content Include="Obsolete\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -199,9 +194,8 @@
     <Content Include="Layout\Features.master" />
     <Content Include="AgentFeatures\AgentFeatures.master" />
     <Content Include="DoctorFeatures\DoctorFeatures.master" />
-    <Content Include="ManagerFeatures\ManagerFeatures.master" />
     <Content Include="Layout\Main.Master" />
-    <Content Include="Layout\MainTest.Master" />
+    <Content Include="ManagerFeatures\ManagerFeatures.master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -414,13 +408,6 @@
     <Compile Include="Layout\Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
-    <Compile Include="Layout\MainTest.Master.cs">
-      <DependentUpon>MainTest.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\MainTest.Master.designer.cs">
-      <DependentUpon>MainTest.Master</DependentUpon>
-    </Compile>
     <Compile Include="App_Code\ReportHelper.cs" />
     <Compile Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx.cs">
       <DependentUpon>ManagerDistributionCentreLosses.aspx</DependentUpon>
@@ -461,6 +448,9 @@
       <DependentUpon>ManagerFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ManagerFeatures\ManagerFeatures.master.designer.cs">
+      <DependentUpon>ManagerFeatures.master</DependentUpon>
+    </Compile>
     <Compile Include="ManagerFeatures\ManagerGlobalStock.aspx.cs">
       <DependentUpon>ManagerGlobalStock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -475,28 +465,8 @@
     <Compile Include="ManagerFeatures\ManagerValueInTransit.aspx.designer.cs">
       <DependentUpon>ManagerValueInTransit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ManagerFeatures\old\ManagerHOgenerated.aspx.cs">
-      <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="ManagerFeatures\ManagerHome.aspx.cs">
       <DependentUpon>ManagerHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\old\ManagerHORep.aspx.cs">
-      <DependentUpon>ManagerHORep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\old\ManagerRDCgenerated.aspx.cs">
-      <DependentUpon>ManagerRDCgenerated.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\old\ManagerRDCRep.aspx.cs">
-      <DependentUpon>ManagerRDCRep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagerFeatures\old\ViewReportManager.aspx.cs">
-      <DependentUpon>ViewReportManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Migrations\201503291326098_AddedProperties.cs" />
@@ -506,6 +476,18 @@
     <Compile Include="Migrations\201503291402387_AddedProperties1.cs" />
     <Compile Include="Migrations\201503291402387_AddedProperties1.Designer.cs">
       <DependentUpon>201503291402387_AddedProperties1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231332100_AlterDistributionCentreMapping.cs" />
+    <Compile Include="Migrations\201504231332100_AlterDistributionCentreMapping.Designer.cs">
+      <DependentUpon>201504231332100_AlterDistributionCentreMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.cs" />
+    <Compile Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.Designer.cs">
+      <DependentUpon>201504231352325_AlterDistributionCentreMappingAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231445411_AlterIdentityUser.cs" />
+    <Compile Include="Migrations\201504231445411_AlterIdentityUser.Designer.cs">
+      <DependentUpon>201504231445411_AlterIdentityUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Obsolete\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -578,6 +560,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503291402387_AddedProperties1.resx">
       <DependentUpon>201503291402387_AddedProperties1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231332100_AlterDistributionCentreMapping.resx">
+      <DependentUpon>201504231332100_AlterDistributionCentreMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.resx">
+      <DependentUpon>201504231352325_AlterDistributionCentreMappingAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231445411_AlterIdentityUser.resx">
+      <DependentUpon>201504231445411_AlterIdentityUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

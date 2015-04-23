@@ -28,8 +28,8 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="FullName" CssClass="form-control" TextMode="SingleLine" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="FullName"
-                                    CssClass="text-danger" ErrorMessage="The Full Name field is required." 
-                                    ValidationGroup="ChangeInfo"/>
+                                    CssClass="text-danger" ErrorMessage="The Full Name field is required."
+                                    ValidationGroup="ChangeInfo" />
                             </div>
                         </div>
 
@@ -38,18 +38,34 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                                    CssClass="text-danger" ErrorMessage="The email field is required." 
-                                    ValidationGroup="ChangeInfo"/>
+                                    CssClass="text-danger" ErrorMessage="The email field is required."
+                                    ValidationGroup="ChangeInfo" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <asp:Label runat="server" AssociatedControlID="DistributionCentre" CssClass="col-md-2 control-label">Distribution Centre</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="DistributionCentre" CssClass="form-control" TextMode="SingleLine" Enabled="false" />
+
+                                <asp:DropDownList ID="DistributionCentre"
+                                    CssClass="form-control"
+                                    runat="server" 
+                                    DataSourceID="DistributionCentreSource" 
+                                    DataTextField="Name" 
+                                    DataValueField="ID"
+                                    OnPreRender="DistributionCentre_PreRender">
+                                </asp:DropDownList>
+
+                                <asp:ObjectDataSource runat="server"
+                                    ID="DistributionCentreSource"
+                                    SelectMethod="GetDistributionCentreList"
+                                    TypeName="ENETCare.Business.DistributionCentreBLL">
+
+                                </asp:ObjectDataSource>
+
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DistributionCentre" Enabled="false"
-                                    CssClass="text-danger" ErrorMessage="The Distribution Centre field is required." 
-                                    ValidationGroup="ChangeInfo"/>
+                                    CssClass="text-danger" ErrorMessage="The Distribution Centre field is required."
+                                    ValidationGroup="ChangeInfo" />
                             </div>
                         </div>
 

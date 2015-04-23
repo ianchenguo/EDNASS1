@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using ENETCare.Presentation.Models;
+using ENETCare.Business;
 
 namespace ENETCare.Presentation.Account
 {
@@ -17,13 +18,17 @@ namespace ENETCare.Presentation.Account
         {
             //Instantiates a user manager
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
             //Instantiates an application user, with submitted user info
             var user = new ApplicationUser()
             {
                 FullName = FullName.Text,
                 UserName = Email.Text,
-                Email = Email.Text
+                Email = Email.Text,
+                DistributionCentreID = Int32.Parse(DistributionCentre.SelectedValue)
             };
+
+
             //identifies user role from user selection
             var userRole = Role.SelectedItem.Text;
 

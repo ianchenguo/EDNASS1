@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.AgentFeatures {
+namespace ENETCare.Presentation.Layout
+{
     
     
     public partial class Main {

@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ENETCare.Presentation.Models;
 using ENETCare.Business;
+using System.Data.Entity;
 
 namespace ENETCare.Presentation.Models
 {
@@ -15,7 +16,7 @@ namespace ENETCare.Presentation.Models
     public class ApplicationUser : IdentityUser
     {
         public string FullName { get; set; }
-        public DistributionCentre DistributionCentre { get; set; }
+        public int DistributionCentreID { get; set; }
         public Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager)
         {
             return Task.FromResult(GenerateUserIdentity(manager));
@@ -41,6 +42,19 @@ namespace ENETCare.Presentation.Models
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //maps ApplicationUser.DistributionCentreID to DistributionCentre_ID table column,
+            //due to historical reasons
+            modelBuilder
+                .Entity<ApplicationUser>()
+                .Property(p => p.DistributionCentreID)
+                .HasColumnName("DistributionCentre_ID");
+        }
+
     }
 }
 

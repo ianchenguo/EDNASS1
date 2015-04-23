@@ -12,6 +12,9 @@ namespace ENETCare.Presentation.Account
 {
     public partial class Manage : System.Web.UI.Page
     {
+
+        private ApplicationUserManager manager;
+        private ApplicationUser user;
         protected string SuccessMessage
         {
             get;
@@ -44,12 +47,13 @@ namespace ENETCare.Presentation.Account
             if (IsValid)
             {
                 //Instantiates user manager
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 //retrieves user account
-                var user = manager.FindById(User.Identity.GetUserId());
+                user = manager.FindById(User.Identity.GetUserId());
                 //updates general user info
                 user.FullName = FullName.Text;
                 user.Email = user.UserName = Email.Text;
+                user.DistributionCentreID = Int32.Parse(DistributionCentre.SelectedValue);
                 //user.DistributionCentre = DistributionCentre.Text;
                 IdentityResult result = manager.Update(user);
                 //updates user password
@@ -73,6 +77,16 @@ namespace ENETCare.Presentation.Account
             {
                 ModelState.AddModelError("", error);
             }
+        }
+
+        protected void DistributionCentre_PreRender(object sender, EventArgs e)
+        {
+            //Instantiates user manager
+            manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //retrieves user account
+            user = manager.FindById(User.Identity.GetUserId());
+            //selects the user's current centre (IDs begins from 1)
+            DistributionCentre.SelectedIndex = user.DistributionCentreID - 1;
         }
     }
 }
