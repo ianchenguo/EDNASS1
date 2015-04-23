@@ -4,7 +4,7 @@
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
-            <h3 class="panel-title">Global Stock</h3>
+            <h3 class="panel-title">Distribution Centre Losses</h3>
         </div>
         <!--panel-heading-end-->
 

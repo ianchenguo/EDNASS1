@@ -20,9 +20,5 @@ namespace ENETCare.Presentation.Logic
             DistributionCentresView.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
-        protected void DistributionCentresView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Console.Write(DistributionCentresView.SelectedRow.);
-        }
     }
 }

@@ -33,7 +33,6 @@ namespace ENETCare.Presentation.Logic
         protected void DistributionCentreStockView_DataBound(object sender, EventArgs e)
         {
             int lastColumn = DistributionCentreStockView.Columns.Count - 1;
-            //TotalValueLiteral.Text = totalValue.ToString();
             TotalValueLiteral.Text = ReportHelper.CalculateTotalValue(DistributionCentreStockView.Rows, lastColumn);
         }
     }

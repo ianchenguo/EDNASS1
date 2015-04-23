@@ -10,25 +10,25 @@
 namespace ENETCare.Presentation.ManagerFeatures {
     
     
-    public partial class ManagerDistributionCentreLosses {
+    public partial class ManagerValueInTransit {
         
         /// <summary>
-        /// DistributionCenterLossesView control.
+        /// ValueInTransitView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DistributionCenterLossesView;
+        protected global::System.Web.UI.WebControls.GridView ValueInTransitView;
         
         /// <summary>
-        /// DistributionCentreLossesSource control.
+        /// TotalValueLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DistributionCentreLossesSource;
+        protected global::System.Web.UI.WebControls.Literal TotalValueLiteral;
         
         /// <summary>
         /// Back control.
@@ -38,5 +38,14 @@ namespace ENETCare.Presentation.ManagerFeatures {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Back;
+        
+        /// <summary>
+        /// ValueInTransitSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ValueInTransitSource;
     }
 }

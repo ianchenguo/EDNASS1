@@ -174,7 +174,10 @@
     <Content Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStock.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx" />
+    <Content Include="ManagerFeatures\ManagerDoctorActivity.aspx" />
+    <Content Include="ManagerFeatures\ManagerDoctorActivityDoctors.aspx" />
     <Content Include="ManagerFeatures\ManagerGlobalStock.aspx" />
+    <Content Include="ManagerFeatures\ManagerValueInTransit.aspx" />
     <Content Include="ManagerFeatures\old\ManagerHOgenerated.aspx" />
     <Content Include="ManagerFeatures\ManagerHome.aspx" />
     <Content Include="ManagerFeatures\old\ManagerHORep.aspx" />
@@ -440,6 +443,20 @@
     <Compile Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx.designer.cs">
       <DependentUpon>ManagerDistributionCentreStockCentres.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManagerFeatures\ManagerDoctorActivity.aspx.cs">
+      <DependentUpon>ManagerDoctorActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDoctorActivity.aspx.designer.cs">
+      <DependentUpon>ManagerDoctorActivity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDoctorActivityDoctors.aspx.cs">
+      <DependentUpon>ManagerDoctorActivityDoctors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerDoctorActivityDoctors.aspx.designer.cs">
+      <DependentUpon>ManagerDoctorActivityDoctors.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerFeatures\ManagerFeatures.master.cs">
       <DependentUpon>ManagerFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -450,6 +467,13 @@
     </Compile>
     <Compile Include="ManagerFeatures\ManagerGlobalStock.aspx.designer.cs">
       <DependentUpon>ManagerGlobalStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerValueInTransit.aspx.cs">
+      <DependentUpon>ManagerValueInTransit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerValueInTransit.aspx.designer.cs">
+      <DependentUpon>ManagerValueInTransit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManagerFeatures\old\ManagerHOgenerated.aspx.cs">
       <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>

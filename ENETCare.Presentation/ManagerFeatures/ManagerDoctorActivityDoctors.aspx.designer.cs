@@ -10,25 +10,16 @@
 namespace ENETCare.Presentation.ManagerFeatures {
     
     
-    public partial class ManagerDistributionCentreLosses {
+    public partial class ManagerDoctorActivityDoctors {
         
         /// <summary>
-        /// DistributionCenterLossesView control.
+        /// DoctorsView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DistributionCenterLossesView;
-        
-        /// <summary>
-        /// DistributionCentreLossesSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DistributionCentreLossesSource;
+        protected global::System.Web.UI.WebControls.GridView DoctorsView;
         
         /// <summary>
         /// Back control.

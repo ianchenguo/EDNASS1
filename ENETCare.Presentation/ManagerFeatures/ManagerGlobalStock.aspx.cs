@@ -18,7 +18,6 @@ namespace ENETCare.Presentation.Logic
         protected void GlobalStockView_DataBound(object sender, EventArgs e)
         {
             int lastColumn = GlobalStockView.Columns.Count - 1;
-            //TotalValueLiteral.Text = totalValue.ToString();
             TotalValueLiteral.Text = ReportHelper.CalculateTotalValue(GlobalStockView.Rows, lastColumn);
         }
     }

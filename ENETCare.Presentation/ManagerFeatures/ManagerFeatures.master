@@ -12,8 +12,8 @@
             <a class="list-group-item" href="ManagerDistributionCentreStockCentres">Distribution Centre Stock</a>
             <a class="list-group-item" href="ManagerGlobalStock">Global Stock</a>
             <a class="list-group-item" href="ManagerDistributionCentreLosses">Distribution Centre Losses</a>
-            <a class="list-group-item" href="ManagerValueInTransition">Value in Transition</a>
-            <a class="list-group-item" href="ManagerDoctorActivity">Doctor Activity</a>
+            <a class="list-group-item" href="ManagerValueInTransit">Value in Transit</a>
+            <a class="list-group-item" href="ManagerDoctorActivityDoctors">Doctor Activity</a>
         </div>
     </div>
     <!--panel end-->

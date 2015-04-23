@@ -10,25 +10,34 @@
 namespace ENETCare.Presentation.ManagerFeatures {
     
     
-    public partial class ManagerDistributionCentreLosses {
+    public partial class ManagerDoctorActivity {
         
         /// <summary>
-        /// DistributionCenterLossesView control.
+        /// HeadingLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DistributionCenterLossesView;
+        protected global::System.Web.UI.WebControls.Literal HeadingLiteral;
         
         /// <summary>
-        /// DistributionCentreLossesSource control.
+        /// DoctorActivityView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DistributionCentreLossesSource;
+        protected global::System.Web.UI.WebControls.GridView DoctorActivityView;
+        
+        /// <summary>
+        /// TotalValueLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal TotalValueLiteral;
         
         /// <summary>
         /// Back control.
@@ -38,5 +47,14 @@ namespace ENETCare.Presentation.ManagerFeatures {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Back;
+        
+        /// <summary>
+        /// CentreStockSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource CentreStockSource;
     }
 }
