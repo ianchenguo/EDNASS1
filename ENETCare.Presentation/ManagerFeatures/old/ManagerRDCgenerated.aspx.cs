@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.ManagerFeatures
+namespace ENETCare.Presentation.Logic
 {
     public partial class ManagerRDCgenerated : System.Web.UI.Page
     {

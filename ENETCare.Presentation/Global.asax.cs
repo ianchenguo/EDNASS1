@@ -6,7 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
-using ENETCare.Presentation.Logic;
+using ENETCare.Presentation.App_Code;
 
 namespace ENETCare.Presentation
 {

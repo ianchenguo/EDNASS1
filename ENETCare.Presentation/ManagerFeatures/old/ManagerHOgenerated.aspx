@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
-    CodeBehind="ManagerHOgenerated.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerHOgenerated" %>
+    CodeBehind="ManagerHOgenerated.aspx.cs" Inherits="ENETCare.Presentation.Logic.ManagerHOgenerated" %>
 
 <asp:Content ID="ManagerHOgent" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
     <div class="panel panel-default">

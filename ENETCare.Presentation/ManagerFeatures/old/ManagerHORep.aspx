@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
-    CodeBehind="ManagerHORep.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerHORep" %>
+    CodeBehind="ManagerHORep.aspx.cs" Inherits="ENETCare.Presentation.Logic.ManagerHORep" %>
 
 <asp:Content ID="ManagerRepRho" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
     <!--panel-start-->

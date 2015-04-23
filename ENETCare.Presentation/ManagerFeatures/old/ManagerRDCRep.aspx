@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
-    CodeBehind="ManagerRDCRep.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerRDCRep" %>
+    CodeBehind="ManagerRDCRep.aspx.cs" Inherits="ENETCare.Presentation.Logic.ManagerRDCRep" %>
 
 <asp:Content ID="ManagerRepRrdc" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
     <!--panel-start-->

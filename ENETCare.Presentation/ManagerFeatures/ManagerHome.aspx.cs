@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
 
-namespace ENETCare.Presentation.ManagerFeatures
+namespace ENETCare.Presentation.Logic
 {
     public partial class ManagerHome : System.Web.UI.Page
     {

@@ -6,7 +6,7 @@ using ENETCare.Presentation.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ENETCare.Presentation.Logic
+namespace ENETCare.Presentation.App_Code
 {
     internal class RoleActions
     {

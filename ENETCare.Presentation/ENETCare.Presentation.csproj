@@ -173,6 +173,7 @@
     <Content Include="DoctorFeatures\DoctorViewReport.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStock.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx" />
+    <Content Include="ManagerFeatures\ManagerGlobalStock.aspx" />
     <Content Include="ManagerFeatures\old\ManagerHOgenerated.aspx" />
     <Content Include="ManagerFeatures\ManagerHome.aspx" />
     <Content Include="ManagerFeatures\old\ManagerHORep.aspx" />
@@ -416,6 +417,7 @@
     <Compile Include="Layout\MainTest.Master.designer.cs">
       <DependentUpon>MainTest.Master</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\ReportHelper.cs" />
     <Compile Include="ManagerFeatures\ManagerDistributionCentreStock.aspx.cs">
       <DependentUpon>ManagerDistributionCentreStock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -433,6 +435,13 @@
     <Compile Include="ManagerFeatures\ManagerFeatures.master.cs">
       <DependentUpon>ManagerFeatures.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerGlobalStock.aspx.cs">
+      <DependentUpon>ManagerGlobalStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerGlobalStock.aspx.designer.cs">
+      <DependentUpon>ManagerGlobalStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManagerFeatures\old\ManagerHOgenerated.aspx.cs">
       <DependentUpon>ManagerHOgenerated.aspx</DependentUpon>
@@ -508,7 +517,7 @@
     <Compile Include="Obsolete\Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Logic\RoleActions.cs" />
+    <Compile Include="App_Code\RoleActions.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Obsolete\ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -523,10 +532,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ENETCareTest\ENETCareTest.csproj">
-      <Project>{14e80a42-8070-4d67-b5df-40305bfcd634}</Project>
-      <Name>ENETCareTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ENETCare\ENETCare.Business.csproj">
       <Project>{9f876451-a2d2-45b1-a517-6107856497f4}</Project>
       <Name>ENETCare.Business</Name>

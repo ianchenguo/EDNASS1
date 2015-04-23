@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
-    CodeBehind="ViewReportManager.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ViewReportManager" %>
+    CodeBehind="ViewReportManager.aspx.cs" Inherits="ENETCare.Presentation.Logic.ViewReportManager" %>
 
 <asp:Content ID="ManagerViewRep" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
     <!--panel-start-->

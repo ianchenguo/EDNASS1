@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Features.master" AutoEventWireup="true"
-    CodeBehind="ManagerFeatures.master.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerFeatures" %>
+    CodeBehind="ManagerFeatures.master.cs" Inherits="ENETCare.Presentation.Logic.ManagerFeatures" %>
 
 <asp:Content ID="ManagerFeatureAsideContent" ContentPlaceHolderID="FeatureAsideContent" runat="server">
     <!--panel start-->
@@ -9,11 +9,11 @@
 
         <!-- List group -->
         <div class="list-group">
-            <a class="list-group-item" href="ManagerDistributionCentreStockCentres.aspx">Distribution Centre Stock</a>
-            <a class="list-group-item" href="managerGlobalStock.html">Global Stock</a>
-            <a class="list-group-item" href="managerDistributionCentreLosses.html">Distribution Centre Losses</a>
-            <a class="list-group-item" href="managerValueInTransition.html">Value in Transition</a>
-            <a class="list-group-item" href="managerDoctorActivity.html">Doctor Activity</a>
+            <a class="list-group-item" href="ManagerDistributionCentreStockCentres">Distribution Centre Stock</a>
+            <a class="list-group-item" href="ManagerGlobalStock">Global Stock</a>
+            <a class="list-group-item" href="managerDistributionCentreLosses">Distribution Centre Losses</a>
+            <a class="list-group-item" href="managerValueInTransition">Value in Transition</a>
+            <a class="list-group-item" href="managerDoctorActivity">Doctor Activity</a>
         </div>
     </div>
     <!--panel end-->

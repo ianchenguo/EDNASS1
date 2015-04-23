@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true"
-    CodeBehind="ManagerHome.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerHome" %>
+    CodeBehind="ManagerHome.aspx.cs" Inherits="ENETCare.Presentation.Logic.ManagerHome" %>
 
 <asp:Content ID="ManagerHome" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
     

@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -66,8 +67,13 @@
     <Compile Include="EmployeeDAOTest.cs" />
     <Compile Include="MedicationPackageDAOTest.cs" />
     <Compile Include="DALTest.cs" />
+    <Compile Include="ReportHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ENETCare.Presentation\ENETCare.Presentation.csproj">
+      <Project>{42371a5f-4d48-4c73-b66d-9c75eb63835c}</Project>
+      <Name>ENETCare.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ENETCare\ENETCare.Business.csproj">
       <Project>{9f876451-a2d2-45b1-a517-6107856497f4}</Project>
       <Name>ENETCare.Business</Name>
