@@ -36,28 +36,28 @@ namespace ENETCare.Business
 			return employeeList;
 		}
 
-        public List<Employee> FindEmployeesByRole(Role role)
-        {
-            List<Employee> employeeList = new List<Employee>();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = connectionString;
-                conn.Open();
-                string whereClause = "where c.Name = @role";
-                string query = string.Format("{0} {1} {2} {3} {4}", selectStatement, fromClause, joinClause1, joinClause2, whereClause);
-                SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.Add(new SqlParameter("role", role.ToString()));
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Employee employee = GetEmployeeFromDataReader(reader);
-                        employeeList.Add(employee);
-                    }
-                }
-            }
-            return employeeList;
-        }
+		public List<Employee> FindEmployeesByRole(Role role)
+		{
+			List<Employee> employeeList = new List<Employee>();
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = connectionString;
+				conn.Open();
+				string whereClause = "where c.Name = @role";
+				string query = string.Format("{0} {1} {2} {3} {4}", selectStatement, fromClause, joinClause1, joinClause2, whereClause);
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("role", role.ToString()));
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						Employee employee = GetEmployeeFromDataReader(reader);
+						employeeList.Add(employee);
+					}
+				}
+			}
+			return employeeList;
+		}
 
 		public Employee GetEmployeeByUserName(string username)
 		{
