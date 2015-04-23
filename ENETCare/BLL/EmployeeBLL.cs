@@ -22,5 +22,10 @@ namespace ENETCare.Business
 		{
 			return EmployeeDAO.FindAllEmployees();
 		}
+
+        public List<Employee> GetEmployeeListByRole(Role role)
+        {
+            return EmployeeDAO.FindEmployeesByRole(role);
+        }
 	}
 }
