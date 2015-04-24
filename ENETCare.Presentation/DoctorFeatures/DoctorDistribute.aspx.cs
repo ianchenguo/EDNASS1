@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
 
-namespace ENETCare.Presentation.AgentDoctorFeatures
+namespace ENETCare.Presentation.DoctorFeatures
 {
     public partial class DoctorDistribute : System.Web.UI.Page
     {

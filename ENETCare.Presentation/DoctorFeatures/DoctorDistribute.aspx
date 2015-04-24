@@ -1,8 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true" 
-    CodeBehind="DoctorDistribute.aspx.cs" Inherits="ENETCare.Presentation.AgentDoctorFeatures.DoctorDistribute" %>
-
-<asp:Content ID="DoctorDistributeContent" ContentPlaceHolderID="SpecificAgentDoctorFeatureMainContent" runat="server">
-    <!--panel-start-->
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DoctorFeatures/DoctorFeatures.master" AutoEventWireup="true" CodeBehind="DoctorDistribute.aspx.cs" Inherits="ENETCare.Presentation.DoctorFeatures.DoctorDistribute" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="SpecificDoctorFeatureMainContent" runat="server">
+     <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
@@ -33,7 +31,7 @@
                 </div>
 
                 <!-- the following link should be optimised -->
-                <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
+                <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="~/AgentDoctorFeatures/AgentDoctorHome.aspx">Cancel</a>
                 <asp:Button ID="DoctorDistributePackageTypeButton" runat="server" OnClick="DoctorDistributePackageTypeButton_Click"
                     Text="Doctor Distribute" CssClass="btn btn-success btn-float-right" />
             </div>
