@@ -50,7 +50,7 @@ namespace ENETCare.Presentation.HelperUtilities
 
         private static void ChooseWarningForAgentDoctorReport(int i, GridViewRowCollection gvRowCollection)
         {
-            gvRowCollection[i].CssClass = "warning";
+            gvRowCollection[i].CssClass = "orange";
         }
 
         private static void ChooseDangerForAgentDoctorReport(int i, GridViewRowCollection gvRowCollection)
