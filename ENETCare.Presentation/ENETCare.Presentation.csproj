@@ -163,6 +163,7 @@
     <Content Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx" />
+    <Content Include="AgentDoctorFeatures\PresentBarcode.aspx" />
     <Content Include="AgentDoctorFeatures\TestAgentDoctor.aspx" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129.mdf" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129_log.ldf">
@@ -354,6 +355,12 @@
     <Compile Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx.designer.cs">
       <DependentUpon>AgentDoctorViewReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentDoctorFeatures\PresentBarcode.aspx.cs">
+      <DependentUpon>PresentBarcode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentDoctorFeatures\PresentBarcode.aspx.designer.cs">
+      <DependentUpon>PresentBarcode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentDoctorFeatures\TestAgentDoctor.aspx.cs">
       <DependentUpon>TestAgentDoctor.aspx</DependentUpon>
     </Compile>
@@ -542,7 +549,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24950</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
