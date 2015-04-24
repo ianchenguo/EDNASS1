@@ -12,18 +12,21 @@
 
         <!--panel-body-start-->
         <div class="panel-body">
-            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
-                BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand">
+            <%--BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" ForeColor="Black"--%>
+            <%--CssClass="table  table-hover table-bordered table-striped"--%>
+            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" 
+                AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
+                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>
                             <asp:LinkButton ID="lbDelete" CausesValidation="false" OnClientClick="return confirm('Are you sure you want to delete it?');"
-                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delet" ForeColor="#cc0000" runat="server" Font-Italic="true" />
+                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delete" ForeColor="#cc0000" runat="server" Font-Italic="true"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="#000000" />
                 <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
                 <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
                 <SortedAscendingCellStyle BackColor="#F7F7F7" />

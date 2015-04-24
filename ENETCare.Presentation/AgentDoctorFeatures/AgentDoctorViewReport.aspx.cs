@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
+using ENETCare.Presentation.HelperUtilities;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
@@ -32,6 +33,18 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorReportStockTaking.DiscardPackage(e.CommandArgument.ToString());
                 this.AgentDoctorReportStockTakeDataBind();
             }
+        }
+
+        protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AgentDoctorReportStockTakingGV.PageIndex = e.NewPageIndex;
+            this.AgentDoctorReportStockTakeDataBind();
+        }
+
+        protected void AgentDoctorReportStockTakingGV_DataBound(object sender, EventArgs e)
+        {
+            int lastColumn = AgentDoctorReportStockTakingGV.Columns.Count - 1;
+            ReportHelper.MarkCriticalRow(AgentDoctorReportStockTakingGV.Rows, lastColumn);
         }
     }
 }

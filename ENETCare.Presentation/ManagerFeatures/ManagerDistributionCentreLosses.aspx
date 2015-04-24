@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" CodeBehind="ManagerDistributionCentreLosses.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerDistributionCentreLosses" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+    CodeBehind="ManagerDistributionCentreLosses.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerDistributionCentreLosses" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
         <!--panel-start-->
     <div class="panel panel-default">

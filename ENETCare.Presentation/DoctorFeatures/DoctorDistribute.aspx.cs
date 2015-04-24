@@ -39,5 +39,11 @@ namespace ENETCare.Presentation.DoctorFeatures
                 Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
             }
         }
+
+        protected void DoctorDistributeLinkButton_Click(object sender, EventArgs e)
+        {
+            string CanclePackageUrl = "~/AgentDoctorFeatures/AgentDoctorHome.aspx";
+            Response.Redirect(CanclePackageUrl);
+        }
     }
 }

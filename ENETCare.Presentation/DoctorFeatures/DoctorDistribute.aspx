@@ -31,7 +31,8 @@
                 </div>
 
                 <!-- the following link should be optimised -->
-                <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="~/AgentDoctorFeatures/AgentDoctorHome.aspx">Cancel</a>
+                <%--<a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="~/AgentDoctorFeatures/AgentDoctorHome.aspx">Cancel</a>--%>
+                <asp:LinkButton ID="DoctorDistributeLinkButton" Text="Cancle" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="DoctorDistributeLinkButton_Click" />
                 <asp:Button ID="DoctorDistributePackageTypeButton" runat="server" OnClick="DoctorDistributePackageTypeButton_Click"
                     Text="Doctor Distribute" CssClass="btn btn-success btn-float-right" />
             </div>
