@@ -69,7 +69,8 @@
     <Compile Include="ENETCareTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DALTest.cs" />
-    <Compile Include="ReportHelperTest.cs" />
+    <Compile Include="WebformHelpersTest\ReportHelperTest.cs" />
+    <Compile Include="WebformHelpersTest\RoutingHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ENETCare.Presentation\ENETCare.Presentation.csproj">
@@ -88,6 +89,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.App_Code
+namespace ENETCare.Presentation.HelperUtilities
 {
     public static class ReportHelper
     {
+
         public static string CalculateTotalValue(GridViewRowCollection rows, int cellPosition)
         {
             decimal totalValue = 0;

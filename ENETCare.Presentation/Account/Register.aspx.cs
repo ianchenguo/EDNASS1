@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using ENETCare.Presentation.Models;
 using ENETCare.Business;
+using ENETCare.Presentation.HelperUtilities;
 
 namespace ENETCare.Presentation.Account
 {
@@ -44,7 +45,7 @@ namespace ENETCare.Presentation.Account
                 IdentityHelper.SignIn(manager, user, isPersistent: false);
                 //redirect the account to corresponding homepage, if the role is successfully linked
                 //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRole + "Features/" + userRole + "Home.aspx"), Response);
+                IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl(RoutingHelper.ResolveHomePath(userRole)), Response);
             }
             else
             {

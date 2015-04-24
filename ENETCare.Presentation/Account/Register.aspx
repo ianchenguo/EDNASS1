@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/layout/Main.Master" AutoEventWireup="true" 
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/layout/Main.Master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="ENETCare.Presentation.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -16,9 +16,9 @@
             <asp:Label runat="server" AssociatedControlID="Role" CssClass="col-md-2 control-label">Role</asp:Label>
             <div class="col-md-10">
                 <div class="controls radio">
-                    <asp:RadioButtonList ID="Role" 
-                        runat="server" 
-                        RepeatDirection="Vertical" 
+                    <asp:RadioButtonList ID="Role"
+                        runat="server"
+                        RepeatDirection="Vertical"
                         AutoPostBack="True"
                         OnPreRender="Role_PreRender">
                         <asp:ListItem>Agent</asp:ListItem>
@@ -44,9 +44,20 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                    CssClass="text-danger" ErrorMessage="The email field is required." />
+                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="SingleLine" />
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="Email"
+                    CssClass="text-danger"
+                    Display="Dynamic"
+                    ErrorMessage="The email field is required."/>
+
+                <asp:RegularExpressionValidator
+                    runat="server"
+                    ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                    ControlToValidate="Email"
+                    CssClass="text-danger"
+                    ErrorMessage="The email address is invalid."/>
             </div>
         </div>
 
@@ -60,12 +71,10 @@
                 </asp:DropDownList>
 
 
-                <asp:ObjectDataSource runat="server" 
-                    ID="DistributionCentreSource" 
-                    SelectMethod="GetDistributionCentreList" 
-                    TypeName="ENETCare.Business.DistributionCentreBLL">
-
-                </asp:ObjectDataSource>
+                <asp:ObjectDataSource runat="server"
+                    ID="DistributionCentreSource"
+                    SelectMethod="GetDistributionCentreList"
+                    TypeName="ENETCare.Business.DistributionCentreBLL"></asp:ObjectDataSource>
 
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DistributionCentre" Enabled="false"
                     CssClass="text-danger" ErrorMessage="The Distribution Centre field is required." />

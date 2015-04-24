@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" CodeBehind="ManagerDistributionCentreStock.aspx.cs" Inherits="ENETCare.Presentation.Logic.ManagerDistributionCentreStock" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" CodeBehind="ManagerDistributionCentreStock.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerDistributionCentreStock" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
 

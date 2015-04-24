@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.Logic {
+namespace ENETCare.Presentation.ManagerFeatures {
     
     
     public partial class ManagerGlobalStock {

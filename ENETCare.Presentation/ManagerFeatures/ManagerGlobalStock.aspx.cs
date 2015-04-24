@@ -1,4 +1,5 @@
-﻿using ENETCare.Presentation.App_Code;
+﻿using ENETCare.Presentation.HelperUtilities;
+using ENETCare.Presentation.ManagerFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ENETCare.Presentation.Logic
+namespace ENETCare.Presentation.ManagerFeatures
 {
     public partial class ManagerGlobalStock : System.Web.UI.Page
     {

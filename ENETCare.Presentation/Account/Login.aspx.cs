@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using ENETCare.Presentation.Models;
+using ENETCare.Presentation.HelperUtilities;
 
 namespace ENETCare.Presentation.Account
 {
@@ -37,9 +38,8 @@ namespace ENETCare.Presentation.Account
                     //signs in the user
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     //redirects the route
-                    //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                    var userRoles = manager.GetRoles(user.Id);
-                    IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRoles[0] + "Features/" + userRoles[0] + "Home.aspx"), Response);
+                    var userPrimaryRole = manager.GetRoles(user.Id)[0];
+                    IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl(RoutingHelper.ResolveHomePath(userPrimaryRole)), Response);
                 }
                 else
                 {

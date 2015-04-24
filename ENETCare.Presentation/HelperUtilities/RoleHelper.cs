@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ENETCare.Presentation.Models;
+﻿using ENETCare.Presentation.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace ENETCare.Presentation.App_Code
+namespace ENETCare.Presentation.HelperUtilities
 {
     internal class RoleActions
     {
@@ -18,7 +18,6 @@ namespace ENETCare.Presentation.App_Code
             // Access the application context and create result variables.
             Models.ApplicationDbContext context = new ApplicationDbContext();
             IdentityResult IdRoleResult;
-            //IdentityResult IdUserResult;
 
             // Create a RoleStore object by using the ApplicationDbContext object. 
             // The RoleStore is only allowed to contain IdentityRole objects.
@@ -29,7 +28,7 @@ namespace ENETCare.Presentation.App_Code
             var roleMgr = new RoleManager<IdentityRole>(roleStore);
 
             // Then, you create the "Agent" role if it doesn't already exist.
-            string[] roleNames = {"Agent", "Doctor", "Manager"};
+            string[] roleNames = { "Agent", "Doctor", "Manager" };
 
             for (int i = 0; i < roleNames.Length; i++)
             {
@@ -38,25 +37,6 @@ namespace ENETCare.Presentation.App_Code
                     IdRoleResult = roleMgr.Create(new IdentityRole { Name = roleNames[i] });
                 }
             }
-
-            //// Create a UserManager object based on the UserStore object and the ApplicationDbContext  
-            //// object. Note that you can create new objects and use them as parameters in
-            //// a single line of code, rather than using multiple lines of code, as you did
-            //// for the RoleManager object.
-            //var userMgr = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            //var appUser = new ApplicationUser
-            //{
-            //    UserName = "canEditUser@wingtiptoys.com",
-            //    Email = "canEditUser@wingtiptoys.com"
-            //};
-            //IdUserResult = userMgr.Create(appUser, "Pa$$word1");
-
-            //// If the new "canEdit" user was successfully created, 
-            //// add the "canEdit" user to the "canEdit" role. 
-            //if (!userMgr.IsInRole(userMgr.FindByEmail("canEditUser@wingtiptoys.com").Id, "canEdit"))
-            //{
-            //    IdUserResult = userMgr.AddToRole(userMgr.FindByEmail("canEditUser@wingtiptoys.com").Id, "canEdit");
-            //}
         }
     }
 }
