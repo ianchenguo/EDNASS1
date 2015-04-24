@@ -19,7 +19,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             //what's this for?
             if (IsValid)
             {
-                var test = NedPackageRegisterFormPackageType.Text;
+                //var test = NedPackageRegisterFormPackageType.Text;
             }
         }
     }
