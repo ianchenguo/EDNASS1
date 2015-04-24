@@ -20,7 +20,12 @@
 
                         <asp:DropDownList ID="PackageType"
                             CssClass="form-control"
-                            runat="server" DataSourceID="PackageTypeSource" DataTextField="Name" DataValueField="ID">
+                            runat="server"
+                            DataSourceID="PackageTypeSource"
+                            DataTextField="Name"
+                            DataValueField="ID"
+                            OnSelectedIndexChanged="PackageType_SelectedIndexChanged" 
+                            AutoPostBack="True">
                         </asp:DropDownList>
 
                         <asp:ObjectDataSource runat="server"
@@ -56,61 +61,39 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
                         <asp:Button runat="server"
-                            Text="Audit"
+                            Text="Scan"
                             ValidationGroup="AuditPackage"
                             ID="AuditPackageButton"
                             OnClick="AuditPackageButton_Click"
-                            CssClass="btn btn-default"/>
-                    </div>
+                            CssClass="btn btn-default" />
 
-                </div>
-
-                <div class="col-md-offset-3 col-md-9">
-                    <h3 runat="server">Scanned 
-                        <asp:Literal 
+                        <span runat="server" class="text-center">
+                            Scanned 
+                        <asp:Literal
                             ID="ScannedPackageTotal"
                             runat="server">
                         </asp:Literal>
-                         Packages
-                    </h3>
+                            Packages
+                        </span>
+                    </div>
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label for="ned-package-register-form-expire-date" class="col-xs-3">Expiration Date</label>
 
-                <div class="col-xs-9">
-                    <input class="form-control" id="ned-package-register-form-expire-date" type="date"
-                        placeholder="Expiration Date" />
-                </div>
+            <asp:LinkButton Text="Cancel"
+                runat="server"
+                CssClass="btn btn-danger btn-float-right btn-margin-left"
+                PostBackUrl="~/AgentDoctorFeatures/AgentDoctorHome.aspx" />
 
-            </div>
-
-            <div class="form-group">
-                <label for="ned-package-register-form-value" class="col-xs-3">Value (AUD)</label>
-
-                <div class="col-xs-9">
-                    <input class="form-control" id="ned-package-register-form-value" type="number"
-                        placeholder="Value in AUD" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="ned-package-register-form-barcode" class="col-xs-3">Package Barcode</label>
-
-                <div class="col-xs-9">
-                    <input class="form-control" id="ned-package-register-form-barcode" type="text"
-                        placeholder="Package Barcode" />
-                </div>
-            </div>
-
-            <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="agent.html">Cancel</a>
-            <button class="btn btn-success btn-float-right" type="submit">Submit</button>
-
+            <asp:LinkButton Text="Commit Audition"
+                ID="CommitAuditionButton"
+                runat="server"
+                CssClass="btn btn-success btn-float-right"
+                OnClick="CommitAuditionButton_Click" />
         </div>
-    </div>
-    <!--panel-body-end-->
+        <!--panel-body-end-->
+
     </div>
     <!--panel-end-->
 </asp:Content>

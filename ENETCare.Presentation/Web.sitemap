@@ -4,15 +4,14 @@
 
     <siteMapNode title="Manager Home" description="Manager Role's home page"
       url="~/ManagerFeatures/ManagerHome">
-
+      
       <siteMapNode title="Distribution Centre List" description="Distribution centres"
         url="~/ManagerFeatures/ManagerDistributionCentreStockCentres">
 
         <siteMapNode title="Distribution Centre Stock" description="Stock of each distribution centre"
                      url="~/ManagerFeatures/ManagerDistributionCentreStock"/>
-
       </siteMapNode>
-
+      
       <siteMapNode title="Global Stock" description="Global stock"
                      url="~/ManagerFeatures/ManagerGlobalStock"/>
 
@@ -28,7 +27,6 @@
         <siteMapNode title="Doctor Activity" description="Doctor activity"
                      url="~/ManagerFeatures/ManagerDoctorActivity"/>
       </siteMapNode>
-
     </siteMapNode>
 
     <siteMapNode title="Agent and Doctor Home" description="Agent and doctor's home page"
@@ -46,8 +44,11 @@
       <siteMapNode title="View Report" description="View reports"
        url="~/AgentDoctorFeatures/AgentDoctorViewReport"/>
 
+      <siteMapNode title="Audit Package" description="Audit Package"
+                   url="~/AgentDoctorFeatures/AgentDoctorAuditPackage"/>
+
       <siteMapNode title="Distribute Package" description="Distribute Package"
-       url="~/DoctorFeatures/DistributePackage"/>
+        url="~/DoctorFeatures/DoctorDistribute"/>
     </siteMapNode>
   </siteMapNode>
 </siteMap>

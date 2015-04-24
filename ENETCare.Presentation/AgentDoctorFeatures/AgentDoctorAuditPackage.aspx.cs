@@ -24,16 +24,35 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 scannedBarcodes = Session["storedBarcodes"] as List<string>;
             }
+            updateDispay();
+            //warns the user to restart the audition task
+            PackageType.Attributes.Add("onfocus", "javascript:return confirm('Are You Sure To Restart Audition Task?')");
         }
-
-
 
         protected void AuditPackageButton_Click(object sender, EventArgs e)
         {
-            int parsedPackageId = Int32.Parse(PackageType.SelectedValue);
+            int parsedPackageId = getMedicationPackageId();
             madicationPackageManager.CheckAndUpdatePackage(parsedPackageId, Barcode.Text);
 
             insertBarcodeToSession(Barcode.Text);
+        }
+
+        protected void CommitAuditionButton_Click(object sender, EventArgs e)
+        {
+            //madicationPackageManager.AuditPackages(getMedicationPackageId(), scannedBarcodes);
+            emptyScannedBarcodes();
+        }
+
+        protected void PackageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            emptyScannedBarcodes();
+            updateDispay();
+        }
+
+        private void emptyScannedBarcodes()
+        {
+            Session["storedBarcodes"] = null;
+            scannedBarcodes = new List<string>();
         }
 
         private void insertBarcodeToSession(string barcode)
@@ -48,5 +67,10 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             ScannedPackageTotal.Text = scannedBarcodes.Distinct().Count().ToString();
         }
 
+        private int getMedicationPackageId()
+        {
+            int parsedPackageId = Int32.Parse(PackageType.SelectedValue);
+            return parsedPackageId;
+        }
     }
 }

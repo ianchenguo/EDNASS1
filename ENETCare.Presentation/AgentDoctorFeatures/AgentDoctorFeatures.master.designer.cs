@@ -13,6 +13,15 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
     public partial class AgentDoctorFeatures {
         
         /// <summary>
+        /// DoctorDistributPackageItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor DoctorDistributPackageItem;
+        
+        /// <summary>
         /// SpecificAgentDoctorFeatureMainContent control.
         /// </summary>
         /// <remarks>
