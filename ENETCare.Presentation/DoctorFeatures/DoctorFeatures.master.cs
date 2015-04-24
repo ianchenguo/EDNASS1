@@ -37,5 +37,11 @@ namespace ENETCare.Presentation.DoctorFeatures
             string ViewPackageUrl = "~/AgentDoctorFeatures/AgentDoctorViewReport.aspx";
             Response.Redirect(ViewPackageUrl);
         }
+
+        protected void AuditPackageLinkButton_Click(object sender, EventArgs e)
+        {
+            string AuditPackageUrl = "~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx";
+            Response.Redirect(AuditPackageUrl);
+        }
     }
 }
