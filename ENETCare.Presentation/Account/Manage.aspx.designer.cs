@@ -49,6 +49,15 @@ namespace ENETCare.Presentation.Account {
         protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
+        /// FormControlDistributionCentre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FormControlDistributionCentre;
+        
+        /// <summary>
         /// DistributionCentre control.
         /// </summary>
         /// <remarks>

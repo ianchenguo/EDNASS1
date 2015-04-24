@@ -87,6 +87,9 @@ namespace ENETCare.Presentation.Account
             user = manager.FindById(User.Identity.GetUserId());
             //selects the user's current centre (IDs begins from 1)
             DistributionCentre.SelectedIndex = user.DistributionCentreID - 1;
+            //hides distribution centre list when the user is a manager
+            var userRoles = manager.GetRoles(user.Id);
+            FormControlDistributionCentre.Visible = !(userRoles[0] == "Manager");
         }
     }
 }

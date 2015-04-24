@@ -51,5 +51,21 @@ namespace ENETCare.Presentation.Account
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
             }
         }
+
+        protected void Role_PreRender(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                if (Role.SelectedItem.Text == "Manager")
+                {
+
+                    DistributionCentre.Enabled = false;
+                }
+                else
+                {
+                    DistributionCentre.Enabled = true;
+                }
+            }
+        }
     }
 }

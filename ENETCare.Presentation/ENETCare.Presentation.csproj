@@ -191,6 +191,9 @@
     <Content Include="AgentDoctorFeatures\AgentDoctorFeatures.master" />
     <Content Include="Layout\Main.Master" />
     <Content Include="ManagerFeatures\ManagerFeatures.master" />
+    <Content Include="AgentFeatures\Web.config" />
+    <Content Include="ManagerFeatures\Web.config" />
+    <Content Include="DoctorFeatures\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
