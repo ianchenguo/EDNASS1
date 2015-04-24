@@ -16,8 +16,7 @@
             <%--CssClass="table  table-hover table-bordered table-striped"--%>
             <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" 
                 AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
-                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped" 
-                OnSelectedIndexChanged="AgentDoctorReportStockTakingGV_SelectedIndexChanged">
+                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>

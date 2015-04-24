@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ using ENETCare.Presentation.HelperUtilities;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
@@ -21,6 +23,19 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             if(!IsPostBack)
             {
                 this.AgentDoctorReportStockTakeDataBind();
+            }
+
+            List<string> expiredStrCollection = new List<string>();
+
+            foreach (object o in AgentDoctorReportStockTaking.Stocktake())
+            {
+                Type t = o.GetType();
+                PropertyInfo p = t.GetProperty("ExpireStatus");
+                object v = p.GetValue(o, null);
+                string ExpiredStatueStr = v.ToString();
+                //Response.Write(ExpiredStatueStr);
+                expiredStrCollection.Add(ExpiredStatueStr);
+                this.ColorMarkHelper(expiredStrCollection, AgentDoctorReportStockTakingGV);
             }
         }
         private void AgentDoctorReportStockTakeDataBind()
@@ -44,13 +59,10 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             this.AgentDoctorReportStockTakeDataBind();
         }
 
-        protected void AgentDoctorReportStockTakingGV_SelectedIndexChanged(object sender, EventArgs e)
+        private void ColorMarkHelper(List<string> whetherExpired, GridView ReportGV)
         {
-            string expiredStatus1 = AgentDoctorReportStockTakingGV.SelectedRow.Cells[0].Text;
-            string expiredStatus2 = AgentDoctorReportStockTakingGV.SelectedRow.Cells[1].Text;
-
-            Response.Write(expiredStatus1);
-            Response.Write(expiredStatus2);
+            ReportHelper.AgentDoctorViewReportColourMark(whetherExpired, ReportGV.Rows);
         }
+        
     }
 }
