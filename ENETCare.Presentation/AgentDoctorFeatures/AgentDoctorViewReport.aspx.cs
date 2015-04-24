@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
 using ENETCare.Presentation.HelperUtilities;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
@@ -41,10 +44,13 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             this.AgentDoctorReportStockTakeDataBind();
         }
 
-        protected void AgentDoctorReportStockTakingGV_DataBound(object sender, EventArgs e)
+        protected void AgentDoctorReportStockTakingGV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int lastColumn = AgentDoctorReportStockTakingGV.Columns.Count - 1;
-            ReportHelper.MarkCriticalRow(AgentDoctorReportStockTakingGV.Rows, lastColumn);
+            string expiredStatus1 = AgentDoctorReportStockTakingGV.SelectedRow.Cells[0].Text;
+            string expiredStatus2 = AgentDoctorReportStockTakingGV.SelectedRow.Cells[1].Text;
+
+            Response.Write(expiredStatus1);
+            Response.Write(expiredStatus2);
         }
     }
 }
