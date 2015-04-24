@@ -162,6 +162,7 @@
     <Content Include="AgentFeatures\AgentRegisterPackage.aspx" />
     <Content Include="AgentFeatures\AgentSendPackage.aspx" />
     <Content Include="AgentFeatures\AgentViewReport.aspx" />
+    <Content Include="AgentFeatures\AuditPackage.aspx" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129.mdf" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129_log.ldf">
       <DependentUpon>aspnet-ENETCare.Presentation-20150329093129.mdf</DependentUpon>
@@ -354,6 +355,13 @@
     </Compile>
     <Compile Include="AgentFeatures\AgentViewReport.aspx.designer.cs">
       <DependentUpon>AgentViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentFeatures\AuditPackage.aspx.cs">
+      <DependentUpon>AuditPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentFeatures\AuditPackage.aspx.designer.cs">
+      <DependentUpon>AuditPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
