@@ -14,13 +14,13 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
         }
 
-        //protected void LogIn(object sender, EventArgs e)
-        //{
-        //    //what's this for?
-        //    if (IsValid)
-        //    {
-        //        var test = NedPackageRegisterFormPackageType.Text;
-        //    }
-        //}
+        protected void LogIn(object sender, EventArgs e)
+        {
+            //what's this for?
+            if (IsValid)
+            {
+                //var test = NedPackageRegisterFormPackageType.Text;
+            }
+        }
     }
 }
