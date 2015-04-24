@@ -30,5 +30,24 @@
       </siteMapNode>
 
     </siteMapNode>
+
+    <siteMapNode title="Agent and Doctor Home" description="Agent and doctor's home page"
+                 url="~/AgentDoctorFeatures/AgentDoctorHome">
+
+      <siteMapNode title="Receive Package" description="Receive packages"
+             url="~/AgentDoctorFeatures/AgentDoctorReceivePackage"/>
+
+      <siteMapNode title="Register Package" description="Register packages"
+       url="~/AgentDoctorFeatures/AgentDoctorRegisterPackage"/>
+
+      <siteMapNode title="Send Package" description="Send packages"
+       url="~/AgentDoctorFeatures/AgentDoctorSendPackage"/>
+
+      <siteMapNode title="View Report" description="View reports"
+       url="~/AgentDoctorFeatures/AgentDoctorViewReport"/>
+
+      <siteMapNode title="Distribute Package" description="Distribute Package"
+       url="~/DoctorFeatures/DistributePackage"/>
+    </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -20,11 +20,7 @@
 </asp:Content>
 <asp:Content ID="ManagerFeatureMainContent" ContentPlaceHolderID="FeatureMainContent" runat="server">
     
-    <!--Site Map Navigation-->
-    <div class="breadcrumb">
-        <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
-    </div>
-    <!--Site Map Navigation end-->
+
 
     <asp:ContentPlaceHolder ID="SpecificManagerFeatureMainContent" runat="server">
     </asp:ContentPlaceHolder>
