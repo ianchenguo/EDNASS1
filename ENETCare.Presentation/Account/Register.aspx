@@ -16,7 +16,11 @@
             <asp:Label runat="server" AssociatedControlID="Role" CssClass="col-md-2 control-label">Role</asp:Label>
             <div class="col-md-10">
                 <div class="controls radio">
-                    <asp:RadioButtonList ID="Role" runat="server" RepeatDirection="Vertical">
+                    <asp:RadioButtonList ID="Role" 
+                        runat="server" 
+                        RepeatDirection="Vertical" 
+                        AutoPostBack="True"
+                        OnPreRender="Role_PreRender">
                         <asp:ListItem>Agent</asp:ListItem>
                         <asp:ListItem>Doctor</asp:ListItem>
                         <asp:ListItem>Manager</asp:ListItem>
@@ -84,7 +88,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
+                    CssClass="text-danger" ErrorMessage="The password and confirmation password do not match." />
             </div>
         </div>
         <div class="form-group">

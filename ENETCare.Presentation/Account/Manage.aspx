@@ -36,22 +36,35 @@
                         <div class="form-group">
                             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                                    CssClass="text-danger" ErrorMessage="The email field is required."
+                                <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="SingleLine" />
+                                <asp:RequiredFieldValidator 
+                                    runat="server" 
+                                    ControlToValidate="Email"
+                                    CssClass="text-danger" 
+                                    Display="Dynamic"
+                                    ErrorMessage="The email field is required."
                                     ValidationGroup="ChangeInfo" />
+
+                                <asp:RegularExpressionValidator 
+                                    runat="server"
+                                    ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    ControlToValidate="Email"
+                                    CssClass="text-danger"
+                                    ErrorMessage="The email address is invalid."
+                                    ValidationGroup="ChangeInfo" />
+
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="FormControlDistributionCentre" runat="server">
                             <asp:Label runat="server" AssociatedControlID="DistributionCentre" CssClass="col-md-2 control-label">Distribution Centre</asp:Label>
                             <div class="col-md-10">
 
                                 <asp:DropDownList ID="DistributionCentre"
                                     CssClass="form-control"
-                                    runat="server" 
-                                    DataSourceID="DistributionCentreSource" 
-                                    DataTextField="Name" 
+                                    runat="server"
+                                    DataSourceID="DistributionCentreSource"
+                                    DataTextField="Name"
                                     DataValueField="ID"
                                     OnPreRender="DistributionCentre_PreRender">
                                 </asp:DropDownList>
@@ -59,9 +72,7 @@
                                 <asp:ObjectDataSource runat="server"
                                     ID="DistributionCentreSource"
                                     SelectMethod="GetDistributionCentreList"
-                                    TypeName="ENETCare.Business.DistributionCentreBLL">
-
-                                </asp:ObjectDataSource>
+                                    TypeName="ENETCare.Business.DistributionCentreBLL"></asp:ObjectDataSource>
 
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DistributionCentre" Enabled="false"
                                     CssClass="text-danger" ErrorMessage="The Distribution Centre field is required."
@@ -95,7 +106,7 @@
                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Confirm new password is required."
                                     ValidationGroup="ChangeInfo" />
                                 <asp:CompareValidator runat="server" ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword"
-                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The new password and confirmation password do not match."
+                                    CssClass="text-danger" ErrorMessage="The new password and confirmation password do not match."
                                     ValidationGroup="ChangeInfo" />
                             </div>
                         </div>

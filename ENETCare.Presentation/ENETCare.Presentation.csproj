@@ -196,6 +196,9 @@
     <Content Include="DoctorFeatures\DoctorFeatures.master" />
     <Content Include="Layout\Main.Master" />
     <Content Include="ManagerFeatures\ManagerFeatures.master" />
+    <Content Include="AgentFeatures\Web.config" />
+    <Content Include="ManagerFeatures\Web.config" />
+    <Content Include="DoctorFeatures\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -477,18 +480,6 @@
     <Compile Include="Migrations\201503291402387_AddedProperties1.Designer.cs">
       <DependentUpon>201503291402387_AddedProperties1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504231332100_AlterDistributionCentreMapping.cs" />
-    <Compile Include="Migrations\201504231332100_AlterDistributionCentreMapping.Designer.cs">
-      <DependentUpon>201504231332100_AlterDistributionCentreMapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.cs" />
-    <Compile Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.Designer.cs">
-      <DependentUpon>201504231352325_AlterDistributionCentreMappingAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504231445411_AlterIdentityUser.cs" />
-    <Compile Include="Migrations\201504231445411_AlterIdentityUser.Designer.cs">
-      <DependentUpon>201504231445411_AlterIdentityUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Obsolete\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -560,15 +551,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503291402387_AddedProperties1.resx">
       <DependentUpon>201503291402387_AddedProperties1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504231332100_AlterDistributionCentreMapping.resx">
-      <DependentUpon>201504231332100_AlterDistributionCentreMapping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504231352325_AlterDistributionCentreMappingAgain.resx">
-      <DependentUpon>201504231352325_AlterDistributionCentreMappingAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504231445411_AlterIdentityUser.resx">
-      <DependentUpon>201504231445411_AlterIdentityUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
