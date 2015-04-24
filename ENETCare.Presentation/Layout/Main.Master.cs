@@ -89,8 +89,25 @@ namespace ENETCare.Presentation.Layout
             ApplicationUserManager manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             ApplicationUser user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             //redirects to the home page corresponding to the user's role
-            var userPrimaryRole = manager.GetRoles(user.Id)[0];
-            IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl(RoutingHelper.ResolveHomePath(userPrimaryRole)),Response);
+            var userRoles = manager.GetRoles(user.Id);
+            string UrlStr = this.GetUrlString(userRoles[0]);
+            IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl(UrlStr), Response);
+        }
+
+        private string GetUrlString(string RoleStr)
+        {
+            string managerStr = "Manager";
+            string decidedURL = string.Empty;
+            if (RoleStr == managerStr)
+            {
+                decidedURL = "~/" + RoleStr + "Features/" + RoleStr + "Home.aspx";
+                return decidedURL;
+            }
+            else
+            {
+                decidedURL = "~/AgentDoctorFeatures/AgentDoctorHome.aspx";
+                return decidedURL;
+            }
         }
     }
 

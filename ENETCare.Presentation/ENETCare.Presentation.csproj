@@ -163,11 +163,12 @@
     <Content Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx" />
-    <Content Include="AgentDoctorFeatures\DoctorDistribute.aspx" />
+    <Content Include="AgentDoctorFeatures\TestAgentDoctor.aspx" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129.mdf" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129_log.ldf">
       <DependentUpon>aspnet-ENETCare.Presentation-20150329093129.mdf</DependentUpon>
     </Content>
+    <Content Include="DoctorFeatures\DoctorDistribute.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreLosses.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStock.aspx" />
     <Content Include="ManagerFeatures\ManagerDistributionCentreStockCentres.aspx" />
@@ -189,12 +190,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Layout\Features.master" />
-    <Content Include="AgentDoctorFeatures\AgentDoctorFeatures.master" />
     <Content Include="Layout\Main.Master" />
     <Content Include="ManagerFeatures\ManagerFeatures.master" />
-    <Content Include="AgentDoctorFeatures\Web.config" />
     <Content Include="ManagerFeatures\Web.config" />
-    <Content Include="DoctorFeatures\Web.config" />
+    <Content Include="DoctorFeatures\DoctorFeatures.master" />
+    <Content Include="AgentDoctorFeatures\AgentDoctorFeatures.master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -318,57 +318,66 @@
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorFeatures.master.cs">
       <DependentUpon>AgentDoctorFeatures.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorFeatures.master.designer.cs">
       <DependentUpon>AgentDoctorFeatures.master</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorHome.aspx.cs">
       <DependentUpon>AgentDoctorHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorHome.aspx.designer.cs">
       <DependentUpon>AgentDoctorHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorReceivePackage.aspx.cs">
       <DependentUpon>AgentDoctorReceivePackage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorReceivePackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorReceivePackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx.cs">
       <DependentUpon>AgentDoctorRegisterPackage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorRegisterPackage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackageTest.aspx.cs" />
+    <Compile Include="AgentDoctorFeatures\AgentDoctorRegsiterPackage.aspx.designer.cs" />
     <Compile Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx.cs">
       <DependentUpon>AgentDoctorSendPackage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorSendPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx.cs">
       <DependentUpon>AgentDoctorViewReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx.designer.cs">
       <DependentUpon>AgentDoctorViewReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentDoctorFeatures\DoctorDistribute.aspx.cs">
-      <DependentUpon>DoctorDistribute.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="AgentDoctorFeatures\TestAgentDoctor.aspx.cs">
+      <DependentUpon>TestAgentDoctor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentDoctorFeatures\DoctorDistribute.aspx.designer.cs">
-      <DependentUpon>DoctorDistribute.aspx</DependentUpon>
+    <Compile Include="AgentDoctorFeatures\TestAgentDoctor.aspx.designer.cs">
+      <DependentUpon>TestAgentDoctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="DoctorFeatures\DoctorDistribute.aspx.cs">
+      <DependentUpon>DoctorDistribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorDistribute.aspx.designer.cs">
+      <DependentUpon>DoctorDistribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorFeatures.master.cs">
+      <DependentUpon>DoctorFeatures.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorFeatures\DoctorFeatures.master.designer.cs">
+      <DependentUpon>DoctorFeatures.master</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Features.master.designer.cs">
       <DependentUpon>Features.master</DependentUpon>
     </Compile>

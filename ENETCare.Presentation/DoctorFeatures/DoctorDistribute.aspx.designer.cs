@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.AgentDoctorFeatures {
+namespace ENETCare.Presentation.DoctorFeatures {
     
     
     public partial class DoctorDistribute {
