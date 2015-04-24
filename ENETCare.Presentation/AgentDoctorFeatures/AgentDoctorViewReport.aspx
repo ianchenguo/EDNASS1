@@ -16,7 +16,8 @@
             <%--CssClass="table  table-hover table-bordered table-striped"--%>
             <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" 
                 AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
-                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
+                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped" 
+                OnSelectedIndexChanged="AgentDoctorReportStockTakingGV_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>
@@ -25,18 +26,20 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="#000000" />
+                <%--<HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="#000000" />--%>
+                <%--<FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                 <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
                 <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
                 <SortedAscendingCellStyle BackColor="#F7F7F7" />
                 <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                <SortedDescendingHeaderStyle BackColor="#242121" />
+                <SortedDescendingHeaderStyle BackColor="#242121" />--%>
             </asp:GridView>
 
             <!-- the following link should be optimised -->
             <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
+            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
+            <asp:Label ID="lb2" runat="server" Text=""></asp:Label>
 
         </div>
         <!--panel-body-end-->
