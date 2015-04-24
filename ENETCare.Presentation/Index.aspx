@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/Main.master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="ENETCare.Presentation.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/Main.master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" 
+    Inherits="ENETCare.Presentation.Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!--main-container-start-->

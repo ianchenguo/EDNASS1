@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENETCare.Presentation.Layout {
+namespace ENETCare.Presentation.AgentDoctorFeatures {
     
     
-    public partial class Main {
+    public partial class AgentDoctorViewReport {
         
         /// <summary>
-        /// MainContent control.
+        /// AgentDoctorReportStockTakingGV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView AgentDoctorReportStockTakingGV;
     }
 }
