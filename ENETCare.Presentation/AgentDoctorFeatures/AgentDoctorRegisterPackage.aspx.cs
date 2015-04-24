@@ -43,7 +43,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             try
             {
                 string barcodeUnique = medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
-                AgentDoctorRegisterBarcodeImage.ImageUrl = string.Format("~/Layout/PresentBarcode.aspx?barcode={0}", barcodeUnique);
+                AgentDoctorRegisterBarcodeImage.ImageUrl = string.Format("PresentBarcode.aspx?barcode={0}", barcodeUnique);
                 if(barcodeUnique != null){
                     //Response.Write(expireDate);
                     AgentDoctorRegisterMessage.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();

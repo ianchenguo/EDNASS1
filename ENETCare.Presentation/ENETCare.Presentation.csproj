@@ -163,6 +163,7 @@
     <Content Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx" />
+    <Content Include="AgentDoctorFeatures\PresentBarcode.aspx" />
     <Content Include="AgentDoctorFeatures\TestAgentDoctor.aspx" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129.mdf" />
     <Content Include="App_Data\aspnet-ENETCare.Presentation-20150329093129_log.ldf">
@@ -318,44 +319,60 @@
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorFeatures.master.cs">
       <DependentUpon>AgentDoctorFeatures.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorFeatures.master.designer.cs">
       <DependentUpon>AgentDoctorFeatures.master</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorHome.aspx.cs">
       <DependentUpon>AgentDoctorHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorHome.aspx.designer.cs">
       <DependentUpon>AgentDoctorHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorReceivePackage.aspx.cs">
       <DependentUpon>AgentDoctorReceivePackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorReceivePackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorReceivePackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx.cs">
       <DependentUpon>AgentDoctorRegisterPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorRegisterPackage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackageTest.aspx.cs" />
+    <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackageTest.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegsiterPackage.aspx.designer.cs" />
     <Compile Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx.cs">
       <DependentUpon>AgentDoctorSendPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorSendPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx.cs">
       <DependentUpon>AgentDoctorViewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorViewReport.aspx.designer.cs">
       <DependentUpon>AgentDoctorViewReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentDoctorFeatures\PresentBarcode.aspx.cs">
+      <DependentUpon>PresentBarcode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentDoctorFeatures\PresentBarcode.aspx.designer.cs">
+      <DependentUpon>PresentBarcode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentDoctorFeatures\TestAgentDoctor.aspx.cs">
       <DependentUpon>TestAgentDoctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentDoctorFeatures\TestAgentDoctor.aspx.designer.cs">
       <DependentUpon>TestAgentDoctor.aspx</DependentUpon>
@@ -542,7 +559,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24950</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

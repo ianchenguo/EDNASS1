@@ -9,10 +9,16 @@
 
         <!-- list group -->
         <div class="list-group">
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorRegisterPackage.aspx">Register Package</a>
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorSendPackage.aspx">Send Package</a>
+            <%--<a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorRegisterPackage.aspx">Register Package</a>--%>
+            <%--<a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorSendPackage.aspx">Send Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorReceivePackage.aspx">Receive Package</a>
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorViewReport.aspx">View Report</a>
+            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx">Audit Package</a>
+            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorViewReport.aspx">View Report</a>--%>
+            <asp:LinkButton ID="RegisterPackageLinkButton" Text="Register Package" runat="server" CssClass="list-group-item" OnClick="RegisterPackageLinkButton_Click" />
+            <asp:LinkButton ID="SendPackageLinkButton" Text="Send Package" runat="server" CssClass="list-group-item" OnClick="SendPackageLinkButton_Click" />
+            <asp:LinkButton ID="ReceivePackageLinkButton" Text="Receive Package" runat="server" CssClass="list-group-item" OnClick="ReceivePackageLinkButton_Click" />
+            <asp:LinkButton ID="AuditPackageLinkButton" Text="Audit Package" runat="server" CssClass="list-group-item" OnClick="AuditPackageLinkButton_Click" />
+            <asp:LinkButton ID="ViewPackageLinkButton" Text="View Report" runat="server" CssClass="list-group-item" OnClick="ViewPackageLinkButton_Click" />
         </div>
         <!-- panel ocntents end -->
     </div>

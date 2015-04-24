@@ -13,6 +13,51 @@ namespace ENETCare.Presentation.DoctorFeatures {
     public partial class DoctorFeatures {
         
         /// <summary>
+        /// RegisterPackageLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton RegisterPackageLinkButton;
+        
+        /// <summary>
+        /// SendPackageLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SendPackageLinkButton;
+        
+        /// <summary>
+        /// ReceivePackageLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ReceivePackageLinkButton;
+        
+        /// <summary>
+        /// AuditPackageLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AuditPackageLinkButton;
+        
+        /// <summary>
+        /// ViewPackageLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ViewPackageLinkButton;
+        
+        /// <summary>
         /// SpecificDoctorFeatureMainContent control.
         /// </summary>
         /// <remarks>
