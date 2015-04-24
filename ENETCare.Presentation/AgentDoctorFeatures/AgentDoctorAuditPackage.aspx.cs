@@ -41,6 +41,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         {
             //madicationPackageManager.AuditPackages(getMedicationPackageId(), scannedBarcodes);
             emptyScannedBarcodes();
+            updateDispay();
         }
 
         protected void PackageType_SelectedIndexChanged(object sender, EventArgs e)
