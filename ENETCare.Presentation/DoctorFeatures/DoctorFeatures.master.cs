@@ -13,5 +13,11 @@ namespace ENETCare.Presentation.DoctorFeatures
         {
 
         }
+
+        protected void RegisterPackageLinkButton_Click(object sender, EventArgs e)
+        {
+            string RegisterPackageUrl = "~/AgentDoctorFeatures/AgentDoctorRegisterPackage.aspx";
+            Response.Redirect(RegisterPackageUrl);
+        }
     }
 }
