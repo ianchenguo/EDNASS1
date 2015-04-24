@@ -91,8 +91,6 @@ namespace ENETCare.Presentation.Layout
             var userRoles = manager.GetRoles(user.Id);
             IdentityHelper.RedirectToReturnUrl(Page.ResolveUrl("~/" + userRoles[0] + "Features/" + userRoles[0] + "Home.aspx"), Response);
 
-
-
         }
     }
 
