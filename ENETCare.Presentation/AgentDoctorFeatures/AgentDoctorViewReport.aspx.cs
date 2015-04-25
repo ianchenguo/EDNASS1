@@ -10,7 +10,6 @@ using ENETCare.Presentation.HelperUtilities;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
