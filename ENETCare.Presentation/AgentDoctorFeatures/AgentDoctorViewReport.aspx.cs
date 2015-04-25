@@ -24,20 +24,8 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 this.AgentDoctorReportStockTakeDataBind();
             }
-
-            List<string> expiredStrCollection = new List<string>();
-
-            foreach (object o in AgentDoctorReportStockTaking.Stocktake())
-            {
-                Type t = o.GetType();
-                PropertyInfo p = t.GetProperty("ExpireStatus");
-                object v = p.GetValue(o, null);
-                string ExpiredStatueStr = v.ToString();
-                //Response.Write(ExpiredStatueStr);
-                expiredStrCollection.Add(ExpiredStatueStr);
-                this.ColorMarkHelper(expiredStrCollection, AgentDoctorReportStockTakingGV);
-            }
         }
+
         private void AgentDoctorReportStockTakeDataBind()
         {
             AgentDoctorReportStockTakingGV.DataSource = AgentDoctorReportStockTaking.Stocktake();
@@ -59,9 +47,14 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             this.AgentDoctorReportStockTakeDataBind();
         }
 
-        private void ColorMarkHelper(List<string> whetherExpired, GridView ReportGV)
+        protected void AgentDoctorReportStockTakingGV_DataBound(object sender, EventArgs e)
         {
-            ReportHelper.AgentDoctorViewReportColourMark(whetherExpired, ReportGV.Rows);
+            this.ColorMarkHelper(AgentDoctorReportStockTakingGV);
+        }
+
+        private void ColorMarkHelper(GridView ReportGV)
+        {
+            ReportHelper.AgentDoctorViewReportColourMark(ReportGV.Rows);
         }
         
     }

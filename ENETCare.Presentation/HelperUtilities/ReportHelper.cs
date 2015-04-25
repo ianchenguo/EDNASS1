@@ -33,29 +33,28 @@ namespace ENETCare.Presentation.HelperUtilities
             }
         }
 
-        public static void AgentDoctorViewReportColourMark(List<string> expiredCondition, GridViewRowCollection ReportGridViewRowsCollection)
+        public static void AgentDoctorViewReportColourMark(GridViewRowCollection ReportGridViewRowsCollection)
         {
-            for(int i = 0; i<expiredCondition.Count; i++)
+            for (int i = 0; i < ReportGridViewRowsCollection.Count; i++)
             {
-                if (expiredCondition[i] == "Expired")
-                {
-                    ChooseDangerForAgentDoctorReport(i, ReportGridViewRowsCollection);
-                }
-                else if (expiredCondition[i] == "AboutToExpired")
-                {
-                    ChooseWarningForAgentDoctorReport(i, ReportGridViewRowsCollection);
-                }
+                GridViewRow specificRow = ReportGridViewRowsCollection[i];
+                AgentDoctorCssClassAdapterViewReportGVrow(specificRow);
             }
         }
 
-        private static void ChooseWarningForAgentDoctorReport(int i, GridViewRowCollection gvRowCollection)
+        private static void AgentDoctorCssClassAdapterViewReportGVrow(GridViewRow GvSpecRow)
         {
-            gvRowCollection[i].CssClass = "orange";
-        }
-
-        private static void ChooseDangerForAgentDoctorReport(int i, GridViewRowCollection gvRowCollection)
-        {
-            gvRowCollection[i].CssClass = "danger";
+            string cellFourStr = GvSpecRow.Cells[4].Text;
+            //&& cellFourStr == "Expired"
+            if (cellFourStr == "Expired")
+            {
+                GvSpecRow.CssClass = "AgentDoctorGVrowDanger";
+            }
+            //&& cellFourStr == "AboutToExpired"
+            else if (cellFourStr == "AboutToExpired")
+            {
+                GvSpecRow.CssClass = "AgentDoctorGVrowWarning";
+            }
         }
     }
 
