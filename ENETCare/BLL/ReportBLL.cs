@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
 	public class ReportBLL
 	{
-		ReportDAO ReportDAO
-		{
-			get { return DAOFactory.GetReportDAO(); }
-		}
+		ReportDAO ReportDAO { get; set; }
+		MedicationTypeDAO MedicationTypeDAO { get; set; }
+		DistributionCentreDAO DistributionCentreDAO { get; set; }
 
-		MedicationTypeDAO MedicationTypeDAO
+		public ReportBLL()
 		{
-			get { return DAOFactory.GetMedicationTypeDAO(); }
-		}
-
-		DistributionCentreDAO DistributionCentreDAO
-		{
-			get { return DAOFactory.GetDistributionCentreDAO(); }
+			ReportDAO = DAOFactory.GetReportDAO();
+			MedicationTypeDAO = DAOFactory.GetMedicationTypeDAO();
+			DistributionCentreDAO = DAOFactory.GetDistributionCentreDAO();
 		}
 
 		public List<MedicationTypeViewData> DistributionCentreStock(int distributionCentreId)
@@ -74,6 +68,5 @@ namespace ENETCare.Business
 		{
 			return ReportDAO.FindDoctorActivityByUserName(username);
 		}
-
 	}
 }

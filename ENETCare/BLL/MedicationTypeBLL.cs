@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ENETCare.Business
 {
 	public class MedicationTypeBLL
 	{
-		MedicationTypeDAO MedicationTypeDAO
+		MedicationTypeDAO MedicationTypeDAO { get; set; }
+
+		public MedicationTypeBLL()
 		{
-			get { return DAOFactory.GetMedicationTypeDAO(); }
+			MedicationTypeDAO = DAOFactory.GetMedicationTypeDAO();
 		}
 
 		public MedicationType GetMedicationTypeById(int id)
