@@ -74,10 +74,13 @@ namespace ENETCare.Business
 			return RegisterPackage(medicationType, parsedExpireDate);
 		}
 
-		string RegisterPackage(MedicationType medicationType, DateTime expireDate)
+		string RegisterPackage(MedicationType medicationType, DateTime expireDate, string barcode = "")
 		{
 			MedicationPackage package = new MedicationPackage();
-			string barcode = BarcodeHelper.GenerateBarcode();
+			if (string.IsNullOrEmpty(barcode))
+			{
+				barcode = BarcodeHelper.GenerateBarcode();
+			}
 			package.Barcode = barcode;
 			package.Type = medicationType;
 			package.ExpireDate = expireDate;
@@ -265,7 +268,7 @@ namespace ENETCare.Business
 			{
 				MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
 				DateTime expireDate = DateTime.Today.AddDays(medicationType.ShelfLife);
-				RegisterPackage(medicationType, expireDate);
+				RegisterPackage(medicationType, expireDate, barcode);
 			}
 			else if (package.Type.ID != medicationTypeId)
 			{
@@ -282,12 +285,12 @@ namespace ENETCare.Business
 			}
 		}
 
-		public void AuditPackages(int medicationTypeId, List<int> scannedList)
+		public void AuditPackages(int medicationTypeId, List<string> scannedList)
 		{
 			List<MedicationPackage> inStockList = GetInStockList(medicationTypeId);
 			foreach (MedicationPackage package in inStockList)
 			{
-				if (!scannedList.Contains(package.ID))
+				if (!scannedList.Contains(package.Barcode))
 				{
 					package.Status = PackageStatus.Lost;
 					MedicationPackageDAO.UpdatePackage(package);
