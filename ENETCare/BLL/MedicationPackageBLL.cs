@@ -244,11 +244,11 @@ namespace ENETCare.Business
 			foreach (MedicationPackage package in packages)
 			{
 				ExpireStatus expireStatus = ExpireStatus.NotExpired;
-				if (DateTime.Now > package.ExpireDate)
+				if (TimeProvider.Current.Now > package.ExpireDate)
 				{
 					expireStatus = ExpireStatus.Expired;
 				}
-				else if (DateTime.Now.AddDays(warningDays) > package.ExpireDate)
+				else if (TimeProvider.Current.Now.AddDays(warningDays) > package.ExpireDate)
 				{
 					expireStatus = ExpireStatus.AboutToExpired;
 				}
@@ -292,17 +292,21 @@ namespace ENETCare.Business
 			}
 		}
 
-		public void AuditPackages(int medicationTypeId, List<string> scannedList)
+		public List<MedicationPackage> AuditPackages(int medicationTypeId, List<string> scannedList)
 		{
+			List<MedicationPackage> lostPackages = new List<MedicationPackage>();
 			List<MedicationPackage> inStockList = GetInStockList(medicationTypeId);
 			foreach (MedicationPackage package in inStockList)
 			{
 				if (!scannedList.Contains(package.Barcode))
 				{
 					package.Status = PackageStatus.Lost;
+					package.Operator = User.Username;
+					lostPackages.Add(package);
 					MedicationPackageDAO.UpdatePackage(package);
 				}
 			}
+			return lostPackages;
 		}
 
 		public List<MedicationPackage> GetInStockList(int medicationTypeId)
