@@ -14,6 +14,10 @@
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1">
 
+                <div runat="server" id="AlertWindow" visible="false" class="alert alert-success" data-dismiss="alert">
+                    <asp:Label ID="AlertWindowContent" runat="server" />
+                </div>
+
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="PackageType" CssClass="col-md-3 control-label">Package Type</asp:Label>
                     <div class="col-md-9">
@@ -24,8 +28,7 @@
                             DataSourceID="PackageTypeSource"
                             DataTextField="Name"
                             DataValueField="ID"
-                            OnSelectedIndexChanged="PackageType_SelectedIndexChanged" 
-                            AutoPostBack="True">
+                            OnPreRender="PackageType_PreRender">
                         </asp:DropDownList>
 
                         <asp:ObjectDataSource runat="server"
@@ -42,7 +45,8 @@
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="Barcode" CssClass="col-md-3 control-label">Barcode</asp:Label>
                     <div class="col-md-9">
-                        <asp:TextBox runat="server" ID="Barcode" CssClass="form-control" TextMode="SingleLine" />
+                        <asp:TextBox runat="server" ID="Barcode" CssClass="form-control" TextMode="SingleLine" 
+                            OnPreRender="Barcode_PreRender"/>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Barcode"
                             CssClass="text-danger" Display="Dynamic"
                             ErrorMessage="The Barcode field is required."
@@ -53,7 +57,7 @@
                             ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
                             ControlToValidate="Barcode"
                             CssClass="text-danger"
-                            ErrorMessage="The Barcode address is invalid."
+                            ErrorMessage="The Barcode is invalid."
                             ValidationGroup="AuditPackage" />
                     </div>
                 </div>
@@ -63,12 +67,12 @@
                         <asp:Button runat="server"
                             Text="Scan"
                             ValidationGroup="AuditPackage"
-                            ID="AuditPackageButton"
-                            OnClick="AuditPackageButton_Click"
+                            ID="ScanPackageButton"
+                            OnClick="ScanPackageButton_Click"
+                            Enabled='<%# Session["hasActiveAuditTask"] != null%>'
                             CssClass="btn btn-default" />
 
-                        <span runat="server" class="text-center">
-                            Scanned 
+                        <span runat="server" class="text-center">Scanned 
                         <asp:Literal
                             ID="ScannedPackageTotal"
                             runat="server">
@@ -79,18 +83,33 @@
                 </div>
             </div>
 
-
-
-            <asp:LinkButton Text="Cancel"
+            <%--            <asp:LinkButton Text="Cancel"
+                ID="LinkButton1"
                 runat="server"
                 CssClass="btn btn-danger btn-float-right btn-margin-left"
-                PostBackUrl="~/AgentDoctorFeatures/AgentDoctorHome.aspx" />
+                OnClick="CancelButton_Click"
+                PostBackUrl="~/AgentDoctorFeatures/AgentDoctorHome.aspx" />--%>
 
-            <asp:LinkButton Text="Commit Audition"
-                ID="CommitAuditionButton"
+            <asp:LinkButton Text="Cancel"
+                ID="CancelButton"
                 runat="server"
+                CssClass="btn btn-danger btn-float-right btn-margin-left"
+                OnClick="CancelButton_Click"
+                OnPreRender="CancelButton_PreRender"/>
+
+            <asp:LinkButton Text="Commit Audit"
+                ID="CommitAuditButton"
+                runat="server"
+                Visible='<%# Session["hasActiveAuditTask"] != null%>'
                 CssClass="btn btn-success btn-float-right"
-                OnClick="CommitAuditionButton_Click" />
+                OnClick="CommitAuditButton_Click" />
+
+            <asp:LinkButton Text="New Audit"
+                ID="StartAuditButton"
+                runat="server"
+                Visible='<%# Session["hasActiveAuditTask"] == null%>'
+                CssClass="btn btn-success btn-float-right"
+                OnClick="StartAuditButton_Click" />
         </div>
         <!--panel-body-end-->
 

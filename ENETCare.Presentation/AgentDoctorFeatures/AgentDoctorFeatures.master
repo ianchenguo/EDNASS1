@@ -12,17 +12,28 @@
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorRegisterPackage.aspx" runat="server">Register Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorSendPackage.aspx" runat="server">Send Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorReceivePackage.aspx" runat="server">Receive Package</a>
-            <a class="list-group-item" href="~/DoctorFeatures/DoctorDistribute" 
-                ID="DoctorDistributPackageItem" runat="server">Distribute Package</a>
+            <a class="list-group-item" href="~/DoctorFeatures/DoctorDistribute"
+                id="DoctorDistributPackageItem" runat="server">Distribute Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx" runat="server">Audit Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorViewReport.aspx" runat="server">View Report</a>
         </div>
-        
+
         <!-- panel ocntents end -->
     </div>
     <!--panel end-->
 </asp:Content>
 <asp:Content ID="AgentDoctorFeatureMainContent" ContentPlaceHolderID="FeatureMainContent" runat="server">
+
+    <div runat="server"
+        id="AlertBox"
+        class="alert alert-dismissible fade in"
+        role="alert"
+        visible="false">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 runat="server" id="AlertBoxTitle">alert title placeholder</h4>
+        <p runat="server" id="AlertBoxContent">alert content placeholder</p>
+    </div>
+
     <asp:ContentPlaceHolder ID="SpecificAgentDoctorFeatureMainContent" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>
