@@ -13,24 +13,6 @@ namespace ENETCare.Presentation.DoctorFeatures {
     public partial class DoctorDistribute {
         
         /// <summary>
-        /// DoctorDistributePackageDestination control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DoctorDistributePackageDestination;
-        
-        /// <summary>
-        /// DoctorDistributeDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DoctorDistributeDropDownList;
-        
-        /// <summary>
         /// DoctorDistributePackageTypebarcode control.
         /// </summary>
         /// <remarks>
@@ -38,15 +20,6 @@ namespace ENETCare.Presentation.DoctorFeatures {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DoctorDistributePackageTypebarcode;
-        
-        /// <summary>
-        /// DoctorDistributePackageDateTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DoctorDistributePackageDateTextBox;
         
         /// <summary>
         /// DoctorDistributeLinkButton control.

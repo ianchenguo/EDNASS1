@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ENETCare.Business
 {
 	public class EmployeeBLL
 	{
-		EmployeeDAO EmployeeDAO
+		EmployeeDAO EmployeeDAO { get; set; }
+
+		public EmployeeBLL()
 		{
-			get { return DAOFactory.GetEmployeeDAO(); }
+			EmployeeDAO = DAOFactory.GetEmployeeDAO();
 		}
 
 		public Employee GetEmployeeByUserName(string username)

@@ -17,19 +17,10 @@
 
 
                 <div class="form-group" runat="server">
-                    <%--                    <label for="ned-package-register-form-type" class="col-xs-3">Package Type</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-register-form-type" type="text"
-                            placeholder="Package Type" />
-                    </div>--%>
 
                     <asp:Label runat="server" AssociatedControlID="AgentDoctorPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
-                        <%--<asp:TextBox runat="server" ID="NedPackageRegisterFormPackageType" CssClass="form-control" TextMode="SingleLine" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormPackageType"
-                            CssClass="text-danger" ErrorMessage="The Package Type field is required." />--%>
                         <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" runat="server">
                             <asp:ListItem>Please select</asp:ListItem>
                         </asp:DropDownList>
@@ -39,11 +30,7 @@
                 <br />
 
                 <div class="form-group">
-                    <%--                    <label for="ned-package-register-form-expire-date" class="col-xs-3">Expiration Date</label>
 
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-register-form-expire-date" type="date" />
-                    </div>--%>
                     <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date: </asp:Label>
 
                     <div class="col-xs-9">
@@ -52,24 +39,6 @@
                             CssClass="text-danger" ErrorMessage="The Expiration Date field is required." />
                     </div>
                 </div>
-
-                <%--<div class="form-group">
-                                        <label for="ned-package-register-form-value" class="col-xs-3">Value (AUD)</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-register-form-value" type="text"
-                            placeholder="Value in AUD" />
-                    </div>
-
-                    <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormValue" CssClass="col-xs-3">Value</asp:Label>
-
-                    <div class="col-xs-9">
-                        <asp:TextBox runat="server" ID="NedPackageRegisterFormValue" CssClass="form-control" TextMode="Number" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormValue"
-                            CssClass="text-danger" ErrorMessage="The Value field is required." />
-                    </div>
-                </div>--%>
-                <!-- the following link should be optimised -->
                 <p>
                     &nbsp;</p>
                 <p>
@@ -79,7 +48,7 @@
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
                 <%--<asp:Button ID="NedPackageRegisterSubmit" runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />--%>
                 <asp:Button ID="AgentDoctorRegisterButton" runat="server" OnClick="AgentDoctorRegisterButton_Click"
-                    Text="AgentDoctor Register" CssClass="btn btn-success btn-float-right" />
+                    Text="Register" CssClass="btn btn-success btn-float-right" />
             </div>
         </div>
         <!--panel-body-end-->

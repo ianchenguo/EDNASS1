@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class MedicationPackageDataReaderDAO : MedicationPackageDAO
+	public class MedicationPackageDataReaderDAO : DataReaderDAO, MedicationPackageDAO
 	{
-		string connectionString = DBSchema.ConnectionString;
 		string selectStatement = "select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator";
 		string fromClause = "from MedicationPackage";
 
@@ -18,7 +14,7 @@ namespace ENETCare.Business
 			List<MedicationPackage> packageList = new List<MedicationPackage>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = string.Format("{0} {1}", selectStatement, fromClause);
 				SqlCommand command = new SqlCommand(query, conn);
@@ -39,7 +35,7 @@ namespace ENETCare.Business
 			List<MedicationPackage> packageList = new List<MedicationPackage>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string whereClause = "where Status = @status and StockDC = @stockdc";
 				if (medicationTypeId != null)
@@ -70,7 +66,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string whereClause = "where Barcode = @barcode";
 				string query = string.Format("{0} {1} {2}", selectStatement, fromClause, whereClause);
@@ -91,7 +87,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"insert into MedicationPackage (Barcode, Type, ExpireDate, Status, StockDC, Operator, UpdateTime)
 								 values (@barcode, @type, @expiredate, @status, @stockdc, @operator, getdate())";
@@ -110,7 +106,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"update MedicationPackage
 									set Status = @status, StockDC = @stockdc, SourceDC = @sourcedc, DestinationDC = @destinationdc, Operator = @operator, UpdateTime = getdate()
@@ -122,6 +118,20 @@ namespace ENETCare.Business
 				command.Parameters.Add(new SqlParameter("sourcedc", package.SourceDC != null ? (object)package.SourceDC.ID : DBNull.Value));
 				command.Parameters.Add(new SqlParameter("destinationdc", package.DestinationDC != null ? (object)package.DestinationDC.ID : DBNull.Value));
 				command.Parameters.Add(new SqlParameter("operator", package.Operator));
+				command.ExecuteNonQuery();
+			}
+		}
+
+		public void DeletePackage(int packageId)
+		{
+			using (SqlConnection conn = new SqlConnection())
+			{
+				conn.ConnectionString = ConnectionString;
+				conn.Open();
+				string query = @"delete from MedicationPackage
+								  where ID = @id";
+				SqlCommand command = new SqlCommand(query, conn);
+				command.Parameters.Add(new SqlParameter("id", packageId));
 				command.ExecuteNonQuery();
 			}
 		}

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
-	public class DistributionCentreDataReaderDAO : DistributionCentreDAO
+	public class DistributionCentreDataReaderDAO : DataReaderDAO, DistributionCentreDAO
 	{
-		string connectionString = DBSchema.ConnectionString;
-
 		public List<DistributionCentre> FindAllDistributionCentres()
 		{
 			List<DistributionCentre> distributionCentreList = new List<DistributionCentre>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select ID, Name, Address, Phone
 								   from DistributionCentre";
@@ -37,7 +31,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select ID, Name, Address, Phone
 								   from DistributionCentre

@@ -18,47 +18,24 @@
                 <div class="form-group col-xs-12">
                     <asp:Label AssociatedControlID="AgentDoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
                     <asp:TextBox ID="AgentDoctorReceivePackagesBarcode" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorReceivePackagesBarcode"
+                            CssClass="text-danger" Display="Dynamic"
+                            ErrorMessage="<div>The Barcode field is required.</div>"
+                            ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
+
+                        <asp:RegularExpressionValidator
+                            runat="server"
+                            ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
+                            ControlToValidate="AgentDoctorReceivePackagesBarcode"
+                            CssClass="text-danger"
+                            ErrorMessage="<div>The Barcode address is invalid.</div>"
+                            ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
                 </div>
-
-                <%--<div class="form-group">
-                    <label for="ned-package-receive-form-from" class="col-xs-3">From</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-from" type="text"
-                            placeholder="Package Type" readonly />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ned-package-receive-form-type" class="col-xs-3">Package Type</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-type" type="text"
-                            placeholder="Package Type" readonly />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ned-package-receive-form-expire-date" class="col-xs-3">Expiration Date</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-expire-date" type="date" readonly />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="ned-package-receive-form-value" class="col-xs-3">Value (AUD)</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-receive-form-value" type="text"
-                            placeholder="Value in AUD" readonly />
-                    </div>
-                </div>--%>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
                 <%--<asp:Button ID="" runat="server" OnClick="AgentDoctorReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right" />--%>
-                <asp:Button ID="AgentDoctorReceivePackageButton" runat="server" Text="AgentDoctor Receive" 
-                    CssClass="btn btn-success btn-float-right" OnClick="AgentDoctorReceivePackageButton_Click"/>
+                <asp:Button ID="AgentDoctorReceivePackageButton" runat="server" Text="Receive" 
+                    CssClass="btn btn-success btn-float-right" OnClick="AgentDoctorReceivePackageButton_Click" ValidationGroup="AgentDoctorReceivePackageValidateGroup"/>
 
             </div>
         </div>

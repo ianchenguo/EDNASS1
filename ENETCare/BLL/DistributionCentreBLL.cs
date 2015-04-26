@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ENETCare.Business
 {
 	public class DistributionCentreBLL
 	{
-		DistributionCentreDAO DistributionCentreDAO
+		DistributionCentreDAO DistributionCentreDAO { get; set; }
+
+		public DistributionCentreBLL()
 		{
-			get { return DAOFactory.GetDistributionCentreDAO(); }
+			DistributionCentreDAO = DAOFactory.GetDistributionCentreDAO();
 		}
 
 		public DistributionCentre GetDistributionCentreById(int id)

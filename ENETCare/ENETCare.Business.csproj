@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="BLL\ReportBLL.cs" />
     <Compile Include="DAL\DataReaderDAO\ReportDataReaderDAO.cs" />
-    <Compile Include="DAL\DBSchema.cs" />
+    <Compile Include="DAL\DataReaderDAO\DataReaderDAO.cs" />
     <Compile Include="DAL\Interface\ReportDAO.cs" />
     <Compile Include="Entity\Report.cs" />
     <Compile Include="Helper\BarcodeHelper.cs" />
@@ -70,9 +70,10 @@
     <Compile Include="DAL\DataReaderDAO\MedicationTypeDataReaderDAO.cs" />
     <Compile Include="BLL\MedicationPackageBLL.cs" />
     <Compile Include="DAL\Interface\MedicationPackageDAO.cs" />
+    <Compile Include="Helper\DefaultTimeProvider.cs" />
     <Compile Include="Helper\ENETCareException.cs" />
+    <Compile Include="Helper\TimeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DAL\SimDB.cs" />
     <Compile Include="DAL\DataReaderDAO\MedicationPackageDataReaderDAO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

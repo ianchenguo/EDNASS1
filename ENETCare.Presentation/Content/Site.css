@@ -52,6 +52,14 @@ select {
     float: none !important;
 }
 
+.AgentDoctorGVrowDanger{
+    background-color: #FEA8A8;
+}
+
+.AgentDoctorGVrowWarning{
+    background-color: #ffd800;
+}
+
 @media (min-width: 768px) {
     .col-sm-height {
         display: table-cell;

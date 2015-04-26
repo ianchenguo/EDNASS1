@@ -1,49 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ENETCare.Business
 {
 	public class MedicationPackageBLL
 	{
-		#region Constructor
+		#region Properties
 
-		Employee User { get; set; }
+		string username;
+		Employee user;
+		public Employee User
+		{
+			get
+			{
+				if (user == null)
+				{
+					user = GetEmployeeByUserName(username);
+				}
+				return user;
+			}
+		}
+		public MedicationPackageDAO MedicationPackageDAO { get; set; }
+		public MedicationTypeDAO MedicationTypeDAO { get; set; }
+		public DistributionCentreDAO DistributionCentreDAO { get; set; }
+		public EmployeeDAO EmployeeDAO { get; set; }
+
+		#endregion
+
+		#region Constructor
 
 		public MedicationPackageBLL(string username)
 		{
-			User = EmployeeDAO.GetEmployeeByUserName(username);
-			if (User == null)
-			{
-				throw new ENETCareException(string.Format("{0}: {1}", Properties.Resources.InvalidUser, username));
-			}
+			this.username = username;
+			MedicationPackageDAO = DAOFactory.GetMedicationPackageDAO();
+			MedicationTypeDAO = DAOFactory.GetMedicationTypeDAO();
+			DistributionCentreDAO = DAOFactory.GetDistributionCentreDAO();
+			EmployeeDAO = DAOFactory.GetEmployeeDAO();
 		}
 
 		#endregion
 
-		#region Properties
+		#region Employee
 
-		MedicationPackageDAO MedicationPackageDAO
+		Employee GetEmployeeByUserName(string username)
 		{
-			get { return DAOFactory.GetMedicationPackageDAO(); }
-		}
-
-		MedicationTypeDAO MedicationTypeDAO
-		{
-			get { return DAOFactory.GetMedicationTypeDAO(); }
-		}
-
-		DistributionCentreDAO DistributionCentreDAO
-		{
-			get { return DAOFactory.GetDistributionCentreDAO(); }
-		}
-
-		EmployeeDAO EmployeeDAO
-		{
-			get { return DAOFactory.GetEmployeeDAO(); }
+			Employee employee = EmployeeDAO.GetEmployeeByUserName(username);
+			if (employee == null)
+			{
+				throw new ENETCareException(string.Format("{0}: {1}", Properties.Resources.InvalidUser, username));
+			}
+			return employee;
 		}
 
 		#endregion
@@ -59,7 +66,7 @@ namespace ENETCare.Business
 
 		#region Register
 
-		public string RegisterPackage(int medicationTypeId, string expireDate)
+		public string RegisterPackage(int medicationTypeId, string expireDate, string barcode = "")
 		{
 			DateTime parsedExpireDate;
 			if (!DateTime.TryParse(expireDate, out parsedExpireDate))
@@ -71,10 +78,10 @@ namespace ENETCare.Business
 			{
 				throw new ENETCareException(Properties.Resources.MedicationTypeNotFound);
 			}
-			return RegisterPackage(medicationType, parsedExpireDate);
+			return RegisterPackage(medicationType, parsedExpireDate, barcode);
 		}
 
-		string RegisterPackage(MedicationType medicationType, DateTime expireDate, string barcode = "")
+		string RegisterPackage(MedicationType medicationType, DateTime expireDate, string barcode)
 		{
 			MedicationPackage package = new MedicationPackage();
 			if (string.IsNullOrEmpty(barcode))
@@ -237,11 +244,11 @@ namespace ENETCare.Business
 			foreach (MedicationPackage package in packages)
 			{
 				ExpireStatus expireStatus = ExpireStatus.NotExpired;
-				if (DateTime.Now > package.ExpireDate)
+				if (TimeProvider.Current.Now > package.ExpireDate)
 				{
 					expireStatus = ExpireStatus.Expired;
 				}
-				else if (DateTime.Now.AddDays(warningDays) > package.ExpireDate)
+				else if (TimeProvider.Current.Now.AddDays(warningDays) > package.ExpireDate)
 				{
 					expireStatus = ExpireStatus.AboutToExpired;
 				}
@@ -285,17 +292,21 @@ namespace ENETCare.Business
 			}
 		}
 
-		public void AuditPackages(int medicationTypeId, List<string> scannedList)
+		public List<MedicationPackage> AuditPackages(int medicationTypeId, List<string> scannedList)
 		{
-			List<MedicationPackage> inStockList = GetInStockList(medicationTypeId);
-			foreach (MedicationPackage package in inStockList)
+			List<MedicationPackage> lostPackages = new List<MedicationPackage>();
+			List<MedicationPackage> inStockPackages = GetInStockList(medicationTypeId);
+			foreach (MedicationPackage package in inStockPackages)
 			{
 				if (!scannedList.Contains(package.Barcode))
 				{
 					package.Status = PackageStatus.Lost;
+					package.Operator = User.Username;
+					lostPackages.Add(package);
 					MedicationPackageDAO.UpdatePackage(package);
 				}
 			}
+			return lostPackages;
 		}
 
 		public List<MedicationPackage> GetInStockList(int medicationTypeId)
