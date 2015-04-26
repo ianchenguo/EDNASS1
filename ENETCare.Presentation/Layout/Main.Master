@@ -1,6 +1,6 @@
-﻿<%@ Master Language="C#" 
-    AutoEventWireup="true" 
-    CodeBehind="Main.Master.cs" 
+﻿<%@ Master Language="C#"
+    AutoEventWireup="true"
+    CodeBehind="Main.Master.cs"
     Inherits="ENETCare.Presentation.Layout.Main" %>
 
 <!DOCTYPE html>
@@ -62,14 +62,12 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
 
-                            <p class="navbar-text">
-                                <asp:LinkButton ID="MyHomeButton"
-                                    CssClass="navbar-link unstyled-link"
+                            <ul class="nav navbar-nav">
+                                <li><a id="MyHomeButton"
                                     runat="server"
-                                    OnClick="MyHomeButton_OnClick">
-                                My Home
-                                </asp:LinkButton>
-                            </p>
+                                    onserverclick="MyHomeButton_OnClick"
+                                    causesvalidation="false">My Home</a></li>
+                            </ul>
 
 
                             <ul class="nav navbar-nav navbar-right">
@@ -78,7 +76,6 @@
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Index.aspx" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
                             </ul>
-
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
