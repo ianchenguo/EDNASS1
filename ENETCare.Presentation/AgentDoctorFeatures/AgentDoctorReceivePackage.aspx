@@ -12,8 +12,11 @@
 
         <!--panel-body-start-->
         <div class="panel-body">
-
             <div class="form-horizontal col-sm-10 col-sm-offset-1" runat="server">
+
+                <div runat="server" id="AgentDoctorReceivePackageAlertWindowDiv" visible="false" class="alert alert-success" data-dismiss="alert">
+                    <asp:Label ID="AgentDoctorReceivePackageAlertWindowContentLabel" runat="server" />
+                </div>
 
                 <div class="form-group col-xs-12">
                     <asp:Label AssociatedControlID="AgentDoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
@@ -28,7 +31,7 @@
                             ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
                             ControlToValidate="AgentDoctorReceivePackagesBarcode"
                             CssClass="text-danger"
-                            ErrorMessage="<div>The Barcode address is invalid.</div>"
+                            ErrorMessage="<div>The Barcode is invalid.</div>"
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
                 </div>
                 <!-- the following link should be optimised -->

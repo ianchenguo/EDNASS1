@@ -10,7 +10,6 @@ using ENETCare.Presentation.HelperUtilities;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
@@ -25,22 +24,45 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 this.AgentDoctorReportStockTakeDataBind();
             }
 
-            GridViewRowCollection rowsCollection = AgentDoctorReportStockTakingGV.Rows;
-            GridViewRow row = rowsCollection[1];
-            string rowContent1 = row.Cells[0].Text;
-            string rowContent4 = row.Cells[4].Text;
-            int ColumnsCount = AgentDoctorReportStockTakingGV.Columns.Count;
-
-            Debug.WriteLine("\nColumnsCount is -- " + ColumnsCount);
-            Debug.WriteLine("\nRow 1 Cell 0 is -- " + rowContent1);
-            Debug.WriteLine("\nRow 1 Cell 4 is -- " + rowContent4);
-            
         }
 
         private void AgentDoctorReportStockTakeDataBind()
         {
             AgentDoctorReportStockTakingGV.DataSource = AgentDoctorReportStockTaking.Stocktake();
             AgentDoctorReportStockTakingGV.DataBind();
+            this.isDeleteOrNotDeleteVisible();
+            this.ExpiredStatusHidden();
+        }
+
+        private void ExpiredStatusHidden()
+        {
+            int GVrowsCount = AgentDoctorReportStockTakingGV.Rows.Count;
+            int ColumnIndex = AgentDoctorReportStockTakingGV.HeaderRow.Cells.Count - 1;
+            AgentDoctorReportStockTakingGV.HeaderRow.Cells[ColumnIndex].Visible = false;
+
+            for (int i = 0; i < GVrowsCount; i++)
+            {
+                AgentDoctorReportStockTakingGV.Rows[i].Cells[ColumnIndex].Visible = false;
+            }
+        }
+
+        private void isDeleteOrNotDeleteVisible()
+        {
+            GridViewRowCollection rowsCollection = AgentDoctorReportStockTakingGV.Rows;
+
+            for (int i = 0; i < rowsCollection.Count; i++)
+            {
+                GridViewRow rowHere = rowsCollection[i];
+                string rowFourExpiredStatus = rowHere.Cells[4].Text;
+                if (rowFourExpiredStatus == "Expired")
+                {
+                    rowHere.Cells[0].Visible = true;
+                }
+                else
+                {
+                    rowHere.Cells[0].Text = "";
+                }
+            }
         }
 
         protected void AgentDoctorReportStockTakingGV_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -50,14 +72,10 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorReportStockTaking.DiscardPackage(e.CommandArgument.ToString());
                 this.AgentDoctorReportStockTakeDataBind();
             }
-            //Debug.WriteLine("\nLocalRow ExpiredStatus is: --\n" + ExpiredStatusStrLocalRow);
         }
 
         protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            //int rowIndex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-            //string ExpiredStatusStrLocalRow = (AgentDoctorReportStockTakingGV.Rows[rowIndex].Cells[4]).Text;
-            //string theStr = AgentDoctorReportStockTakingGV.Columns[0].HeaderText.ToString();
             AgentDoctorReportStockTakingGV.PageIndex = e.NewPageIndex;
             this.AgentDoctorReportStockTakeDataBind();
         }
@@ -65,11 +83,17 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void AgentDoctorReportStockTakingGV_DataBound(object sender, EventArgs e)
         {
             this.ColorMarkHelper(AgentDoctorReportStockTakingGV);
+
         }
 
         private void ColorMarkHelper(GridView ReportGV)
         {
             ReportHelper.AgentDoctorViewReportColourMark(ReportGV.Rows);
+        }
+
+        protected void CancleADViewReport_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgentDoctorHome.aspx");
         }
         
     }

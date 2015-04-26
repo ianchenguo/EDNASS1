@@ -43,5 +43,19 @@ namespace ENETCare.Presentation.DoctorFeatures
             string AuditPackageUrl = "~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx";
             Response.Redirect(AuditPackageUrl);
         }
+
+        //internal void ConfigureAlertBox(bool isVisible, string alertStyle, string alertTitle, string alertContent)
+        //{
+        //    string defaultStyles = "alert alert-dismissible fade in";
+
+        //    AlertBoxDoctor.Visible = isVisible;
+        //    AlertBoxDoctor.Attributes["Class"] = defaultStyles + " " + alertStyle;
+        //    AlertBoxTitle.InnerHtml = alertTitle;
+        //    AlertBoxContent.InnerHtml = alertContent;
+        //}
+        //internal void ConfigureAlertBox(bool isVisible)
+        //{
+        //    AlertBoxDoctor.Visible = isVisible;
+        //}
     }
 }

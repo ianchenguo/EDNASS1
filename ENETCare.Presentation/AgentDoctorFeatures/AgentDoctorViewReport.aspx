@@ -14,23 +14,21 @@
         <div class="panel-body">
             <%--BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" ForeColor="Black"--%>
             <%--CssClass="table  table-hover table-bordered table-striped"--%>
-            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" 
-                AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
+            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
                 OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbDelete" CausesValidation="false" OnClientClick="return confirm('Are you sure you want to delete it?');"
-                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delete" ForeColor="#cc0000" runat="server" Font-Italic="true"/>
+                             <%--Visible="<%# false %>"--%>
+                            <asp:LinkButton ID="lbDelete" Text ="Delete" CausesValidation="False" OnClientClick="return confirm('Are you sure you want to delete it?');"
+                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' ForeColor="#CC0000" runat="server" Font-Italic="True"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
 
             <!-- the following link should be optimised -->
-            <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
-            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
-            <asp:Label ID="lb2" runat="server" Text=""></asp:Label>
+            <asp:Button ID="CancleADViewReport" Text="Cancel" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="CancleADViewReport_Click" />
 
         </div>
         <!--panel-body-end-->
