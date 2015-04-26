@@ -74,7 +74,6 @@
     <Compile Include="Helper\ENETCareException.cs" />
     <Compile Include="Helper\TimeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DAL\SimDB.cs" />
     <Compile Include="DAL\DataReaderDAO\MedicationPackageDataReaderDAO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
