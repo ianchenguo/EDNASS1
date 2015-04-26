@@ -13,6 +13,24 @@ namespace ENETCare.Presentation.DoctorFeatures {
     public partial class DoctorDistribute {
         
         /// <summary>
+        /// DoctorDistributeAlertWindowDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DoctorDistributeAlertWindowDiv;
+        
+        /// <summary>
+        /// DoctorDistributeAlertWindowContentLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DoctorDistributeAlertWindowContentLabel;
+        
+        /// <summary>
         /// DoctorDistributePackageTypebarcode control.
         /// </summary>
         /// <remarks>

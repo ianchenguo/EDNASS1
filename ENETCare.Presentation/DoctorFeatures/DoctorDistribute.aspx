@@ -12,6 +12,10 @@
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1" runat="server">
 
+                <div runat="server" id="DoctorDistributeAlertWindowDiv" visible="false" class="alert alert-success" data-dismiss="alert">
+                    <asp:Label ID="DoctorDistributeAlertWindowContentLabel" runat="server" />
+                </div>
+
                 <div class="form-group col-xs-12">
                     <%--<asp:Label ID="DoctorDistributePackageDestination" runat="server" Text="Destination: "></asp:Label>
 

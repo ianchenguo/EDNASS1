@@ -9,11 +9,6 @@
 
         <!-- list group -->
         <div class="list-group">
-            <%--<a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorRegisterPackage.aspx">Register Package</a>--%>
-            <%--<a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorSendPackage.aspx">Send Package</a>
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorReceivePackage.aspx">Receive Package</a>
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx">Audit Package</a>
-            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorViewReport.aspx">View Report</a>--%>
             <asp:LinkButton ID="RegisterPackageLinkButton" Text="Register Package" runat="server" CssClass="list-group-item" OnClick="RegisterPackageLinkButton_Click" />
             <asp:LinkButton ID="SendPackageLinkButton" Text="Send Package" runat="server" CssClass="list-group-item" OnClick="SendPackageLinkButton_Click" />
             <asp:LinkButton ID="ReceivePackageLinkButton" Text="Receive Package" runat="server" CssClass="list-group-item" OnClick="ReceivePackageLinkButton_Click" />
@@ -25,6 +20,17 @@
     <!--panel end-->
 </asp:Content>
 <asp:Content ID="DoctorFeatureMainContent" ContentPlaceHolderID="FeatureMainContent" runat="server">
+
+    <%--<div runat="server"
+        id="AlertBoxDoctor"
+        class="alert alert-dismissible fade in"
+        role="alert"
+        visible="false">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 runat="server" id="AlertBoxTitle">alert title placeholder</h4>
+        <p runat="server" id="AlertBoxContent">alert content placeholder</p>
+    </div>--%>
+
     <asp:contentplaceholder id="SpecificDoctorFeatureMainContent" runat="server">
     </asp:contentplaceholder>
 </asp:Content>

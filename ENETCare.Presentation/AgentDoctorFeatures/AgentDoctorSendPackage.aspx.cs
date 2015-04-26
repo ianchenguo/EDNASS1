@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ENETCare.Presentation.HelperUtilities;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
     public partial class AgentDoctorSendPackage : System.Web.UI.Page
     {
         private MedicationPackageBLL medicationPackageBLL;
+        private AgentDoctorFeatures masterPageClass;
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
@@ -20,9 +22,11 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorSendingDropDownList.DataTextField = "Name";
                 AgentDoctorSendingDropDownList.DataValueField = "ID";
                 AgentDoctorSendingDropDownList.DataBind();
-                //this.GridViewDataBind();
             }
             //AgentDoctorSendPackageDateTextBox.Text = DateTime.Now.ToShortDateString();
+            masterPageClass = Page.Master as AgentDoctorFeatures;
+            masterPageClass.ConfigureAlertBox(false);
+
         }
 
         protected void AgentDoctorSendPackageTypeButton_Click(object sender, EventArgs e)
@@ -32,14 +36,32 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             try
             {
                 medicationPackageBLL.SendPackage(AgentDoctorSendBarcode, Convert.ToInt32(distributionCentre));
-                Response.Write("Successfully send.");
-                //Response.Redirect("AgentDoctorHome.aspx");
-                this.ClearAgentDoctorSendPackageAfterClick(AgentDoctorSendBarcode);
+                //Response.Write("Successfully send.");
+                this.ADsendPackageSuccessfulRespond(AgentDoctorSendBarcode);
             }
             catch (Exception ex)
             {
-                Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+                this.ADsendPackageErrorRespond(ex);
             }
+        }
+
+        private void ADsendPackageSuccessfulRespond(string ADSPbarcode)
+        {
+            string successMsg = "Successfully send.";
+            this.ADsendPackageHandleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, successMsg);
+            this.ClearAgentDoctorSendPackageAfterClick(ADSPbarcode);
+        }
+
+        private void ADsendPackageErrorRespond(Exception ex)
+        {
+            AgentDoctorSendPackageTypebarcode.Text = "";
+            //Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+            this.ADsendPackageHandleMessage(AlertBoxHelper.AlertType.Error, AlertBoxHelper.ALERT_STYLE_DANGER, ex.Message.ToString());
+        }
+
+        private void ADsendPackageHandleMessage(AlertBoxHelper.AlertType alertType, string alertStyle, string alertContent)
+        {
+            masterPageClass.ConfigureAlertBox(true, alertStyle, alertType.ToString(), alertContent);
         }
 
         private void ClearAgentDoctorSendPackageAfterClick(string AgentDoctorSendBarcode)
