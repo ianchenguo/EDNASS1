@@ -3,16 +3,14 @@ using System.Data.SqlClient;
 
 namespace ENETCare.Business
 {
-	public class MedicationTypeDataReaderDAO : MedicationTypeDAO
+	public class MedicationTypeDataReaderDAO : DataReaderDAO, MedicationTypeDAO
 	{
-		string connectionString = DBSchema.ConnectionString;
-
 		public List<MedicationType> FindAllMedicationTypes()
 		{
 			List<MedicationType> medicationTypeList = new List<MedicationType>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select ID, Name, ISNULL(Description, ''), ShelfLife, Value, IsSensitive
 								   from MedicationType";
@@ -33,7 +31,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select ID, Name, ISNULL(Description, ''), ShelfLife, Value, IsSensitive
 								   from MedicationType

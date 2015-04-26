@@ -295,8 +295,8 @@ namespace ENETCare.Business
 		public List<MedicationPackage> AuditPackages(int medicationTypeId, List<string> scannedList)
 		{
 			List<MedicationPackage> lostPackages = new List<MedicationPackage>();
-			List<MedicationPackage> inStockList = GetInStockList(medicationTypeId);
-			foreach (MedicationPackage package in inStockList)
+			List<MedicationPackage> inStockPackages = GetInStockList(medicationTypeId);
+			foreach (MedicationPackage package in inStockPackages)
 			{
 				if (!scannedList.Contains(package.Barcode))
 				{

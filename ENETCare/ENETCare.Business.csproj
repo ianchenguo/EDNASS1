@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="BLL\ReportBLL.cs" />
     <Compile Include="DAL\DataReaderDAO\ReportDataReaderDAO.cs" />
-    <Compile Include="DAL\DBSchema.cs" />
+    <Compile Include="DAL\DataReaderDAO\DataReaderDAO.cs" />
     <Compile Include="DAL\Interface\ReportDAO.cs" />
     <Compile Include="Entity\Report.cs" />
     <Compile Include="Helper\BarcodeHelper.cs" />

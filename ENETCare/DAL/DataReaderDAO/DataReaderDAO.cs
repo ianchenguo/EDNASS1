@@ -4,22 +4,21 @@ using System.IO;
 
 namespace ENETCare.Business
 {
-	public class DBSchema
+	public class DataReaderDAO
 	{
-		private static string connectionString;
-		public static string ConnectionString
+		private string connectionString;
+		protected string ConnectionString
 		{
 			get
 			{
 				if (string.IsNullOrEmpty(connectionString))
 				{
 					string path = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\ENETCare.Presentation\App_Data\"));
-					AppDomain.CurrentDomain.SetData("DataDirectory", path); // ,Path.GetFullPath(@"ENETCare.GUI\App_Data\"));
+					AppDomain.CurrentDomain.SetData("DataDirectory", path);
 					connectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
 				}
 				return connectionString;
 			}
-			//get { return @"Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\MockupDB.mdf;Initial Catalog=MockupDB;Integrated Security=True"; }
 		}
 	}
 }
