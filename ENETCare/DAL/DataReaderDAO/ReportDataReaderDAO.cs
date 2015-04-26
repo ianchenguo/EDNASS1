@@ -4,8 +4,17 @@ using System.Linq;
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Report DataReader implementation
+	/// </summary>
 	public class ReportDataReaderDAO : DataReaderDAO, ReportDAO
 	{
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type of given statuses at a given distribution centre.
+		/// </summary>
+		/// <param name="distributionCentreId">distribution centre id</param>
+		/// <param name="statuses">package statuses</param>
+		/// <returns>a list of MedicationTypeViewData</returns>
 		public List<MedicationTypeViewData> FindDistributionCentreStockByStatus(int distributionCentreId, params PackageStatus[] statuses)
 		{
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
@@ -40,6 +49,10 @@ namespace ENETCare.Business
 			return list;
 		}
 
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type in stock across all distribution centres.
+		/// </summary>
+		/// <returns>a list of MedicationTypeViewData</returns>
 		public List<MedicationTypeViewData> FindGlobalStock()
 		{
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
@@ -66,6 +79,11 @@ namespace ENETCare.Business
 			return list;
 		}
 
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type distributed by a given doctor.
+		/// </summary>
+		/// <param name="username">doctor username</param>
+		/// <returns>a list of MedicationTypeViewData</returns>
 		public List<MedicationTypeViewData> FindDoctorActivityByUserName(string username)
 		{
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
@@ -94,6 +112,10 @@ namespace ENETCare.Business
 			return list;
 		}
 
+		/// <summary>
+		/// Retrieves total value and number of packages in transit between distribution centres.
+		/// </summary>
+		/// <returns>a list of ValueInTransitViewData</returns>
 		public List<ValueInTransitViewData> FindAllValueInTransit()
 		{
 			List<ValueInTransitViewData> list = new List<ValueInTransitViewData>();
@@ -129,6 +151,11 @@ namespace ENETCare.Business
 			return list;
 		}
 
+		/// <summary>
+		/// Helper-method to create a medication type view data for a row of the database.
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
 		MedicationTypeViewData GetDistributionCentreStockViewDataFromDataReader(SqlDataReader reader)
 		{
 			var row = new MedicationTypeViewData

@@ -4,6 +4,9 @@ using System.IO;
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Base class for DataReader implementation
+	/// </summary>
 	public class DataReaderDAO
 	{
 		private string connectionString;

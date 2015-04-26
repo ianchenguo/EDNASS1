@@ -4,10 +4,13 @@ using Aspose.BarCode;
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Helper class to generate barcode numbers and images
+	/// </summary>
 	public class BarcodeHelper
 	{
 		/// <summary>
-		/// Generate a unique package barcode number
+		/// Generates a unique package barcode number.
 		/// </summary>
 		/// <returns>barcode number</returns>
 		public static string GenerateBarcode()
@@ -16,7 +19,7 @@ namespace ENETCare.Business
 		}
 
 		/// <summary>
-		/// Generate barcode image
+		/// Generates a barcode image.
 		/// </summary>
 		/// <param name="barcode">barcode number</param>
 		/// <returns>barcode image</returns>

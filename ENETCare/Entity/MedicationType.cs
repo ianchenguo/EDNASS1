@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// MedicationType entity
+	/// </summary>
 	public class MedicationType
 	{
 		public int ID { get; set; }

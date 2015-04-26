@@ -3,6 +3,9 @@ using System.Data.SqlClient;
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Employee DataReader implementation
+	/// </summary>
 	public class EmployeeDataReaderDAO : DataReaderDAO, EmployeeDAO
 	{
 		string selectStatement = "select a.Id, a.UserName, a.Fullname, a.Email, a.DistributionCentre_ID, c.Name";
@@ -10,6 +13,10 @@ namespace ENETCare.Business
 		string joinClause1 = "join AspNetUserRoles b on a.Id = b.UserId";
 		string joinClause2 = "join AspNetRoles c on b.RoleId = c.Id";
 
+		/// <summary>
+		/// Retrieves all employees in the database.
+		/// </summary>
+		/// <returns>a list of all the employees</returns>
 		public List<Employee> FindAllEmployees()
 		{
 			List<Employee> employeeList = new List<Employee>();
@@ -31,6 +38,11 @@ namespace ENETCare.Business
 			return employeeList;
 		}
 
+		/// <summary>
+		/// Retrieves employees of given role.
+		/// </summary>
+		/// <param name="role">employee role</param>
+		/// <returns>a list of the employees corresponding to the role</returns>
 		public List<Employee> FindEmployeesByRole(Role role)
 		{
 			List<Employee> employeeList = new List<Employee>();
@@ -54,6 +66,11 @@ namespace ENETCare.Business
 			return employeeList;
 		}
 
+		/// <summary>
+		/// Retrieves an employee by looking up its username.
+		/// </summary>
+		/// <param name="username">employee username</param>
+		/// <returns>an employee corresponding to the username, or null if no matching employee was found</returns>
 		public Employee GetEmployeeByUserName(string username)
 		{
 			using (SqlConnection conn = new SqlConnection())
@@ -73,20 +90,13 @@ namespace ENETCare.Business
 				}
 			}
 			return null;
-			/*
-			// Mockup Test
-			Employee employee = new Employee();
-			employee.ID = "1";
-			employee.Username = "starcraft";
-			employee.Role = Role.Doctor;
-			employee.Fullname = "StarCraft";
-			employee.Email = "StarCraft@blizzard.com";
-			DistributionCentre dc = new DistributionCentreDataReaderDAO().GetDistributionCentreById(1);
-			employee.DistributionCentre = dc;
-			return employee;
-			*/
 		}
 
+		/// <summary>
+		/// Helper-method to create an employee for a row of the database.
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
 		Employee GetEmployeeFromDataReader(SqlDataReader reader)
 		{
 			Employee employee = new Employee();
@@ -99,6 +109,11 @@ namespace ENETCare.Business
 			return employee;
 		}
 
+		/// <summary>
+		/// Gets Role enum from role name
+		/// </summary>
+		/// <param name="roleName"></param>
+		/// <returns></returns>
 		Role GetRoleFromRoleName(string roleName)
 		{
 			if (roleName == Properties.Resources.RoleAgent)

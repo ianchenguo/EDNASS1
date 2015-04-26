@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Employee entity
+	/// </summary>
 	public class Employee
 	{
 		public string ID { get; set; }

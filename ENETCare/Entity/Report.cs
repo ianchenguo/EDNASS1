@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Structure for stocktaking
+	/// </summary>
 	public class StocktakingViewData
 	{
 		public string Barcode { get; set; }
@@ -10,6 +13,9 @@ namespace ENETCare.Business
 		public ExpireStatus ExpireStatus { get; set; }
 	}
 
+	/// <summary>
+	/// Structure for distribution centre stock, global stock, and doctor activity reports
+	/// </summary>
 	public class MedicationTypeViewData
 	{
 		public string Type { get; set; }
@@ -17,6 +23,9 @@ namespace ENETCare.Business
 		public decimal Value { get; set; }
 	}
 
+	/// <summary>
+	/// Structure for distribution centre loss report
+	/// </summary>
 	public class DistributionCentreLossViewData
 	{
 		public string DistributionCentre { get; set; }
@@ -25,6 +34,9 @@ namespace ENETCare.Business
 		public DistributionCentreRiskLevel RiskLevel { get; set; }
 	}
 
+	/// <summary>
+	/// Structure for value in transit report
+	/// </summary>
 	public class ValueInTransitViewData
 	{
 		public string FromDistributionCentre { get; set; }

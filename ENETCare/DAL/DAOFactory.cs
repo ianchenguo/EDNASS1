@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// Choose DAO implementations
+	/// </summary>
 	public class DAOFactory
 	{
 		public static DistributionCentreDAO GetDistributionCentreDAO()
