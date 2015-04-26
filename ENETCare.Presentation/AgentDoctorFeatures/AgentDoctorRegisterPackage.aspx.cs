@@ -47,12 +47,21 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 if(barcodeUnique != null){
                     //Response.Write(expireDate);
                     AgentDoctorRegisterMessage.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
+                    this.ClearReadOnlyInputTextBoxExpiredDateAfterClick(AgentDoctorRegisterMessage.Text);
                 }
                 //Response.Redirect("AgentDoctorHome.aspx");
             }
             catch (Exception ex)
             {
                 Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
+            }
+        }
+
+        private void ClearReadOnlyInputTextBoxExpiredDateAfterClick(string MsgOfMedicationTypeInfrontOfBarcode)
+        {
+            if (MsgOfMedicationTypeInfrontOfBarcode != null && AgentDoctorRegisterMessage.Text != string.Empty)
+            {
+                NedPackageRegisterFormExpireDate.Text = string.Empty;
             }
         }
 
