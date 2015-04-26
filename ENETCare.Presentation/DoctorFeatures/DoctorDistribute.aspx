@@ -34,7 +34,7 @@
                             ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
                             ControlToValidate="DoctorDistributePackageTypebarcode"
                             CssClass="text-danger"
-                            ErrorMessage="<div>The Barcode address is invalid.</div>"
+                            ErrorMessage="<div>The Barcode is invalid.</div>"
                             ValidationGroup="DoctorDistributePackageValiGroup" />
                 </div>
 

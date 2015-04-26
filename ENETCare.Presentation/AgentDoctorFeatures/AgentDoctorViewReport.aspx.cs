@@ -24,7 +24,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 this.AgentDoctorReportStockTakeDataBind();
             }
-            this.isDeleteOrNotDeleteVisible();
+            //this.isDeleteOrNotDeleteVisible();
         }
 
         private void AgentDoctorReportStockTakeDataBind()
@@ -44,7 +44,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 string rowFourExpiredStatus = rowHere.Cells[4].Text;
                 if (rowFourExpiredStatus == "Expired")
                 {
-                    rowHere.Cells[0].Text = "Delete";
                     rowHere.Cells[0].Visible = true;
                 }
                 else
@@ -67,7 +66,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             AgentDoctorReportStockTakingGV.PageIndex = e.NewPageIndex;
-            this.isDeleteOrNotDeleteVisible();
+            //this.isDeleteOrNotDeleteVisible();
             this.AgentDoctorReportStockTakeDataBind();
         }
 

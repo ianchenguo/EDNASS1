@@ -21,7 +21,7 @@
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>
                              <%--Visible="<%# false %>"--%>
-                            <asp:LinkButton ID="lbDelete" Text ="" CausesValidation="False" OnClientClick="return confirm('Are you sure you want to delete it?');"
+                            <asp:LinkButton ID="lbDelete" Text ="Delete" CausesValidation="False" OnClientClick="return confirm('Are you sure you want to delete it?');"
                                 CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' ForeColor="#CC0000" runat="server" Font-Italic="True"/>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -30,8 +30,6 @@
 
             <!-- the following link should be optimised -->
             <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
-            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
-            <asp:Label ID="lb2" runat="server" Text=""></asp:Label>
 
         </div>
         <!--panel-body-end-->

@@ -31,7 +31,7 @@
                             ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
                             ControlToValidate="AgentDoctorReceivePackagesBarcode"
                             CssClass="text-danger"
-                            ErrorMessage="<div>The Barcode address is invalid.</div>"
+                            ErrorMessage="<div>The Barcode is invalid.</div>"
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
                 </div>
                 <!-- the following link should be optimised -->
