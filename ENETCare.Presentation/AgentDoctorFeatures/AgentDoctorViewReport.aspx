@@ -20,8 +20,9 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbDelete" CausesValidation="false" OnClientClick="return confirm('Are you sure you want to delete it?');"
-                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delete" ForeColor="#cc0000" runat="server" Font-Italic="true"/>
+                             <%--Visible="<%# false %>"--%>
+                            <asp:LinkButton ID="lbDelete" CausesValidation="False" OnClientClick="return confirm('Are you sure you want to delete it?');"
+                                CommandName="DeleteRow" CommandArgument='<%# Eval("Barcode") %>' Text="Delete" ForeColor="#CC0000" runat="server" Font-Italic="True"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -25,15 +25,29 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 this.AgentDoctorReportStockTakeDataBind();
             }
 
-            GridViewRowCollection rowsCollection = AgentDoctorReportStockTakingGV.Rows;
-            GridViewRow row = rowsCollection[1];
-            string rowContent1 = row.Cells[0].Text;
-            string rowContent4 = row.Cells[4].Text;
-            int ColumnsCount = AgentDoctorReportStockTakingGV.Columns.Count;
+            //GridViewRowCollection rowsCollection = AgentDoctorReportStockTakingGV.Rows;
+            //GridViewRow row = rowsCollection[1];
+            //string rowContent1 = row.Cells[0].Text;
+            //string rowContent4 = row.Cells[4].Text;
+            //int RowCount = AgentDoctorReportStockTakingGV.Rows.Count;
+            //int ColumnsCount = AgentDoctorReportStockTakingGV.Columns.Count;
+            //string ContentStr0 = AgentDoctorReportStockTakingGV.Columns[0].AccessibleHeaderText;
+            //string ContentStr1 = AgentDoctorReportStockTakingGV.Columns[0].HeaderText;
+            //string ContentStr2 = AgentDoctorReportStockTakingGV.Columns[0].FooterText;
+            //string cao0 = rowsCollection.Count.ToString();
+            //string rowWord = row.Cells[0].Attributes["Text"];
+            //"lbDelete"
+            //AgentDoctorReportStockTakingGV.Rows[0].Cells[0].Visible.Equals(false);
 
-            Debug.WriteLine("\nColumnsCount is -- " + ColumnsCount);
-            Debug.WriteLine("\nRow 1 Cell 0 is -- " + rowContent1);
-            Debug.WriteLine("\nRow 1 Cell 4 is -- " + rowContent4);
+            //string cao = AgentDoctorReportStockTakingGV.Rows[0].TemplateControl.ToString();
+
+            //Debug.WriteLine("\nColumnsCount is -- " + ColumnsCount + " RowCount " + RowCount);
+            //Debug.WriteLine("\nRow 1 Cell 0 is -- " + rowContent1);
+            //Debug.WriteLine("\nRow 1 Cell 4 is -- " + rowContent4);
+
+            //Debug.WriteLine("\nAccessibleHeaderText is " + ContentStr0 + " HeaderText: " + ContentStr1 + " FooterText " + ContentStr2);
+            //Debug.WriteLine(" 0  0 is -- "+cao);
+            //Debug.WriteLine("\n attribute: "+rowWord);
             
         }
 
@@ -55,9 +69,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
         protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            //int rowIndex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-            //string ExpiredStatusStrLocalRow = (AgentDoctorReportStockTakingGV.Rows[rowIndex].Cells[4]).Text;
-            //string theStr = AgentDoctorReportStockTakingGV.Columns[0].HeaderText.ToString();
             AgentDoctorReportStockTakingGV.PageIndex = e.NewPageIndex;
             this.AgentDoctorReportStockTakeDataBind();
         }
@@ -65,6 +76,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void AgentDoctorReportStockTakingGV_DataBound(object sender, EventArgs e)
         {
             this.ColorMarkHelper(AgentDoctorReportStockTakingGV);
+
         }
 
         private void ColorMarkHelper(GridView ReportGV)
