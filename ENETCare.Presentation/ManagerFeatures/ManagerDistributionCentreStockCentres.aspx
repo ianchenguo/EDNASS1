@@ -44,7 +44,8 @@
             <asp:ObjectDataSource runat="server"
                 ID="DistributionCentresSource"
                 SelectMethod="GetDistributionCentreList"
-                TypeName="ENETCare.Business.DistributionCentreBLL"></asp:ObjectDataSource>
+                TypeName="ENETCare.Business.DistributionCentreBLL"
+                OnSelected="DistributionCentresSource_Selected"></asp:ObjectDataSource>
         </div>
     </div>
     <!--panel-end-->

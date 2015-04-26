@@ -30,7 +30,7 @@
                 <Columns>
                     <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type"></asp:BoundField>
                     <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity"></asp:BoundField>
-                    <asp:BoundField DataField="Value" HeaderText="Value" SortExpression="Value"></asp:BoundField>
+                    <asp:BoundField DataField="Value" HeaderText="Value ($)" SortExpression="Value"></asp:BoundField>
                 </Columns>
                 <EmptyDataTemplate>
                     No Data Found.
@@ -55,7 +55,8 @@
             <asp:ObjectDataSource runat="server"
                 ID="CentreStockSource"
                 SelectMethod="DistributionCentreStock"
-                TypeName="ENETCare.Business.ReportBLL">
+                TypeName="ENETCare.Business.ReportBLL"
+                OnSelected="CentreStockSource_Selected">
                 <SelectParameters>
                     <asp:QueryStringParameter QueryStringField="centreID"
                         Name="distributionCentreId"

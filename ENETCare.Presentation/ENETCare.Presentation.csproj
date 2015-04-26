@@ -176,8 +176,8 @@
     <Content Include="ManagerFeatures\ManagerDoctorActivity.aspx" />
     <Content Include="ManagerFeatures\ManagerDoctorActivityDoctors.aspx" />
     <Content Include="ManagerFeatures\ManagerGlobalStock.aspx" />
-    <Content Include="ManagerFeatures\ManagerValueInTransit.aspx" />
     <Content Include="ManagerFeatures\ManagerHome.aspx" />
+    <Content Include="ManagerFeatures\ManagerValueInTransit.aspx" />
     <Content Include="Obsolete\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -460,16 +460,19 @@
     <Compile Include="ManagerFeatures\ManagerGlobalStock.aspx.designer.cs">
       <DependentUpon>ManagerGlobalStock.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManagerFeatures\ManagerHome.aspx.cs">
+      <DependentUpon>ManagerHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerFeatures\ManagerHome.aspx.designer.cs">
+      <DependentUpon>ManagerHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManagerFeatures\ManagerValueInTransit.aspx.cs">
       <DependentUpon>ManagerValueInTransit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ManagerFeatures\ManagerValueInTransit.aspx.designer.cs">
       <DependentUpon>ManagerValueInTransit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ManagerFeatures\ManagerHome.aspx.cs">
-      <DependentUpon>ManagerHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Migrations\201503291326098_AddedProperties.cs" />
     <Compile Include="Migrations\201503291326098_AddedProperties.Designer.cs">

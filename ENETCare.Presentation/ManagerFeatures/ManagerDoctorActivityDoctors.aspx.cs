@@ -5,32 +5,33 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
+using ENETCare.Presentation.Layout;
+using ENETCare.Presentation.HelperUtilities;
 
 namespace ENETCare.Presentation.ManagerFeatures
 {
     public partial class ManagerDoctorActivityDoctors : System.Web.UI.Page
     {
+        private Features baseMasterPage;
         private EmployeeBLL employeeManager = new EmployeeBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //retrives all employees from data source
-            List<Employee> employees = employeeManager.GetEmployeeList();
-            //filters out doctors
-            IEnumerable<Employee> doctors =
-                from d in employees
-                where d.Role == Role.Doctor
-                select d;
-
-            if (!IsPostBack)
-            {
-                this.BindDoctorsViewData(doctors);
-            }
+            baseMasterPage = Page.Master.Master as Features;
         }
 
-        private void BindDoctorsViewData(IEnumerable<Employee> doctors)
+        protected void DoctorSource_Selected(object sender, ObjectDataSourceStatusEventArgs e)
         {
-            DoctorsView.DataSource = doctors;
-            DoctorsView.DataBind();
+            if (e.Exception != null)
+            {
+                baseMasterPage.ConfigureAlertBox(
+                    true,
+                    AlertBoxHelper.AlertType.Error.ToString(),
+                    AlertBoxHelper.ALERT_STYLE_DANGER,
+                    e.Exception.Message.ToString()
+                    );
+
+                e.ExceptionHandled = true;
+            }
         }
     }
 }

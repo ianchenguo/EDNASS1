@@ -1,5 +1,6 @@
 ﻿using ENETCare.Business;
 using ENETCare.Presentation.HelperUtilities;
+using ENETCare.Presentation.Layout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
     {
         private List<string> scannedBarcodes = new List<string>();
         private MedicationPackageBLL madicationPackageManager;
-        private AgentDoctorFeatures masterPage;
+        private Features baseMasterPage;
 
         /// <summary>
         /// syncronises local scanned package list with stored list in current session,
@@ -26,8 +27,8 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
             madicationPackageManager = new MedicationPackageBLL(User.Identity.Name);
 
-            masterPage = Page.Master as AgentDoctorFeatures;
-            masterPage.ConfigureAlertBox(false);
+            baseMasterPage = Page.Master.Master as Features;
+            baseMasterPage.ConfigureAlertBox(false);
 
             syncPendingScannedListFromSession();
         }
@@ -103,7 +104,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
                 emptyScannedBarcodes();
                 updateAuditTaskStateInSession(null);
-
+                Barcode.Text = "";
             }
         }
 
@@ -182,7 +183,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
         private void handleMessage(AlertBoxHelper.AlertType alertType, string alertStyle, string alertContent)
         {
-            masterPage.ConfigureAlertBox(true, alertStyle, alertType.ToString(), alertContent);
+            baseMasterPage.ConfigureAlertBox(true, alertStyle, alertType.ToString(), alertContent);
         }
 
         private void emptyScannedBarcodes()

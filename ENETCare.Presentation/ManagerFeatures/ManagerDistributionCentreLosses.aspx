@@ -21,8 +21,8 @@
                 OnDataBound="DistributionCenterLossesView_DataBound">
                 <Columns>
                     <asp:BoundField DataField="DistributionCentre" HeaderText="DistributionCentre" SortExpression="DistributionCentre"></asp:BoundField>
-                    <asp:BoundField DataField="LossValue" HeaderText="LossValue" SortExpression="LossValue"></asp:BoundField>
-                    <asp:BoundField DataField="LossRatio" HeaderText="LossRatio" SortExpression="LossRatio"></asp:BoundField>
+                    <asp:BoundField DataField="LossValue" HeaderText="LossValue ($)" SortExpression="LossValue"></asp:BoundField>
+                    <asp:BoundField DataField="LossRatio" HeaderText="LossRatio" SortExpression="LossRatio" DataFormatString="{0:P2}"></asp:BoundField>
                     <asp:BoundField DataField="RiskLevel" HeaderText="RiskLevel" SortExpression="RiskLevel"></asp:BoundField>
                 </Columns>
                 <EmptyDataTemplate>
@@ -33,7 +33,8 @@
             <asp:ObjectDataSource runat="server" 
                 ID="DistributionCentreLossesSource" 
                 SelectMethod="DistributionCentreLosses" 
-                TypeName="ENETCare.Business.ReportBLL">
+                TypeName="ENETCare.Business.ReportBLL"
+                OnSelected="DistributionCentreLossesSource_Selected">
             </asp:ObjectDataSource>
 
             <asp:LinkButton ID="Back"

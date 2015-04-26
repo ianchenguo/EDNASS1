@@ -23,6 +23,17 @@
                 <div class="breadcrumb">
                     <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
                 </div>
+
+                <div runat="server"
+                    id="AlertBox"
+                    class="alert alert-dismissible fade in"
+                    role="alert"
+                    visible="false">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 runat="server" id="AlertBoxTitle">alert title placeholder</h4>
+                    <p runat="server" id="AlertBoxContent">alert content placeholder</p>
+                </div>
+
                 <!--Site Map Navigation end-->
                 <asp:ContentPlaceHolder ID="FeatureMainContent" runat="server">
                 </asp:ContentPlaceHolder>

@@ -16,13 +16,12 @@
             <asp:GridView ID="DoctorsView"
                 runat="server"
                 AutoGenerateColumns="False"
-                CssClass="table  table-hover table-bordered table-striped">
+                CssClass="table  table-hover table-bordered table-striped" DataSourceID="DoctorSource">
 
                 <Columns>
-                    <asp:BoundField DataField="DistributionCentre.Name" 
-                        HeaderText="Distribution Centre" 
-                        SortExpression="DistributionCentre.Name">
-                    </asp:BoundField>
+                    <asp:BoundField DataField="DistributionCentre.Name"
+                        HeaderText="Distribution Centre"
+                        SortExpression="DistributionCentre.Name"></asp:BoundField>
 
                     <asp:TemplateField HeaderText="Fullname" SortExpression="Fullname">
                         <ItemTemplate>
@@ -35,6 +34,18 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+
+
+            <asp:ObjectDataSource runat="server" 
+                ID="DoctorSource" 
+                SelectMethod="GetEmployeeListByRole"
+                TypeName="ENETCare.Business.EmployeeBLL"
+                OnSelected="DoctorSource_Selected">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="Doctor" Name="role" Type="Object"></asp:Parameter>
+                </SelectParameters>
+            </asp:ObjectDataSource>
+
 
             <asp:LinkButton ID="Back"
                 runat="server"

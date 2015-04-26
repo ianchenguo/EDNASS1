@@ -24,7 +24,7 @@
                     <asp:BoundField DataField="FromDistributionCentre" HeaderText="FromDistributionCentre" SortExpression="FromDistributionCentre"></asp:BoundField>
                     <asp:BoundField DataField="ToDistributionCentre" HeaderText="ToDistributionCentre" SortExpression="ToDistributionCentre"></asp:BoundField>
                     <asp:BoundField DataField="Packages" HeaderText="Packages" SortExpression="Packages"></asp:BoundField>
-                    <asp:BoundField DataField="Value" HeaderText="Value" SortExpression="Value"></asp:BoundField>
+                    <asp:BoundField DataField="Value" HeaderText="Value ($)" SortExpression="Value"></asp:BoundField>
                 </Columns>
                 <EmptyDataTemplate>
                     No Data Found.
@@ -47,7 +47,8 @@
             <asp:ObjectDataSource runat="server"
                 ID="ValueInTransitSource"
                 SelectMethod="ValueInTransit"
-                TypeName="ENETCare.Business.ReportBLL">
+                TypeName="ENETCare.Business.ReportBLL"
+                OnSelected="ValueInTransitSource_Selected">
             </asp:ObjectDataSource>
         </div>
         <!--panel-body-end-->

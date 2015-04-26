@@ -1,5 +1,6 @@
 ﻿using ENETCare.Business;
 using ENETCare.Presentation.HelperUtilities;
+using ENETCare.Presentation.Layout;
 using ENETCare.Presentation.ManagerFeatures;
 using System;
 using System.Collections;
@@ -14,6 +15,7 @@ namespace ENETCare.Presentation.ManagerFeatures
 {
     public partial class ManagerDistributionCentreStock : System.Web.UI.Page
     {
+        private Features baseMasterPage;
         /// <summary>
         /// On page load, retrive current centre name from query string,
         /// and populates it to the heading text
@@ -23,6 +25,7 @@ namespace ENETCare.Presentation.ManagerFeatures
         protected void Page_Load(object sender, EventArgs e)
         {
             HeadingLiteral.Text = Request.QueryString["centrename"];
+            baseMasterPage = Page.Master.Master as Features;
         }
 
         /// <summary>
@@ -35,6 +38,31 @@ namespace ENETCare.Presentation.ManagerFeatures
         {
             int lastColumn = DistributionCentreStockView.Columns.Count - 1;
             TotalValueLiteral.Text = ReportHelper.CalculateTotalValue(DistributionCentreStockView.Rows, lastColumn);
+        }
+
+        protected void CentreStockSource_Selected(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                baseMasterPage.ConfigureAlertBox(
+                    true,
+                    AlertBoxHelper.AlertType.Error.ToString(),
+                    AlertBoxHelper.ALERT_STYLE_DANGER,
+                    e.Exception.Message.ToString()
+                    );
+
+                e.ExceptionHandled = true;
+            }
+
+            else
+            {
+                baseMasterPage.ConfigureAlertBox(
+                    true,
+                    AlertBoxHelper.ALERT_STYLE_SUCCESS,
+                    AlertBoxHelper.AlertType.Success.ToString(),
+                    "Report is fetched"
+                    );
+            }
         }
     }
 }
