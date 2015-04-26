@@ -14,8 +14,7 @@
         <div class="panel-body">
             <%--BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" ForeColor="Black"--%>
             <%--CssClass="table  table-hover table-bordered table-striped"--%>
-            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" 
-                AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
+            <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand" 
                 OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
@@ -29,7 +28,7 @@
             </asp:GridView>
 
             <!-- the following link should be optimised -->
-            <asp:Button Text="Cancel" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="Unnamed1_Click" />
+            <asp:Button ID="CancleADViewReport" Text="Cancel" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="CancleADViewReport_Click" />
 
         </div>
         <!--panel-body-end-->

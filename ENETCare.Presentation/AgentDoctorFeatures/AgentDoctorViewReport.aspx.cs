@@ -91,7 +91,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             ReportHelper.AgentDoctorViewReportColourMark(ReportGV.Rows);
         }
 
-        protected void Unnamed1_Click(object sender, EventArgs e)
+        protected void CancleADViewReport_Click(object sender, EventArgs e)
         {
             Response.Redirect("AgentDoctorHome.aspx");
         }
