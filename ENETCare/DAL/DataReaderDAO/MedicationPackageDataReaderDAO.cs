@@ -4,11 +4,18 @@ using System.Data.SqlClient;
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// MedicationPackage DataReader implementation
+	/// </summary>
 	public class MedicationPackageDataReaderDAO : DataReaderDAO, MedicationPackageDAO
 	{
 		string selectStatement = "select ID, Barcode, Type, ExpireDate, Status, ISNULL(StockDC, ''), ISNULL(SourceDC, ''), ISNULL(DestinationDC, ''), Operator";
 		string fromClause = "from MedicationPackage";
 
+		/// <summary>
+		/// Retrieves all medication packages in the database.
+		/// </summary>
+		/// <returns>a list of all the medication packages</returns>
 		public List<MedicationPackage> FindAllPackages()
 		{
 			List<MedicationPackage> packageList = new List<MedicationPackage>();
@@ -30,6 +37,12 @@ namespace ENETCare.Business
 			return packageList;
 		}
 		
+		/// <summary>
+		/// Retrieves medication packages of given medication type at a given distribution centre.
+		/// </summary>
+		/// <param name="distributionCentreId">distribution centre id</param>
+		/// <param name="medicationTypeId">medication type id</param>
+		/// <returns>a list of the medication packages</returns>
 		public List<MedicationPackage> FindInStockPackagesInDistributionCentre(int distributionCentreId, int? medicationTypeId = null)
 		{
 			List<MedicationPackage> packageList = new List<MedicationPackage>();
@@ -62,6 +75,11 @@ namespace ENETCare.Business
 			return packageList;
 		}
 		
+		/// <summary>
+		/// Retrieves a medication package by looking up its barcode.
+		/// </summary>
+		/// <param name="barcode">medication package barcode</param>
+		/// <returns>a medication package corresponding to the barcode, or null if no matching medication package was found</returns>
 		public MedicationPackage FindPackageByBarcode(string barcode)
 		{
 			using (SqlConnection conn = new SqlConnection())
@@ -83,6 +101,10 @@ namespace ENETCare.Business
 			return null;
 		}
 
+		/// <summary>
+		/// Inserts a medication package record into the database.
+		/// </summary>
+		/// <param name="package">medication package</param>
 		public void InsertPackage(MedicationPackage package)
 		{
 			using (SqlConnection conn = new SqlConnection())
@@ -102,6 +124,10 @@ namespace ENETCare.Business
 			}
 		}
 
+		/// <summary>
+		/// Updates a medication package record in the database corresponding to the package id.
+		/// </summary>
+		/// <param name="package">medication package</param>
 		public void UpdatePackage(MedicationPackage package)
 		{
 			using (SqlConnection conn = new SqlConnection())
@@ -122,6 +148,10 @@ namespace ENETCare.Business
 			}
 		}
 
+		/// <summary>
+		/// Deletes a medication package record from the database corresponding to the package id.
+		/// </summary>
+		/// <param name="packageId">medication package id</param>
 		public void DeletePackage(int packageId)
 		{
 			using (SqlConnection conn = new SqlConnection())
@@ -136,6 +166,11 @@ namespace ENETCare.Business
 			}
 		}
 
+		/// <summary>
+		/// Helper-method to create a medication package for a row of the database.
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
 		MedicationPackage GetMedicationPackageFromDataReader(SqlDataReader reader)
 		{
 			MedicationPackage package = new MedicationPackage();

@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// ENETCare custom exception
+	/// </summary>
 	public class ENETCareException : Exception
 	{
 		public ENETCareException()

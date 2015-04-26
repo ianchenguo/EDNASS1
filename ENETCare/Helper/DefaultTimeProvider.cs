@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// The default implementation of TimeProvider
+	/// </summary>
 	public class DefaultTimeProvider : TimeProvider
 	{
 		private readonly static DefaultTimeProvider instance = new DefaultTimeProvider();

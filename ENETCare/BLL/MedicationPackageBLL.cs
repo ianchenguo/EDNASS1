@@ -57,6 +57,11 @@ namespace ENETCare.Business
 
 		#region Scan
 
+		/// <summary>
+		/// Retrieves a medication package by looking up its barcode.
+		/// </summary>
+		/// <param name="barcode">medication package barcode</param>
+		/// <returns>a medication package corresponding to the barcode, or null if no matching medication package was found</returns>
 		public MedicationPackage ScanPackage(string barcode)
 		{
 			return MedicationPackageDAO.FindPackageByBarcode(barcode);
@@ -66,6 +71,13 @@ namespace ENETCare.Business
 
 		#region Register
 
+		/// <summary>
+		/// Registers a medication package.
+		/// </summary>
+		/// <param name="medicationTypeId">medication type id</param>
+		/// <param name="expireDate">package expire date</param>
+		/// <param name="barcode">package barcode</param>
+		/// <returns>generated barcode number</returns>
 		public string RegisterPackage(int medicationTypeId, string expireDate, string barcode = "")
 		{
 			DateTime parsedExpireDate;
@@ -102,6 +114,12 @@ namespace ENETCare.Business
 
 		#region Send
 
+		/// <summary>
+		/// Sends a medication package.
+		/// </summary>
+		/// <param name="barcode">package barcode</param>
+		/// <param name="distributionCentreId">distribution centre id</param>
+		/// <param name="isTrusted">whether to trust the source of the package</param>
 		public void SendPackage(string barcode, int distributionCentreId, bool isTrusted = true)
 		{
 			DistributionCentre distributionCentre = DistributionCentreDAO.GetDistributionCentreById(distributionCentreId);
@@ -146,6 +164,11 @@ namespace ENETCare.Business
 
 		#region Receive
 
+		/// <summary>
+		/// Receives a medication package.
+		/// </summary>
+		/// <param name="barcode">package barcode</param>
+		/// <param name="isTrusted">whether to trust the source of the package</param>
 		public void ReceivePackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
@@ -176,6 +199,11 @@ namespace ENETCare.Business
 
 		#region Distribute
 
+		/// <summary>
+		/// Distributes a medication package.
+		/// </summary>
+		/// <param name="barcode">package barcode</param>
+		/// <param name="isTrusted">whether to trust the source of the package</param>
 		public void DistributePackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
@@ -206,6 +234,11 @@ namespace ENETCare.Business
 
 		#region Discard
 
+		/// <summary>
+		/// Discards a medication package.
+		/// </summary>
+		/// <param name="barcode">package barcode</param>
+		/// <param name="isTrusted">whether to trust the source of the package</param>
 		public void DiscardPackage(string barcode, bool isTrusted = true)
 		{
 			MedicationPackage package = ScanPackage(barcode);
@@ -236,6 +269,10 @@ namespace ENETCare.Business
 
 		#region Stocktake
 
+		/// <summary>
+		/// Retrieves the stocktaking report.
+		/// </summary>
+		/// <returns>a list of package barcode, medication type, expire date and expire status</returns>
 		public List<StocktakingViewData> Stocktake()
 		{
 			List<MedicationPackage> packages = MedicationPackageDAO.FindInStockPackagesInDistributionCentre(User.DistributionCentre.ID);
@@ -268,14 +305,22 @@ namespace ENETCare.Business
 
 		#region Audit
 
-		public void CheckAndUpdatePackage(int medicationTypeId, string barcode)
+		/// <summary>
+		/// Check whether a package is unexpected and has its status/location updated
+		/// </summary>
+		/// <param name="medicationTypeId">medication type id</param>
+		/// <param name="barcode">package barcode</param>
+		/// <returns>true if status/location of the package has been updated, or false if not</returns>
+		public bool CheckAndUpdatePackage(int medicationTypeId, string barcode)
 		{
+			bool updated = false;
 			MedicationPackage package = MedicationPackageDAO.FindPackageByBarcode(barcode);
 			if (package == null)
 			{
 				MedicationType medicationType = MedicationTypeDAO.GetMedicationTypeById(medicationTypeId);
 				DateTime expireDate = DateTime.Today.AddDays(medicationType.ShelfLife);
 				RegisterPackage(medicationType, expireDate, barcode);
+				updated = true;
 			}
 			else if (package.Type.ID != medicationTypeId)
 			{
@@ -289,9 +334,17 @@ namespace ENETCare.Business
 				package.DestinationDC = null;
 				package.Operator = User.Username;
 				MedicationPackageDAO.UpdatePackage(package);
+				updated = true;
 			}
+			return updated;
 		}
 
+		/// <summary>
+		/// Identifies lost packages for a given package type.
+		/// </summary>
+		/// <param name="medicationTypeId">medication type id</param>
+		/// <param name="scannedList">scanned barcode list</param>
+		/// <returns>a list of the medication packages</returns>
 		public List<MedicationPackage> AuditPackages(int medicationTypeId, List<string> scannedList)
 		{
 			List<MedicationPackage> lostPackages = new List<MedicationPackage>();

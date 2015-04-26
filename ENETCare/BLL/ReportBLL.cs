@@ -17,16 +17,29 @@ namespace ENETCare.Business
 			DistributionCentreDAO = DAOFactory.GetDistributionCentreDAO();
 		}
 
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type in stock at a given distribution centre.
+		/// </summary>
+		/// <param name="distributionCentreId">distribution centre id</param>
+		/// <returns>a list of quantity, package type and value of packages</returns>
 		public List<MedicationTypeViewData> DistributionCentreStock(int distributionCentreId)
 		{
 			return ReportDAO.FindDistributionCentreStockByStatus(distributionCentreId, PackageStatus.InStock);
 		}
 
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type in stock across all distribution centres.
+		/// </summary>
+		/// <returns>a list of quantity, package type and value of packages</returns>
 		public List<MedicationTypeViewData> GlobalStock()
 		{
 			return ReportDAO.FindGlobalStock();
 		}
 
+		/// <summary>
+		/// Retrieves the loss ratio and total value of lost/discarded packages for each distribution centre.
+		/// </summary>
+		/// <returns>a list of distribution centre, loss value, loss ratio and risk level</returns>
 		public List<DistributionCentreLossViewData> DistributionCentreLosses()
 		{
 			const double riskThreshold = 0.09;
@@ -59,11 +72,20 @@ namespace ENETCare.Business
 			return report;
 		}
 
+		/// <summary>
+		/// Retrieves total value and number of packages in transit between distribution centres.
+		/// </summary>
+		/// <returns>a list of source distribution centre, destination distribution centre, number of packages, and total value of packages</returns>
 		public List<ValueInTransitViewData> ValueInTransit()
 		{
 			return ReportDAO.FindAllValueInTransit();
 		}
 
+		/// <summary>
+		/// Retrieves the quantity and total value for each product type distributed by a given doctor.
+		/// </summary>
+		/// <param name="username">doctor username</param>
+		/// <returns>a list of quantity, package type and value of packages</returns>
 		public List<MedicationTypeViewData> DoctorActivity(string username)
 		{
 			return ReportDAO.FindDoctorActivityByUserName(username);

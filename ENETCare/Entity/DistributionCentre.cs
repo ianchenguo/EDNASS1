@@ -2,6 +2,9 @@
 
 namespace ENETCare.Business
 {
+	/// <summary>
+	/// DistributionCentre entity
+	/// </summary>
 	public class DistributionCentre
 	{
 		public int ID { get; set; }
