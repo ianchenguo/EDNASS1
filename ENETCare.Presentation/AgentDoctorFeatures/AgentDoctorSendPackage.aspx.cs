@@ -22,14 +22,8 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorSendingDropDownList.DataBind();
                 //this.GridViewDataBind();
             }
-            AgentDoctorSendPackageDateTextBox.Text = DateTime.Now.ToShortDateString();
+            //AgentDoctorSendPackageDateTextBox.Text = DateTime.Now.ToShortDateString();
         }
-
-        //private void GridViewDataBind()
-        //{
-        //    SmpGV.DataSource = medicationPackageBLL.Stocktake();
-        //    SmpGV.DataBind();
-        //}
 
         protected void AgentDoctorSendPackageTypeButton_Click(object sender, EventArgs e)
         {
@@ -38,7 +32,9 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             try
             {
                 medicationPackageBLL.SendPackage(AgentDoctorSendBarcode, Convert.ToInt32(distributionCentre));
+                Response.Write("Successfully send.");
                 //Response.Redirect("AgentDoctorHome.aspx");
+                this.ClearAgentDoctorSendPackageAfterClick(AgentDoctorSendBarcode);
             }
             catch (Exception ex)
             {
@@ -46,16 +42,12 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             }
         }
 
-        
-
-        //protected void ASsendingBTN_Click(object sender, EventArgs e)
-        //{
-        //    string AgentDoctorSelectedDistributionCenter = AgentDoctorSendingDropDownList.SelectedValue;
-        //    string barcode = ASbarcode.Text;
-        //    Console.WriteLine(AgentDoctorSelectedDistributionCenter, barcode);
-        //    //Employee.LoginUser().DistributionCentre.SendPackage(barcode, AgentDoctorSelectedDistributionCenter);
-        //}
-
-        
+        private void ClearAgentDoctorSendPackageAfterClick(string AgentDoctorSendBarcode)
+        {
+            if (AgentDoctorSendBarcode != null && AgentDoctorSendBarcode != "")
+            {
+                AgentDoctorSendPackageTypebarcode.Text = "";
+            }
+        }
     }
 }

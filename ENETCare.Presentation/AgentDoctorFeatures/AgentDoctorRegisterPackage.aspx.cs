@@ -21,6 +21,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataTextField = "Name";
 				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataValueField = "ID";
 				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataBind();
+                NedPackageRegisterFormExpireDate.Text = DateTime.Now.Date.ToShortDateString();
 			}
         }
 

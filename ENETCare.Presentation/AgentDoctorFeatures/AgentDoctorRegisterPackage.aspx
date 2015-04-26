@@ -17,12 +17,6 @@
 
 
                 <div class="form-group" runat="server">
-                    <%--                    <label for="ned-package-register-form-type" class="col-xs-3">Package Type</label>
-
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-register-form-type" type="text"
-                            placeholder="Package Type" />
-                    </div>--%>
 
                     <asp:Label runat="server" AssociatedControlID="AgentDoctorPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
@@ -36,11 +30,7 @@
                 <br />
 
                 <div class="form-group">
-                    <%--                    <label for="ned-package-register-form-expire-date" class="col-xs-3">Expiration Date</label>
 
-                    <div class="col-xs-9">
-                        <input class="form-control" id="ned-package-register-form-expire-date" type="date" />
-                    </div>--%>
                     <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date: </asp:Label>
 
                     <div class="col-xs-9">
