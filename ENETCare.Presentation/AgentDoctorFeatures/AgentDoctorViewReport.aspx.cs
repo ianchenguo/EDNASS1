@@ -66,7 +66,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             AgentDoctorReportStockTakingGV.PageIndex = e.NewPageIndex;
-            //this.isDeleteOrNotDeleteVisible();
             this.AgentDoctorReportStockTakeDataBind();
         }
 
