@@ -10,7 +10,6 @@ using ENETCare.Presentation.HelperUtilities;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
@@ -24,7 +23,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 this.AgentDoctorReportStockTakeDataBind();
             }
-            //this.isDeleteOrNotDeleteVisible();
+
         }
 
         private void AgentDoctorReportStockTakeDataBind()
@@ -32,6 +31,19 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             AgentDoctorReportStockTakingGV.DataSource = AgentDoctorReportStockTaking.Stocktake();
             AgentDoctorReportStockTakingGV.DataBind();
             this.isDeleteOrNotDeleteVisible();
+            this.ExpiredStatusHidden();
+        }
+
+        private void ExpiredStatusHidden()
+        {
+            int GVrowsCount = AgentDoctorReportStockTakingGV.Rows.Count;
+            int ColumnIndex = AgentDoctorReportStockTakingGV.HeaderRow.Cells.Count - 1;
+            AgentDoctorReportStockTakingGV.HeaderRow.Cells[ColumnIndex].Visible = false;
+
+            for (int i = 0; i < GVrowsCount; i++)
+            {
+                AgentDoctorReportStockTakingGV.Rows[i].Cells[ColumnIndex].Visible = false;
+            }
         }
 
         private void isDeleteOrNotDeleteVisible()
@@ -60,7 +72,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorReportStockTaking.DiscardPackage(e.CommandArgument.ToString());
                 this.AgentDoctorReportStockTakeDataBind();
             }
-            //Debug.WriteLine("\nLocalRow ExpiredStatus is: --\n" + ExpiredStatusStrLocalRow);
         }
 
         protected void AgentDoctorReportStockTakingGV_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -78,6 +89,11 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         private void ColorMarkHelper(GridView ReportGV)
         {
             ReportHelper.AgentDoctorViewReportColourMark(ReportGV.Rows);
+        }
+
+        protected void Unnamed1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgentDoctorHome.aspx");
         }
         
     }

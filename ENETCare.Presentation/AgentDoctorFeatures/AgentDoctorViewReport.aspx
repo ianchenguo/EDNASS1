@@ -29,7 +29,7 @@
             </asp:GridView>
 
             <!-- the following link should be optimised -->
-            <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
+            <asp:Button Text="Cancel" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="Unnamed1_Click" />
 
         </div>
         <!--panel-body-end-->
