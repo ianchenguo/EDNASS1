@@ -45,8 +45,8 @@
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="Barcode" CssClass="col-md-3 control-label">Barcode</asp:Label>
                     <div class="col-md-9">
-                        <asp:TextBox runat="server" ID="Barcode" CssClass="form-control" TextMode="SingleLine" 
-                            OnPreRender="Barcode_PreRender"/>
+                        <asp:TextBox runat="server" ID="Barcode" CssClass="form-control" TextMode="SingleLine"
+                            OnPreRender="Barcode_PreRender" />
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Barcode"
                             CssClass="text-danger" Display="Dynamic"
                             ErrorMessage="The Barcode field is required."
@@ -64,38 +64,24 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <asp:Button runat="server"
-                            Text="Scan"
-                            ValidationGroup="AuditPackage"
-                            ID="ScanPackageButton"
-                            OnClick="ScanPackageButton_Click"
-                            Enabled='<%# Session["hasActiveAuditTask"] != null%>'
-                            CssClass="btn btn-default" />
+                            <asp:Button runat="server"
+                                Text="Scan"
+                                ValidationGroup="AuditPackage"
+                                ID="ScanPackageButton"
+                                OnClick="ScanPackageButton_Click"
+                                Enabled='<%# Session["hasActiveAuditTask"] != null%>'
+                                CssClass="btn btn-default" />
 
-                        <span runat="server" class="text-center">Scanned 
-                        <asp:Literal
-                            ID="ScannedPackageTotal"
-                            runat="server">
-                        </asp:Literal>
-                            Packages
-                        </span>
                     </div>
                 </div>
             </div>
-
-            <%--            <asp:LinkButton Text="Cancel"
-                ID="LinkButton1"
-                runat="server"
-                CssClass="btn btn-danger btn-float-right btn-margin-left"
-                OnClick="CancelButton_Click"
-                PostBackUrl="~/AgentDoctorFeatures/AgentDoctorHome.aspx" />--%>
 
             <asp:LinkButton Text="Cancel"
                 ID="CancelButton"
                 runat="server"
                 CssClass="btn btn-danger btn-float-right btn-margin-left"
                 OnClick="CancelButton_Click"
-                OnPreRender="CancelButton_PreRender"/>
+                OnPreRender="CancelButton_PreRender" />
 
             <asp:LinkButton Text="Commit Audit"
                 ID="CommitAuditButton"

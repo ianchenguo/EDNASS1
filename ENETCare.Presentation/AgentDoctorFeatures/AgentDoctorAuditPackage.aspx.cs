@@ -29,18 +29,17 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             masterPage = Page.Master as AgentDoctorFeatures;
             masterPage.ConfigureAlertBox(false);
 
-            syncSessionStoredBarcodes();
-            syncScannedPackageCounting();
-
-            buttonsDataBind();
+            syncPendingScannedListFromSession();
         }
-
-        private void buttonsDataBind()
+        /// <summary>
+        /// updates control apperance during page rendering
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Page_PreRender(object sender, EventArgs e)
         {
-            ScanPackageButton.DataBind();
-            StartAuditButton.DataBind();
-            CancelButton.DataBind();
-            CommitAuditButton.DataBind();
+            bindControlData();
+
         }
 
         /// <summary>
@@ -51,14 +50,14 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void ScanPackageButton_Click(object sender, EventArgs e)
         {
             //retrives the id of current selected package type
-            int parsedPackageId = getMedicationPackageId();
-            bool isChecked = false;
+            int currentPackageId = getMedicationPackageId();
+            bool isScanSucceeded = false;
 
             try
             {
-                //delegates the job to business domain, to check and update the package's state
-                madicationPackageManager.CheckAndUpdatePackage(parsedPackageId, Barcode.Text);
-                isChecked = true;
+                //delegates work to domain logic, to check and update the package's state
+                madicationPackageManager.CheckAndUpdatePackage(currentPackageId, Barcode.Text);
+                isScanSucceeded = true;
             }
             catch (ENETCareException ex)
             {
@@ -66,13 +65,15 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 Barcode.Text = "";
             }
 
-            if (isChecked)
+            if (isScanSucceeded)
             {
-                var message = "Scan Success: Package (with barcode: " + Barcode.Text + ")'s state is updated.";
-                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
+                string message;
+                insertCurrentBarcodeToPendingListInSession(Barcode.Text);
 
-                //maintains a list of the ids of scanned packages in current session
-                insertBarcodeToSession(Barcode.Text);
+                message =
+                    "The state of the package with barcode " + Barcode.Text + " is updated." +
+                    "<br/>The pending list contains " + scannedBarcodes.Distinct().Count().ToString() + " package(s)";
+                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
                 Barcode.Text = "";
             }
         }
@@ -101,8 +102,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
 
                 emptyScannedBarcodes();
-                syncScannedPackageCounting();
-                syncHasActiveAuditTaskInSessionWithControl(null);
+                updateAuditTaskStateInSession(null);
 
             }
         }
@@ -116,8 +116,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         {
             var message = "Task Start: A new audit task is started";
             handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
-
-            syncHasActiveAuditTaskInSessionWithControl(true);
+           updateAuditTaskStateInSession(true);
         }
 
         /// <summary>
@@ -128,10 +127,9 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             var message = "Task Cancelled: The previous task is cancelled.";
-            handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
-            syncHasActiveAuditTaskInSessionWithControl(null);
+            handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_WARNING, message);
+            updateAuditTaskStateInSession(null);
             emptyScannedBarcodes();
-            syncScannedPackageCounting();
         }
 
         /// <summary>
@@ -141,22 +139,34 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         /// <param name="e"></param>
         protected void CancelButton_PreRender(object sender, EventArgs e)
         {
-            disableControlOnCondition(CancelButton.Attributes,null);
+            disableControlOnCondition(CancelButton.Attributes, null);
         }
 
         /// <summary>
-        /// Conditionally disable package type list
+        /// Conditionally disables package type list, and stores current package type
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void PackageType_PreRender(object sender, EventArgs e)
         {
+            disableControlOnCondition(CancelButton.Attributes, null);
 
-            disableControlOnCondition(PackageType.Attributes,true);
+            //if (Session["hasActiveAuditTask"] == null)
+            //{
+            //    Session["AuditTaskPackageTypeId"] = PackageType.SelectedValue;
+            //}
+
+            //disableControlOnCondition(PackageType.Attributes, true);
+
+            //if (Session["AuditTaskPackageTypeId"] != null)
+            //{
+            //    PackageType.SelectedValue = Session["AuditTaskPackageTypeId"] as string;
+            //}
+
         }
 
         /// <summary>
-        /// Conditionally disable barcode input
+        /// Conditionally disables barcode input
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -165,10 +175,9 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             disableControlOnCondition(Barcode.Attributes, null);
         }
 
-        private void syncHasActiveAuditTaskInSessionWithControl(bool? hasActiveAuditTask)
+        private void updateAuditTaskStateInSession(bool? hasActiveAuditTask)
         {
             Session["hasActiveAuditTask"] = hasActiveAuditTask;
-            buttonsDataBind();
         }
 
         private void handleMessage(AlertBoxHelper.AlertType alertType, string alertStyle, string alertContent)
@@ -182,16 +191,11 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             scannedBarcodes = new List<string>();
         }
 
-        private void insertBarcodeToSession(string barcode)
+        private void insertCurrentBarcodeToPendingListInSession(string barcode)
         {
             scannedBarcodes.Add(barcode);
             Session["storedBarcodes"] = scannedBarcodes;
-            syncScannedPackageCounting();
-        }
 
-        private void syncScannedPackageCounting()
-        {
-            ScannedPackageTotal.Text = scannedBarcodes.Distinct().Count().ToString();
         }
 
         private int getMedicationPackageId()
@@ -200,7 +204,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             return parsedPackageId;
         }
 
-        private void syncSessionStoredBarcodes()
+        private void syncPendingScannedListFromSession()
         {
             if (Session["storedBarcodes"] == null)
             {
@@ -212,8 +216,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             }
         }
 
-
-
         private void disableControlOnCondition(AttributeCollection attributeCollection, bool? condition)
         {
             attributeCollection.Remove("disabled");
@@ -221,6 +223,15 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             if (Session["hasActiveAuditTask"] as bool? == condition)
                 attributeCollection.Add("disabled", "disabled");
         }
+
+        private void bindControlData()
+        {
+            ScanPackageButton.DataBind();
+            StartAuditButton.DataBind();
+            CancelButton.DataBind();
+            CommitAuditButton.DataBind();
+        }
+
 
     }
 }

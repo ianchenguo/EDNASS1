@@ -39,8 +39,8 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
             AlertBox.Visible = isVisible;
             AlertBox.Attributes["Class"] = defaultStyles + " " + alertStyle;
-            AlertBoxTitle.InnerText = alertTitle;
-            AlertBoxContent.InnerText = alertContent;
+            AlertBoxTitle.InnerHtml = alertTitle;
+            AlertBoxContent.InnerHtml = alertContent;
         }
 
         /// <summary>

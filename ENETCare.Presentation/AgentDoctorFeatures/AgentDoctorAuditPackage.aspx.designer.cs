@@ -67,15 +67,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
         protected global::System.Web.UI.WebControls.Button ScanPackageButton;
         
         /// <summary>
-        /// ScannedPackageTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ScannedPackageTotal;
-        
-        /// <summary>
         /// CancelButton control.
         /// </summary>
         /// <remarks>

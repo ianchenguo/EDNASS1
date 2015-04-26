@@ -9,6 +9,8 @@ namespace ENETCare.Presentation.HelperUtilities
     {
         public const string ALERT_STYLE_SUCCESS = "alert-success";
         public const string ALERT_STYLE_DANGER = "alert-danger";
+        public const string ALERT_STYLE_WARNING = "alert-warning";
+
 
         public enum AlertType
         {
