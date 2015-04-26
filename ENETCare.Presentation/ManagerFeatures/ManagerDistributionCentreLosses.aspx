@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ManagerFeatures/ManagerFeatures.master" AutoEventWireup="true"
     CodeBehind="ManagerDistributionCentreLosses.aspx.cs" Inherits="ENETCare.Presentation.ManagerFeatures.ManagerDistributionCentreLosses" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificManagerFeatureMainContent" runat="server">
-        <!--panel-start-->
+    <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
@@ -17,7 +18,7 @@
                 AutoGenerateColumns="False"
                 DataSourceID="DistributionCentreLossesSource"
                 AllowPaging="True"
-                CssClass="table  table-hover table-bordered table-striped" 
+                CssClass="table  table-hover table-bordered table-striped"
                 OnDataBound="DistributionCenterLossesView_DataBound">
                 <Columns>
                     <asp:BoundField DataField="DistributionCentre" HeaderText="DistributionCentre" SortExpression="DistributionCentre"></asp:BoundField>
@@ -30,12 +31,11 @@
                 </EmptyDataTemplate>
             </asp:GridView>
 
-            <asp:ObjectDataSource runat="server" 
-                ID="DistributionCentreLossesSource" 
-                SelectMethod="DistributionCentreLosses" 
+            <asp:ObjectDataSource runat="server"
+                ID="DistributionCentreLossesSource"
+                SelectMethod="DistributionCentreLosses"
                 TypeName="ENETCare.Business.ReportBLL"
-                OnSelected="DistributionCentreLossesSource_Selected">
-            </asp:ObjectDataSource>
+                OnSelected="DistributionCentreLossesSource_Selected"></asp:ObjectDataSource>
 
             <asp:LinkButton ID="Back"
                 runat="server"

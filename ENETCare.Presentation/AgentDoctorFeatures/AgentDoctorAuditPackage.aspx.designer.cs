@@ -67,6 +67,42 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
         protected global::System.Web.UI.WebControls.Button ScanPackageButton;
         
         /// <summary>
+        /// PendingListPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PendingListPanel;
+        
+        /// <summary>
+        /// PendingList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView PendingList;
+        
+        /// <summary>
+        /// LostListPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LostListPanel;
+        
+        /// <summary>
+        /// LostList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView LostList;
+        
+        /// <summary>
         /// CancelButton control.
         /// </summary>
         /// <remarks>

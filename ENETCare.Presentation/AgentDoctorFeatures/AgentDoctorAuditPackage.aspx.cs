@@ -13,6 +13,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
     public partial class AgentDoctorAuditPackage : System.Web.UI.Page
     {
         private List<string> scannedBarcodes = new List<string>();
+        private string currentPackageType = "";
         private MedicationPackageBLL madicationPackageManager;
         private Features baseMasterPage;
 
@@ -31,7 +32,9 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             baseMasterPage.ConfigureAlertBox(false);
 
             syncPendingScannedListFromSession();
+            syncPendingPackageTypeFromSession();
         }
+
         /// <summary>
         /// updates control apperance during page rendering
         /// </summary>
@@ -40,44 +43,51 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         void Page_PreRender(object sender, EventArgs e)
         {
             bindControlData();
-
         }
 
         /// <summary>
-        /// Scans a packages and updates its state in storage
+        /// Scans a package and updates its state in storage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void ScanPackageButton_Click(object sender, EventArgs e)
         {
-            //retrives the id of current selected package type
+            //retrieves the id of current selected package type
             int currentPackageId = getMedicationPackageId();
-            bool isScanSucceeded = false;
+            bool isPackageStateUpdated = false;
+            string updateFeedback = "";
 
             try
             {
                 //delegates work to domain logic, to check and update the package's state
-                madicationPackageManager.CheckAndUpdatePackage(currentPackageId, Barcode.Text);
-                isScanSucceeded = true;
+                isPackageStateUpdated = madicationPackageManager.CheckAndUpdatePackage(currentPackageId, Barcode.Text);
+                updateFeedback = selectFeedbackBasedOnState(isPackageStateUpdated, updateFeedback);
+                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, updateFeedback);
+                insertCurrentBarcodeToPendingListInSession(Barcode.Text);
             }
             catch (ENETCareException ex)
             {
                 handleMessage(AlertBoxHelper.AlertType.Error, AlertBoxHelper.ALERT_STYLE_DANGER, ex.Message.ToString());
-                Barcode.Text = "";
             }
-
-            if (isScanSucceeded)
+            finally
             {
-                string message;
-                insertCurrentBarcodeToPendingListInSession(Barcode.Text);
-
-                message =
-                    "The state of the package with barcode " + Barcode.Text + " is updated." +
-                    "<br/>The pending list contains " + scannedBarcodes.Distinct().Count().ToString() + " package(s)";
-                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
                 Barcode.Text = "";
             }
         }
+
+        private static string selectFeedbackBasedOnState(bool isPackageStateUpdated, string updateFeedback)
+        {
+            if (isPackageStateUpdated)
+            {
+                updateFeedback = "Package state is updated.";
+            }
+            else
+            {
+                updateFeedback = "Package state remains the same.";
+            }
+            return updateFeedback;
+        }
+
         /// <summary>
         /// Audits all the scanned packages, to find lost packages
         /// </summary>
@@ -85,28 +95,26 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         /// <param name="e"></param>
         protected void CommitAuditButton_Click(object sender, EventArgs e)
         {
-            var isAudited = false;
-
             try
             {
-                madicationPackageManager.AuditPackages(getMedicationPackageId(), scannedBarcodes);
-                isAudited = true;
+                ViewState["lostPackages"] = madicationPackageManager.AuditPackages(getMedicationPackageId(), scannedBarcodes);
+                //LostList.DataSource = ViewState["LostPackages"] as List<MedicationPackage>;
+                var message = "Scanned packages were audited.";
+                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
+                emptyScannedBarcodes();
+                emptyCurrentPackageType();
+                updateAuditTaskStateInSession(null);
             }
             catch (ENETCareException ex)
             {
                 handleMessage(AlertBoxHelper.AlertType.Error, AlertBoxHelper.ALERT_STYLE_DANGER, ex.Message.ToString());
             }
-
-            if (isAudited)
+            finally
             {
-                var message = "Task Success: Packages scanned in the previous task are audited.";
-                handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
-
-                emptyScannedBarcodes();
-                updateAuditTaskStateInSession(null);
                 Barcode.Text = "";
             }
         }
+
 
         /// <summary>
         /// Starts a new auid task
@@ -117,7 +125,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         {
             var message = "Task Start: A new audit task is started";
             handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, message);
-           updateAuditTaskStateInSession(true);
+            updateAuditTaskStateInSession(true);
         }
 
         /// <summary>
@@ -131,6 +139,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             handleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_WARNING, message);
             updateAuditTaskStateInSession(null);
             emptyScannedBarcodes();
+            emptyCurrentPackageType();
         }
 
         /// <summary>
@@ -150,20 +159,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         /// <param name="e"></param>
         protected void PackageType_PreRender(object sender, EventArgs e)
         {
-            disableControlOnCondition(CancelButton.Attributes, null);
-
-            //if (Session["hasActiveAuditTask"] == null)
-            //{
-            //    Session["AuditTaskPackageTypeId"] = PackageType.SelectedValue;
-            //}
-
-            //disableControlOnCondition(PackageType.Attributes, true);
-
-            //if (Session["AuditTaskPackageTypeId"] != null)
-            //{
-            //    PackageType.SelectedValue = Session["AuditTaskPackageTypeId"] as string;
-            //}
-
+            disableControlOnCondition(PackageType.Attributes, true);
         }
 
         /// <summary>
@@ -174,6 +170,17 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         protected void Barcode_PreRender(object sender, EventArgs e)
         {
             disableControlOnCondition(Barcode.Attributes, null);
+        }
+
+
+        protected void PendingList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            PendingList.PageIndex = e.NewPageIndex;
+        }
+
+        protected void LostList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            LostList.PageIndex = e.NewPageIndex;
         }
 
         private void updateAuditTaskStateInSession(bool? hasActiveAuditTask)
@@ -192,11 +199,16 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             scannedBarcodes = new List<string>();
         }
 
+        private void emptyCurrentPackageType()
+        {
+            Session["storedPackageType"] = null;
+            currentPackageType = "";
+        }
+
         private void insertCurrentBarcodeToPendingListInSession(string barcode)
         {
             scannedBarcodes.Add(barcode);
-            Session["storedBarcodes"] = scannedBarcodes;
-
+            Session["storedBarcodes"] = new List<string>(scannedBarcodes.Distinct());
         }
 
         private int getMedicationPackageId()
@@ -217,6 +229,31 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             }
         }
 
+        private void syncPendingPackageTypeFromSession()
+        {
+            //only stores a package type after the user posts for the first time
+            if (IsPostBack)
+            {
+                if (Session["storedPackageType"] == null)
+                {
+                    Session["storedPackageType"] = PackageType.SelectedValue;
+                }
+                else
+                {
+                    currentPackageType = Session["storedPackageType"] as string;
+                    PackageType.SelectedValue = currentPackageType;
+                }
+            }
+            else
+            {
+                if (Session["storedPackageType"] != null)
+                {
+                    currentPackageType = Session["storedPackageType"] as string;
+                    PackageType.SelectedValue = currentPackageType;
+                }
+            }
+        }
+
         private void disableControlOnCondition(AttributeCollection attributeCollection, bool? condition)
         {
             attributeCollection.Remove("disabled");
@@ -231,8 +268,11 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             StartAuditButton.DataBind();
             CancelButton.DataBind();
             CommitAuditButton.DataBind();
+            PendingListPanel.DataBind();
+            PendingList.DataBind();
+            LostListPanel.DataBind();
+            LostList.DataBind();
         }
-
 
     }
 }

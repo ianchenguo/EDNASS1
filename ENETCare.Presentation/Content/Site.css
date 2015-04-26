@@ -60,6 +60,10 @@ select {
     background-color: #ffd800;
 }
 
+.stretch-children-div > div {
+    padding: 0; margin: 0;
+}
+
 @media (min-width: 768px) {
     .col-sm-height {
         display: table-cell;
