@@ -190,7 +190,7 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void Stocktaking()
+		public void Stocktake()
 		{
 			MedicationPackageBLL bll = new MedicationPackageBLL(agent.Username);
 

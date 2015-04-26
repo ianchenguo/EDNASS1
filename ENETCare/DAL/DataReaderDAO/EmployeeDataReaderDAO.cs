@@ -3,9 +3,8 @@ using System.Data.SqlClient;
 
 namespace ENETCare.Business
 {
-	public class EmployeeDataReaderDAO : EmployeeDAO
+	public class EmployeeDataReaderDAO : DataReaderDAO, EmployeeDAO
 	{
-		string connectionString = DBSchema.ConnectionString;
 		string selectStatement = "select a.Id, a.UserName, a.Fullname, a.Email, a.DistributionCentre_ID, c.Name";
 		string fromClause = "from AspNetUsers a";
 		string joinClause1 = "join AspNetUserRoles b on a.Id = b.UserId";
@@ -16,7 +15,7 @@ namespace ENETCare.Business
 			List<Employee> employeeList = new List<Employee>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = string.Format("{0} {1} {2} {3}", selectStatement, fromClause, joinClause1, joinClause2);
 				SqlCommand command = new SqlCommand(query, conn);
@@ -37,7 +36,7 @@ namespace ENETCare.Business
 			List<Employee> employeeList = new List<Employee>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string whereClause = "where c.Name = @role";
 				string query = string.Format("{0} {1} {2} {3} {4}", selectStatement, fromClause, joinClause1, joinClause2, whereClause);
@@ -59,7 +58,7 @@ namespace ENETCare.Business
 		{
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string whereClause = "where a.UserName = @username";
 				string query = string.Format("{0} {1} {2} {3} {4}", selectStatement, fromClause, joinClause1, joinClause2, whereClause);

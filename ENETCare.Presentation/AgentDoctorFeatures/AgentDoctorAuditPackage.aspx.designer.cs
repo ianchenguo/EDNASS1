@@ -13,6 +13,24 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
     public partial class AgentDoctorAuditPackage {
         
         /// <summary>
+        /// AlertWindow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertWindow;
+        
+        /// <summary>
+        /// AlertWindowContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AlertWindowContent;
+        
+        /// <summary>
         /// PackageType control.
         /// </summary>
         /// <remarks>
@@ -40,30 +58,39 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
         protected global::System.Web.UI.WebControls.TextBox Barcode;
         
         /// <summary>
-        /// AuditPackageButton control.
+        /// ScanPackageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AuditPackageButton;
+        protected global::System.Web.UI.WebControls.Button ScanPackageButton;
         
         /// <summary>
-        /// ScannedPackageTotal control.
+        /// CancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ScannedPackageTotal;
+        protected global::System.Web.UI.WebControls.LinkButton CancelButton;
         
         /// <summary>
-        /// CommitAuditionButton control.
+        /// CommitAuditButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CommitAuditionButton;
+        protected global::System.Web.UI.WebControls.LinkButton CommitAuditButton;
+        
+        /// <summary>
+        /// StartAuditButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton StartAuditButton;
     }
 }

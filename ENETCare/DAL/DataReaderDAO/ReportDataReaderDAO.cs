@@ -4,16 +4,14 @@ using System.Linq;
 
 namespace ENETCare.Business
 {
-	public class ReportDataReaderDAO : ReportDAO
+	public class ReportDataReaderDAO : DataReaderDAO, ReportDAO
 	{
-		string connectionString = DBSchema.ConnectionString;
-
 		public List<MedicationTypeViewData> FindDistributionCentreStockByStatus(int distributionCentreId, params PackageStatus[] statuses)
 		{
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select b.Name, count(*), sum(b.Value)
 								   from MedicationPackage a
@@ -47,7 +45,7 @@ namespace ENETCare.Business
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select b.Name, count(*), sum(b.Value)
 								   from MedicationPackage a
@@ -73,7 +71,7 @@ namespace ENETCare.Business
 			List<MedicationTypeViewData> list = new List<MedicationTypeViewData>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select b.Name, count(*), sum(b.Value)
 								   from MedicationPackage a
@@ -101,7 +99,7 @@ namespace ENETCare.Business
 			List<ValueInTransitViewData> list = new List<ValueInTransitViewData>();
 			using (SqlConnection conn = new SqlConnection())
 			{
-				conn.ConnectionString = connectionString;
+				conn.ConnectionString = ConnectionString;
 				conn.Open();
 				string query = @"select y1.Name, y2.Name, x.Packages, x.Value
 								   from (select a.SourceDC, a.DestinationDC, count(*) Packages, sum(b.Value) Value

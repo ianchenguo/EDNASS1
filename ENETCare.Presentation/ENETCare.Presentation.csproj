@@ -397,6 +397,7 @@
     <Compile Include="DoctorFeatures\DoctorFeatures.master.designer.cs">
       <DependentUpon>DoctorFeatures.master</DependentUpon>
     </Compile>
+    <Compile Include="HelperUtilities\AlertBoxHelper.cs" />
     <Compile Include="Layout\Features.master.designer.cs">
       <DependentUpon>Features.master</DependentUpon>
     </Compile>
