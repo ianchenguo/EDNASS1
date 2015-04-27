@@ -5,7 +5,7 @@ namespace ENETCare.Business
 	/// <summary>
 	/// MedicationPackage entity
 	/// </summary>
-    [Serializable]
+	[Serializable]
 	public class MedicationPackage
 	{
 		public int ID { get; set; }

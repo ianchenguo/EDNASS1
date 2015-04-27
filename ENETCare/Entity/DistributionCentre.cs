@@ -5,7 +5,7 @@ namespace ENETCare.Business
 	/// <summary>
 	/// DistributionCentre entity
 	/// </summary>
-    [Serializable]
+	[Serializable]
 	public class DistributionCentre
 	{
 		public int ID { get; set; }
