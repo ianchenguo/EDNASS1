@@ -13,19 +13,17 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
     public partial class AgentDoctorRegisterPackage : Page
     {
         private MedicationPackageBLL medicationPackageBLL;
-        private Features masterPageADreceive;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
-			if (!Page.IsPostBack)
-			{
-				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
-				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataTextField = "Name";
-				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataValueField = "ID";
-				AgentDoctorPackageRegisterPackageTypeDropDwonList.DataBind();
+            if (!Page.IsPostBack)
+            {
+                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
+                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataTextField = "Name";
+                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataValueField = "ID";
+                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataBind();
                 NedPackageRegisterFormExpireDate.Text = DateTime.Now.Date.ToShortDateString();
-			}
+            }
         }
 
         //protected void Submit(object sender, EventArgs e)
@@ -43,23 +41,35 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         {
             string medicationType = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedValue;
             string originalDateStr = NedPackageRegisterFormExpireDate.Text;
-            string expireDate = FormatDateStr(originalDateStr);
             try
             {
+                string expireDate = this.FormatDate(originalDateStr);
                 string barcodeUnique = medicationPackageBLL.RegisterPackage(Convert.ToInt32(medicationType), expireDate);
                 AgentDoctorRegisterBarcodeImage.ImageUrl = string.Format("PresentBarcode.aspx?barcode={0}", barcodeUnique);
-                if(barcodeUnique != null){
+                if (barcodeUnique != null)
+                {
                     //Response.Write(expireDate);
                     AgentDoctorRegisterMessage.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
                     this.ClearReadOnlyInputTextBoxExpiredDateAfterClick(AgentDoctorRegisterMessage.Text);
                 }
-                //Response.Redirect("AgentDoctorHome.aspx");
+                 //Response.Redirect("AgentDoctorHome.aspx");
             }
             catch (Exception ex)
             {
+                AgentDoctorRegisterMessage.Text = "";
+                AgentDoctorRegisterBarcodeImage.ImageUrl = "";
+                NedPackageRegisterFormExpireDate.Text = "";
                 Response.Write(string.Format("<p>Error: {0}</p>\n", ex.Message));
             }
         }
+
+        private string FormatDate(string originalDateStr)
+        {
+            string patternDate = "yyyy-MM-dd";
+            DateTime convertDate = DateTime.ParseExact(originalDateStr, patternDate, null, DateTimeStyles.None);
+            string FormatDate = convertDate.ToString();
+            return FormatDate;
+        }  
 
         private void ClearReadOnlyInputTextBoxExpiredDateAfterClick(string MsgOfMedicationTypeInfrontOfBarcode)
         {
@@ -67,15 +77,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 NedPackageRegisterFormExpireDate.Text = string.Empty;
             }
-        }
-
-        private string FormatDateStr(string theDateStr)
-        {
-            string patternDate = "yyyy-MM-dd";
-            DateTime convertDate = DateTime.ParseExact(theDateStr, patternDate, null, DateTimeStyles.None);
-            string FormatedStr = convertDate.ToString();
-                
-            return FormatedStr;
         }
     }
 }

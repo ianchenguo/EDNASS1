@@ -31,6 +31,24 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
         protected global::System.Web.UI.WebControls.TextBox NedPackageRegisterFormExpireDate;
         
         /// <summary>
+        /// RFVagentdoctorSendPackageFieldValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVagentdoctorSendPackageFieldValid;
+        
+        /// <summary>
+        /// REVagentdoctorSendPackageExpressValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVagentdoctorSendPackageExpressValid;
+        
+        /// <summary>
         /// AgentDoctorRegisterMessage control.
         /// </summary>
         /// <remarks>

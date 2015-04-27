@@ -34,9 +34,17 @@
                     <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:TextBox ID="NedPackageRegisterFormExpireDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="NedPackageRegisterFormExpireDate"
-                            CssClass="text-danger" ErrorMessage="The Expiration Date field is required." />
+                        <asp:TextBox ID="NedPackageRegisterFormExpireDate" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RFVagentdoctorSendPackageFieldValid" runat="server" ControlToValidate="NedPackageRegisterFormExpireDate" CssClass="text-danger" 
+                            ErrorMessage="The Expiration Date field is required." ValidationGroup ="AgentDoctorRegisterPackageValidateGroup" />
+                        <asp:RegularExpressionValidator ID="REVagentdoctorSendPackageExpressValid"
+                            runat="server"
+                            ValidationExpression= "(\d{4}|\d{2})-((1[0-2])|(0?[1-9]))-(([12][0-9])|(3[01])|(0?[1-9]))" 
+                            ControlToValidate="NedPackageRegisterFormExpireDate"
+                            CssClass="text-danger"
+                            ErrorMessage="<div>The Expired Date is incorrect.</div>"
+                            ValidationGroup="AgentDoctorRegisterPackageValidateGroup" />
                     </div>
                 </div>
                 <p>
