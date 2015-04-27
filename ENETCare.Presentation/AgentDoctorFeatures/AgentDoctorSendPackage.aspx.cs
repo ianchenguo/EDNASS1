@@ -6,13 +6,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ENETCare.Business;
+using ENETCare.Presentation.Layout;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
     public partial class AgentDoctorSendPackage : System.Web.UI.Page
     {
         private MedicationPackageBLL medicationPackageBLL;
-        private AgentDoctorFeatures masterPageClass;
+        private Features masterPageClass;
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
@@ -24,7 +25,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorSendingDropDownList.DataBind();
             }
             //AgentDoctorSendPackageDateTextBox.Text = DateTime.Now.ToShortDateString();
-            masterPageClass = Page.Master as AgentDoctorFeatures;
+            masterPageClass = Page.Master.Master as Features;
             masterPageClass.ConfigureAlertBox(false);
 
         }

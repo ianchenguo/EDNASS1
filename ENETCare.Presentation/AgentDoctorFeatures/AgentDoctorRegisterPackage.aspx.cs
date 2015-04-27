@@ -6,12 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
 using ENETCare.Business;
+using ENETCare.Presentation.Layout;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
     public partial class AgentDoctorRegisterPackage : Page
     {
         private MedicationPackageBLL medicationPackageBLL;
+        private Features masterPageADreceive;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
