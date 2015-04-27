@@ -18,21 +18,24 @@
                     <asp:Label ID="AgentDoctorDiscardPackageAlertWindowContentLabel" runat="server" />
                 </div>
 
-                <div class="form-group col-xs-12">
-                    <asp:Label AssociatedControlID="AgentDoctorDiscardPackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
-                    <asp:TextBox ID="AgentDoctorDiscardPackagesBarcode" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorDiscardPackagesBarcode"
-                        CssClass="text-danger" Display="Dynamic"
-                        ErrorMessage="<div>The Barcode field is required.</div>"
-                        ValidationGroup="AgentDoctorDiscardPackageValidateGroup" />
+                <div class="form-group">
+                    <asp:Label AssociatedControlID="AgentDoctorDiscardPackagesBarcode" runat="server" CssClass="col-xs-3">Barcode: </asp:Label>
 
-                    <asp:RegularExpressionValidator
-                        runat="server"
-                        ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
-                        ControlToValidate="AgentDoctorDiscardPackagesBarcode"
-                        CssClass="text-danger"
-                        ErrorMessage="<div>The Barcode is invalid.</div>"
-                        ValidationGroup="AgentDoctorDiscardPackageValidateGroup" />
+                    <div class="col-xs-9">
+                        <asp:TextBox ID="AgentDoctorDiscardPackagesBarcode" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorDiscardPackagesBarcode"
+                            CssClass="text-danger" Display="Dynamic"
+                            ErrorMessage="<div>The Barcode field is required.</div>"
+                            ValidationGroup="AgentDoctorDiscardPackageValidateGroup" />
+
+                        <asp:RegularExpressionValidator
+                            runat="server"
+                            ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
+                            ControlToValidate="AgentDoctorDiscardPackagesBarcode"
+                            CssClass="text-danger"
+                            ErrorMessage="<div>The Barcode is invalid.</div>"
+                            ValidationGroup="AgentDoctorDiscardPackageValidateGroup" />
+                    </div>
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>

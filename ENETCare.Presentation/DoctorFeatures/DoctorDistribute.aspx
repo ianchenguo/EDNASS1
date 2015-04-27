@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true" CodeBehind="DoctorDistribute.aspx.cs" Inherits="ENETCare.Presentation.DoctorFeatures.DoctorDistribute" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentDoctorFeatureMainContent" runat="server">
-     <!--panel-start-->
+    <!--panel-start-->
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
@@ -16,14 +17,11 @@
                     <asp:Label ID="DoctorDistributeAlertWindowContentLabel" runat="server" />
                 </div>
 
-                <div class="form-group col-xs-12">
-                    <%--<asp:Label ID="DoctorDistributePackageDestination" runat="server" Text="Destination: "></asp:Label>
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="DoctorDistributePackageTypebarcode" CssClass="col-xs-3">Barcode: </asp:Label>
 
-                    <asp:DropDownList ID="DoctorDistributeDropDownList" runat="server">
-                        <asp:ListItem>Please Select</asp:ListItem>
-                    </asp:DropDownList>--%>
-                    Barcode:
-                        <asp:TextBox ID="DoctorDistributePackageTypebarcode" runat="server"></asp:TextBox>
+                    <div class="col-9">
+                        <asp:TextBox ID="DoctorDistributePackageTypebarcode" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="DoctorDistributePackageTypebarcode"
                             CssClass="text-danger" Display="Dynamic"
                             ErrorMessage="<div>The Barcode field is required.</div>"
@@ -36,6 +34,7 @@
                             CssClass="text-danger"
                             ErrorMessage="<div>The Barcode is invalid.</div>"
                             ValidationGroup="DoctorDistributePackageValiGroup" />
+                    </div>
                 </div>
 
                 <%--<div class="form-group">

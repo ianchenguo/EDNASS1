@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true"
     CodeBehind="AgentDoctorRegisterPackage.aspx.cs" Inherits="ENETCare.Presentation.AgentDoctorFeatures.AgentDoctorRegisterPackage" %>
 
 <asp:Content ID="PackageRegistration" ContentPlaceHolderID="SpecificAgentDoctorFeatureMainContent" runat="server">
@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <!--panel-heading-start-->
         <div class="panel-heading">
-            <h3 class="panel-title">AgentDoctor Register Medication Package</h3>
+            <h3 class="panel-title">Register Medication Package</h3>
         </div>
         <!--panel-heading-end-->
 
@@ -23,8 +23,11 @@
                     <asp:Label runat="server" AssociatedControlID="AgentDoctorPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" AutoPostBack="true" runat="server" 
-                            OnSelectedIndexChanged="AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged" >
+                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList"
+                            AutoPostBack="true"
+                            runat="server"
+                            CssClass="form-control"
+                            OnSelectedIndexChanged="AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged">
                             <asp:ListItem>Please select</asp:ListItem>
                         </asp:DropDownList>
                     </div>
@@ -37,13 +40,13 @@
                     <asp:Label runat="server" AssociatedControlID="NedPackageRegisterFormExpireDate" CssClass="col-xs-3">Expiration Date: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:TextBox ID="NedPackageRegisterFormExpireDate" runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>
+                        <asp:TextBox ID="NedPackageRegisterFormExpireDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
 
-                        <asp:RequiredFieldValidator ID="RFVagentdoctorSendPackageFieldValid" runat="server" ControlToValidate="NedPackageRegisterFormExpireDate" CssClass="text-danger" 
-                            ErrorMessage="The Expiration Date field is required." ValidationGroup ="AgentDoctorRegisterPackageValidateGroup" />
+                        <asp:RequiredFieldValidator ID="RFVagentdoctorSendPackageFieldValid" runat="server" ControlToValidate="NedPackageRegisterFormExpireDate" CssClass="text-danger"
+                            ErrorMessage="The Expiration Date field is required." ValidationGroup="AgentDoctorRegisterPackageValidateGroup" />
                         <asp:RegularExpressionValidator ID="REVagentdoctorSendPackageExpressValid"
                             runat="server"
-                            ValidationExpression= "(\d{4}|\d{2})-((1[0-2])|(0?[1-9]))-(([12][0-9])|(3[01])|(0?[1-9]))" 
+                            ValidationExpression="(\d{4}|\d{2})-((1[0-2])|(0?[1-9]))-(([12][0-9])|(3[01])|(0?[1-9]))"
                             ControlToValidate="NedPackageRegisterFormExpireDate"
                             CssClass="text-danger"
                             ErrorMessage="<div>The Expired Date is incorrect.</div>"
@@ -51,7 +54,8 @@
                     </div>
                 </div>
                 <p>
-                    &nbsp;</p>
+                    &nbsp;
+                </p>
                 <p>
                     <asp:Label ID="AgentDoctorRegisterMessage" runat="server" />
                     <asp:Image ID="AgentDoctorRegisterBarcodeImage" runat="server" />

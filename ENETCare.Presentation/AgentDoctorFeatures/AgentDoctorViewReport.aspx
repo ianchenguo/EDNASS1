@@ -15,7 +15,7 @@
             <%--BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" ForeColor="Black"--%>
             <%--CssClass="table  table-hover table-bordered table-striped"--%>
             <asp:GridView ID="AgentDoctorReportStockTakingGV" runat="server" AllowPaging="true" GridLines="Horizontal" OnRowCommand="AgentDoctorReportStockTakingGV_RowCommand"
-                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
+                OnPageIndexChanging="AgentDoctorReportStockTakingGV_PageIndexChanging" CssClass="table  table-hover table-bordered table-striped" OnDataBound="AgentDoctorReportStockTakingGV_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Delete Expired">
                         <ItemTemplate>

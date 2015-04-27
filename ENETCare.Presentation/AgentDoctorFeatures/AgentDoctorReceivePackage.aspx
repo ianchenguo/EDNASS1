@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AgentDoctorFeatures/AgentDoctorFeatures.master" AutoEventWireup="true"
     CodeBehind="AgentDoctorReceivePackage.aspx.cs" Inherits="ENETCare.Presentation.AgentDoctorFeatures.AgentDoctorReceivePackage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="SpecificAgentDoctorFeatureMainContent" runat="server">
@@ -18,10 +18,11 @@
                     <asp:Label ID="AgentDoctorReceivePackageAlertWindowContentLabel" runat="server" />
                 </div>
 
-                <div class="form-group col-xs-12">
-                    <asp:Label AssociatedControlID="AgentDoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp"></asp:Label>
-                    <asp:TextBox ID="AgentDoctorReceivePackagesBarcode" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorReceivePackagesBarcode"
+                <div class="form-group">
+                    <asp:Label AssociatedControlID="AgentDoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp" CssClass="col-xs-3"></asp:Label>
+                    <asp:TextBox ID="AgentDoctorReceivePackagesBarcode" runat="server" CssClass="form-control"></asp:TextBox>
+                    <div class="col-xs-9">
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorReceivePackagesBarcode"
                             CssClass="text-danger" Display="Dynamic"
                             ErrorMessage="<div>The Barcode field is required.</div>"
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
@@ -33,12 +34,14 @@
                             CssClass="text-danger"
                             ErrorMessage="<div>The Barcode is invalid.</div>"
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
+                    </div>
+
                 </div>
                 <!-- the following link should be optimised -->
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
                 <%--<asp:Button ID="" runat="server" OnClick="AgentDoctorReceiveButton_Click" Text="Receive" class="btn btn-success btn-float-right" />--%>
-                <asp:Button ID="AgentDoctorReceivePackageButton" runat="server" Text="Receive" 
-                    CssClass="btn btn-success btn-float-right" OnClick="AgentDoctorReceivePackageButton_Click" ValidationGroup="AgentDoctorReceivePackageValidateGroup"/>
+                <asp:Button ID="AgentDoctorReceivePackageButton" runat="server" Text="Receive"
+                    CssClass="btn btn-success btn-float-right" OnClick="AgentDoctorReceivePackageButton_Click" ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
 
             </div>
         </div>
