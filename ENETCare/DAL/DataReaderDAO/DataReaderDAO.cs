@@ -10,7 +10,7 @@ namespace ENETCare.Business
 	public class DataReaderDAO
 	{
 		private string connectionString;
-		protected string ConnectionString
+		public string ConnectionString
 		{
 			get
 			{

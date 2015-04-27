@@ -47,6 +47,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -62,6 +63,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BarcodeHelperTest.cs" />
+    <Compile Include="DAL_DAO_Test\DistributionCenterDAOTest.cs" />
+    <Compile Include="DAL_DAO_Test\EmployeeDAOTest.cs" />
+    <Compile Include="DAL_DAO_Test\MedicationPackageDAOTest.cs" />
+    <Compile Include="DAL_DAO_Test\MedicationTypeDAOTest.cs" />
+    <Compile Include="DAL_DAO_Test\ReportDAOTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MedicationPackageBLLTest.cs" />
     <Compile Include="WebformHelpersTest\ReportHelperTest.cs" />
