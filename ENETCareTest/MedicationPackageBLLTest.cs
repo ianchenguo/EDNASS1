@@ -13,7 +13,8 @@ namespace ENETCareTest
 		DistributionCentre dc2;
 		Employee agent;
 		Employee doctor;
-		MedicationType type;
+		MedicationType type1;
+		MedicationType type2;
 		Mock<DistributionCentreDAO> distributionCentreDAO;
 		Mock<EmployeeDAO> employeeDAO;
 		Mock<MedicationTypeDAO> medicationTypeDAO;
@@ -63,16 +64,23 @@ namespace ENETCareTest
 			doctor.Role = Role.Doctor;
 			doctor.DistributionCentre = dc2;
 
-			type = new MedicationType();
-			type.ID = 1;
-			type.Name = "100 polio vaccinations";
-			type.ShelfLife = 365;
-			type.Value = 500;
-			type.IsSensitive = true;
+			type1 = new MedicationType();
+			type1.ID = 1;
+			type1.Name = "100 polio vaccinations";
+			type1.ShelfLife = 365;
+			type1.Value = 500;
+			type1.IsSensitive = true;
+
+			type2 = new MedicationType();
+			type2.ID = 2;
+			type2.Name = "box of 500 x 28 pack chloroquine pills";
+			type2.ShelfLife = 7300;
+			type2.Value = 3000;
+			type2.IsSensitive = true;
 		}
 
 		[TestMethod]
-		public void RegisterPackage()
+		public void RegisterPackage_WithValidData_ShouldBeRegistered()
 		{
 			string username = agent.Username;
 			string barcode = "123456";
@@ -82,21 +90,71 @@ namespace ENETCareTest
 
 			// Arrange
 			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(agent);
-			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type1);
 			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
 			bll.EmployeeDAO = employeeDAO.Object;
 			bll.MedicationTypeDAO = medicationTypeDAO.Object;
 			bll.MedicationPackageDAO = medicationPackageDAO.Object;
 
 			// Act
-			bll.RegisterPackage(type.ID, expireDate, barcode);
+			bll.RegisterPackage(type1.ID, expireDate, barcode);
 
 			// Assert
 			AssertPackage(barcode, PackageStatus.InStock, dc1, null, null, username, result);
 		}
 
 		[TestMethod]
-		public void SendPackage()
+		[ExpectedException(typeof(ENETCareException))]
+		public void RegisterPackage_WithInvalidType_ShouldFail()
+		{
+			string username = agent.Username;
+			string barcode = "123456";
+			string expireDate = "2016-04-30";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(agent);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns((MedicationType)null);
+			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationTypeDAO = medicationTypeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.RegisterPackage(type1.ID, expireDate, barcode);
+
+			// Assert
+			Assert.Fail();
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ENETCareException))]
+		public void RegisterPackage_WithInvalidDate_ShouldFail()
+		{
+			string username = agent.Username;
+			string barcode = "123456";
+			string expireDate = "2016-13-30";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(agent);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type1);
+			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationTypeDAO = medicationTypeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.RegisterPackage(type1.ID, expireDate, barcode);
+
+			// Assert
+			Assert.Fail();
+		}
+
+		[TestMethod]
+		public void SendPackage_WithValidData_ShouldBeSent()
 		{
 			string username = agent.Username;
 			string barcode = "123456";
@@ -121,7 +179,58 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void ReceivePackage()
+		[ExpectedException(typeof(ENETCareException))]
+		public void SendPackage_WithNonExistingBarcode_ShouldFail()
+		{
+			string username = agent.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			distributionCentreDAO.Setup(x => x.GetDistributionCentreById(It.IsAny<int>())).Returns(dc2);
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(agent);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns((MedicationPackage)null);
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.DistributionCentreDAO = distributionCentreDAO.Object;
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.SendPackage(barcode, dc2.ID);
+
+			// Assert
+			Assert.Fail();
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ENETCareException))]
+		public void SendPackage_ToCurrentDistributionCentre_ShouldFail()
+		{
+			string username = agent.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			distributionCentreDAO.Setup(x => x.GetDistributionCentreById(It.IsAny<int>())).Returns(dc1);
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(agent);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Status = PackageStatus.InStock, StockDC = dc1, SourceDC = null, DestinationDC = null, Operator = username });
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.DistributionCentreDAO = distributionCentreDAO.Object;
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.SendPackage(barcode, dc1.ID);
+
+			// Assert
+			Assert.Fail();
+		}
+
+		[TestMethod]
+		public void ReceivePackage_WithValidData_ShouldBeReceived()
 		{
 			string username = doctor.Username;
 			string barcode = "123456";
@@ -144,7 +253,30 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void DistributePackage()
+		public void ReceivePackage_WithLostStatus_ShouldBeReceived()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Status = PackageStatus.Lost, StockDC = null, SourceDC = dc1, DestinationDC = dc2, Operator = agent.Username });
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.ReceivePackage(barcode);
+
+			// Assert
+			AssertPackage(barcode, PackageStatus.InStock, dc2, null, null, username, result);
+		}
+
+		[TestMethod]
+		public void DistributePackage_WithValidData_ShouldBeDistributed()
 		{
 			string username = doctor.Username;
 			string barcode = "123456";
@@ -167,7 +299,30 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void DiscardPackage()
+		public void DistributePackage_WithAnotherStockDistributionCentre_ShouldBeDistributed()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Status = PackageStatus.InStock, StockDC = dc1, SourceDC = null, DestinationDC = null, Operator = agent.Username });
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.DistributePackage(barcode);
+
+			// Assert
+			AssertPackage(barcode, PackageStatus.Distributed, dc2, null, null, username, result);
+		}
+
+		[TestMethod]
+		public void DiscardPackage_WithValidData_ShouldBeDiscarded()
 		{
 			string username = doctor.Username;
 			string barcode = "123456";
@@ -190,7 +345,30 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void Stocktake()
+		public void DiscardPackage_WithDistributedStatus_ShouldBeDiscarded()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Status = PackageStatus.Distributed, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = agent.Username });
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			bll.DiscardPackage(barcode);
+
+			// Assert
+			AssertPackage(barcode, PackageStatus.Discarded, dc2, null, null, username, result);
+		}
+
+		[TestMethod]
+		public void Stocktake_WithDifferentExpireStatus_ShouldBeIdentified()
 		{
 			MedicationPackageBLL bll = new MedicationPackageBLL(agent.Username);
 
@@ -202,9 +380,9 @@ namespace ENETCareTest
 			medicationPackageDAO.Setup(x => x.FindInStockPackagesInDistributionCentre(It.IsAny<int>(), null)).Returns(
 				new List<MedicationPackage>()
 				{
-					new MedicationPackage { Barcode = "100001", Type = type, ExpireDate = new DateTime(2015, 3, 30) },
-					new MedicationPackage { Barcode = "100002", Type = type, ExpireDate = new DateTime(2015, 4, 30) },
-					new MedicationPackage { Barcode = "100003", Type = type, ExpireDate = new DateTime(2015, 5, 30) }
+					new MedicationPackage { Barcode = "100001", Type = type1, ExpireDate = new DateTime(2015, 3, 30) },
+					new MedicationPackage { Barcode = "100002", Type = type1, ExpireDate = new DateTime(2015, 4, 30) },
+					new MedicationPackage { Barcode = "100003", Type = type1, ExpireDate = new DateTime(2015, 5, 30) }
 				});
 			bll.EmployeeDAO = employeeDAO.Object;
 			bll.MedicationPackageDAO = medicationPackageDAO.Object;
@@ -223,7 +401,90 @@ namespace ENETCareTest
 		}
 
 		[TestMethod]
-		public void Audit()
+		public void AuditScan_WithNonExistingBarcode_ShouldBeRegistered()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+			bool updated = false;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type1);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns((MedicationPackage)null);
+			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationTypeDAO = medicationTypeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			updated = bll.CheckAndUpdatePackage(type1.ID, barcode);
+
+			// Assert
+			AssertPackage(barcode, PackageStatus.InStock, dc2, null, null, username, result);
+			Assert.AreEqual(true, updated);
+		}
+
+		[TestMethod]
+		public void AuditScan_WithUnexpectedPackage_ShouldBeUpdated()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+			bool updated = false;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type1);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Type = type1, Status = PackageStatus.Lost, StockDC = dc1, SourceDC = null, DestinationDC = null, Operator = username });
+			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationTypeDAO = medicationTypeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			updated = bll.CheckAndUpdatePackage(type1.ID, barcode);
+
+			// Assert
+			Assert.AreEqual(true, updated);
+			AssertPackage(barcode, PackageStatus.InStock, dc2, null, null, username, result);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ENETCareException))]
+		public void AuditScan_WithNonMatchedPackageType_ShouldFail()
+		{
+			string username = doctor.Username;
+			string barcode = "123456";
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			MedicationPackage result = null;
+			bool updated = false;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationTypeDAO.Setup(x => x.GetMedicationTypeById(It.IsAny<int>())).Returns(type1);
+			medicationPackageDAO.Setup(x => x.FindPackageByBarcode(It.IsAny<string>())).Returns(
+				new MedicationPackage { Barcode = barcode, Type = type2, Status = PackageStatus.Lost, StockDC = dc1, SourceDC = null, DestinationDC = null, Operator = username });
+			medicationPackageDAO.Setup(x => x.InsertPackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationTypeDAO = medicationTypeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			updated = bll.CheckAndUpdatePackage(type1.ID, barcode);
+
+			// Assert
+			Assert.Fail();
+		}
+
+		[TestMethod]
+		public void Audit_WithPartialPackagesScanned_ShouldIdentifyLostPackages()
 		{
 			string username = doctor.Username;
 			MedicationPackageBLL bll = new MedicationPackageBLL(username);
@@ -246,11 +507,42 @@ namespace ENETCareTest
 			bll.MedicationPackageDAO = medicationPackageDAO.Object;
 
 			// Act
-			List<MedicationPackage> lostPackages = bll.AuditPackages(type.ID, scannedList);
+			List<MedicationPackage> lostPackages = bll.AuditPackages(type1.ID, scannedList);
 
 			// Assert
+			Assert.AreEqual(2, lostPackages.Count);
 			AssertPackage("100002", PackageStatus.Lost, dc2, null, null, username, lostPackages[0]);
 			AssertPackage("100004", PackageStatus.Lost, dc2, null, null, username, lostPackages[1]);
+		}
+
+		[TestMethod]
+		public void Audit_WithAllPackagesScaned_ShouldReturnEmptyList()
+		{
+			string username = doctor.Username;
+			MedicationPackageBLL bll = new MedicationPackageBLL(username);
+			List<string> scannedList = new List<string>() { "100001", "100002", "100003", "100004", "100005" };
+			MedicationPackage result = null;
+
+			// Arrange
+			employeeDAO.Setup(x => x.GetEmployeeByUserName(It.IsAny<string>())).Returns(doctor);
+			medicationPackageDAO.Setup(x => x.FindInStockPackagesInDistributionCentre(It.IsAny<int>(), It.IsAny<int>())).Returns(
+				new List<MedicationPackage>()
+				{
+					new MedicationPackage { Barcode = "100001", Status = PackageStatus.InStock, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = agent.Username },
+					new MedicationPackage { Barcode = "100002", Status = PackageStatus.InStock, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = agent.Username },
+					new MedicationPackage { Barcode = "100003", Status = PackageStatus.InStock, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = agent.Username },
+					new MedicationPackage { Barcode = "100004", Status = PackageStatus.InStock, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = doctor.Username },
+					new MedicationPackage { Barcode = "100005", Status = PackageStatus.InStock, StockDC = dc2, SourceDC = null, DestinationDC = null, Operator = doctor.Username }
+				});
+			medicationPackageDAO.Setup(x => x.UpdatePackage(It.IsAny<MedicationPackage>())).Callback<MedicationPackage>(r => result = r);
+			bll.EmployeeDAO = employeeDAO.Object;
+			bll.MedicationPackageDAO = medicationPackageDAO.Object;
+
+			// Act
+			List<MedicationPackage> lostPackages = bll.AuditPackages(type1.ID, scannedList);
+
+			// Assert
+			Assert.AreEqual(0, lostPackages.Count);
 		}
 
 		void AssertPackage(string expectedBarcode, PackageStatus expectedStatus, DistributionCentre expectedStockDC, DistributionCentre expectedSourceDC, DistributionCentre expectedDestinationDC, string expectedUsername, MedicationPackage result)
