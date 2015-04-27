@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
         Medication Type:
-        <asp:DropDownList ID="TypeDropDownList" runat="server">
+        <asp:DropDownList ID="TypeDropDownList" AutoPostBack="True" OnSelectedIndexChanged="TypeDropDownListSelection_Change" runat="server">
             <asp:ListItem>Please select</asp:ListItem>
         </asp:DropDownList>
         <br />

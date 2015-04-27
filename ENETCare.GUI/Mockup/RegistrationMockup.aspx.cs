@@ -10,17 +10,49 @@ namespace ENETCare.GUI.Mockup
 {
 	public partial class RegistrationMockup : System.Web.UI.Page
 	{
-		private MedicationPackageBLL medicationPackageBLL;
+		MedicationPackageBLL medicationPackageBLL;
+
+		public List<MedicationType> MedicationTypeList
+		{
+			get
+			{
+				if (ViewState["MedicationTypeList"] != null)
+				{
+					return (List<MedicationType>)ViewState["MedicationTypeList"];
+				}
+				return null;
+			}
+			set { ViewState["MedicationTypeList"] = value; }
+		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			medicationPackageBLL = new MedicationPackageBLL("LoginUserName");
 			if (!Page.IsPostBack)
 			{
-				TypeDropDownList.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
+				MedicationTypeList = new MedicationTypeBLL().GetMedicationTypeList();
+				TypeDropDownList.DataSource = MedicationTypeList;
 				TypeDropDownList.DataTextField = "Name";
 				TypeDropDownList.DataValueField = "ID";
 				TypeDropDownList.DataBind();
+				SetDefaultExpireDate();
+			}
+		}
+
+		protected void TypeDropDownListSelection_Change(object sender, EventArgs e)
+		{
+			SetDefaultExpireDate();
+		}
+
+		void SetDefaultExpireDate()
+		{
+			foreach (MedicationType type in MedicationTypeList)
+			{
+				if (Convert.ToInt32(TypeDropDownList.SelectedItem.Value) == type.ID)
+				{
+					ExpireDateTextBox.Text = type.DefaultExpireDate.ToString("yyyy-MM-dd");
+					break;
+				}
 			}
 		}
 
