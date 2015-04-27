@@ -56,13 +56,16 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
         private void ExpiredStatusHidden()
         {
-            int GVrowsCount = AgentDoctorReportStockTakingGV.Rows.Count;
-            int ColumnIndex = AgentDoctorReportStockTakingGV.HeaderRow.Cells.Count - 1;
-            AgentDoctorReportStockTakingGV.HeaderRow.Cells[ColumnIndex].Visible = false;
-
-            for (int i = 0; i < GVrowsCount; i++)
+            if (AgentDoctorReportStockTakingGV.Rows.Count > 0)
             {
-                AgentDoctorReportStockTakingGV.Rows[i].Cells[ColumnIndex].Visible = false;
+                int GVrowsCount = AgentDoctorReportStockTakingGV.Rows.Count;
+                int ColumnIndex = AgentDoctorReportStockTakingGV.HeaderRow.Cells.Count - 1;
+                AgentDoctorReportStockTakingGV.HeaderRow.Cells[ColumnIndex].Visible = false;
+
+                for (int i = 0; i < GVrowsCount; i++)
+                {
+                    AgentDoctorReportStockTakingGV.Rows[i].Cells[ColumnIndex].Visible = false;
+                }
             }
         }
 
