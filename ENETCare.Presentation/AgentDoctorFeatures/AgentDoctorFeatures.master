@@ -16,6 +16,8 @@
                 id="DoctorDistributPackageItem" runat="server">Distribute Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorAuditPackage.aspx" runat="server">Audit Package</a>
             <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorViewReport.aspx" runat="server">View Report</a>
+            <a class="list-group-item" href="~/AgentDoctorFeatures/AgentDoctorDiscardPackage.aspx" runat="server">Discard Package</a>
+
         </div>
 
         <!-- panel ocntents end -->

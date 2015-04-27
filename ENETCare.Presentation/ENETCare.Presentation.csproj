@@ -157,6 +157,7 @@
     <Content Include="Account\obsolete\RegisterExternalLogin.aspx" />
     <Content Include="Account\obsolete\ResetPassword.aspx" />
     <Content Include="Account\obsolete\ResetPasswordConfirmation.aspx" />
+    <Content Include="AgentDoctorFeatures\AgentDoctorDiscardPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorAuditPackage.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorHome.aspx" />
     <Content Include="AgentDoctorFeatures\AgentDoctorReceivePackage.aspx" />
@@ -311,6 +312,13 @@
     </Compile>
     <Compile Include="Account\obsolete\ResetPasswordConfirmation.aspx.designer.cs">
       <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentDoctorFeatures\AgentDoctorDiscardPackage.aspx.cs">
+      <DependentUpon>AgentDoctorDiscardPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentDoctorFeatures\AgentDoctorDiscardPackage.aspx.designer.cs">
+      <DependentUpon>AgentDoctorDiscardPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentDoctorFeatures\AgentDoctorAuditPackage.aspx.cs">
       <DependentUpon>AgentDoctorAuditPackage.aspx</DependentUpon>

@@ -46,6 +46,9 @@
 
       <siteMapNode title="Audit Package" description="Audit Package"
                    url="~/AgentDoctorFeatures/AgentDoctorAuditPackage"/>
+      
+      <siteMapNode title="Discard Package" description="Discard Package"
+             url="~/AgentDoctorFeatures/AgentDoctorDiscardPackage"/>
 
       <siteMapNode title="Distribute Package" description="Distribute Package"
         url="~/DoctorFeatures/DoctorDistribute"/>
