@@ -62,13 +62,13 @@
                     Text="Register" CssClass="btn btn-success btn-float-right" ValidationGroup="AgentDoctorRegisterPackageValidateGroup" />
             </div>
 
-            <div>
+            <%--<div>
                 <asp:Label Text="ganDDL" runat="server" AssociatedControlID="ShowDropdownListTextBox" />
                 <asp:TextBox ID="ShowDropdownListTextBox" runat="server" CssClass="form-control" ></asp:TextBox>
-            </div>
-            <div>
+            </div>--%>
+            <%--<div>
                 <asp:GridView ID="ExpiredDateGV" runat="server"></asp:GridView>
-            </div>
+            </div>--%>
         </div>
         <!--panel-body-end-->
     </div>

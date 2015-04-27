@@ -92,23 +92,5 @@ namespace ENETCare.Presentation.AgentDoctorFeatures {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AgentDoctorRegisterButton;
-        
-        /// <summary>
-        /// ShowDropdownListTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ShowDropdownListTextBox;
-        
-        /// <summary>
-        /// ExpiredDateGV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ExpiredDateGV;
     }
 }

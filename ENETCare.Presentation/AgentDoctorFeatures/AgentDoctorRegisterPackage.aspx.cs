@@ -16,36 +16,55 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         private MedicationPackageBLL medicationPackageBLL;
         private Features masterPageADregister;
         //private MedicationType packageTypeDefaultExpireDate = new MedicationType();
+        public List<MedicationType> MedicationTypeList
+        {
+            get
+            {
+                if (ViewState["MedicationTypeList"] != null)
+                {
+                    return (List<MedicationType>)ViewState["MedicationTypeList"];
+                }
+                return null;
+            }
+            set { ViewState["MedicationTypeList"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
             if (!Page.IsPostBack)
             {
-                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
+                MedicationTypeList = new MedicationTypeBLL().GetMedicationTypeList();
+
+                AgentDoctorPackageRegisterPackageTypeDropDwonList.DataSource = MedicationTypeList;
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataTextField = "Name";
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataValueField = "ID";
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataBind();
-                ExpiredDateGV.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
-                ExpiredDateGV.DataBind();
-                ExpiredDateGV.Visible = false;
-                
-
-                NedPackageRegisterFormExpireDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
-                //ShowDropdownListTextBox.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
-                string defaultItemDDL = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
-                GridViewRowCollection rowsEPGV = ExpiredDateGV.Rows;
-                int rowsCounts = rowsEPGV.Count;
-                string itemInEPGVName = ExpiredDateGV.Rows[0].Cells[1].Text;
-                string itemInEPGVExpiredDate = ExpiredDateGV.Rows[0].Cells[6].Text;
-                if(defaultItemDDL == itemInEPGVName)
-                {
-                    NedPackageRegisterFormExpireDate.Text = itemInEPGVExpiredDate;
-                }
+                SetDefaultExpireDate();
             }
 
             masterPageADregister = Page.Master.Master as Features;
             masterPageADregister.ConfigureAlertBox(false);
         }
+
+
+        protected void AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDefaultExpireDate();
+        }
+
+        void SetDefaultExpireDate()
+        {
+            foreach (MedicationType mediTypeOBJ in MedicationTypeList)
+            {
+                if (Convert.ToInt32(AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.Value) == mediTypeOBJ.ID)
+                {
+                    NedPackageRegisterFormExpireDate.Text = mediTypeOBJ.DefaultExpireDate.ToString("yyyy-MM-dd");
+                    break;
+                }
+            }
+        }
+
 
         protected void AgentDoctorRegisterButton_Click(object sender, EventArgs e)
         {
@@ -96,15 +115,5 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             }
         }
 
-        protected void AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowDropdownListTextBox.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString()+" -- ";
-            ShowDropdownListTextBox.Text += AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedIndex.ToString();
-
-            //(AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.GetType()).GetConstructor()
-            //AgentDoctorPackageRegisterPackageTypeDropDwonList.DataMember
-
-            //packageTypeDefaultExpireDate.DefaultExpireDate[1];
-        }
     }
 }
