@@ -127,7 +127,11 @@
                             PageSize="5"
                             OnPageIndexChanging="LostList_PageIndexChanging"
                             CssClass="table  table-hover table-bordered table-striped"
-                            DataSource='<%# ViewState["lostPackages"] %>'>
+                            DataSource='<%# ViewState["lostPackages"] %>' AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="Barcode" HeaderText="Barcode" ReadOnly="True" SortExpression="Barcode"></asp:BoundField>
+                                <asp:BoundField DataField="ExpireDate" HeaderText="ExpireDate" ReadOnly="True" SortExpression="ExpireDate" DataFormatString="{0:d}"></asp:BoundField>
+                            </Columns>
                         </asp:GridView>
                     </div>
                 </div>
