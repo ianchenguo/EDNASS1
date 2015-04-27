@@ -112,6 +112,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             if (MsgOfMedicationTypeInfrontOfBarcode != null && AgentDoctorRegisterMessage.Text != string.Empty)
             {
                 NedPackageRegisterFormExpireDate.Text = string.Empty;
+                SetDefaultExpireDate();
             }
         }
 

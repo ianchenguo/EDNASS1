@@ -15,7 +15,7 @@
         </asp:DropDownList>
         <br />
         Expire Date:
-        <asp:TextBox ID="ExpireDateTextBox" runat="server" TextMode="Date"></asp:TextBox>
+        <asp:TextBox ID="ExpireDateTextBox" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="RegisterButton" runat="server" OnClick="RegisterButton_Click" Text="Register" />
         <p><asp:label id="Msg" runat="server"/><asp:Image ID="BarcodeImage" runat="server" /></p>
