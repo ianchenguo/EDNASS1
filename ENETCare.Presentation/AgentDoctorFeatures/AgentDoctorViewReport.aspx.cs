@@ -10,28 +10,48 @@ using ENETCare.Presentation.HelperUtilities;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using ENETCare.Presentation.Layout;
 
 namespace ENETCare.Presentation.AgentDoctorFeatures
 {
     public partial class AgentDoctorViewReport : System.Web.UI.Page
     {
+        private Features baseMasterPage;
         private MedicationPackageBLL AgentDoctorReportStockTaking;
         protected void Page_Load(object sender, EventArgs e)
         {
             AgentDoctorReportStockTaking = new MedicationPackageBLL(User.Identity.Name);
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 this.AgentDoctorReportStockTakeDataBind();
             }
+            baseMasterPage = Page.Master.Master as Features;
+            baseMasterPage.ConfigureAlertBox(false);
 
         }
 
         private void AgentDoctorReportStockTakeDataBind()
         {
-            AgentDoctorReportStockTakingGV.DataSource = AgentDoctorReportStockTaking.Stocktake();
+            try
+            {
+                AgentDoctorReportStockTakingGV.DataSource = AgentDoctorReportStockTaking.Stocktake();
+
+            }
+
+            catch (ENETCareException ex)
+            {
+                handleMessage(AlertBoxHelper.AlertType.Error, AlertBoxHelper.ALERT_STYLE_DANGER, ex.Message.ToString());
+            }
+
             AgentDoctorReportStockTakingGV.DataBind();
             this.isDeleteOrNotDeleteVisible();
             this.ExpiredStatusHidden();
+        }
+
+
+        private void handleMessage(AlertBoxHelper.AlertType alertType, string alertStyle, string alertContent)
+        {
+            baseMasterPage.ConfigureAlertBox(true, alertStyle, alertType.ToString(), alertContent);
         }
 
         private void ExpiredStatusHidden()
@@ -95,6 +115,6 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
         {
             Response.Redirect("AgentDoctorHome.aspx");
         }
-        
+
     }
 }
