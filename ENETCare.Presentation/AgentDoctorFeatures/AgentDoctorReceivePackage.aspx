@@ -20,11 +20,11 @@
 
                 <div class="form-group">
                     <asp:Label AssociatedControlID="AgentDoctorReceivePackagesBarcode" runat="server" Text="Barcode:&nbsp" CssClass="col-xs-3"></asp:Label>
-                    <asp:TextBox ID="AgentDoctorReceivePackagesBarcode" runat="server" CssClass="form-control"></asp:TextBox>
                     <div class="col-xs-9">
+                        <asp:TextBox ID="AgentDoctorReceivePackagesBarcode" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="AgentDoctorReceivePackagesBarcode"
                             CssClass="text-danger" Display="Dynamic"
-                            ErrorMessage="<div>The Barcode field is required.</div>"
+                            ErrorMessage="The Barcode field is required."
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
 
                         <asp:RegularExpressionValidator
@@ -32,7 +32,7 @@
                             ValidationExpression="\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d"
                             ControlToValidate="AgentDoctorReceivePackagesBarcode"
                             CssClass="text-danger"
-                            ErrorMessage="<div>The Barcode is invalid.</div>"
+                            ErrorMessage="The Barcode is invalid."
                             ValidationGroup="AgentDoctorReceivePackageValidateGroup" />
                     </div>
 

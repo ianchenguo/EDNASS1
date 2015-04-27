@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="DoctorDistributePackageTypebarcode" CssClass="col-xs-3">Barcode: </asp:Label>
 
-                    <div class="col-9">
+                    <div class="col-xs-9">
                         <asp:TextBox ID="DoctorDistributePackageTypebarcode" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="DoctorDistributePackageTypebarcode"
                             CssClass="text-danger" Display="Dynamic"
@@ -37,19 +37,11 @@
                     </div>
                 </div>
 
-                <%--<div class="form-group">
-                    <asp:Label AssociatedControlID="DoctorDistributePackageDateTextBox" runat="server" Text="Distribute Date: " CssClass="col-xs-3"></asp:Label>
-
-                    <div class="col-xs-9">
-                        <asp:TextBox ID="DoctorDistributePackageDateTextBox" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                    </div>
-                </div>--%>
-
                 <!-- the following link should be optimised -->
                 <%--<a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="~/AgentDoctorFeatures/AgentDoctorHome.aspx">Cancel</a>--%>
                 <asp:LinkButton ID="DoctorDistributeLinkButton" Text="Cancle" runat="server" CssClass="btn btn-danger btn-float-right btn-margin-left" OnClick="DoctorDistributeLinkButton_Click" />
                 <asp:Button ID="DoctorDistributePackageTypeButton" runat="server" OnClick="DoctorDistributePackageTypeButton_Click"
-                    Text="Doctor Distribute" CssClass="btn btn-success btn-float-right" ValidationGroup="DoctorDistributePackageValiGroup" />
+                    Text="Distribute" CssClass="btn btn-success btn-float-right" ValidationGroup="DoctorDistributePackageValiGroup" />
             </div>
         </div>
         <!--panel-body-end-->
