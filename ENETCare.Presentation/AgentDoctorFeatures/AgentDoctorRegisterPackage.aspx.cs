@@ -15,6 +15,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
     {
         private MedicationPackageBLL medicationPackageBLL;
         private Features masterPageADregister;
+        //private MedicationType packageTypeDefaultExpireDate = new MedicationType();
         protected void Page_Load(object sender, EventArgs e)
         {
             medicationPackageBLL = new MedicationPackageBLL(User.Identity.Name);
@@ -24,8 +25,24 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataTextField = "Name";
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataValueField = "ID";
                 AgentDoctorPackageRegisterPackageTypeDropDwonList.DataBind();
-                NedPackageRegisterFormExpireDate.Text = DateTime.Now.Date.ToShortDateString();
+                ExpiredDateGV.DataSource = new MedicationTypeBLL().GetMedicationTypeList();
+                ExpiredDateGV.DataBind();
+                ExpiredDateGV.Visible = false;
+                
+
+                NedPackageRegisterFormExpireDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
+                //ShowDropdownListTextBox.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
+                string defaultItemDDL = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString();
+                GridViewRowCollection rowsEPGV = ExpiredDateGV.Rows;
+                int rowsCounts = rowsEPGV.Count;
+                string itemInEPGVName = ExpiredDateGV.Rows[0].Cells[1].Text;
+                string itemInEPGVExpiredDate = ExpiredDateGV.Rows[0].Cells[6].Text;
+                if(defaultItemDDL == itemInEPGVName)
+                {
+                    NedPackageRegisterFormExpireDate.Text = itemInEPGVExpiredDate;
+                }
             }
+
             masterPageADregister = Page.Master.Master as Features;
             masterPageADregister.ConfigureAlertBox(false);
         }
@@ -77,6 +94,17 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
             {
                 NedPackageRegisterFormExpireDate.Text = string.Empty;
             }
+        }
+
+        protected void AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDropdownListTextBox.Text = AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.ToString()+" -- ";
+            ShowDropdownListTextBox.Text += AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedIndex.ToString();
+
+            //(AgentDoctorPackageRegisterPackageTypeDropDwonList.SelectedItem.GetType()).GetConstructor()
+            //AgentDoctorPackageRegisterPackageTypeDropDwonList.DataMember
+
+            //packageTypeDefaultExpireDate.DefaultExpireDate[1];
         }
     }
 }

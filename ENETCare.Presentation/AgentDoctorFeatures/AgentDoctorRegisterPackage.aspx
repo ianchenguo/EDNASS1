@@ -23,7 +23,8 @@
                     <asp:Label runat="server" AssociatedControlID="AgentDoctorPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" runat="server" >
+                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" AutoPostBack="true" runat="server" 
+                            OnSelectedIndexChanged="AgentDoctorPackageRegisterPackageTypeDropDwonList_SelectedIndexChanged" >
                             <asp:ListItem>Please select</asp:ListItem>
                         </asp:DropDownList>
                     </div>
@@ -59,6 +60,14 @@
                 <%--<asp:Button ID="NedPackageRegisterSubmit" runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />--%>
                 <asp:Button ID="AgentDoctorRegisterButton" runat="server" OnClick="AgentDoctorRegisterButton_Click"
                     Text="Register" CssClass="btn btn-success btn-float-right" ValidationGroup="AgentDoctorRegisterPackageValidateGroup" />
+            </div>
+
+            <div>
+                <asp:Label Text="ganDDL" runat="server" AssociatedControlID="ShowDropdownListTextBox" />
+                <asp:TextBox ID="ShowDropdownListTextBox" runat="server" CssClass="form-control" ></asp:TextBox>
+            </div>
+            <div>
+                <asp:GridView ID="ExpiredDateGV" runat="server"></asp:GridView>
             </div>
         </div>
         <!--panel-body-end-->
