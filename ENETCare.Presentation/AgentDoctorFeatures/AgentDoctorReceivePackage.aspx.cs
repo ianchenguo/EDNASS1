@@ -38,7 +38,7 @@ namespace ENETCare.Presentation.AgentDoctorFeatures
 
         private void ADReceivePackageSuccessfulRespond(string ADRPbarcode)
         {
-            string successMsg = "Successfully send.";
+            string successMsg = "Successfully Receive.";
             this.ADReceivePackageHandleMessage(AlertBoxHelper.AlertType.Success, AlertBoxHelper.ALERT_STYLE_SUCCESS, successMsg);
             this.ClearAgentDoctorReceivePackage_Barcode(ADRPbarcode);
         }

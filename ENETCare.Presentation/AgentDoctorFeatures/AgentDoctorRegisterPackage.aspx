@@ -14,14 +14,16 @@
         <div class="panel-body">
             <div class="form-horizontal col-sm-10 col-sm-offset-1">
 
-
+                <div runat="server" id="AgentDoctorRegisterPackageAlertWindowDiv" visible="false" class="alert alert-success" data-dismiss="alert">
+                    <asp:Label ID="AgentDoctorRegisterPackageAlertWindowContentLabel" runat="server" />
+                </div>
 
                 <div class="form-group" runat="server">
 
                     <asp:Label runat="server" AssociatedControlID="AgentDoctorPackageRegisterPackageTypeDropDwonList" CssClass="col-xs-3">Medication Type: </asp:Label>
 
                     <div class="col-xs-9">
-                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" runat="server">
+                        <asp:DropDownList ID="AgentDoctorPackageRegisterPackageTypeDropDwonList" runat="server" >
                             <asp:ListItem>Please select</asp:ListItem>
                         </asp:DropDownList>
                     </div>
@@ -56,7 +58,7 @@
                 <a class="btn btn-danger btn-float-right btn-margin-left" type="a" href="AgentDoctorHome.aspx">Cancel</a>
                 <%--<asp:Button ID="NedPackageRegisterSubmit" runat="server" OnClick="Submit" Text="Submit" CssClass="btn btn-success btn-float-right" />--%>
                 <asp:Button ID="AgentDoctorRegisterButton" runat="server" OnClick="AgentDoctorRegisterButton_Click"
-                    Text="Register" CssClass="btn btn-success btn-float-right" />
+                    Text="Register" CssClass="btn btn-success btn-float-right" ValidationGroup="AgentDoctorRegisterPackageValidateGroup" />
             </div>
         </div>
         <!--panel-body-end-->
