@@ -347,10 +347,6 @@
     <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackage.aspx.designer.cs">
       <DependentUpon>AgentDoctorRegisterPackage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentDoctorFeatures\AgentDoctorRegisterPackageTest.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgentDoctorFeatures\AgentDoctorRegsiterPackage.aspx.designer.cs" />
     <Compile Include="AgentDoctorFeatures\AgentDoctorSendPackage.aspx.cs">
       <DependentUpon>AgentDoctorSendPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

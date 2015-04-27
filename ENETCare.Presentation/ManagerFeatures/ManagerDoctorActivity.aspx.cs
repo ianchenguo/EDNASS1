@@ -40,15 +40,6 @@ namespace ENETCare.Presentation.ManagerFeatures
                 e.ExceptionHandled = true;
             }
 
-            else
-            {
-                baseMasterPage.ConfigureAlertBox(
-                    true,
-                    AlertBoxHelper.ALERT_STYLE_SUCCESS,
-                    AlertBoxHelper.AlertType.Success.ToString(),
-                    "Report is fetched"
-                    );
-            }
         }
     }
 }
