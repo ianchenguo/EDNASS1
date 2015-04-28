@@ -9,7 +9,7 @@ namespace ENETCareTest
 	public class BarcodeHelperTest
 	{
 		[TestMethod]
-		public void Generate_NewBarcode_ShouldContainOnlyDigits()
+		public void Generate_BarcodeFormat_ContainOnlyDigits()
 		{
 			string barcode = BarcodeHelper.GenerateBarcode();
 			Assert.AreEqual(true, IsAllDigits(barcode));

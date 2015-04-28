@@ -77,6 +77,7 @@
     <Content Include="Doctor\DoctorRegisterPackage.aspx" />
     <Content Include="Doctor\DoctorSendPackage.aspx" />
     <Content Include="Doctor\DoctorViewReport.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Layout\Main.master" />
     <Content Include="Content\Styles\bootstrap-theme.css.map" />
     <Content Include="Content\Styles\bootstrap.css.map" />
@@ -201,6 +202,9 @@
     </Compile>
     <Compile Include="Doctor\DoctorViewReport.aspx.designer.cs">
       <DependentUpon>DoctorViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Layout\Main.master.cs">
       <DependentUpon>Main.master</DependentUpon>
